@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-11-10T08:46:25Z",
+  "generated_at": "2026-11-10T09:38:13Z",
   "run_date": "2026-11-10",
   "window_days": 180,
   "half_life_days": 45,
@@ -322,7 +322,7 @@
    "first_post_since": "2026-08-28",
    "days_to_first_post": 0,
    "roles_posted_30d": 153,
-   "roles_posted_7d": 46,
+   "roles_posted_7d": 45,
    "rank": 8
   }
  },
