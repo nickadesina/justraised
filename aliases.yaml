@@ -1,0 +1,10 @@
+# Legal names that differ from the brand, used for both direct Form D matching
+# and investor-SPV matching ("HII Anysphere-01" is an SPV into Cursor).
+# Add one when you find a company filing under a name the matcher can't guess.
+Cursor: [Anysphere]
+Character.AI: [Character Technologies]
+Udio: [Uncharted Labs]
+Hadrian: [Hadrian Automation]
+Flock: [Flock Group, Flock Safety]
+Thinking Machines Lab: [Thinking Machines]
+Safe Superintelligence: [Safe Superintelligence Inc]

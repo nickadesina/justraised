@@ -9,9 +9,10 @@ from . import config
 from .clients import SecClient
 from .fetch_companies import fetch_companies
 from .fetch_formd import fetch_filings, update_index
-from .fetch_portfolio import fetch_portfolio
+from .fetch_portfolio import fetch_portfolio, load_universe
 from .match import run_match
 from .score import run_score
+from .spv import update_spvs
 
 
 def main() -> None:
@@ -27,6 +28,7 @@ def main() -> None:
     try:
         index = update_index(sec, config.today())
         fetch_filings(sec, index, config.today(), no_gate=args.no_gate)
+        update_spvs(sec, index, load_universe(), config.today())
     finally:
         sec.close()
     run_match()

@@ -68,3 +68,12 @@ reject:
   # - {cik: "1704188", slug: alchemy, note: "different company"}
 
 block_cik: []
+
+# Investor-SPV matches to drop (pipeline/spv.py). Seeded from the first run:
+# names where the brand is a fund family or the target is unclear.
+spv_ignore:
+  - a16z:altera        # "Altera Panther Fund", "Altera Secondary Fund": a fund family
+  - talos              # "Franklin Talos II (Cayman)": a fund family
+  - a16z:kairos        # "Kairos-GuRu SPV": unclear target
+  - a16z:tiptop        # "TipTop SPV07": likely a syndicate name
+  - catena-labs        # "AI Automation Catena BBVC": unclear target

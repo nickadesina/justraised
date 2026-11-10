@@ -82,6 +82,7 @@ export interface Meta {
   high_matches: number;
   members: number;
   off_network: number;
+  spv_companies: number;
   lag_assumption: string;
 }
 
@@ -103,10 +104,31 @@ export interface CollectionDoc {
   };
 }
 
+// A portfolio company with investor SPVs named after it in the window.
+export interface SpvCompany {
+  rank: number;
+  slug: string;
+  name: string;
+  tier: Tier;
+  cohort: string | null;
+  on_network: boolean;
+  has_own_form_d: boolean;
+  url: string | null;
+  open_roles: number | null;
+  roles_since_first_spv: number | null;
+  spvs: number;
+  spv_amount_sold: number;
+  first_spv_file_date: string;
+  latest_spv_file_date: string;
+  days_since_latest_spv: number;
+  vehicles: { name: string; file_date: string; amount_sold: number | null; filing_url: string }[];
+}
+
 export interface FilingsDoc {
   meta: Meta;
   filings: Record<string, Filing>;
   off_network: Record<string, OffNetworkFiling>;
+  spv: Record<string, SpvCompany>;
 }
 
 export const collection = collectionDoc as unknown as CollectionDoc;
@@ -117,5 +139,6 @@ export const API = {
   collection: `${BASE_PATH}/api/collections/just-raised.json`,
   filings: `${BASE_PATH}/api/just-raised/filings.json`,
   csv: `${BASE_PATH}/api/just-raised.csv`,
+  spvCsv: `${BASE_PATH}/api/just-raised-spvs.csv`,
 };
 export const REPO_URL = "https://github.com/nickadesina/justraised";

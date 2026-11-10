@@ -212,7 +212,9 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
             sys.exit(2)
 
     network_slugs = sorted(s for s in chosen if s in companies or s in registry)
-    details = details if details is not None else fetch_details(network_slugs)
+    spv_groups = _spv_groups(window_start, today)
+    spv_network = sorted(s for s in spv_groups if s in companies and s not in network_slugs)
+    details = details if details is not None else fetch_details(network_slugs + spv_network)
 
     rows = []
     off_rows = []
@@ -267,6 +269,19 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
             }
         )
 
+    direct = {r["slug"] for r in rows} | {r["slug"] for r in off_rows}
+    spv_rows = []
+    for slug, group in spv_groups.items():
+        company = companies.get(slug) or universe.get(slug)
+        if not company or (company.get("name") or "").strip().lower() == "stealth":
+            continue
+        if company.get("stage") in config.EXCLUDE_STAGES:
+            continue
+        spv_rows.append(_spv_row(company, group, details.get(slug), slug in companies, slug in direct, today))
+    spv_rows.sort(key=lambda r: (r["latest_spv_file_date"], r["spvs"]), reverse=True)
+    for i, r in enumerate(spv_rows, 1):
+        r["rank"] = i
+
     rows.sort(key=lambda r: (-r["score"], r["name"].lower()))
     for i, r in enumerate(rows, 1):
         r["rank"] = i
@@ -284,6 +299,7 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
         "high_matches": high_pairs_in_window,
         "members": len(rows),
         "off_network": len(off_rows),
+        "spv_companies": len(spv_rows),
         "off_network_formula": f"log10(amount + 1) * 0.5 ^ (days_since_first_sale / {config.HALF_LIFE_DAYS}); open roles are not tracked",
         "lag_assumption": "Postings follow a raise by one to three months. Assumed, not yet measured.",
     }
@@ -320,6 +336,9 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
         # Portfolio companies (a16z.com, speedrun.a16z.com) with a matched Form D
         # that are not on the talent network: no slug there, no open-role count.
         "off_network": {r["slug"]: r for r in off_rows},
+        # Investor SPVs named after a portfolio company (pipeline/spv.py): a sign
+        # money is being pooled to buy in, as a new round or a share purchase.
+        "spv": {r["slug"]: r for r in spv_rows},
     }
 
     for path in (config.PUBLIC_COLLECTION, config.PUBLIC_FILINGS, config.PUBLIC_CSV):
@@ -333,10 +352,11 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
         (extra_dir / f"page-{p}.json").write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
     config.PUBLIC_FILINGS.write_text(json.dumps(filings_doc, indent=1, ensure_ascii=False) + "\n")
     config.PUBLIC_CSV.write_text(to_csv(rows + off_rows))
+    config.PUBLIC_SPV_CSV.write_text(_spv_csv(spv_rows))
     _append_history(today, rows)
     log.info(
-        "score: %d on the talent network + %d off it published (%d High pairs in window)",
-        len(rows), len(off_rows), high_pairs_in_window,
+        "score: %d on the talent network + %d off it + %d with investor SPVs published (%d High pairs in window)",
+        len(rows), len(off_rows), len(spv_rows), high_pairs_in_window,
     )
     return pages[0]
 
@@ -402,6 +422,72 @@ def _off_network_row(company: dict, off: dict, today: date) -> dict | None:
         "score": score(off["amount"], 0, days),
         **_filing_fields(off, today),
     }
+
+
+def _spv_groups(window_start: date, today: date) -> dict[str, list[dict]]:
+    if not config.SPV_FILINGS.exists():
+        return {}
+    from .spv import load_ignore
+
+    ignore = load_ignore()
+    groups: dict[str, list[dict]] = {}
+    for r in pl.read_parquet(config.SPV_FILINGS).iter_rows(named=True):
+        if r["slug"] not in ignore and window_start <= r["file_date"] <= today:
+            groups.setdefault(r["slug"], []).append(r)
+    return groups
+
+
+def _spv_row(company: dict, group: list[dict], detail: dict | None, on_network: bool, has_direct: bool, today: date) -> dict:
+    # One entry per vehicle (CIK); an amendment updates its vehicle.
+    by_vehicle: dict[str, dict] = {}
+    for f in sorted(group, key=lambda x: (x["file_date"], x["adsh"])):
+        by_vehicle[f["cik"]] = f
+    vehicles = sorted(by_vehicle.values(), key=lambda x: x["file_date"], reverse=True)
+    first = min(v["file_date"] for v in vehicles)
+    jobs = (detail or {}).get("jobs") or []
+    since = [d for d in (_parse_ts(j.get("published_at")) for j in jobs) if d and d >= first]
+    return {
+        "slug": company["slug"],
+        "name": company["name"],
+        "tier": company["tier"],
+        "cohort": company.get("cohort"),
+        "on_network": on_network,
+        "has_own_form_d": has_direct,
+        "url": company.get("url") if on_network else (company.get("website") or company.get("url")),
+        "open_roles": company.get("open_roles") if on_network else None,
+        "roles_since_first_spv": len(since) if on_network else None,
+        "spvs": len(vehicles),
+        "spv_amount_sold": sum(v["total_amount_sold"] or 0 for v in vehicles),
+        "first_spv_file_date": first.isoformat(),
+        "latest_spv_file_date": vehicles[0]["file_date"].isoformat(),
+        "days_since_latest_spv": (today - vehicles[0]["file_date"]).days,
+        "vehicles": [
+            {
+                "name": v["spv_name"],
+                "file_date": v["file_date"].isoformat(),
+                "amount_sold": v["total_amount_sold"],
+                "filing_url": config.FILING_INDEX_URL.format(
+                    cik=v["cik"], adsh_nodash=v["adsh"].replace("-", ""), adsh=v["adsh"]
+                ),
+            }
+            for v in vehicles
+        ],
+    }
+
+
+SPV_CSV_FIELDS = [
+    "rank", "name", "slug", "tier", "on_network", "has_own_form_d", "spvs", "spv_amount_sold",
+    "first_spv_file_date", "latest_spv_file_date", "open_roles", "roles_since_first_spv", "url", "vehicle_names",
+]
+
+
+def _spv_csv(rows: list[dict]) -> str:
+    buf = io.StringIO()
+    w = csv.DictWriter(buf, fieldnames=SPV_CSV_FIELDS, extrasaction="ignore", lineterminator="\n")
+    w.writeheader()
+    for r in rows:
+        w.writerow({**r, "vehicle_names": " | ".join(v["name"] for v in r["vehicles"])})
+    return buf.getvalue()
 
 
 def to_csv(rows: list[dict]) -> str:

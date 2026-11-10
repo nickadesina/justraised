@@ -123,9 +123,11 @@ def company_variants(c: dict) -> list:
     """
     out = list(name_variants(c["name"]))
     seen = {v.strict for v in out}
-    for v in name_variants((c.get("slug") or "").split(":")[-1].replace("-", " ")):
-        if v.strict and v.strict not in seen:
-            out.append(v)
+    for extra in [(c.get("slug") or "").split(":")[-1].replace("-", " "), *(c.get("aliases") or [])]:
+        for v in name_variants(extra):
+            if v.strict and v.strict not in seen:
+                seen.add(v.strict)
+                out.append(v)
     return out
 
 

@@ -7,6 +7,9 @@ against:
 
 * a16z.com/portfolio: every a16z company, embedded in the page as JSON
   (``data-companies``). Kept: status Active, no acquirer, no ticker.
+* a16z.com/investment-list: every disclosed investment (about 1,470 names,
+  no status). Names that a16z.com/portfolio marks as exited, acquired or
+  public are dropped; the rest join the universe.
 * speedrun.a16z.com/companies: the public speedrun list (current cohort only;
   earlier cohorts sit behind a login).
 * a16z.com/team: names of the investing team, embedded the same way. A Form D
@@ -35,6 +38,7 @@ from .fetch_companies import load_companies
 log = logging.getLogger(__name__)
 
 A16Z_PORTFOLIO_URL = "https://a16z.com/portfolio/"
+A16Z_INVESTMENT_LIST_URL = "https://a16z.com/investment-list/"
 A16Z_TEAM_URL = "https://a16z.com/team/"
 SPEEDRUN_COMPANIES_URL = "https://speedrun.a16z.com/companies"
 
@@ -49,14 +53,50 @@ def _get(url: str) -> str:
         return resp.text
 
 
-def parse_a16z_portfolio(page: str) -> list[dict]:
+def _portfolio_rows(page: str) -> list[dict]:
     m = re.search(r'data-companies="(\[\{.*?)"\s', page, re.S)
     if not m:
         raise ValueError("no data-companies array on a16z.com/portfolio")
-    rows = json.loads(html.unescape(m.group(1)))
+    return json.loads(html.unescape(m.group(1)))
+
+
+def _is_active(c: dict) -> bool:
+    return "Active" in (c.get("status") or "") and not c.get("acquirer") and not c.get("ticker_symbol")
+
+
+def exited_keys(page: str) -> set[str]:
+    """Normalized names a16z.com/portfolio marks as exited, acquired or public."""
+    return {
+        v.strict
+        for c in _portfolio_rows(page)
+        if not _is_active(c)
+        for v in name_variants(c.get("display_name") or c.get("name") or "")
+    }
+
+
+def parse_investment_list(page: str, exited: set[str]) -> list[dict]:
+    items = [html.unescape(x).strip() for x in re.findall(r"<li[^>]*>\s*(?:<[^>]+>\s*)*([^<]{1,80}?)\s*(?:<[^>]+>\s*)*</li>", page)]
+    if "0x" not in items or "Zynga" not in items:
+        raise ValueError("investment list markers not found")
+    names = items[items.index("0x") : items.index("Zynga") + 1]
+    out, seen = [], set()
+    for name in names:
+        if not name or name.startswith("[") or len(name) < 2:
+            continue
+        keys = {v.strict for v in name_variants(name)}
+        if keys & exited or keys & seen:
+            continue
+        seen |= keys
+        key = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+        out.append({"slug": f"a16z:{key}", "name": name, "tier": "a16z", "on_network": False,
+                    "location": None, "blurb": None, "url": None, "website": None})
+    return out
+
+
+def parse_a16z_portfolio(page: str) -> list[dict]:
     out = []
-    for c in rows:
-        if "Active" not in (c.get("status") or "") or c.get("acquirer") or c.get("ticker_symbol"):
+    for c in _portfolio_rows(page):
+        if not _is_active(c):
             continue
         name = (c.get("display_name") or c.get("name") or "").strip()
         permalink = c.get("permalink") or ""
@@ -117,9 +157,19 @@ def parse_a16z_team(page: str) -> list[dict]:
     return [{"slug": k, **v} for k, v in sorted(people.items())]
 
 
-def build_universe(network: list[dict], extra: list[dict]) -> list[dict]:
+def load_aliases() -> dict[str, list[str]]:
+    if not config.ALIASES_FILE.exists():
+        return {}
+    import yaml
+
+    return {str(k): [str(x) for x in v] for k, v in (yaml.safe_load(config.ALIASES_FILE.read_text()) or {}).items()}
+
+
+def build_universe(network: list[dict], extra: list[dict], aliases: dict[str, list[str]] | None = None) -> list[dict]:
     """Talent-network companies first; wider-portfolio companies whose name is
-    already on the network are folded into that entry, not duplicated."""
+    already present are folded into that entry, not duplicated. Earlier sources
+    win, so pass a16z.com/portfolio (which has websites) before the bare
+    investment list."""
     by_key: dict[str, dict] = {}
     out = []
     for c in network:
@@ -138,23 +188,38 @@ def build_universe(network: list[dict], extra: list[dict]) -> list[dict]:
         out.append(c)
         for k in keys:
             by_key.setdefault(k, c)
+    alias_by_key = {v.strict: names for brand, names in (aliases or {}).items() for v in name_variants(brand)}
+    for c in out:
+        for v in name_variants(c["name"]):
+            if v.strict in alias_by_key:
+                c["aliases"] = alias_by_key[v.strict]
     return out
 
 
 def fetch_portfolio() -> None:
     extra: list[dict] = []
     ok = True
-    for url, parse in ((A16Z_PORTFOLIO_URL, parse_a16z_portfolio), (SPEEDRUN_COMPANIES_URL, parse_speedrun)):
+    exited: set[str] = set()
+    try:
+        page = _get(A16Z_PORTFOLIO_URL)
+        exited = exited_keys(page)
+        rows = parse_a16z_portfolio(page)
+        log.info("portfolio: %d active companies from a16z.com/portfolio (%d exited names)", len(rows), len(exited))
+        extra += rows
+    except Exception as exc:  # a redesign of any page must not stop the nightly run
+        ok = False
+        log.warning("portfolio: could not read a16z.com/portfolio (%s)", exc)
+    for url, parse in ((SPEEDRUN_COMPANIES_URL, parse_speedrun), (A16Z_INVESTMENT_LIST_URL, lambda p: parse_investment_list(p, exited))):
         try:
             rows = parse(_get(url))
             log.info("portfolio: %d companies from %s", len(rows), url)
             extra += rows
-        except Exception as exc:  # a redesign of either page must not stop the nightly run
+        except Exception as exc:
             ok = False
             log.warning("portfolio: could not read %s (%s)", url, exc)
 
     if ok or not config.UNIVERSE_JSON.exists():
-        universe = build_universe(load_companies(), extra)
+        universe = build_universe(load_companies(), extra, load_aliases())
         doc = {
             "fetched_at": config.now_iso(),
             "on_network": sum(1 for c in universe if c["on_network"]),

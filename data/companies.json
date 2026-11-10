@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-10T06:30:45Z",
+ "fetched_at": "2026-11-10T08:11:52Z",
  "listed_total": 778,
  "portfolio_total": 340,
  "tiers": {
@@ -115,7 +115,7 @@
    "url": "https://speedrun-talent-network.com/companies/addi",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 31,
+   "open_roles": 32,
    "location": "Bogotá, Colombia",
    "industries": [
     "Fintecha16z"
@@ -724,7 +724,7 @@
    "url": "https://speedrun-talent-network.com/companies/applied-intuition",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 322,
+   "open_roles": 323,
    "location": "Sunnyvale, California",
    "industries": [
     "American Dynamism",
@@ -2665,7 +2665,7 @@
    "url": "https://speedrun-talent-network.com/companies/elevenlabs",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 134,
+   "open_roles": 128,
    "location": "New York, New York",
    "industries": [
     "Consumer"
@@ -2693,7 +2693,6 @@
     "France",
     "Germany",
     "India",
-    "Italy",
     "Japan",
     "Korea",
     "London",
@@ -3050,7 +3049,7 @@
    "url": "https://speedrun-talent-network.com/companies/fal",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 47,
+   "open_roles": 49,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -3139,7 +3138,7 @@
    "url": "https://speedrun-talent-network.com/companies/figma",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 146,
+   "open_roles": 142,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -3847,7 +3846,7 @@
    "url": "https://speedrun-talent-network.com/companies/hadrian",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 167,
+   "open_roles": 166,
    "location": "Los Angeles, California",
    "industries": [
     "American Dynamism",
@@ -3935,7 +3934,7 @@
    "url": "https://speedrun-talent-network.com/companies/harvey",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 374,
+   "open_roles": 376,
    "location": "San Francisco, California",
    "industries": [
     "AI"
@@ -3993,7 +3992,7 @@
    "url": "https://speedrun-talent-network.com/companies/headway",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 95,
+   "open_roles": 94,
    "location": "New York City Area",
    "industries": [
     "Bio Health"
@@ -4346,7 +4345,7 @@
    "url": "https://speedrun-talent-network.com/companies/illumio",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 65,
+   "open_roles": 67,
    "location": "Sunnyvale, California",
    "industries": [
     "Enterprise"
@@ -5088,7 +5087,7 @@
    "url": "https://speedrun-talent-network.com/companies/kong",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 108,
+   "open_roles": 107,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -5474,7 +5473,7 @@
    "url": "https://speedrun-talent-network.com/companies/lyft",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 159,
+   "open_roles": 156,
    "location": "San Francisco, CA",
    "industries": [
     "Consumer"
@@ -5566,7 +5565,7 @@
    "url": "https://speedrun-talent-network.com/companies/mariana-minerals",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 100,
+   "open_roles": 101,
    "location": "Moab, Utah",
    "industries": [
     "Industrials",
@@ -6512,7 +6511,7 @@
    "url": "https://speedrun-talent-network.com/companies/northwood-space",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 68,
+   "open_roles": 67,
    "location": "Torrance, California",
    "industries": [
     "American Dynamism"
@@ -6707,7 +6706,7 @@
    "url": "https://speedrun-talent-network.com/companies/opengov",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 91,
+   "open_roles": 90,
    "location": "Chicago, Illinois",
    "industries": [
     "American Dynamism",
@@ -7153,7 +7152,7 @@
    "url": "https://speedrun-talent-network.com/companies/pindrop",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 21,
+   "open_roles": 18,
    "location": "Atlanta, GA",
    "industries": [
     "Security",
@@ -7215,7 +7214,7 @@
    "url": "https://speedrun-talent-network.com/companies/plaid",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 140,
+   "open_roles": 141,
    "location": "San Francisco, California",
    "industries": [
     "Fintecha16z"
@@ -7543,7 +7542,7 @@
    "url": "https://speedrun-talent-network.com/companies/pylon",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 16,
+   "open_roles": 15,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -7663,7 +7662,7 @@
    "url": "https://speedrun-talent-network.com/companies/replit",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 29,
+   "open_roles": 31,
    "location": "Foster City, California",
    "industries": [
     "AI",
@@ -7870,7 +7869,7 @@
    "url": "https://speedrun-talent-network.com/companies/roblox",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 269,
+   "open_roles": 272,
    "location": "San Mateo, CA",
    "industries": [
     "Games",
@@ -8006,7 +8005,7 @@
    "url": "https://speedrun-talent-network.com/companies/sardine",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 40,
+   "open_roles": 39,
    "location": "Austin, Texas",
    "industries": [
     "Fintecha16z"
@@ -8832,7 +8831,7 @@
    "url": "https://speedrun-talent-network.com/companies/spoton",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 76,
+   "open_roles": 75,
    "location": "Chicago, Illinois",
    "industries": [
     "Enterprise"
@@ -8852,7 +8851,6 @@
    "cities": [
     "Alamo Heights",
     "Albany",
-    "Annapolis",
     "Arlington",
     "Atlanta",
     "Austin",
@@ -8951,7 +8949,7 @@
    "url": "https://speedrun-talent-network.com/companies/sprinter-health",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 55,
+   "open_roles": 57,
    "location": "San Francisco, California",
    "industries": [
     "Bio Health"
@@ -8982,8 +8980,10 @@
     "Louisville",
     "Lynchburg",
     "Menlo Park",
+    "Orange County",
     "Petersburg",
     "Richland",
+    "Saginaw",
     "San Francisco",
     "Seattle",
     "Spokane",

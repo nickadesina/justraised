@@ -176,3 +176,42 @@ def test_universe_folds_duplicates_into_network_entry():
     uni = build_universe(network, extra)
     assert [c["slug"] for c in uni] == ["harvey", "a16z:databricks"]
     assert uni[0]["on_network"] is True and uni[0]["website"] == "https://harvey.ai"
+
+
+# --- investor SPVs ------------------------------------------------------------
+
+import re as _re
+
+from pipeline.spv import brand_phrases, spv_target
+
+_UNI = [
+    {"slug": "cursor", "name": "Cursor", "aliases": ["Anysphere"]},
+    {"slug": "shield-ai", "name": "Shield AI"},
+    {"slug": "saronic-technologies", "name": "Saronic"},
+    {"slug": "a16z:koru", "name": "Koru"},
+    {"slug": "titan", "name": "Titan"},
+    {"slug": "a16z:digital-asset-holdings", "name": "Digital Asset Holdings"},
+]
+
+
+def _target(name, items=None, ignore=()):
+    phrases = brand_phrases(_UNI, set(ignore))
+    patterns = {p: _re.compile(r"\b" + _re.escape(p) + r"\b") for p in phrases}
+    return spv_target(name, items, phrases, patterns)
+
+
+def test_spv_alias_and_brand_suffix():
+    assert _target("HII Anysphere-01, a Series of HII Anysphere LLC") == "cursor"
+    assert _target("Greenbird Intelligence Fund, LLC, Series W - Shield AI") == "shield-ai"
+    assert _target("HII Saronic-01, a Series of HII Saronic, LLC") == "saronic-technologies"
+
+
+def test_spv_rejects_common_words_and_managers():
+    assert _target("Titan Opportunity Fund II, LP") is None          # common word
+    assert _target("51Quid Digital Asset Fund, LP") is None          # every word common
+    assert _target("AA Atomics II a Series of Koru Ventures LLC") is None  # manager name
+
+
+def test_spv_needs_a_vehicle_and_respects_ignore():
+    assert _target("Saronic Technologies, Inc.") is None  # an operating company, not a vehicle
+    assert _target("HII Saronic-01, a Series of HII Saronic, LLC", ignore={"saronic-technologies"}) is None

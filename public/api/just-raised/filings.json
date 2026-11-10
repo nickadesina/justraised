@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-11-10T07:39:57Z",
+  "generated_at": "2026-11-10T08:14:11Z",
   "run_date": "2026-11-10",
   "window_days": 180,
   "half_life_days": 45,
@@ -8,6 +8,7 @@
   "high_matches": 13,
   "members": 8,
   "off_network": 4,
+  "spv_companies": 25,
   "off_network_formula": "log10(amount + 1) * 0.5 ^ (days_since_first_sale / 45); open roles are not tracked",
   "lag_assumption": "Postings follow a raise by one to three months. Assumed, not yet measured."
  },
@@ -205,7 +206,7 @@
    "cohort": null,
    "stage_label": "series a",
    "size_label": "1-10",
-   "score": 0.015210765428194403,
+   "score": 0.015061640276937596,
    "amount": 310499477.0,
    "amount_kind": "sold",
    "amount_sold": 310499477.0,
@@ -279,7 +280,7 @@
    "cohort": null,
    "stage_label": "growth or late stage",
    "size_label": "501-1,000",
-   "score": 0.007455603924698669,
+   "score": 0.007416051649236076,
    "amount": 550299446.0,
    "amount_kind": "sold",
    "amount_sold": 550299446.0,
@@ -461,6 +462,843 @@
    "match_confidence": "high",
    "a16z_person": "Martin Casado",
    "rank": 4
+  }
+ },
+ "spv": {
+  "zipline": {
+   "slug": "zipline",
+   "name": "Zipline",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/zipline",
+   "open_roles": 345,
+   "roles_since_first_spv": 334,
+   "spvs": 2,
+   "spv_amount_sold": 20814000.0,
+   "first_spv_file_date": "2026-05-18",
+   "latest_spv_file_date": "2026-11-04",
+   "days_since_latest_spv": 6,
+   "vehicles": [
+    {
+     "name": "Inflection Ventures Zipline Fund I LLC",
+     "file_date": "2026-11-04",
+     "amount_sold": 4875000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2163573/000216357326000001/0002163573-26-000001-index.htm"
+    },
+    {
+     "name": "GREP VC ZIPLINE SPV I LTD.",
+     "file_date": "2026-05-18",
+     "amount_sold": 15939000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2132990/000213299026000001/0002132990-26-000001-index.htm"
+    }
+   ],
+   "rank": 1
+  },
+  "anduril-industries": {
+   "slug": "anduril-industries",
+   "name": "Anduril",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/anduril-industries",
+   "open_roles": 2580,
+   "roles_since_first_spv": 2063,
+   "spvs": 10,
+   "spv_amount_sold": 56181176.0,
+   "first_spv_file_date": "2026-05-26",
+   "latest_spv_file_date": "2026-11-02",
+   "days_since_latest_spv": 8,
+   "vehicles": [
+    {
+     "name": "Greenbird Intelligence Fund, LLC Series Z - Anduril",
+     "file_date": "2026-11-02",
+     "amount_sold": 2084278.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2133428/000213342826000004/0002133428-26-000004-index.htm"
+    },
+    {
+     "name": "Greenbird Intelligence Fund, LLC, Series ZC - Anduril",
+     "file_date": "2026-10-29",
+     "amount_sold": 805312.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2158784/000215878426000001/0002158784-26-000001-index.htm"
+    },
+    {
+     "name": "Valkyrie X LLC, Series II Anduril",
+     "file_date": "2026-10-16",
+     "amount_sold": 2039982.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2064144/000206414426000002/0002064144-26-000002-index.htm"
+    },
+    {
+     "name": "AUGUREY VENTURES QP FUND - SERIES ANDURIL E",
+     "file_date": "2026-09-28",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2130525/000213052526000003/0002130525-26-000003-index.htm"
+    },
+    {
+     "name": "Anduril Investment, a series of BlueArc Private Direct Investments, LP",
+     "file_date": "2026-09-21",
+     "amount_sold": 42930000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2155627/000215562726000001/0002155627-26-000001-index.htm"
+    },
+    {
+     "name": "Anduril SPV1 EVP May 2026 a Series of CGF2021 LLC",
+     "file_date": "2026-07-09",
+     "amount_sold": 545000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2133842/000213384226000001/0002133842-26-000001-index.htm"
+    },
+    {
+     "name": "Anduril SPV, a series of Allocations 2026 Master, LLC",
+     "file_date": "2026-06-05",
+     "amount_sold": 1325000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2133247/000213324726000001/0002133247-26-000001-index.htm"
+    },
+    {
+     "name": "AUGUREY VENTURES III - SERIES ANDURIL D",
+     "file_date": "2026-06-02",
+     "amount_sold": 2770000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2072537/000207253726000001/0002072537-26-000001-index.htm"
+    },
+    {
+     "name": "AUGUREY VENTURES IV - SERIES ANDURIL D",
+     "file_date": "2026-06-02",
+     "amount_sold": 85100.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2076208/000207620826000001/0002076208-26-000001-index.htm"
+    },
+    {
+     "name": "Aventura Anduril Fund II",
+     "file_date": "2026-05-26",
+     "amount_sold": 3596504.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2134815/000213481526000001/0002134815-26-000001-index.htm"
+    }
+   ],
+   "rank": 2
+  },
+  "sourcerer-ai": {
+   "slug": "sourcerer-ai",
+   "name": "Sourcerer AI",
+   "tier": "speedrun",
+   "cohort": "SR005",
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/sourcerer-ai",
+   "open_roles": 1,
+   "roles_since_first_spv": 0,
+   "spvs": 1,
+   "spv_amount_sold": 1015439.0,
+   "first_spv_file_date": "2026-10-16",
+   "latest_spv_file_date": "2026-10-16",
+   "days_since_latest_spv": 25,
+   "vehicles": [
+    {
+     "name": "Sourcerer-2, a series of Jason's Syndicate, LLC",
+     "file_date": "2026-10-16",
+     "amount_sold": 1015439.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2160424/000216042426000001/0002160424-26-000001-index.htm"
+    }
+   ],
+   "rank": 3
+  },
+  "astro-mechanica": {
+   "slug": "astro-mechanica",
+   "name": "Astro Mechanica",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/astro-mechanica",
+   "open_roles": 46,
+   "roles_since_first_spv": 29,
+   "spvs": 1,
+   "spv_amount_sold": 2500000.0,
+   "first_spv_file_date": "2026-10-14",
+   "latest_spv_file_date": "2026-10-14",
+   "days_since_latest_spv": 27,
+   "vehicles": [
+    {
+     "name": "Voyager SPV - Astro Mechanica 2026, LP",
+     "file_date": "2026-10-14",
+     "amount_sold": 2500000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2160264/000216026426000001/0002160264-26-000001-index.htm"
+    }
+   ],
+   "rank": 4
+  },
+  "ornn": {
+   "slug": "ornn",
+   "name": "Ornn",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/ornn",
+   "open_roles": 13,
+   "roles_since_first_spv": 13,
+   "spvs": 1,
+   "spv_amount_sold": 0,
+   "first_spv_file_date": "2026-10-07",
+   "latest_spv_file_date": "2026-10-07",
+   "days_since_latest_spv": 34,
+   "vehicles": [
+    {
+     "name": "021T Capital SPV Ornn, L.P.",
+     "file_date": "2026-10-07",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2158838/000215883826000002/0002158838-26-000002-index.htm"
+    }
+   ],
+   "rank": 5
+  },
+  "amca": {
+   "slug": "amca",
+   "name": "AMCA",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/amca",
+   "open_roles": 48,
+   "roles_since_first_spv": 11,
+   "spvs": 1,
+   "spv_amount_sold": 0,
+   "first_spv_file_date": "2026-10-01",
+   "latest_spv_file_date": "2026-10-01",
+   "days_since_latest_spv": 40,
+   "vehicles": [
+    {
+     "name": "Caffeinated Capital Amca SPV II, LLC",
+     "file_date": "2026-10-01",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2156010/000215601026000001/0002156010-26-000001-index.htm"
+    }
+   ],
+   "rank": 6
+  },
+  "apex-space": {
+   "slug": "apex-space",
+   "name": "Apex Space",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/apex-space",
+   "open_roles": 135,
+   "roles_since_first_spv": 101,
+   "spvs": 7,
+   "spv_amount_sold": 0,
+   "first_spv_file_date": "2026-09-21",
+   "latest_spv_file_date": "2026-09-28",
+   "days_since_latest_spv": 43,
+   "vehicles": [
+    {
+     "name": "AUGUREY VENTURES QP FUND - SERIES APEX SPACE B",
+     "file_date": "2026-09-28",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2156302/000215630226000002/0002156302-26-000002-index.htm"
+    },
+    {
+     "name": "AUGUREY VENTURES I - SERIES APEX SPACE B",
+     "file_date": "2026-09-21",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2156281/000215628126000001/0002156281-26-000001-index.htm"
+    },
+    {
+     "name": "AUGUREY VENTURES II - SERIES APEX SPACE B",
+     "file_date": "2026-09-21",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2156285/000215628526000001/0002156285-26-000001-index.htm"
+    },
+    {
+     "name": "AUGUREY VENTURES III - SERIES APEX SPACE B",
+     "file_date": "2026-09-21",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2156287/000215628726000001/0002156287-26-000001-index.htm"
+    },
+    {
+     "name": "AUGUREY VENTURES IV - SERIES APEX SPACE B",
+     "file_date": "2026-09-21",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2156289/000215628926000001/0002156289-26-000001-index.htm"
+    },
+    {
+     "name": "AUGUREY VENTURES V - SERIES APEX SPACE B",
+     "file_date": "2026-09-21",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2156290/000215629026000001/0002156290-26-000001-index.htm"
+    },
+    {
+     "name": "AUGUREY VENTURES VI - SERIES APEX SPACE B",
+     "file_date": "2026-09-21",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2156292/000215629226000001/0002156292-26-000001-index.htm"
+    }
+   ],
+   "rank": 7
+  },
+  "gimlet-labs": {
+   "slug": "gimlet-labs",
+   "name": "Gimlet Labs",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/gimlet-labs",
+   "open_roles": 17,
+   "roles_since_first_spv": 9,
+   "spvs": 1,
+   "spv_amount_sold": 0,
+   "first_spv_file_date": "2026-09-22",
+   "latest_spv_file_date": "2026-09-22",
+   "days_since_latest_spv": 49,
+   "vehicles": [
+    {
+     "name": "ABH Gimlet, a Series of A Master Series, LLC",
+     "file_date": "2026-09-22",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2156487/000215648726000001/0002156487-26-000001-index.htm"
+    }
+   ],
+   "rank": 8
+  },
+  "a16z:databricks": {
+   "slug": "a16z:databricks",
+   "name": "Databricks",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": false,
+   "has_own_form_d": true,
+   "url": "https://databricks.com",
+   "open_roles": null,
+   "roles_since_first_spv": null,
+   "spvs": 3,
+   "spv_amount_sold": 105179874.0,
+   "first_spv_file_date": "2026-07-13",
+   "latest_spv_file_date": "2026-09-18",
+   "days_since_latest_spv": 53,
+   "vehicles": [
+    {
+     "name": "HII Databricks-01, a Series of HII Databricks LLC",
+     "file_date": "2026-09-18",
+     "amount_sold": 3224874.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2155287/000215528726000001/0002155287-26-000001-index.htm"
+    },
+    {
+     "name": "WCM Partners X, LLC - Series X4, Databricks",
+     "file_date": "2026-09-17",
+     "amount_sold": 100000000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2152500/000215250026000001/0002152500-26-000001-index.htm"
+    },
+    {
+     "name": "Databricks 1 Mar 2025 a Series of Moreno VC LLC",
+     "file_date": "2026-07-13",
+     "amount_sold": 1955000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2091400/000209140026000001/0002091400-26-000001-index.htm"
+    }
+   ],
+   "rank": 9
+  },
+  "a16z:plai-labs": {
+   "slug": "a16z:plai-labs",
+   "name": "Plai Labs",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": false,
+   "has_own_form_d": false,
+   "url": null,
+   "open_roles": null,
+   "roles_since_first_spv": null,
+   "spvs": 1,
+   "spv_amount_sold": 176000.0,
+   "first_spv_file_date": "2026-09-18",
+   "latest_spv_file_date": "2026-09-18",
+   "days_since_latest_spv": 53,
+   "vehicles": [
+    {
+     "name": "PLAI SPV F&F a Series of CGF2021 LLC",
+     "file_date": "2026-09-18",
+     "amount_sold": 176000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2143969/000214396926000001/0002143969-26-000001-index.htm"
+    }
+   ],
+   "rank": 10
+  },
+  "hadrian": {
+   "slug": "hadrian",
+   "name": "Hadrian",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/hadrian",
+   "open_roles": 166,
+   "roles_since_first_spv": 110,
+   "spvs": 1,
+   "spv_amount_sold": 50000000.0,
+   "first_spv_file_date": "2026-09-17",
+   "latest_spv_file_date": "2026-09-17",
+   "days_since_latest_spv": 54,
+   "vehicles": [
+    {
+     "name": "WCM Partners X, LLC - Series X5, Hadrian Automation",
+     "file_date": "2026-09-17",
+     "amount_sold": 50000000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2151832/000215183226000001/0002151832-26-000001-index.htm"
+    }
+   ],
+   "rank": 11
+  },
+  "kalshi": {
+   "slug": "kalshi",
+   "name": "Kalshi",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/kalshi",
+   "open_roles": 35,
+   "roles_since_first_spv": 28,
+   "spvs": 7,
+   "spv_amount_sold": 27765587.0,
+   "first_spv_file_date": "2026-05-15",
+   "latest_spv_file_date": "2026-09-16",
+   "days_since_latest_spv": 55,
+   "vehicles": [
+    {
+     "name": "HII Kalshi-06, a Series of HII Kalshi-A LLC",
+     "file_date": "2026-09-16",
+     "amount_sold": 10000187.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2145599/000214559926000002/0002145599-26-000002-index.htm"
+    },
+    {
+     "name": "HII Kalshi-05, a Series of HII Kalshi-A, LLC",
+     "file_date": "2026-09-16",
+     "amount_sold": 10854857.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2146269/000214626926000002/0002146269-26-000002-index.htm"
+    },
+    {
+     "name": "HII Kalshi-03, a Series of HII Kalshi-A, LLC",
+     "file_date": "2026-07-22",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2146596/000214659626000001/0002146596-26-000001-index.htm"
+    },
+    {
+     "name": "Kalshi SPV1 EVP 0626, a Series of A Master Series, LLC",
+     "file_date": "2026-07-17",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2143861/000214386126000001/0002143861-26-000001-index.htm"
+    },
+    {
+     "name": "Kalshi SPV, LLC",
+     "file_date": "2026-07-16",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2145204/000214520426000001/0002145204-26-000001-index.htm"
+    },
+    {
+     "name": "Dominari Master SPV LLC, Series XXIX Kalshi",
+     "file_date": "2026-05-22",
+     "amount_sold": 4525739.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2109815/000210981526000003/0002109815-26-000003-index.htm"
+    },
+    {
+     "name": "HII Kalshi-01, a Series of HII Kalshi LLC",
+     "file_date": "2026-05-15",
+     "amount_sold": 2384804.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2134989/000213498926000001/0002134989-26-000001-index.htm"
+    }
+   ],
+   "rank": 12
+  },
+  "abridge": {
+   "slug": "abridge",
+   "name": "Abridge",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/abridge",
+   "open_roles": 27,
+   "roles_since_first_spv": 18,
+   "spvs": 1,
+   "spv_amount_sold": 13900045.0,
+   "first_spv_file_date": "2026-09-11",
+   "latest_spv_file_date": "2026-09-11",
+   "days_since_latest_spv": 60,
+   "vehicles": [
+    {
+     "name": "Dominari Master SPV LLC, Series XXXI Abridge",
+     "file_date": "2026-09-11",
+     "amount_sold": 13900045.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2147411/000214741126000001/0002147411-26-000001-index.htm"
+    }
+   ],
+   "rank": 13
+  },
+  "shield-ai": {
+   "slug": "shield-ai",
+   "name": "Shield AI",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/shield-ai",
+   "open_roles": 660,
+   "roles_since_first_spv": 565,
+   "spvs": 12,
+   "spv_amount_sold": 35678419.0,
+   "first_spv_file_date": "2026-05-15",
+   "latest_spv_file_date": "2026-08-31",
+   "days_since_latest_spv": 71,
+   "vehicles": [
+    {
+     "name": "Greenbird Intelligence Fund, LLC, Series W - Shield AI",
+     "file_date": "2026-08-31",
+     "amount_sold": 2039567.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2122994/000212299426000004/0002122994-26-000004-index.htm"
+    },
+    {
+     "name": "CDT Shield.AI SPV LLC",
+     "file_date": "2026-07-28",
+     "amount_sold": 2850000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2145649/000214564926000001/0002145649-26-000001-index.htm"
+    },
+    {
+     "name": "HII Shield AI-04, a Series of HII Shield AI-A LLC",
+     "file_date": "2026-07-21",
+     "amount_sold": 5378800.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2146353/000214635326000001/0002146353-26-000001-index.htm"
+    },
+    {
+     "name": "HII Shield AI-05, a Series of HII Shield AI-A LLC",
+     "file_date": "2026-07-17",
+     "amount_sold": 9940329.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2145910/000214591026000001/0002145910-26-000001-index.htm"
+    },
+    {
+     "name": "Shield AI May 2026 a Series of CGF2021 LLC",
+     "file_date": "2026-07-09",
+     "amount_sold": 252580.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2133771/000213377126000001/0002133771-26-000001-index.htm"
+    },
+    {
+     "name": "GGC Shield AI 2026 a Series of CGF2021 LLC",
+     "file_date": "2026-07-02",
+     "amount_sold": 695000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2133767/000213376726000002/0002133767-26-000002-index.htm"
+    },
+    {
+     "name": "SHIELD AI A SERIES OF VUVP FUND LLC",
+     "file_date": "2026-06-16",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2140937/000214093726000001/0002140937-26-000001-index.htm"
+    },
+    {
+     "name": "Fuel Venture Capital Shield AI, LLC a Protected Series of Fuel Venture Capital Co-Invest Series, LLC",
+     "file_date": "2026-06-11",
+     "amount_sold": 2089155.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2140311/000214031126000001/0002140311-26-000001-index.htm"
+    },
+    {
+     "name": "HII Shield AI-02 a Series of HII Shield AI-A LLC",
+     "file_date": "2026-06-01",
+     "amount_sold": 4799872.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2137814/000213781426000001/0002137814-26-000001-index.htm"
+    },
+    {
+     "name": "HII Shield AI-03, a Series of HII Shield AI-A LLC",
+     "file_date": "2026-06-01",
+     "amount_sold": 7200116.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2137815/000213781526000001/0002137815-26-000001-index.htm"
+    },
+    {
+     "name": "SHIELD AI B311 May 2026 a Series of CGF2021 LLC",
+     "file_date": "2026-05-21",
+     "amount_sold": 173000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2134589/000213458926000001/0002134589-26-000001-index.htm"
+    },
+    {
+     "name": "Z M Shield AI Apr 2026 a Series of CGF2021 LLC",
+     "file_date": "2026-05-15",
+     "amount_sold": 260000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2133341/000213334126000001/0002133341-26-000001-index.htm"
+    }
+   ],
+   "rank": 14
+  },
+  "a16z:alpine-bio": {
+   "slug": "a16z:alpine-bio",
+   "name": "Alpine Bio",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": false,
+   "has_own_form_d": false,
+   "url": "https://www.nobellfoods.com/",
+   "open_roles": null,
+   "roles_since_first_spv": null,
+   "spvs": 1,
+   "spv_amount_sold": 695000.0,
+   "first_spv_file_date": "2026-08-18",
+   "latest_spv_file_date": "2026-08-18",
+   "days_since_latest_spv": 84,
+   "vehicles": [
+    {
+     "name": "G8 Alpine Bio SPV II, LLC",
+     "file_date": "2026-08-18",
+     "amount_sold": 695000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2143904/000214390426000001/0002143904-26-000001-index.htm"
+    }
+   ],
+   "rank": 15
+  },
+  "chronospace": {
+   "slug": "chronospace",
+   "name": "ChronoSpace",
+   "tier": "speedrun",
+   "cohort": "SR007",
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/chronospace",
+   "open_roles": 1,
+   "roles_since_first_spv": 1,
+   "spvs": 1,
+   "spv_amount_sold": 150000.0,
+   "first_spv_file_date": "2026-08-13",
+   "latest_spv_file_date": "2026-08-13",
+   "days_since_latest_spv": 89,
+   "vehicles": [
+    {
+     "name": "Brown Angel Group ChronoSpace a Series of CGF2021 LLC",
+     "file_date": "2026-08-13",
+     "amount_sold": 150000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2148766/000214876626000001/0002148766-26-000001-index.htm"
+    }
+   ],
+   "rank": 16
+  },
+  "exowatt": {
+   "slug": "exowatt",
+   "name": "Exowatt",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/exowatt",
+   "open_roles": 15,
+   "roles_since_first_spv": 9,
+   "spvs": 1,
+   "spv_amount_sold": 0,
+   "first_spv_file_date": "2026-08-12",
+   "latest_spv_file_date": "2026-08-12",
+   "days_since_latest_spv": 90,
+   "vehicles": [
+    {
+     "name": "BBV Exowatt SPV III LLC",
+     "file_date": "2026-08-12",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2142133/000214213326000001/0002142133-26-000001-index.htm"
+    }
+   ],
+   "rank": 17
+  },
+  "elevenlabs": {
+   "slug": "elevenlabs",
+   "name": "ElevenLabs",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/elevenlabs",
+   "open_roles": 128,
+   "roles_since_first_spv": 115,
+   "spvs": 1,
+   "spv_amount_sold": 0,
+   "first_spv_file_date": "2026-07-23",
+   "latest_spv_file_date": "2026-07-23",
+   "days_since_latest_spv": 110,
+   "vehicles": [
+    {
+     "name": "AGC ElevenLabs I, a Series of AGC Parallax Fund I LLC",
+     "file_date": "2026-07-23",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2145940/000214594026000001/0002145940-26-000001-index.htm"
+    }
+   ],
+   "rank": 18
+  },
+  "kaizen-labs": {
+   "slug": "kaizen-labs",
+   "name": "Kaizen Labs",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/kaizen-labs",
+   "open_roles": 23,
+   "roles_since_first_spv": 22,
+   "spvs": 1,
+   "spv_amount_sold": 0,
+   "first_spv_file_date": "2026-07-20",
+   "latest_spv_file_date": "2026-07-20",
+   "days_since_latest_spv": 113,
+   "vehicles": [
+    {
+     "name": "Kaizen SPV TL A Series of V360 Holdings LLC",
+     "file_date": "2026-07-20",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2145272/000214527226000001/0002145272-26-000001-index.htm"
+    }
+   ],
+   "rank": 19
+  },
+  "cursor": {
+   "slug": "cursor",
+   "name": "Cursor",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/cursor",
+   "open_roles": 95,
+   "roles_since_first_spv": 93,
+   "spvs": 1,
+   "spv_amount_sold": 6436633.0,
+   "first_spv_file_date": "2026-06-18",
+   "latest_spv_file_date": "2026-06-18",
+   "days_since_latest_spv": 145,
+   "vehicles": [
+    {
+     "name": "HII Anysphere-01, a Series of HII Anysphere LLC",
+     "file_date": "2026-06-18",
+     "amount_sold": 6436633.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2139817/000213981726000001/0002139817-26-000001-index.htm"
+    }
+   ],
+   "rank": 20
+  },
+  "mind-robotics": {
+   "slug": "mind-robotics",
+   "name": "Mind Robotics",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/mind-robotics",
+   "open_roles": 33,
+   "roles_since_first_spv": 22,
+   "spvs": 1,
+   "spv_amount_sold": 862500.0,
+   "first_spv_file_date": "2026-06-15",
+   "latest_spv_file_date": "2026-06-15",
+   "days_since_latest_spv": 148,
+   "vehicles": [
+    {
+     "name": "Garuda Ventures Mind Robotics a Series of CGF2021 LLC",
+     "file_date": "2026-06-15",
+     "amount_sold": 862500.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2134565/000213456526000001/0002134565-26-000001-index.htm"
+    }
+   ],
+   "rank": 21
+  },
+  "saronic-technologies": {
+   "slug": "saronic-technologies",
+   "name": "Saronic",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/saronic-technologies",
+   "open_roles": 269,
+   "roles_since_first_spv": 203,
+   "spvs": 1,
+   "spv_amount_sold": 3431039.0,
+   "first_spv_file_date": "2026-06-05",
+   "latest_spv_file_date": "2026-06-05",
+   "days_since_latest_spv": 158,
+   "vehicles": [
+    {
+     "name": "HII Saronic-01, a Series of HII Saronic, LLC",
+     "file_date": "2026-06-05",
+     "amount_sold": 3431039.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2138620/000213862026000001/0002138620-26-000001-index.htm"
+    }
+   ],
+   "rank": 22
+  },
+  "periodic-labs": {
+   "slug": "periodic-labs",
+   "name": "Periodic Labs",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/periodic-labs",
+   "open_roles": 32,
+   "roles_since_first_spv": 24,
+   "spvs": 1,
+   "spv_amount_sold": 4743803.0,
+   "first_spv_file_date": "2026-05-29",
+   "latest_spv_file_date": "2026-05-29",
+   "days_since_latest_spv": 165,
+   "vehicles": [
+    {
+     "name": "AGC Wealt Periodic Labs I a Series of AGC AI Nexus Fund LLC",
+     "file_date": "2026-05-29",
+     "amount_sold": 4743803.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2122824/000212282426000001/0002122824-26-000001-index.htm"
+    }
+   ],
+   "rank": 23
+  },
+  "a16z:ng-cash": {
+   "slug": "a16z:ng-cash",
+   "name": "NG.CASH",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": false,
+   "has_own_form_d": false,
+   "url": "https://ng.cash/",
+   "open_roles": null,
+   "roles_since_first_spv": null,
+   "spvs": 1,
+   "spv_amount_sold": 580000.0,
+   "first_spv_file_date": "2026-05-15",
+   "latest_spv_file_date": "2026-05-15",
+   "days_since_latest_spv": 179,
+   "vehicles": [
+    {
+     "name": "Norte NG.Cash SPV LLC",
+     "file_date": "2026-05-15",
+     "amount_sold": 580000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2118864/000211886426000002/0002118864-26-000002-index.htm"
+    }
+   ],
+   "rank": 24
+  },
+  "a16z:openai": {
+   "slug": "a16z:openai",
+   "name": "OpenAI",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": false,
+   "has_own_form_d": false,
+   "url": "https://openai.com/",
+   "open_roles": null,
+   "roles_since_first_spv": null,
+   "spvs": 1,
+   "spv_amount_sold": 8475135.0,
+   "first_spv_file_date": "2026-05-15",
+   "latest_spv_file_date": "2026-05-15",
+   "days_since_latest_spv": 179,
+   "vehicles": [
+    {
+     "name": "OpenAI-01, a Series of OpenAI Opp Fund LLC",
+     "file_date": "2026-05-15",
+     "amount_sold": 8475135.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2134995/000213499526000001/0002134995-26-000001-index.htm"
+    }
+   ],
+   "rank": 25
   }
  }
 }

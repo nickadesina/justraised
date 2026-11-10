@@ -15,11 +15,13 @@ CACHE = DATA / "cache"
 PUBLIC = ROOT / "public"
 REVIEW = ROOT / "review"
 OVERRIDES_FILE = ROOT / "matches.yaml"
+ALIASES_FILE = ROOT / "aliases.yaml"
 
 COMPANIES_JSON = DATA / "companies.json"
 REGISTRY_JSON = DATA / "company_registry.json"
 UNIVERSE_JSON = DATA / "portfolio_universe.json"
 PEOPLE_JSON = DATA / "a16z_people.json"
+SPV_FILINGS = DATA / "spv_filings.parquet"
 FORMD_INDEX = DATA / "formd_index.parquet"
 FILINGS = DATA / "filings.parquet"
 MATCHES = DATA / "matches.parquet"
@@ -33,6 +35,7 @@ PUBLIC_API = PUBLIC / "api"
 PUBLIC_COLLECTION = PUBLIC_API / "collections" / "just-raised.json"
 PUBLIC_FILINGS = PUBLIC_API / "just-raised" / "filings.json"
 PUBLIC_CSV = PUBLIC_API / "just-raised.csv"
+PUBLIC_SPV_CSV = PUBLIC_API / "just-raised-spvs.csv"
 
 # --- talent network ---------------------------------------------------------
 TALENT_BASE = "https://speedrun-talent-network.com/api/v1"
@@ -79,6 +82,12 @@ SUBSET_GUARD_MIN = 85
 # token_set_ratio against some portfolio company. Lower than every rung, so
 # the gate never drops a filing the ladder could have matched.
 GATE_MIN = 85
+
+# --- investor SPVs -----------------------------------------------------------
+# A single-word brand is distinctive enough to find inside an SPV's name only
+# if it is rare in English (wordfreq Zipf scale: "saronic" 1.4, "titan" 3.7).
+SPV_MAX_ZIPF = 2.5
+SPV_MIN_LEN = 4
 
 # --- publish guardrail ------------------------------------------------------
 MAX_HIGH_DROP = 0.30  # refuse to publish if High matches fall more than this

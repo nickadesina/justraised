@@ -2,6 +2,7 @@ import { API, REPO_URL, collection, filings } from "@/lib/data";
 
 import OffNetwork from "./off-network";
 import RaisedTable, { type Row } from "./raised-table";
+import SpvSection from "./spv-section";
 
 export default function Page() {
   const { meta } = filings;
@@ -18,12 +19,15 @@ export default function Page() {
         roles yet ranks high; one that has already posted heavily ranks low. The usual pattern is that new roles appear one
         to three months after a raise. That is an assumption for now: this list records open roles every night, and the
         measured gap will replace it. The ranking comes from public filings and the talent network&apos;s live role
-        counts, nothing else.
+        counts, nothing else. Further down: portfolio companies that raised but aren&apos;t on the talent network, and
+        companies investors are forming SPVs to buy into.
       </p>
 
       <RaisedTable rows={rows} />
 
       <OffNetwork rows={Object.values(filings.off_network ?? {}).sort((a, b) => a.rank - b.rank)} />
+
+      <SpvSection rows={Object.values(filings.spv ?? {}).sort((a, b) => a.rank - b.rank)} />
 
       <footer>
         <p>
@@ -38,6 +42,8 @@ export default function Page() {
           <a href={API.filings}>filings JSON</a>
           {" · "}
           <a href={API.csv}>CSV</a>
+          {" · "}
+          <a href={API.spvCsv}>SPV CSV</a>
           {" · "}
           <a href={REPO_URL}>source</a>
         </p>

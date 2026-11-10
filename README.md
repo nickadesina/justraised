@@ -63,11 +63,14 @@ precision, and only High rows are published.
 
 **Universe.** The talent network's `/companies` lists only companies with a
 live role (340 portfolio companies). The matcher also runs against every
-active, private company on [a16z.com/portfolio](https://a16z.com/portfolio/)
-and the public [speedrun list](https://speedrun.a16z.com/companies) (current
-cohort), both read from data embedded in those pages
-(`pipeline/fetch_portfolio.py`). That is 829 companies, 489 of them not on the
-talent network. Companies that aren't on the network are published in a
+active, private company on [a16z.com/portfolio](https://a16z.com/portfolio/),
+every disclosed name on the [investment list](https://a16z.com/investment-list/)
+that a16z.com doesn't mark as exited, and the public
+[speedrun list](https://speedrun.a16z.com/companies) (current cohort), all read
+from those pages each night (`pipeline/fetch_portfolio.py`). That is 1,446
+companies, 1,106 of them not on the talent network.
+[`aliases.yaml`](aliases.yaml) maps brands to legal names the matcher can't
+guess (Cursor is Anysphere). Companies that aren't on the network are published in a
 separate section: they have no open-role count, so they can't be ranked on cash
 per role.
 
@@ -131,6 +134,32 @@ pairs go in [`matches.yaml`](matches.yaml) and never need review again;
 `reject` and `block_cik` remove pairs for good. `review/low.csv` shows what was
 dropped and why.
 
+## Investor SPVs
+
+The deeper search turned up an uncomfortable fact: **most large venture rounds
+never produce a Form D from the company itself.** Filing is legally required
+but widely skipped, and skipping it doesn't cost a company its exemption.
+Anysphere (Cursor), Character.AI, Navan, Applied Intuition, Krea, Mintlify and
+Ideogram have no company Form Ds for their recent rounds; ElevenLabs last filed
+in 2023 and Decagon in 2024. Across all of EDGAR, only 39 Form Ds in 180 days
+name any of the 117 a16z investing-team members, and 15 of those are funds.
+
+What does file, constantly, are the vehicles investors form to buy in: "HII
+Anysphere-01, a Series of HII Anysphere LLC", "Greenbird Intelligence Fund,
+Series W - Shield AI", "Voyager SPV - Astro Mechanica 2026". `pipeline/spv.py`
+finds Form Ds whose issuer is a vehicle and whose name contains exactly one
+portfolio brand as whole words. A one-word brand counts only if it is rare in
+English (wordfreq Zipf < 2.5: "saronic" passes, "titan" doesn't), and a brand
+followed by a manager word ("Koru Ventures", "Celo Capital") is the manager,
+not the target. `spv_ignore` in `matches.yaml` drops a slug for good.
+
+An SPV means money is being pooled to buy in now. That can be a new round or a
+purchase of existing shares from employees and early investors, so the page
+shows these in their own section, "Investors buying in", ordered by the latest
+SPV filing, with open roles and roles posted since the first SPV. On the first
+run that section had 25 companies, including Cursor, Anduril, Shield AI,
+Kalshi, Databricks, Saronic, ElevenLabs, Periodic Labs, Hadrian and Zipline.
+
 ## Endpoints
 
 The site is static (GitHub Pages), so each endpoint is a file the nightly run
@@ -158,7 +187,10 @@ CI.
 
 The Form D side, keyed by slug, plus run metadata (window, formula, counts).
 `off_network` holds the matched companies that aren't on the talent network,
-keyed `a16z:<slug>` or `speedrun:<slug>`. This is additive: amount, first-sale date,
+keyed `a16z:<slug>` or `speedrun:<slug>`. `spv` holds the companies with
+investor SPVs, each with its vehicles and their filings
+([`/api/just-raised-spvs.csv`](https://nickadesina.github.io/justraised/api/just-raised-spvs.csv)
+as a spreadsheet). This is additive: amount, first-sale date,
 filing URL, issuer, amendments, roles posted since the raise, score inputs, and
 the match rung. None of it fits their member schema.
 
@@ -177,7 +209,8 @@ query path and no database the page depends on.
 
 ```
 pipeline/fetch_companies.py  talent network /companies + portfolio collections -> data/companies.json
-pipeline/fetch_portfolio.py  a16z.com portfolio + team, speedrun.a16z.com     -> data/portfolio_universe.json, data/a16z_people.json
+pipeline/fetch_portfolio.py  a16z.com portfolio, investment list, team; speedrun -> data/portfolio_universe.json, data/a16z_people.json
+pipeline/spv.py              investor vehicles named after a portfolio company  -> data/spv_filings.parquet
 pipeline/fetch_formd.py      EDGAR index (form.idx backfill, full-text search daily) -> data/formd_index.parquet
                              gated primary_doc.xml downloads, parsed          -> data/filings.parquet
 pipeline/match.py            filters, ladder, matches.yaml                    -> data/matches.parquet, review/*.csv
@@ -228,7 +261,8 @@ These numbers shaped v1 and differ from the original design doc:
 - **Yield is thin on the talent network alone.** Matching only its 340
   companies, a 90-day window had 3 High matches and 180 days had 5. Adding
   the wider a16z and speedrun portfolio and rung P raised 180 days to 12
-  published companies (8 on the network, 4 off it). Full-text search of EDGAR for every portfolio brand
+  companies with their own Form D (8 on the network, 4 off it); investor SPVs
+  add 25 more, 36 distinct companies in all. Full-text search of EDGAR for every portfolio brand
   name over the window found no operating-company Form D that the matcher
   missed. The other hits were SPVs and companies with similar names. So this is
   the base rate, not a matcher that's too strict. Per the design doc's fallback,
