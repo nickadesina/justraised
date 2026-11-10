@@ -314,8 +314,11 @@ curl -s "$B/jobs?company=Anduril" | jq .total              # 0  (the name /compa
 curl -s "$B/jobs?company=Anduril%20Industries" | jq .total # 2580
 ```
 
-Saronic ("Saronic Technologies" on jobs) and ChronoSpace ("Chronospace") fail
-the same way. Just Raised works around it by searching
+Checking every portfolio company on 2026-11-10, 20 of 340 return zero rows for
+the name `/companies` gives them, which hides 3,320 open roles from the filter.
+The jobs spell them differently: "Saronic Technologies", "Mercury
+Technologies", "Earnin" (not "EarnIn"), "Chronospace", "Runware (Picfinder)".
+Just Raised works around it by searching
 `q=<name>`, taking `company` from a job whose `company_slug` matches, and
 retrying with that.
 
