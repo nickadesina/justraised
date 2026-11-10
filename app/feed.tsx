@@ -50,26 +50,24 @@ function Signal({ item }: { item: Item }) {
     const r = item.raise;
     return (
       <div className="signal">
-        <div className="signal-main">
-          {r.kind === "offering" ? "Raising " : "Raised "}
-          <strong>{money(r.amount)}</strong>
+        <div className="figure own">{money(r.amount)}</div>
+        <div className="figure-label">
+          {r.kind === "offering" ? "Raising" : "Raised"} · {ago(r.days)}
         </div>
-        <div className="signal-sub">
-          {ago(r.days)}
-          {item.spv ? ` · ${item.spv.count} investor SPV${item.spv.count > 1 ? "s" : ""}` : ""}
-        </div>
+        {item.spv ? (
+          <div className="figure-label">
+            + {item.spv.count} investor SPV{item.spv.count > 1 ? "s" : ""}
+          </div>
+        ) : null}
       </div>
     );
   }
   const s = item.spv!;
   return (
     <div className="signal">
-      <div className="signal-main">
-        <strong>{s.count}</strong> investor SPV{s.count > 1 ? "s" : ""}
-      </div>
-      <div className="signal-sub">
-        latest {ago(s.days)}
-        {s.sold > 0 ? ` · ${money(s.sold)}` : ""}
+      <div className="figure">{s.sold > 0 ? money(s.sold) : `${s.count}×`}</div>
+      <div className="figure-label">
+        {s.count} investor SPV{s.count > 1 ? "s" : ""} · {ago(s.days)}
       </div>
     </div>
   );
@@ -79,9 +77,9 @@ function Hiring({ item }: { item: Item }) {
   if (!item.onNetwork || item.openRoles === null) {
     return (
       <div className="hiring">
-        <div className="hiring-main muted">Not on the talent network</div>
+        <div className="figure-label off">Not on the talent network</div>
         {item.url ? (
-          <a className="hiring-sub" href={item.url}>
+          <a className="figure-label link" href={item.url}>
             Company site →
           </a>
         ) : null}
@@ -91,11 +89,12 @@ function Hiring({ item }: { item: Item }) {
   const since = item.rolesSince ?? 0;
   return (
     <div className="hiring">
-      <a className="hiring-main" href={item.url ?? undefined}>
-        {item.openRoles.toLocaleString("en-US")} open role{item.openRoles === 1 ? "" : "s"} →
+      <a className="figure roles" href={item.url ?? undefined}>
+        {item.openRoles.toLocaleString("en-US")}
+        <span className="figure-unit"> open role{item.openRoles === 1 ? "" : "s"} →</span>
       </a>
-      <div className={`hiring-sub ${isEarly(item) ? "early-text" : ""}`}>
-        {since === 0 ? "none posted since" : `${since.toLocaleString("en-US")} posted since`}
+      <div className={`figure-label ${isEarly(item) ? "go" : ""}`}>
+        {since === 0 ? "None posted since" : `${since.toLocaleString("en-US")} posted since`}
       </div>
     </div>
   );
@@ -161,7 +160,14 @@ function Card({ item }: { item: Item }) {
                 {item.tier}
                 {item.cohort ? ` ${item.cohort}` : ""}
               </span>
-              {isEarly(item) ? <span className="chip early">Early window</span> : null}
+              {isEarly(item) ? (
+                <span className="chip early">
+                  <span lang="ja" aria-hidden="true">
+                    早期
+                  </span>
+                  Early window
+                </span>
+              ) : null}
             </div>
             {item.blurb ? <p className="blurb">{item.blurb}</p> : null}
             {meta.length ? <div className="meta">{meta.join(" · ")}</div> : null}
@@ -229,13 +235,12 @@ export default function Feed({ items }: { items: Item[] }) {
   return (
     <section aria-label="Companies">
       <div className="toolbar">
-        <div className="pills" role="tablist">
+        <div className="pills" role="group" aria-label="Filter companies">
           {pills.map(([key, label]) => (
             <button
               key={key}
               type="button"
-              role="tab"
-              aria-selected={filter === key}
+              aria-pressed={filter === key}
               className={`pill ${filter === key ? "on" : ""}`}
               onClick={() => setFilter(key)}
             >
@@ -262,12 +267,20 @@ export default function Feed({ items }: { items: Item[] }) {
         </div>
       </div>
 
+      <div className="columns" aria-hidden="true">
+        <span>Company</span>
+        <span>Money in</span>
+        <span>Open roles</span>
+      </div>
+      <p className="sr-only" aria-live="polite">
+        {shown.length} of {items.length} companies shown
+      </p>
       <ol className="cards">
         {shown.map((i) => (
           <Card key={i.slug} item={i} />
         ))}
       </ol>
-      {shown.length === 0 ? <p className="empty">No companies match. Try another filter.</p> : null}
+      {shown.length === 0 ? <p className="empty">No companies match. Try another filter or clear the search.</p> : null}
     </section>
   );
 }
