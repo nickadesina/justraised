@@ -4,9 +4,8 @@
 # GitHub cron is UTC only: 10:00 UTC is 02:00 Pacific in winter (PST) and
 # 03:00 in summer (PDT).
 #
-# Set a repository variable SEC_USER_AGENT (Settings > Secrets and variables >
-# Actions > Variables), e.g. "Just Raised you@example.com". SEC fair-access
-# rules require a contact address in the User-Agent.
+# SEC fair-access rules require a contact address in the User-Agent. A
+# repository variable SEC_USER_AGENT overrides the default below.
 name: nightly
 
 on:
@@ -33,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
-      SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
+      SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT || 'Just Raised nick@yuurei.ai' }}
     steps:
       - uses: actions/checkout@v4
 

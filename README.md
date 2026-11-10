@@ -5,10 +5,10 @@ the SEC recently, ranked by how much they raised relative to how many roles they
 have open. It answers a question job boards don't: which companies have new
 money and haven't posted the roles yet.
 
-- Page: https://nickadesina.github.io/just-raised/
-- Collection (talent network schema): [`/api/collections/just-raised.json`](https://nickadesina.github.io/just-raised/api/collections/just-raised.json)
-- Filing detail: [`/api/just-raised/filings.json`](https://nickadesina.github.io/just-raised/api/just-raised/filings.json)
-- Spreadsheet: [`/api/just-raised.csv`](https://nickadesina.github.io/just-raised/api/just-raised.csv)
+- Page: https://nickadesina.github.io/justraised/
+- Collection (talent network schema): [`/api/collections/just-raised.json`](https://nickadesina.github.io/justraised/api/collections/just-raised.json)
+- Filing detail: [`/api/just-raised/filings.json`](https://nickadesina.github.io/justraised/api/just-raised/filings.json)
+- Spreadsheet: [`/api/just-raised.csv`](https://nickadesina.github.io/justraised/api/just-raised.csv)
 
 Built as the "one idea, with a link" for the speedrun talent team's
 [Product Engineer](https://speedrun-talent-network.com/product-engineer/) role.
@@ -228,8 +228,9 @@ npm ci && npm run build && npx serve out      # static site in out/
 One-time GitHub setup:
 
 - Settings → Pages → Source: **GitHub Actions**.
-- Settings → Secrets and variables → Actions → Variables: `SEC_USER_AGENT`
-  (name and contact email, required by SEC fair access).
+- The nightly workflow sends `Just Raised nick@yuurei.ai` as the SEC
+  User-Agent (fair access requires a contact address). A repository variable
+  `SEC_USER_AGENT` overrides it.
 
 ## Shared package
 
@@ -238,7 +239,7 @@ override loader. It is the same issuer-name problem as matching N-PORT fund
 holdings to private companies in PrivateMarks, which installs it from here:
 
 ```bash
-uv add "edgar-names @ git+https://github.com/nickadesina/just-raised#subdirectory=packages/edgar_names"
+uv add "edgar-names @ git+https://github.com/nickadesina/justraised#subdirectory=packages/edgar_names"
 ```
 
 ## License

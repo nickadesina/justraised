@@ -104,4 +104,4 @@ export const API = {
   filings: `${BASE_PATH}/api/just-raised/filings.json`,
   csv: `${BASE_PATH}/api/just-raised.csv`,
 };
-export const REPO_URL = "https://github.com/nickadesina/just-raised";
+export const REPO_URL = "https://github.com/nickadesina/justraised";

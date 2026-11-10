@@ -42,7 +42,7 @@ jobs:
         run: uv run --no-project --with jsonschema python scripts/check_schema.py public/api/collections/just-raised.json --strict
       - run: npm run build
         env:
-          # "/just-raised" for nickadesina.github.io/just-raised; empty on a custom domain.
+          # "/justraised" for nickadesina.github.io/justraised; empty on a custom domain.
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
       - uses: actions/upload-pages-artifact@v3
         with:

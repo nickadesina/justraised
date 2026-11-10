@@ -81,7 +81,7 @@ GATE_MIN = 85
 # --- publish guardrail ------------------------------------------------------
 MAX_HIGH_DROP = 0.30  # refuse to publish if High matches fall more than this
 
-SITE_URL = os.environ.get("JUST_RAISED_SITE_URL", "https://nickadesina.github.io/just-raised")
+SITE_URL = os.environ.get("JUST_RAISED_SITE_URL", "https://nickadesina.github.io/justraised")
 
 
 def today() -> date:
