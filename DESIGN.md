@@ -1,58 +1,51 @@
 # Design
 
-The page reads like a command-center title card: a black field, heavy mincho
-lettering, and an orange that carries structure. It is still a working list.
-Filters, search, sort and expandable rows are ordinary web controls; the
-world supplies type, palette, density and one signature move, nothing else.
+Light and restrained, with one loud move: the page title set like an anime
+title card, in heavy serif capitals compressed narrow. An orange rule and
+orange money figures carry structure. Everything else is a plain working list.
+Filters, search, sort and expandable rows are ordinary web controls.
 
 ## Palette (`app/globals.css` `:root`)
 
 | Token | Value | Job |
 |---|---|---|
-| `--void` | `#050505` | Ground |
-| `--panel` / `--hover` | `#0d0b09` / `#110d0a` | Inputs, hovered and open rows |
-| `--ink` / `--ink-2` / `--dim` | `#f2ede4` / `#cfc8bc` / `#9a9284` | Primary, body, secondary text (all ≥ 4.5:1 on void) |
-| `--rule` / `--rule-strong` | `#24201c` / `#3d3630` | Hairlines, control borders |
-| `--signal` | `#ff7a1a` | Structure rules, links, active filter, the company's own Form D money |
-| `--go` | `#8cf03c` | Early window only |
-| `--unit` | `#a684ff` | speedrun tier only |
-| `--plate` | `#ece6da` | Logo plate, so dark marks stay visible |
+| `--ground` | `#f5f5f3` | Page background (neutral, not cream) |
+| `--panel` / `--hover` | `#ffffff` / `#ececea` | Inputs; hovered and open rows |
+| `--ink` / `--ink-2` / `--dim` | `#0a0a0a` / `#34342f` / `#66665f` | Primary, body, secondary text (all ≥ 4.5:1) |
+| `--rule` / `--rule-strong` | `#dcdcd7` / `#b4b4ad` | Hairlines, control borders |
+| `--signal` | `#ff6200` | Fills and rules only: hero rule, active filter, section rule |
+| `--signal-ink` | `#bf3d00` | Orange as text: links, the company's own Form D money |
+| `--go` / `--go-text` | `#8cf03c` / `#2c7408` | Early window chip / early window text |
+| `--unit` | `#6234e0` | speedrun tier only |
 
-Colour means something every time it appears: orange money is a company's own
-Form D, ink money is investor SPVs (the weaker signal), green is the early
-window. Don't add accents for decoration.
+Colour always means something. Orange money is the company's own Form D, and
+black money is investor SPVs (the weaker signal). Green is the early window.
+Bright `--signal` fails text contrast on the light ground, so never use it for text.
 
 ## Type
 
-- **Display:** Noto Serif JP 900 (`--font-display`), via `next/font`. Company
-  names, section headings, the Japanese labels.
-- **UI:** Archivo with its width axis (`--font-ui`). Body at normal width;
-  labels, figures and controls condensed (`font-stretch: 70%`), uppercase,
-  tabular numerals.
-- No monospace. Numbers get condensed Archivo, not a code face.
+- **Display:** Noto Serif JP 900 (`--font-display`, via `next/font`), used for
+  its heavy Latin capitals. It sets the title, company names, the section
+  heading and step titles.
+- **UI:** Archivo with its width axis (`--font-ui`). Body text at normal
+  width. Labels, figures and controls are condensed (`font-stretch: 70%`),
+  uppercase, with tabular numerals.
+- No monospace. All copy is English.
 
 ## Signature move
 
-The title card: "JUST / RAISED" set in the display face and compressed to 70%
-width in SVG (`TitleCard` in `app/page.tsx`, `textLength` with
-`lengthAdjust="spacingAndGlyphs"`), with a vertical Japanese subtitle beside it.
-It cuts in once on load (clip-path), and the orange rule under the hero
-draws in from the left. That is the page's only animation; reduced motion
-turns it off.
-
-Japanese words are decorative translations (`資金調達` fundraising, `仕組み`
-how it works, `早期` early), always `lang="ja"` and `aria-hidden`.
+The title is `TitleCard` in `app/page.tsx`. "JUST RAISED" sits on one line,
+compressed in SVG (`textLength`, `lengthAdjust="spacingAndGlyphs"`). It cuts
+in once on load. Nothing else animates, apart from hover colour changes and
+the row chevron, and reduced motion turns both the cut-in and the transitions
+off.
 
 ## Layout
 
-- Hazard strip (8px orange/black stripes) at the very top, nowhere else.
-- Feed rows, not cards: hairline-separated, a shared five-column grid that the
-  column header row also uses. Below 820px, rows stack into logo / who /
-  money / roles.
-- Square corners everywhere. No shadows, glows, gradients or rounded pills.
-- No eyebrow labels above headings; metadata lives in the hero readout.
-
-## Don't
-
-No fan-franchise logos, names, characters or insignia. The look borrows a
-genre of screen typography, not anyone's marks.
+- Feed rows, not cards. Rows are separated by hairlines, and the column
+  header row uses the same five-column grid. Below 820px each row stacks:
+  logo, then name and blurb, then money, then roles.
+- Square corners. No shadows, gradients, glows or rounded pills.
+- No eyebrow labels above headings. Metadata lives in the hero readout.
+- Keep it to one move. Earlier passes with hazard stripes and Japanese
+  labels were too much.

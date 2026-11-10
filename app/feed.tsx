@@ -161,12 +161,7 @@ function Card({ item }: { item: Item }) {
                 {item.cohort ? ` ${item.cohort}` : ""}
               </span>
               {isEarly(item) ? (
-                <span className="chip early">
-                  <span lang="ja" aria-hidden="true">
-                    早期
-                  </span>
-                  Early window
-                </span>
+<span className="chip early">Early window</span>
               ) : null}
             </div>
             {item.blurb ? <p className="blurb">{item.blurb}</p> : null}

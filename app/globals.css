@@ -1,22 +1,23 @@
-/* Command-center dark. Black ground, title-card lettering, an orange that
-   carries structure and confirmed money, green only for the early window,
-   violet only for speedrun. */
+/* Title-card light. A neutral white ground, black ink, heavy compressed
+   lettering, and an orange that carries structure and confirmed money.
+   Green marks only the early window, violet only speedrun. */
 :root {
-  color-scheme: dark;
-  --void: #050505;
-  --panel: #0d0b09;
-  --hover: #110d0a;
-  --plate: #ece6da;
-  --ink: #f2ede4;
-  --ink-2: #cfc8bc;
-  --dim: #9a9284;
-  --rule: #24201c;
-  --rule-strong: #3d3630;
-  --signal: #ff7a1a;
-  --signal-deep: #b34f05;
+  color-scheme: light;
+  --ground: #f5f5f3;
+  --panel: #ffffff;
+  --hover: #ececea;
+  --plate: #ffffff;
+  --ink: #0a0a0a;
+  --ink-2: #34342f;
+  --dim: #66665f;
+  --rule: #dcdcd7;
+  --rule-strong: #b4b4ad;
+  --signal: #ff6200;
+  --signal-ink: #bf3d00;
   --go: #8cf03c;
-  --go-ink: #081102;
-  --unit: #a684ff;
+  --go-ink: #0a1a02;
+  --go-text: #2c7408;
+  --unit: #6234e0;
   --display: var(--font-display), "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
   --ui: var(--font-ui), "Archivo", "Helvetica Neue", Arial, sans-serif;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -30,31 +31,26 @@
 html {
   -webkit-text-size-adjust: 100%;
   accent-color: var(--signal);
-  scrollbar-color: var(--rule-strong) var(--void);
+  scrollbar-color: var(--rule-strong) var(--ground);
 }
 
 body {
   margin: 0;
-  background: var(--void);
+  background: var(--ground);
   color: var(--ink);
   font-family: var(--ui);
   font-size: 16px;
   line-height: 1.5;
   caret-color: var(--signal);
-  -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
   background: var(--signal);
-  color: var(--void);
-}
-
-:lang(ja) {
-  font-family: var(--display);
+  color: var(--ink);
 }
 
 a {
-  color: var(--signal);
+  color: var(--signal-ink);
   text-decoration: none;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
@@ -98,11 +94,6 @@ footer .links {
   font-variant-numeric: tabular-nums;
 }
 
-.hazard {
-  height: 8px;
-  background: repeating-linear-gradient(-45deg, var(--signal) 0 10px, var(--void) 10px 20px);
-}
-
 main {
   max-width: 1160px;
   margin: 0 auto;
@@ -117,8 +108,8 @@ main {
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   gap: 48px;
   align-items: end;
-  padding: 64px 0 40px;
-  margin-bottom: 32px;
+  padding: 56px 0 32px;
+  margin-bottom: 28px;
 }
 
 .hero::after {
@@ -130,7 +121,6 @@ main {
   height: 2px;
   background: var(--signal);
   transform-origin: left;
-  animation: rule-in 1100ms var(--ease-out) both;
 }
 
 .hero h1 {
@@ -140,7 +130,7 @@ main {
 .title-card {
   display: block;
   width: 100%;
-  max-width: 620px;
+  max-width: 600px;
   height: auto;
   overflow: visible;
   animation: card-cut 900ms var(--ease-out) both;
@@ -153,25 +143,9 @@ main {
   fill: var(--ink);
 }
 
-.hero-side {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 24px;
-  align-items: end;
-}
-
-.jp {
-  margin: 0;
-  color: var(--signal);
-  font-size: 40px;
-  line-height: 1;
-  writing-mode: vertical-rl;
-  letter-spacing: 0.08em;
-}
-
 .sub {
-  margin: 0 0 24px;
-  font-size: 18px;
+  margin: 0 0 20px;
+  font-size: 17px;
   line-height: 1.5;
   max-width: 44ch;
   text-wrap: pretty;
@@ -208,15 +182,6 @@ main {
   }
   to {
     clip-path: inset(0 0 0 0);
-  }
-}
-
-@keyframes rule-in {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
   }
 }
 
@@ -260,18 +225,18 @@ main {
 }
 
 .pill:hover {
-  border-color: var(--signal);
+  border-color: var(--ink);
 }
 
 .pill.on {
   background: var(--signal);
   border-color: var(--signal);
-  color: var(--void);
+  color: var(--ink);
 }
 
 .pill.on .count {
-  color: var(--void);
-  opacity: 0.65;
+  color: var(--ink);
+  opacity: 0.7;
 }
 
 .tools {
@@ -294,7 +259,10 @@ main {
 }
 
 .tools input:hover,
-.tools select:hover,
+.tools select:hover {
+  border-color: var(--ink);
+}
+
 .tools input:focus,
 .tools select:focus {
   border-color: var(--signal);
@@ -316,8 +284,8 @@ main {
   height: 12px;
   cursor: pointer;
   background:
-    linear-gradient(45deg, transparent 45%, var(--signal) 45% 55%, transparent 55%),
-    linear-gradient(-45deg, transparent 45%, var(--signal) 45% 55%, transparent 55%);
+    linear-gradient(45deg, transparent 45%, var(--ink) 45% 55%, transparent 55%),
+    linear-gradient(-45deg, transparent 45%, var(--ink) 45% 55%, transparent 55%);
 }
 
 .tools select {
@@ -325,7 +293,7 @@ main {
   appearance: none;
   padding-right: 34px;
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23ff7a1a' stroke-width='1.6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%230a0a0a' stroke-width='1.6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
 }
@@ -401,6 +369,7 @@ main {
   padding: 5px;
   object-fit: contain;
   background: var(--plate);
+  border: 1px solid var(--rule);
 }
 
 .monogram {
@@ -409,7 +378,7 @@ main {
   padding: 0;
   font-family: var(--display);
   font-size: 22px;
-  color: var(--signal);
+  color: var(--signal-ink);
   background: var(--panel);
   border: 1px solid var(--rule-strong);
 }
@@ -430,7 +399,7 @@ main {
 }
 
 .card:hover .name {
-  color: var(--signal);
+  color: var(--signal-ink);
 }
 
 .chip {
@@ -458,11 +427,6 @@ main {
   font-weight: 700;
 }
 
-.chip.early :lang(ja) {
-  font-size: 11px;
-  letter-spacing: 0;
-}
-
 .blurb {
   margin: 6px 0 0;
   color: var(--ink-2);
@@ -482,7 +446,7 @@ main {
 
 .figure {
   display: block;
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.01em;
@@ -490,7 +454,7 @@ main {
 }
 
 .figure.own {
-  color: var(--signal);
+  color: var(--signal-ink);
 }
 
 a.figure {
@@ -498,7 +462,7 @@ a.figure {
 }
 
 a.figure:hover {
-  color: var(--signal);
+  color: var(--signal-ink);
 }
 
 .figure-unit {
@@ -509,7 +473,7 @@ a.figure:hover {
 }
 
 a.figure:hover .figure-unit {
-  color: var(--signal);
+  color: var(--signal-ink);
 }
 
 .figure-label {
@@ -526,7 +490,7 @@ a.figure:hover .figure-unit {
 }
 
 .figure-label.go {
-  color: var(--go);
+  color: var(--go-text);
   font-weight: 700;
 }
 
@@ -535,7 +499,7 @@ a.figure:hover .figure-unit {
 }
 
 .figure-label.link {
-  color: var(--signal);
+  color: var(--signal-ink);
 }
 
 .chev {
@@ -550,13 +514,13 @@ a.figure:hover .figure-unit {
   justify-self: end;
 }
 
-.card:hover .chev {
-  border-color: var(--signal);
+.card:hover .chev,
+details[open] .chev {
+  border-color: var(--ink);
 }
 
 details[open] .chev {
   transform: rotate(225deg);
-  border-color: var(--signal);
 }
 
 .evidence {
@@ -575,7 +539,7 @@ details[open] .chev {
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.14em;
-  color: var(--signal);
+  color: var(--signal-ink);
 }
 
 .evidence p {
@@ -618,30 +582,16 @@ details[open] .chev {
   margin-top: 88px;
 }
 
-.how-head {
-  display: flex;
-  align-items: flex-end;
-  gap: 20px;
-  padding-bottom: 18px;
-  margin-bottom: 28px;
-  border-bottom: 2px solid var(--signal);
-}
-
 .how h2 {
-  margin: 0;
+  margin: 0 0 28px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--signal);
   font-family: var(--display);
-  font-size: clamp(32px, 5vw, 48px);
+  font-size: clamp(28px, 4vw, 36px);
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-}
-
-.jp-inline {
-  writing-mode: horizontal-tb;
-  font-size: 22px;
-  letter-spacing: 0.2em;
-  padding-bottom: 4px;
 }
 
 .how ol {
@@ -664,12 +614,12 @@ details[open] .chev {
 .how li::before {
   content: counter(step);
   display: block;
-  margin-bottom: 14px;
-  font-size: 44px;
+  margin-bottom: 10px;
+  font-size: 30px;
   font-weight: 700;
   font-stretch: 70%;
   line-height: 1;
-  color: var(--signal);
+  color: var(--signal-ink);
   font-variant-numeric: tabular-nums;
 }
 
@@ -731,7 +681,7 @@ footer .links {
     padding: 40px 0 28px;
   }
   .title-card {
-    max-width: 480px;
+    max-width: 520px;
   }
   .how ol {
     grid-template-columns: minmax(0, 1fr);
@@ -783,7 +733,7 @@ footer .links {
     margin-top: 8px;
   }
   .figure {
-    font-size: 26px;
+    font-size: 24px;
   }
   .figure-label,
   .figure-label + .figure-label {
@@ -809,9 +759,6 @@ footer .links {
   }
   .sort-label {
     display: none;
-  }
-  .jp {
-    font-size: 30px;
   }
   .sub {
     font-size: 17px;
