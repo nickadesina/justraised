@@ -1,9 +1,11 @@
 # Just Raised
 
 A daily list of a16z and speedrun portfolio companies that filed a Form D with
-the SEC recently, ranked by how much they raised relative to how many roles they
-have open. It answers a question job boards don't: which companies have new
-money and haven't posted the roles yet.
+the SEC recently, next to how many roles they have open and how many they've
+posted since. It answers a question job boards don't: which companies have new
+money and haven't posted the roles yet. The page shows the newest filing first;
+"Best window" re-sorts by cash per open role, which is also the order of the
+collection endpoint.
 
 - Page: https://nickadesina.github.io/justraised/
 - Collection (talent network schema): [`/api/collections/just-raised.json`](https://nickadesina.github.io/justraised/api/collections/just-raised.json)
@@ -191,8 +193,9 @@ keyed `a16z:<slug>` or `speedrun:<slug>`. `spv` holds the companies with
 investor SPVs, each with its vehicles and their filings
 ([`/api/just-raised-spvs.csv`](https://nickadesina.github.io/justraised/api/just-raised-spvs.csv)
 as a spreadsheet). This is additive: amount, first-sale date,
-filing URL, issuer, amendments, roles posted since the raise, score inputs, and
-the match rung. None of it fits their member schema.
+filing URL, issuer, amendments, roles posted since the raise, roles posted in
+the last 30 and 7 days (`roles_posted_30d`, `roles_posted_7d`), score inputs,
+and the match rung. None of it fits their member schema.
 
 ### `/api/just-raised.csv`
 
@@ -239,6 +242,11 @@ everything.
   never refetched, and raw XML is cached under `data/cache/`.
 - Talent-network calls are limited to 1 per second; their API returns 429 on
   bursts.
+- Roles posted in the last 30 days cost one `/jobs?company=<name>&page_size=1`
+  call per listed company, read from `facets.posted`. When that name returns
+  zero rows for a company with open roles, `score.py` looks up the name the
+  jobs carry (see API note 1) and retries; if that fails too it publishes
+  `null`, never a false 0.
 - `score.py` refuses to publish if the High match count falls more than 30%
   from the previous run, which catches a broken normalizer before it empties
   the page. `--force` overrides it.
@@ -280,6 +288,97 @@ These numbers shaped v1 and differ from the original design doc:
 - EDGAR full-text search with `q=*` returns zero hits. Leaving `q` out returns
   every Form D. Items `3C`, `3C.1` and `3C.7` mark funds before any XML is
   fetched.
+
+## Notes on the talent network API
+
+I built this as a client of the [talent network API](https://speedrun-talent-network.com/developers)
+and kept notes along the way. It's a good API to build on: the OpenAPI document is accurate,
+CORS is open, responses are edge-cached, and the facets on `/jobs` saved a lot of
+calls. These are the five things that cost me time, each reproducible with one
+line. Counts are from 2026-11-10; the board had 22,985 roles.
+
+```bash
+B=https://speedrun-talent-network.com/api/v1
+```
+
+**1. `company=` takes the jobs-side display name, case-sensitive, not the slug.**
+Every job object carries `company_slug`, and every Company has a `slug`, but the
+filter rejects both. It also rejects the name `/companies` returns when the jobs
+spell it differently.
+
+```bash
+curl -s "$B/jobs?company=Harvey" | jq .total               # 376
+curl -s "$B/jobs?company=harvey" | jq .total               # 0
+curl -s "$B/jobs?company=anduril-industries" | jq .total   # 0  (the slug)
+curl -s "$B/jobs?company=Anduril" | jq .total              # 0  (the name /companies returns)
+curl -s "$B/jobs?company=Anduril%20Industries" | jq .total # 2580
+```
+
+Saronic ("Saronic Technologies" on jobs) and ChronoSpace ("Chronospace") fail
+the same way. Just Raised works around it by searching
+`q=<name>`, taking `company` from a job whose `company_slug` matches, and
+retrying with that.
+
+**2. Bad parameter values fail silently.** `stealth`, `posted` and `comp_any`
+are enums in the OpenAPI document, but the server accepts anything, ignores
+what it doesn't recognize, and returns 200 with no warning. Unknown parameters
+are ignored the same way.
+
+```bash
+curl -s "$B/jobs?stealth=true" | jq .total                  # 22985 (stealth=only: 1)
+curl -s "$B/jobs?posted=7" | jq .total                      # 22985 (posted=7d: 2284)
+curl -s "$B/jobs?portfolio=true" | jq .total                # 0     (portfolio=speedrun: 208)
+curl -s "$B/jobs?comp=200000&comp_any=true" | jq .total     # 2962  (comp_any=1: 21343)
+curl -s "$B/jobs?company_slug=anduril-industries" | jq .total  # 22985
+```
+
+This matters most on the MCP server. An agent that asks for stealth roles with
+`stealth=true` gets the whole board back and reports it confidently. A 400
+naming the allowed values would fix it.
+
+**3. `/companies` lists only companies with a live role.** A company that stopped
+hiring, or hasn't started, disappears, so the API can't describe it. For a list
+about companies that just raised and haven't posted yet, that's the exact
+company that's missing. Just Raised keeps its own registry of every slug it has
+seen (`data/company_registry.json`).
+
+```bash
+for p in $(seq 0 7); do curl -s "$B/companies?page=$p"; sleep 1; done \
+  | jq -s '[.[].companies[].open_roles] | length, min'   # 778, 1
+```
+
+**4. Company has no website or domain.** Its fields are `name`, `slug`, `url`,
+`tier`, `cohort`, `location`, `blurb`, `logo`, `labels`, `industries` and
+`open_roles`, and `url` points back to the talent network. So every join to an
+outside dataset (EDGAR, Crunchbase, LinkedIn) is a fuzzy name match. Most of
+this repo's matcher exists because of that. One `domain` field would make
+those joins exact.
+
+```bash
+curl -s "$B/companies/harvey" | jq '.company | {url, website, domain}'
+# {"url": "https://speedrun-talent-network.com/companies/harvey", "website": null, "domain": null}
+```
+
+**5. One role in several cities counts as several roles.** Harvey's 376 rows are
+235 distinct titles. "Legal Engineer, Product Specialist" appears 8 times, once
+each for Madrid, Milan, Munich, Paris, Seoul, Singapore, Stockholm and Sydney.
+`open_roles` inherits the inflation, so this page's role counts do too.
+
+```bash
+for p in $(seq 0 7); do curl -s "$B/jobs?company=Harvey&page=$p"; sleep 1; done \
+  | jq -s '[.[].jobs[].title] | length, (unique | length)'   # 376, 235
+```
+
+Smaller things:
+
+- API responses set four site-experiment cookies (`tn_phase2`, `tn_front_door`,
+  `tn_hero_variant`, `tn_hero_fill`, 90-day `Max-Age`). An API client has no
+  use for A/B assignments.
+- `labels` (stage, size) is only on the company detail view, so filtering
+  companies by stage is one call per company. The portfolio collections carry
+  `stage`, which is the workaround used here.
+- `page_size` is accepted but capped at 50 without saying so, and the edge cache
+  is `s-maxage=60, stale-while-revalidate=600`.
 
 ## Run it locally
 
