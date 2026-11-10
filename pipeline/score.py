@@ -150,6 +150,57 @@ def fetch_details(slugs: list[str]) -> dict[str, dict | None]:
         client.close()
 
 
+def posted_counts(body: dict | None, open_roles: int | None) -> dict | None:
+    """Read the 24h / 7d / 30d posting buckets from a /jobs response's facets.
+
+    /jobs filters on the display name, case-sensitive, not the slug
+    (company=harvey returns nothing), and an unmatched name returns zero rows
+    rather than an error. Zero rows for a company that has open roles means the
+    name didn't match, so that is None, not a hiring freeze.
+    """
+    if not body:
+        return None
+    buckets = (body.get("facets") or {}).get("posted") or {}
+    if body.get("total", 0) == 0 and (open_roles or 0) > 0:
+        return None
+    try:
+        return {k: int(buckets[k]) for k in ("24h", "7d", "30d")}
+    except (KeyError, TypeError, ValueError):
+        return None
+
+
+def _jobs_company_key(client: TalentClient, slug: str, name: str) -> str | None:
+    """The name /jobs filters on, when it differs from the /companies name.
+
+    /companies says "Anduril", but company=Anduril returns nothing; the jobs
+    carry "Anduril Industries". A free-text search finds a job with the right
+    company_slug, and its company field is the key the filter accepts.
+    """
+    body = client.get("/jobs", q=name[:120]) or {}
+    for job in body.get("jobs") or []:
+        if job.get("company_slug") == slug and job.get("company"):
+            return job["company"]
+    return None
+
+
+def fetch_posted(names: dict[str, tuple[str, int | None]]) -> dict[str, dict | None]:
+    """slug -> posting buckets, usually one /jobs call per company (slug -> (name, open_roles))."""
+    client = TalentClient()
+    out: dict[str, dict | None] = {}
+    try:
+        for slug, (name, open_roles) in names.items():
+            buckets = posted_counts(client.get("/jobs", company=name, page_size=1), open_roles)
+            if buckets is None and (open_roles or 0) > 0:
+                key = _jobs_company_key(client, slug, name)
+                if key and key != name:
+                    log.info("posted: %s is %r on /jobs, not %r", slug, key, name)
+                    buckets = posted_counts(client.get("/jobs", company=key, page_size=1), open_roles)
+            out[slug] = buckets
+        return out
+    finally:
+        client.close()
+
+
 # --- publish ------------------------------------------------------------------
 
 
@@ -162,7 +213,7 @@ def _previous_high_count() -> int | None:
         return None
 
 
-def run_score(force: bool = False, details: dict | None = None) -> dict:
+def run_score(force: bool = False, details: dict | None = None, buckets_by_slug: dict | None = None) -> dict:
     today = config.today()
     window_start = today - timedelta(days=config.WINDOW_DAYS)
     companies = {c["slug"]: c for c in load_companies()}
@@ -215,6 +266,13 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
     spv_groups = _spv_groups(window_start, today)
     spv_network = sorted(s for s in spv_groups if s in companies and s not in network_slugs)
     details = details if details is not None else fetch_details(network_slugs + spv_network)
+    if buckets_by_slug is None:
+        names = {}
+        for s in network_slugs + spv_network:
+            c = {**(details.get(s) or {}), **(companies.get(s) or {})}
+            if c.get("name"):
+                names[s] = (c["name"], c.get("open_roles"))
+        buckets_by_slug = fetch_posted(names)
 
     rows = []
     off_rows = []
@@ -266,6 +324,8 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
                 "roles_since_first_sale": len(since),
                 "first_post_since": since[0].isoformat() if since else None,
                 "days_to_first_post": (since[0] - off["first_sale"]).days if since else None,
+                "roles_posted_30d": (buckets_by_slug.get(slug) or {}).get("30d"),
+                "roles_posted_7d": (buckets_by_slug.get(slug) or {}).get("7d"),
             }
         )
 
@@ -277,7 +337,11 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
             continue
         if company.get("stage") in config.EXCLUDE_STAGES:
             continue
-        spv_rows.append(_spv_row(company, group, details.get(slug), slug in companies, slug in direct, today))
+        row = _spv_row(company, group, details.get(slug), slug in companies, slug in direct, today)
+        buckets = buckets_by_slug.get(slug) if slug in companies else None
+        row["roles_posted_30d"] = (buckets or {}).get("30d")
+        row["roles_posted_7d"] = (buckets or {}).get("7d")
+        spv_rows.append(row)
     spv_rows.sort(key=lambda r: (r["latest_spv_file_date"], r["spvs"]), reverse=True)
     for i, r in enumerate(spv_rows, 1):
         r["rank"] = i
@@ -365,7 +429,7 @@ CSV_FIELDS = [
     "on_network", "rank", "name", "slug", "tier", "cohort", "stage", "stage_label", "size_label", "location",
     "score", "amount", "amount_kind", "amount_sold", "offering_amount", "date_of_first_sale",
     "days_since_first_sale", "file_date", "latest_file_date", "amendments", "open_roles",
-    "roles_since_first_sale", "first_post_since", "days_to_first_post", "issuer_name",
+    "roles_since_first_sale", "roles_posted_30d", "roles_posted_7d", "first_post_since", "days_to_first_post", "issuer_name",
     "issuer_cik", "issuer_city", "issuer_state", "accession", "filing_url", "url", "website",
     "match_rung", "a16z_person",
 ]
@@ -419,6 +483,8 @@ def _off_network_row(company: dict, off: dict, today: date) -> dict | None:
         "logo": company.get("logo"),
         "open_roles": None,
         "roles_since_first_sale": None,
+        "roles_posted_30d": None,
+        "roles_posted_7d": None,
         # Cash and recency only: open roles are not tracked off the network.
         "score": score(off["amount"], 0, days),
         **_filing_fields(off, today),
@@ -482,7 +548,7 @@ def _spv_row(company: dict, group: list[dict], detail: dict | None, on_network: 
 
 SPV_CSV_FIELDS = [
     "rank", "name", "slug", "tier", "on_network", "has_own_form_d", "spvs", "spv_amount_sold",
-    "first_spv_file_date", "latest_spv_file_date", "open_roles", "roles_since_first_spv", "url", "vehicle_names",
+    "first_spv_file_date", "latest_spv_file_date", "open_roles", "roles_since_first_spv", "roles_posted_30d", "url", "vehicle_names",
 ]
 
 
@@ -514,6 +580,7 @@ def _append_history(today: date, rows: list[dict]) -> None:
                 "date_of_first_sale": date.fromisoformat(r["date_of_first_sale"]),
                 "open_roles": r["open_roles"],
                 "roles_since_first_sale": r["roles_since_first_sale"],
+                "roles_posted_30d": r.get("roles_posted_30d"),
                 "amount": r["amount"],
                 "score": r["score"],
                 "rank": r["rank"],
@@ -522,13 +589,13 @@ def _append_history(today: date, rows: list[dict]) -> None:
         ],
         schema={
             "run_date": pl.Date, "slug": pl.Utf8, "accession": pl.Utf8, "date_of_first_sale": pl.Date,
-            "open_roles": pl.Int64, "roles_since_first_sale": pl.Int64, "amount": pl.Float64,
+            "open_roles": pl.Int64, "roles_since_first_sale": pl.Int64, "roles_posted_30d": pl.Int64, "amount": pl.Float64,
             "score": pl.Float64, "rank": pl.Int64,
         },
     )
     if config.HISTORY.exists():
         old = pl.read_parquet(config.HISTORY).filter(pl.col("run_date") != today)
-        fresh = pl.concat([old, fresh])
+        fresh = pl.concat([old, fresh], how="diagonal_relaxed")  # older runs predate roles_posted_30d
     fresh.sort(["run_date", "rank"]).write_parquet(config.HISTORY)
 
 

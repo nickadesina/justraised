@@ -215,3 +215,17 @@ def test_spv_rejects_common_words_and_managers():
 def test_spv_needs_a_vehicle_and_respects_ignore():
     assert _target("Saronic Technologies, Inc.") is None  # an operating company, not a vehicle
     assert _target("HII Saronic-01, a Series of HII Saronic, LLC", ignore={"saronic-technologies"}) is None
+
+
+def test_posted_counts_reads_facets_and_flags_name_misses():
+    from pipeline.score import posted_counts
+
+    body = {"total": 376, "facets": {"posted": {"24h": 7, "7d": 46, "30d": 153}}}
+    assert posted_counts(body, 376) == {"24h": 7, "7d": 46, "30d": 153}
+    # company= is the display name, case-sensitive; a miss returns zero rows
+    # with no error, which must not read as "posted nothing in 30 days".
+    miss = {"total": 0, "facets": {"posted": {"24h": 0, "7d": 0, "30d": 0}}}
+    assert posted_counts(miss, 12) is None
+    assert posted_counts(miss, 0) == {"24h": 0, "7d": 0, "30d": 0}
+    assert posted_counts(None, 5) is None
+    assert posted_counts({"total": 3, "facets": {}}, 3) is None

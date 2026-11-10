@@ -7,6 +7,7 @@ export interface Raise {
   kind: "sold" | "offering" | "unknown";
   firstSale: string;
   days: number;
+  filed: string; // latest filing for this offering (original or amendment)
   filingUrl: string;
   issuer: string;
   amendments: number;
@@ -35,14 +36,33 @@ export interface Item {
   onNetwork: boolean;
   openRoles: number | null;
   rolesSince: number | null; // since the raise, or since the first SPV
+  posted30d: number | null; // roles posted in the last 30 days, from the talent network's facets
   raise: Raise | null;
   spv: Spv | null;
-  days: number; // age of the newest signal
+  days: number; // age of the newest money signal (first sale or SPV filing)
+  filed: string; // newest SEC filing date across both signals: the feed's sort key
+  filedDays: number; // days from that filing to the run date
+  filedKind: "Form D" | "SPV";
   rank: number | null; // rank in the collection endpoint, if listed there
 }
 
+const RUN_DATE = filings.meta.run_date;
+
+function daysBefore(iso: string, until: string = RUN_DATE): number {
+  const ms = Date.parse(`${until}T00:00:00Z`) - Date.parse(`${iso}T00:00:00Z`);
+  return Math.max(0, Math.round(ms / 86_400_000));
+}
+
+function withFiled(base: Omit<Item, "filed" | "filedDays" | "filedKind">): Item {
+  const raiseFiled = base.raise?.filed ?? "";
+  const spvFiled = base.spv?.latest ?? "";
+  const spvNewer = spvFiled > raiseFiled;
+  const filed = spvNewer ? spvFiled : raiseFiled;
+  return { ...base, filed, filedDays: daysBefore(filed), filedKind: spvNewer ? "SPV" : "Form D" };
+}
+
 export function buildItems(): Item[] {
-  const items = new Map<string, Item>();
+  const items = new Map<string, Omit<Item, "filed" | "filedDays" | "filedKind">>();
   const members = new Map(collection.collection.members.map((m) => [m.slug ?? m.name, m]));
 
   for (const f of Object.values(filings.filings)) {
@@ -60,11 +80,13 @@ export function buildItems(): Item[] {
       onNetwork: true,
       openRoles: m?.open_roles ?? null,
       rolesSince: f.roles_since_first_sale,
+      posted30d: f.roles_posted_30d ?? null,
       raise: {
         amount: f.amount,
         kind: f.amount_kind,
         firstSale: f.date_of_first_sale,
         days: f.days_since_first_sale,
+        filed: f.latest_file_date,
         filingUrl: f.filing_url,
         issuer: f.issuer_name,
         amendments: f.amendments,
@@ -91,11 +113,13 @@ export function buildItems(): Item[] {
       onNetwork: false,
       openRoles: null,
       rolesSince: null,
+      posted30d: null,
       raise: {
         amount: f.amount,
         kind: f.amount_kind,
         firstSale: f.date_of_first_sale,
         days: f.days_since_first_sale,
+        filed: f.latest_file_date,
         filingUrl: f.filing_url,
         issuer: f.issuer_name,
         amendments: f.amendments,
@@ -135,6 +159,7 @@ export function buildItems(): Item[] {
       onNetwork: s.on_network,
       openRoles: s.open_roles,
       rolesSince: s.roles_since_first_spv,
+      posted30d: s.roles_posted_30d ?? null,
       raise: null,
       spv,
       days: spv.days,
@@ -142,5 +167,8 @@ export function buildItems(): Item[] {
     });
   }
 
-  return Array.from(items.values());
+  // Newest filing first: what showed up on EDGAR most recently leads the page.
+  return Array.from(items.values(), withFiled).sort(
+    (a, b) => b.filed.localeCompare(a.filed) || a.name.localeCompare(b.name),
+  );
 }

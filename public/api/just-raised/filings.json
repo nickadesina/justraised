@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-11-10T08:19:15Z",
+  "generated_at": "2026-11-10T08:46:25Z",
   "run_date": "2026-11-10",
   "window_days": 180,
   "half_life_days": 45,
@@ -48,6 +48,8 @@
    "roles_since_first_sale": 0,
    "first_post_since": null,
    "days_to_first_post": null,
+   "roles_posted_30d": 0,
+   "roles_posted_7d": 0,
    "rank": 1
   },
   "town": {
@@ -85,6 +87,8 @@
    "roles_since_first_sale": 1,
    "first_post_since": "2026-10-27",
    "days_to_first_post": 20,
+   "roles_posted_30d": 1,
+   "roles_posted_7d": 0,
    "rank": 2
   },
   "armadin": {
@@ -122,6 +126,8 @@
    "roles_since_first_sale": 15,
    "first_post_since": "2026-10-05",
    "days_to_first_post": 5,
+   "roles_posted_30d": 7,
+   "roles_posted_7d": 0,
    "rank": 3
   },
   "stuut": {
@@ -159,6 +165,8 @@
    "roles_since_first_sale": 21,
    "first_post_since": "2026-09-03",
    "days_to_first_post": 0,
+   "roles_posted_30d": 17,
+   "roles_posted_7d": 5,
    "rank": 4
   },
   "primitive-labs": {
@@ -196,6 +204,8 @@
    "roles_since_first_sale": 3,
    "first_post_since": "2026-07-14",
    "days_to_first_post": 49,
+   "roles_posted_30d": 0,
+   "roles_posted_7d": 0,
    "rank": 5
   },
   "mariana-minerals": {
@@ -233,6 +243,8 @@
    "roles_since_first_sale": 87,
    "first_post_since": "2026-07-22",
    "days_to_first_post": 0,
+   "roles_posted_30d": 47,
+   "roles_posted_7d": 8,
    "rank": 6
   },
   "exa": {
@@ -270,6 +282,8 @@
    "roles_since_first_sale": 55,
    "first_post_since": "2026-05-20",
    "days_to_first_post": 5,
+   "roles_posted_30d": 26,
+   "roles_posted_7d": 6,
    "rank": 7
   },
   "harvey": {
@@ -307,6 +321,8 @@
    "roles_since_first_sale": 256,
    "first_post_since": "2026-08-28",
    "days_to_first_post": 0,
+   "roles_posted_30d": 153,
+   "roles_posted_7d": 46,
    "rank": 8
   }
  },
@@ -324,6 +340,8 @@
    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2023/09/logo_0018000000ztSVq-20230417220544.svg",
    "open_roles": null,
    "roles_since_first_sale": null,
+   "roles_posted_30d": null,
+   "roles_posted_7d": null,
    "score": 2.4247424414987853,
    "amount": 4999997255.0,
    "amount_kind": "sold",
@@ -363,6 +381,8 @@
    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2023/09/logo_0011E00001nUg3N-20230418003645.svg",
    "open_roles": null,
    "roles_since_first_sale": null,
+   "roles_posted_30d": null,
+   "roles_posted_7d": null,
    "score": 1.9612119506915429,
    "amount": 547000000.0,
    "amount_kind": "sold",
@@ -402,6 +422,8 @@
    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2024/10/logo_0011E00001jIo3f-20230417213426.svg",
    "open_roles": null,
    "roles_since_first_sale": null,
+   "roles_posted_30d": null,
+   "roles_posted_7d": null,
    "score": 1.3191996209266252,
    "amount": 75141086.0,
    "amount_kind": "sold",
@@ -441,6 +463,8 @@
    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2024/10/logo_0011E00001liXWBQA2-20230512202016.svg",
    "open_roles": null,
    "roles_since_first_sale": null,
+   "roles_posted_30d": null,
+   "roles_posted_7d": null,
    "score": 1.0622500351401076,
    "amount": 24999937.0,
    "amount_kind": "sold",
@@ -502,6 +526,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2132990/000213299026000001/0002132990-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 60,
+   "roles_posted_7d": 4,
    "rank": 1
   },
   "anduril-industries": {
@@ -585,6 +611,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2134815/000213481526000001/0002134815-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 740,
+   "roles_posted_7d": 213,
    "rank": 2
   },
   "sourcerer-ai": {
@@ -614,6 +642,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2160424/000216042426000001/0002160424-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 0,
+   "roles_posted_7d": 0,
    "rank": 3
   },
   "astro-mechanica": {
@@ -643,6 +673,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2160264/000216026426000001/0002160264-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 30,
+   "roles_posted_7d": 4,
    "rank": 4
   },
   "ornn": {
@@ -672,6 +704,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2158838/000215883826000002/0002158838-26-000002-index.htm"
     }
    ],
+   "roles_posted_30d": 13,
+   "roles_posted_7d": 5,
    "rank": 5
   },
   "amca": {
@@ -701,6 +735,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2156010/000215601026000001/0002156010-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 8,
+   "roles_posted_7d": 1,
    "rank": 6
   },
   "apex-space": {
@@ -766,6 +802,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2156292/000215629226000001/0002156292-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 64,
+   "roles_posted_7d": 24,
    "rank": 7
   },
   "gimlet-labs": {
@@ -795,6 +833,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2156487/000215648726000001/0002156487-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 7,
+   "roles_posted_7d": 1,
    "rank": 8
   },
   "a16z:databricks": {
@@ -836,6 +876,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2091400/000209140026000001/0002091400-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": null,
+   "roles_posted_7d": null,
    "rank": 9
   },
   "a16z:plai-labs": {
@@ -865,6 +907,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2143969/000214396926000001/0002143969-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": null,
+   "roles_posted_7d": null,
    "rank": 10
   },
   "hadrian": {
@@ -894,6 +938,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2151832/000215183226000001/0002151832-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 81,
+   "roles_posted_7d": 12,
    "rank": 11
   },
   "kalshi": {
@@ -959,6 +1005,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2134989/000213498926000001/0002134989-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 9,
+   "roles_posted_7d": 6,
    "rank": 12
   },
   "abridge": {
@@ -988,6 +1036,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2147411/000214741126000001/0002147411-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 10,
+   "roles_posted_7d": 4,
    "rank": 13
   },
   "shield-ai": {
@@ -1083,6 +1133,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2133341/000213334126000001/0002133341-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 143,
+   "roles_posted_7d": 32,
    "rank": 14
   },
   "a16z:alpine-bio": {
@@ -1112,6 +1164,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2143904/000214390426000001/0002143904-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": null,
+   "roles_posted_7d": null,
    "rank": 15
   },
   "chronospace": {
@@ -1141,6 +1195,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2148766/000214876626000001/0002148766-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 0,
+   "roles_posted_7d": 0,
    "rank": 16
   },
   "exowatt": {
@@ -1170,6 +1226,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2142133/000214213326000001/0002142133-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 3,
+   "roles_posted_7d": 0,
    "rank": 17
   },
   "elevenlabs": {
@@ -1199,6 +1257,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2145940/000214594026000001/0002145940-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 68,
+   "roles_posted_7d": 20,
    "rank": 18
   },
   "kaizen-labs": {
@@ -1228,6 +1288,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2145272/000214527226000001/0002145272-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 6,
+   "roles_posted_7d": 2,
    "rank": 19
   },
   "cursor": {
@@ -1257,6 +1319,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2139817/000213981726000001/0002139817-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 82,
+   "roles_posted_7d": 80,
    "rank": 20
   },
   "mind-robotics": {
@@ -1286,6 +1350,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2134565/000213456526000001/0002134565-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 5,
+   "roles_posted_7d": 1,
    "rank": 21
   },
   "saronic-technologies": {
@@ -1315,6 +1381,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2138620/000213862026000001/0002138620-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 93,
+   "roles_posted_7d": 20,
    "rank": 22
   },
   "periodic-labs": {
@@ -1344,6 +1412,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2122824/000212282426000001/0002122824-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": 0,
+   "roles_posted_7d": 0,
    "rank": 23
   },
   "a16z:ng-cash": {
@@ -1373,6 +1443,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2118864/000211886426000002/0002118864-26-000002-index.htm"
     }
    ],
+   "roles_posted_30d": null,
+   "roles_posted_7d": null,
    "rank": 24
   },
   "a16z:openai": {
@@ -1402,6 +1474,8 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2134995/000213499526000001/0002134995-26-000001-index.htm"
     }
    ],
+   "roles_posted_30d": null,
+   "roles_posted_7d": null,
    "rank": 25
   }
  }

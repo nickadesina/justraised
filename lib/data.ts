@@ -55,6 +55,8 @@ export interface Filing {
   issuer_state: string | null;
   industry_group: string | null;
   roles_since_first_sale: number;
+  roles_posted_30d: number | null;
+  roles_posted_7d: number | null;
   first_post_since: string | null;
   days_to_first_post: number | null;
   match_rung: string;
@@ -65,7 +67,7 @@ export interface Filing {
 
 // A portfolio company (a16z.com or speedrun.a16z.com) with a matched Form D
 // that is not on the talent network, so it has no open-role count.
-export interface OffNetworkFiling extends Omit<Filing, "roles_since_first_sale" | "first_post_since" | "days_to_first_post" | "stage_label" | "size_label"> {
+export interface OffNetworkFiling extends Omit<Filing, "roles_since_first_sale" | "roles_posted_30d" | "roles_posted_7d" | "first_post_since" | "days_to_first_post" | "stage_label" | "size_label"> {
   logo: string | null;
   url: string | null;
   website: string | null;
@@ -121,6 +123,8 @@ export interface SpvCompany {
   url: string | null;
   open_roles: number | null;
   roles_since_first_spv: number | null;
+  roles_posted_30d?: number | null;
+  roles_posted_7d?: number | null;
   spvs: number;
   spv_amount_sold: number;
   first_spv_file_date: string;

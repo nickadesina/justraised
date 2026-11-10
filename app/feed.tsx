@@ -11,6 +11,8 @@ type Sort = "newest" | "window" | "biggest";
 // "Early window": on the talent network and at most this many roles posted
 // since the money came in. The card always shows the real number.
 const EARLY_MAX = 3;
+// A filing this many days old or newer gets the "New" chip.
+const NEW_DAYS = 7;
 
 const STAGES: Record<string, string> = {
   "pre-seed": "Pre-seed",
@@ -22,7 +24,9 @@ const STAGES: Record<string, string> = {
 };
 
 const isEarly = (i: Item) => i.onNetwork && i.rolesSince !== null && i.rolesSince <= EARLY_MAX;
+const isNew = (i: Item) => i.filedDays <= NEW_DAYS;
 const biggest = (i: Item) => i.raise?.amount ?? i.spv?.sold ?? 0;
+const plural = (n: number, word: string) => `${n.toLocaleString("en-US")} ${word}${n === 1 ? "" : "s"}`;
 
 function ago(days: number): string {
   if (days <= 0) return "today";
@@ -30,6 +34,14 @@ function ago(days: number): string {
   if (days < 14) return `${days} days ago`;
   if (days < 60) return `${Math.round(days / 7)} weeks ago`;
   return `${Math.round(days / 30)} months ago`;
+}
+
+function dayLabel(iso: string): string {
+  return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+}
+
+function monthLabel(iso: string): string {
+  return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
 }
 
 function Logo({ item }: { item: Item }) {
@@ -45,6 +57,17 @@ function Logo({ item }: { item: Item }) {
   return <img className="logo" src={item.logo} alt="" loading="lazy" onError={() => setFailed(true)} />;
 }
 
+function When({ item }: { item: Item }) {
+  return (
+    <div className="when">
+      <time dateTime={item.filed} className="when-date">
+        {dayLabel(item.filed)}
+      </time>
+      <span className="when-ago">{ago(item.filedDays)}</span>
+    </div>
+  );
+}
+
 function Signal({ item }: { item: Item }) {
   if (item.raise) {
     const r = item.raise;
@@ -55,8 +78,7 @@ function Signal({ item }: { item: Item }) {
           <strong>{money(r.amount)}</strong>
         </div>
         <div className="signal-sub">
-          {ago(r.days)}
-          {item.spv ? ` · ${item.spv.count} investor SPV${item.spv.count > 1 ? "s" : ""}` : ""}
+          {item.spv ? `+ ${plural(item.spv.count, "investor SPV")}` : `first sale ${dayLabel(r.firstSale)}`}
         </div>
       </div>
     );
@@ -67,10 +89,7 @@ function Signal({ item }: { item: Item }) {
       <div className="signal-main">
         <strong>{s.count}</strong> investor SPV{s.count > 1 ? "s" : ""}
       </div>
-      <div className="signal-sub">
-        latest {ago(s.days)}
-        {s.sold > 0 ? ` · ${money(s.sold)}` : ""}
-      </div>
+      <div className="signal-sub">{s.sold > 0 ? `${money(s.sold)} sold` : "amount not reported"}</div>
     </div>
   );
 }
@@ -81,7 +100,7 @@ function Hiring({ item }: { item: Item }) {
       <div className="hiring">
         <div className="hiring-main muted">Not on the talent network</div>
         {item.url ? (
-          <a className="hiring-sub" href={item.url}>
+          <a className="hiring-sub" href={item.url} onClick={(e) => e.stopPropagation()}>
             Company site →
           </a>
         ) : null}
@@ -89,13 +108,19 @@ function Hiring({ item }: { item: Item }) {
     );
   }
   const since = item.rolesSince ?? 0;
+  const sinceWhat = item.raise ? "raise" : "first SPV";
   return (
     <div className="hiring">
-      <a className="hiring-main" href={item.url ?? undefined}>
-        {item.openRoles.toLocaleString("en-US")} open role{item.openRoles === 1 ? "" : "s"} →
+      <a className="hiring-main" href={item.url ?? undefined} onClick={(e) => e.stopPropagation()}>
+        {plural(item.openRoles, "open role")} →
       </a>
-      <div className={`hiring-sub ${isEarly(item) ? "early-text" : ""}`}>
-        {since === 0 ? "none posted since" : `${since.toLocaleString("en-US")} posted since`}
+      <div className="hiring-sub">
+        {item.posted30d !== null ? (
+          <span className="h-30d">{item.posted30d.toLocaleString("en-US")} posted in last 30 days</span>
+        ) : null}
+        <span className={`h-since ${isEarly(item) ? "early-text" : ""}`}>
+          {since === 0 ? `none since ${sinceWhat}` : `${since.toLocaleString("en-US")} since ${sinceWhat}`}
+        </span>
       </div>
     </div>
   );
@@ -112,8 +137,8 @@ function Evidence({ item }: { item: Item }) {
             {item.raise.kind === "offering"
               ? `an offering of ${money(item.raise.amount)} (nothing sold yet)`
               : `${money(item.raise.amount)} sold`}
-            , first sale {shortDate(item.raise.firstSale)}
-            {item.raise.amendments ? `, amended ${item.raise.amendments}×` : ""}.
+            , first sale {shortDate(item.raise.firstSale)}, filed {shortDate(item.raise.filed)}
+            {item.raise.amendments ? ` (amended ${item.raise.amendments}×)` : ""}.
             {item.raise.partner ? ` Lists ${item.raise.partner} of a16z as a director or officer.` : ""}
           </p>
           {item.raise.score !== null ? (
@@ -126,16 +151,14 @@ function Evidence({ item }: { item: Item }) {
       {item.spv ? (
         <div>
           <h4>Investor SPVs</h4>
-          <p className="muted">
-            Vehicles formed to buy in. Could be a new round or a purchase of existing shares.
-          </p>
+          <p className="muted">Vehicles formed to buy in. Could be a new round or a purchase of existing shares.</p>
           <ul>
             {item.spv.vehicles.map((v) => (
               <li key={v.filing_url}>
                 <a href={v.filing_url}>{v.name}</a>
                 <span className="muted">
                   {" "}
-                  · {shortDate(v.file_date)}
+                  · filed {shortDate(v.file_date)}
                   {v.amount_sold ? ` · ${money(v.amount_sold)}` : ""}
                 </span>
               </li>
@@ -148,15 +171,17 @@ function Evidence({ item }: { item: Item }) {
 }
 
 function Card({ item }: { item: Item }) {
-  const meta = [item.stage ? STAGES[item.stage] ?? item.stage : null, item.location].filter(Boolean);
+  const meta = [item.stage ? (STAGES[item.stage] ?? item.stage) : null, item.location].filter(Boolean);
   return (
     <li className="card">
       <details>
         <summary>
+          <When item={item} />
           <Logo item={item} />
           <div className="who">
             <div className="name-row">
               <span className="name">{item.name}</span>
+              {isNew(item) ? <span className="chip new">New</span> : null}
               <span className={`chip tier-${item.tier}`}>
                 {item.tier}
                 {item.cohort ? ` ${item.cohort}` : ""}
@@ -178,7 +203,7 @@ function Card({ item }: { item: Item }) {
 
 export default function Feed({ items }: { items: Item[] }) {
   const [filter, setFilter] = useState<Filter>("all");
-  const [sort, setSort] = useState<Sort>("window");
+  const [sort, setSort] = useState<Sort>("newest");
   const [query, setQuery] = useState("");
 
   const counts: Record<Filter, number> = useMemo(
@@ -192,9 +217,9 @@ export default function Feed({ items }: { items: Item[] }) {
     [items],
   );
 
-  const shown = useMemo(() => {
+  const groups = useMemo(() => {
     const q = query.trim().toLowerCase();
-    const out = items.filter((i) => {
+    const shown = items.filter((i) => {
       if (filter === "raised" && !i.raise) return false;
       if (filter === "spv" && !i.spv) return false;
       if (filter === "early" && !isEarly(i)) return false;
@@ -202,10 +227,10 @@ export default function Feed({ items }: { items: Item[] }) {
       if (!q) return true;
       return [i.name, i.blurb, i.location].some((t) => t?.toLowerCase().includes(q));
     });
-    out.sort((a, b) => {
+    shown.sort((a, b) => {
       if (sort === "biggest") return biggest(b) - biggest(a);
       if (sort === "window") {
-        // Early-window companies first, then the cash-per-role score, then recency.
+        // Early-window companies first, then the cash-per-role score.
         const ea = isEarly(a) ? 1 : 0;
         const eb = isEarly(b) ? 1 : 0;
         if (ea !== eb) return eb - ea;
@@ -213,10 +238,20 @@ export default function Feed({ items }: { items: Item[] }) {
         const sb = b.raise?.score ?? -1;
         if (sa !== sb) return sb - sa;
       }
-      return a.days - b.days || a.name.localeCompare(b.name);
+      return b.filed.localeCompare(a.filed) || a.name.localeCompare(b.name);
     });
+    if (sort !== "newest") return [{ label: null as string | null, items: shown }];
+    // Newest first reads as a log: one heading per month of filing.
+    const out: { label: string | null; items: Item[] }[] = [];
+    for (const i of shown) {
+      const label = monthLabel(i.filed);
+      if (out.at(-1)?.label !== label) out.push({ label, items: [] });
+      out.at(-1)!.items.push(i);
+    }
     return out;
   }, [items, filter, sort, query]);
+
+  const total = groups.reduce((n, g) => n + g.items.length, 0);
 
   const pills: [Filter, string][] = [
     ["all", "All"],
@@ -225,18 +260,23 @@ export default function Feed({ items }: { items: Item[] }) {
     ["early", "Early window"],
     ["speedrun", "speedrun"],
   ];
+  const sorts: [Sort, string][] = [
+    ["newest", "Newest"],
+    ["window", "Best window"],
+    ["biggest", "Biggest"],
+  ];
 
   return (
-    <section aria-label="Companies">
+    <section id="feed" aria-label="Companies">
       <div className="toolbar">
-        <div className="pills" role="tablist">
+        <div className="segment pills" role="tablist" aria-label="Filter">
           {pills.map(([key, label]) => (
             <button
               key={key}
               type="button"
               role="tab"
               aria-selected={filter === key}
-              className={`pill ${filter === key ? "on" : ""}`}
+              className={`seg ${filter === key ? "on" : ""}`}
               onClick={() => setFilter(key)}
             >
               {label} <span className="count">{counts[key]}</span>
@@ -251,23 +291,40 @@ export default function Feed({ items }: { items: Item[] }) {
             onChange={(e) => setQuery(e.target.value)}
             aria-label="Search companies"
           />
-          <label className="sort">
-            <span className="sort-label">Sort</span>
-            <select value={sort} onChange={(e) => setSort(e.target.value as Sort)}>
-              <option value="window">Best window</option>
-              <option value="newest">Newest money</option>
-              <option value="biggest">Biggest</option>
-            </select>
-          </label>
+          <div className="segment sorts" role="radiogroup" aria-label="Sort">
+            {sorts.map(([key, label]) => (
+              <button
+                key={key}
+                type="button"
+                role="radio"
+                aria-checked={sort === key}
+                className={`seg ${sort === key ? "on" : ""}`}
+                onClick={() => setSort(key)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      <ol className="cards">
-        {shown.map((i) => (
-          <Card key={i.slug} item={i} />
+      <div className="feed">
+        {groups.map((g) => (
+          <div className="group" key={g.label ?? "all"}>
+            {g.label ? (
+              <h3 className="group-head">
+                {g.label} <span className="count">{g.items.length}</span>
+              </h3>
+            ) : null}
+            <ol className="cards">
+              {g.items.map((i) => (
+                <Card key={i.slug} item={i} />
+              ))}
+            </ol>
+          </div>
         ))}
-      </ol>
-      {shown.length === 0 ? <p className="empty">No companies match. Try another filter.</p> : null}
+        {total === 0 ? <p className="empty">No companies match. Try another filter.</p> : null}
+      </div>
     </section>
   );
 }
