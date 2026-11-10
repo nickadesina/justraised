@@ -36,9 +36,11 @@ PUBLIC_COLLECTION = PUBLIC_API / "collections" / "just-raised.json"
 PUBLIC_FILINGS = PUBLIC_API / "just-raised" / "filings.json"
 PUBLIC_CSV = PUBLIC_API / "just-raised.csv"
 PUBLIC_SPV_CSV = PUBLIC_API / "just-raised-spvs.csv"
+PUBLIC_BOARD = PUBLIC_API / "just-raised" / "board.json"
 
 # --- talent network ---------------------------------------------------------
-TALENT_BASE = "https://speedrun-talent-network.com/api/v1"
+TALENT_SITE = "https://speedrun-talent-network.com"
+TALENT_BASE = f"{TALENT_SITE}/api/v1"
 SOURCE_TAG = "just-raised"  # their attribution ask: ?source= on every call
 TALENT_MAX_RPS = 1.0
 PORTFOLIO_TIERS = ("speedrun", "a16z")  # market tier is not the portfolio

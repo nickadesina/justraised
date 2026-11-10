@@ -267,12 +267,17 @@ def run_score(force: bool = False, details: dict | None = None, buckets_by_slug:
     spv_network = sorted(s for s in spv_groups if s in companies and s not in network_slugs)
     details = details if details is not None else fetch_details(network_slugs + spv_network)
     if buckets_by_slug is None:
+        # Tonight's board run already read these facets for every portfolio
+        # company; call /jobs only for what it didn't cover.
+        from .board import load_board_buckets
+
+        buckets_by_slug = load_board_buckets()
         names = {}
         for s in network_slugs + spv_network:
             c = {**(details.get(s) or {}), **(companies.get(s) or {})}
-            if c.get("name"):
+            if c.get("name") and s not in buckets_by_slug:
                 names[s] = (c["name"], c.get("open_roles"))
-        buckets_by_slug = fetch_posted(names)
+        buckets_by_slug.update(fetch_posted(names))
 
     rows = []
     off_rows = []

@@ -229,3 +229,37 @@ def test_posted_counts_reads_facets_and_flags_name_misses():
     assert posted_counts(miss, 0) == {"24h": 0, "7d": 0, "30d": 0}
     assert posted_counts(None, 5) is None
     assert posted_counts({"total": 3, "facets": {}}, 3) is None
+
+
+def test_jobs_md_parsing_and_repeat_listings():
+    from pipeline.board import duplicate_counts, parse_jobs_md
+
+    md = "\n".join([
+        "# Open roles",
+        "- [Legal Engineer, Product Specialist at Harvey](https://speedrun-talent-network.com/jobs/a-1) - Paris · Full Time",
+        "- [Legal Engineer, Product Specialist at Harvey](https://speedrun-talent-network.com/jobs/a-2) - Milan · Full Time",
+        "- [Head of Growth at Scale at Acme](https://speedrun-talent-network.com/jobs/b-1) - Remote",
+        "- [Not a role](https://example.com/x)",
+    ])
+    roles = parse_jobs_md(md)
+    # The company is after the last " at ", so a title containing " at " survives.
+    assert roles[2] == ("Head of Growth at Scale", "Acme")
+    assert duplicate_counts(roles)["Harvey"] == {"rows": 2, "titles": 1}
+
+
+def test_board_summary_reads_facets():
+    from pipeline.board import summarize
+
+    body = {
+        "total": 16,
+        "facets": {
+            "posted": {"24h": 0, "7d": 0, "30d": 1},
+            "compAvailable": 16,
+            "founding": 3,
+            "fn": [{"v": "people", "n": 3}, {"v": "engineering", "n": 8}, {"v": "design", "n": 0}],
+        },
+    }
+    s = summarize(body)
+    assert s["posted_30d"] == 1 and s["comp_posted"] == 16 and s["founding"] == 3
+    assert [f["function"] for f in s["functions"]] == ["engineering", "people"]
+    assert summarize(None) is None

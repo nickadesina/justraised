@@ -30,7 +30,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60  # board.py adds ~7 min of rate-limited talent-network calls
     env:
       SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT || 'Just Raised nick@yuurei.ai' }}
     steps:

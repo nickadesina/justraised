@@ -1,4 +1,4 @@
-"""Run the nightly pipeline end to end: companies, wider portfolio, Form Ds, match, score."""
+"""Run the nightly pipeline end to end: companies, wider portfolio, Form Ds, match, board health, score."""
 
 from __future__ import annotations
 
@@ -6,6 +6,7 @@ import argparse
 import logging
 
 from . import config
+from .board import run_board
 from .clients import SecClient
 from .fetch_companies import fetch_companies
 from .fetch_formd import fetch_filings, update_index
@@ -32,6 +33,7 @@ def main() -> None:
     finally:
         sec.close()
     run_match()
+    run_board()
     run_score(force=args.force)
 
 

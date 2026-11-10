@@ -118,5 +118,11 @@ class TalentClient:
         resp.raise_for_status()
         return resp.json()
 
+    def get_site_text(self, path: str) -> str:
+        """A machine-readable page outside /api/v1, such as /jobs.md."""
+        resp = _get_with_retry(self._client, f"{config.TALENT_SITE}{path}", None, before=self._limiter.wait)
+        resp.raise_for_status()
+        return resp.text
+
     def close(self) -> None:
         self._client.close()
