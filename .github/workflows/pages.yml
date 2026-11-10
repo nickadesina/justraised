@@ -1,0 +1,59 @@
+# Build the static site and deploy it to GitHub Pages. Runs on every push to
+# main, by hand, and as the last step of the nightly refresh (pushes made with
+# GITHUB_TOKEN do not trigger workflows, so nightly calls this directly).
+#
+# One-time setup: Settings > Pages > Build and deployment > Source: GitHub Actions.
+name: pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # The tip of main, so a nightly run deploys the commit it just pushed.
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - id: pages
+        uses: actions/configure-pages@v5
+      - run: npm ci
+      - name: Collection file validates against the talent network's OpenAPI
+        run: uv run --no-project --with jsonschema python scripts/check_schema.py public/api/collections/just-raised.json --strict
+      - run: npm run build
+        env:
+          # "/just-raised" for nickadesina.github.io/just-raised; empty on a custom domain.
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

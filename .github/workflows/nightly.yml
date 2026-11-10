@@ -1,5 +1,5 @@
-# Nightly refresh. Runs the pipeline, then commits the regenerated files;
-# the push to main triggers the Vercel deploy.
+# Nightly refresh. Runs the pipeline, commits the regenerated files, then
+# rebuilds and redeploys GitHub Pages.
 #
 # GitHub cron is UTC only: 10:00 UTC is 02:00 Pacific in winter (PST) and
 # 03:00 in summer (PDT).
@@ -21,6 +21,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: nightly
@@ -71,3 +73,7 @@ jobs:
           fi
           git commit -m "Nightly refresh $(date -u +%Y-%m-%d)"
           git push
+
+  deploy:
+    needs: refresh
+    uses: ./.github/workflows/pages.yml

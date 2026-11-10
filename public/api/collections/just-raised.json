@@ -1,20 +1,10 @@
 {
- "meta": {
-  "generated_at": "2026-11-10T06:21:18Z",
-  "run_date": "2026-11-10",
-  "window_days": 180,
-  "half_life_days": 45,
-  "formula": "log10(amount + 1) / (open_roles + 1) * 0.5 ^ (days_since_first_sale / 45)",
-  "high_matches": 6,
-  "members": 5,
-  "lag_assumption": "Postings follow a raise by one to three months. Assumed, not yet measured."
- },
  "collection": {
   "slug": "just-raised",
   "title": "Just raised",
   "description": "Portfolio companies with a Form D in the last 180 days, ranked by cash per open role",
   "group": "signals",
-  "url": "https://justraised.nickadesina.com",
+  "url": "https://nickadesina.github.io/just-raised",
   "companies": 5,
   "roles": 471,
   "portfolio_members": 5,
@@ -183,6 +173,10 @@
     ],
     "logo": "https://www.harvey.ai/icons/brand-favicon.png"
    }
-  ]
+  ],
+  "members_total": 5,
+  "page": 0,
+  "page_size": 100,
+  "total_pages": 1
  }
 }

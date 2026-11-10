@@ -1,9 +1,9 @@
-import { REPO_URL, collection, filings } from "@/lib/data";
+import { API, REPO_URL, collection, filings } from "@/lib/data";
 
 import RaisedTable, { type Row } from "./raised-table";
 
 export default function Page() {
-  const { meta } = collection;
+  const { meta } = filings;
   const rows: Row[] = collection.collection.members.map((m) => ({ member: m, filing: filings.filings[m.slug ?? ""] }));
   const refreshed = new Date(meta.generated_at).toUTCString().replace(" GMT", " UTC");
 
@@ -29,11 +29,12 @@ export default function Page() {
           matches between the SEC issuer and the talent-network company are shown.
         </p>
         <p>
-          Last refreshed {refreshed}. Data: <a href="/api/collections/just-raised">collection JSON</a>
+          Last refreshed {refreshed}. Data: <a href={API.collection}>collection JSON</a> (the talent
+          network&apos;s collection schema)
           {" · "}
-          <a href="/api/just-raised/filings">filings JSON</a>
+          <a href={API.filings}>filings JSON</a>
           {" · "}
-          <a href="/api/just-raised.csv">CSV</a>
+          <a href={API.csv}>CSV</a>
           {" · "}
           <a href={REPO_URL}>source</a>
         </p>

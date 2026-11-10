@@ -1,9 +1,9 @@
-// The site and the API routes are thin readers over the files the nightly
-// pipeline writes to public/. They are imported at build time, and every
-// pipeline commit triggers a fresh deploy, so nothing is read at request time
-// and nothing can be down when a reviewer clicks the link.
-import collectionDoc from "@/public/just-raised.json";
-import filingsDoc from "@/public/filings.json";
+// The page is built from the same static files it links to as the API. The
+// nightly pipeline writes them to public/api/ and the workflow redeploys, so
+// nothing is read at request time and nothing can be down when a reviewer
+// clicks the link.
+import collectionDoc from "@/public/api/collections/just-raised.json";
+import filingsDoc from "@/public/api/just-raised/filings.json";
 
 export type Tier = "speedrun" | "a16z" | "market" | "universe";
 
@@ -73,7 +73,6 @@ export interface Meta {
 }
 
 export interface CollectionDoc {
-  meta: Meta;
   collection: {
     slug: string;
     title: string;
@@ -84,6 +83,10 @@ export interface CollectionDoc {
     roles: number;
     portfolio_members: number;
     members: Member[];
+    members_total: number;
+    page: number;
+    page_size: number;
+    total_pages: number;
   };
 }
 
@@ -95,5 +98,10 @@ export interface FilingsDoc {
 export const collection = collectionDoc as unknown as CollectionDoc;
 export const filings = filingsDoc as unknown as FilingsDoc;
 
-export const PAGE_SIZE = 100;
+export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+export const API = {
+  collection: `${BASE_PATH}/api/collections/just-raised.json`,
+  filings: `${BASE_PATH}/api/just-raised/filings.json`,
+  csv: `${BASE_PATH}/api/just-raised.csv`,
+};
 export const REPO_URL = "https://github.com/nickadesina/just-raised";

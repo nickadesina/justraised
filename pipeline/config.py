@@ -24,9 +24,13 @@ MATCHES = DATA / "matches.parquet"
 HISTORY = DATA / "history.parquet"
 STATE_JSON = DATA / "state.json"
 
-PUBLIC_COLLECTION = PUBLIC / "just-raised.json"
-PUBLIC_FILINGS = PUBLIC / "filings.json"
-PUBLIC_CSV = PUBLIC / "just-raised.csv"
+# GitHub Pages serves static files only, so the "endpoints" are files whose
+# paths mirror the API: /api/collections/just-raised.json is byte-for-byte the
+# response their GET /api/v1/collections/{slug} would return.
+PUBLIC_API = PUBLIC / "api"
+PUBLIC_COLLECTION = PUBLIC_API / "collections" / "just-raised.json"
+PUBLIC_FILINGS = PUBLIC_API / "just-raised" / "filings.json"
+PUBLIC_CSV = PUBLIC_API / "just-raised.csv"
 
 # --- talent network ---------------------------------------------------------
 TALENT_BASE = "https://speedrun-talent-network.com/api/v1"
@@ -77,7 +81,7 @@ GATE_MIN = 85
 # --- publish guardrail ------------------------------------------------------
 MAX_HIGH_DROP = 0.30  # refuse to publish if High matches fall more than this
 
-SITE_URL = os.environ.get("JUST_RAISED_SITE_URL", "https://justraised.nickadesina.com")
+SITE_URL = os.environ.get("JUST_RAISED_SITE_URL", "https://nickadesina.github.io/just-raised")
 
 
 def today() -> date:

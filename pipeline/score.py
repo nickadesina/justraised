@@ -7,11 +7,13 @@ amount is totalAmountSold when nonzero, else totalOfferingAmount (flagged
 dateOfFirstSale on the original notice; an amendment updates the amount and
 nothing else.
 
-Writes:
-  public/just-raised.json  the full ranked collection, in the talent network's
-                           /collections/{slug} member shape (routes page it)
-  public/filings.json      the Form D detail per slug (additive endpoint)
-  public/just-raised.csv   every column
+Writes (static files; GitHub Pages serves them as the API):
+  public/api/collections/just-raised.json  exactly the talent network's
+                           GET /api/v1/collections/{slug} response (page 0;
+                           just-raised/page-N.json if it ever passes 100)
+  public/api/just-raised/filings.json      the Form D detail per slug, plus run
+                           metadata (additive)
+  public/api/just-raised.csv               every column
   data/history.parquet     one row per company per night, so the hiring lag
                            can be measured instead of assumed
 
@@ -41,6 +43,7 @@ log = logging.getLogger(__name__)
 
 def collection_description() -> str:
     return f"Portfolio companies with a Form D in the last {config.WINDOW_DAYS} days, ranked by cash per open role"
+PAGE_SIZE = 100  # their collection page size
 MEMBER_FIELDS = (
     "rank", "name", "slug", "url", "tier", "cohort", "open_roles", "location", "blurb",
     "stage", "remote_policy", "investors", "functions", "cities", "logo",
@@ -150,10 +153,10 @@ def fetch_details(slugs: list[str]) -> dict[str, dict | None]:
 
 
 def _previous_high_count() -> int | None:
-    if not config.PUBLIC_COLLECTION.exists():
+    if not config.PUBLIC_FILINGS.exists():
         return None
     try:
-        return json.loads(config.PUBLIC_COLLECTION.read_text())["meta"]["high_matches"]
+        return json.loads(config.PUBLIC_FILINGS.read_text())["meta"]["high_matches"]
     except (KeyError, ValueError):
         return None
 
@@ -293,33 +296,52 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
         "members": len(rows),
         "lag_assumption": "Postings follow a raise by one to three months. Assumed, not yet measured.",
     }
-    collection_doc = {
-        "meta": meta,
-        "collection": {
-            "slug": "just-raised",
-            "title": "Just raised",
-            "description": collection_description(),
-            "group": "signals",
-            "url": config.SITE_URL,
-            "companies": len(rows),
-            "roles": sum(r["open_roles"] for r in rows),
-            "portfolio_members": sum(1 for r in rows if r["tier"] in config.PORTFOLIO_TIERS),
-            "members": [{k: r[k] for k in MEMBER_FIELDS} for r in rows],
-        },
+    members = [{k: r[k] for k in MEMBER_FIELDS} for r in rows]
+    header = {
+        "slug": "just-raised",
+        "title": "Just raised",
+        "description": collection_description(),
+        "group": "signals",
+        "url": config.SITE_URL,
+        "companies": len(rows),
+        "roles": sum(r["open_roles"] for r in rows),
+        "portfolio_members": sum(1 for r in rows if r["tier"] in config.PORTFOLIO_TIERS),
     }
+    total_pages = math.ceil(len(members) / PAGE_SIZE)
+    pages = []
+    for p in range(max(total_pages, 1)):
+        pages.append(
+            {
+                "collection": {
+                    **header,
+                    "members": members[p * PAGE_SIZE : (p + 1) * PAGE_SIZE],
+                    "members_total": len(members),
+                    "page": p,
+                    "page_size": PAGE_SIZE,
+                    "total_pages": total_pages,
+                }
+            }
+        )
     filing_fields = [k for k in rows[0] if k not in MEMBER_FIELDS or k in ("rank", "slug", "name", "tier")] if rows else []
     filings_doc = {
         "meta": meta,
         "filings": {r["slug"]: {k: r[k] for k in filing_fields} for r in rows},
     }
 
-    config.PUBLIC.mkdir(parents=True, exist_ok=True)
-    config.PUBLIC_COLLECTION.write_text(json.dumps(collection_doc, indent=1, ensure_ascii=False) + "\n")
+    for path in (config.PUBLIC_COLLECTION, config.PUBLIC_FILINGS, config.PUBLIC_CSV):
+        path.parent.mkdir(parents=True, exist_ok=True)
+    config.PUBLIC_COLLECTION.write_text(json.dumps(pages[0], indent=1, ensure_ascii=False) + "\n")
+    extra_dir = config.PUBLIC_COLLECTION.with_suffix("")
+    for old in extra_dir.glob("page-*.json") if extra_dir.exists() else []:
+        old.unlink()
+    for p, doc in enumerate(pages[1:], 1):
+        extra_dir.mkdir(exist_ok=True)
+        (extra_dir / f"page-{p}.json").write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
     config.PUBLIC_FILINGS.write_text(json.dumps(filings_doc, indent=1, ensure_ascii=False) + "\n")
     config.PUBLIC_CSV.write_text(to_csv(rows))
     _append_history(today, rows)
     log.info("score: %d companies published (%d High pairs in window)", len(rows), high_pairs_in_window)
-    return collection_doc
+    return pages[0]
 
 
 CSV_FIELDS = [

@@ -5,10 +5,13 @@ the SEC recently, ranked by how much they raised relative to how many roles they
 have open. It answers a question job boards don't: which companies have new
 money and haven't posted the roles yet.
 
-- Page: https://justraised.nickadesina.com
-- Collection endpoint (talent network schema): [`/api/collections/just-raised`](https://justraised.nickadesina.com/api/collections/just-raised)
-- Filing detail: [`/api/just-raised/filings`](https://justraised.nickadesina.com/api/just-raised/filings)
-- Spreadsheet: [`/api/just-raised.csv`](https://justraised.nickadesina.com/api/just-raised.csv)
+- Page: https://nickadesina.github.io/just-raised/
+- Collection (talent network schema): [`/api/collections/just-raised.json`](https://nickadesina.github.io/just-raised/api/collections/just-raised.json)
+- Filing detail: [`/api/just-raised/filings.json`](https://nickadesina.github.io/just-raised/api/just-raised/filings.json)
+- Spreadsheet: [`/api/just-raised.csv`](https://nickadesina.github.io/just-raised/api/just-raised.csv)
+
+Built as the "one idea, with a link" for the speedrun talent team's
+[Product Engineer](https://speedrun-talent-network.com/product-engineer/) role.
 
 Everything here is public data: SEC EDGAR and the
 [speedrun talent network API](https://speedrun-talent-network.com/developers).
@@ -104,9 +107,12 @@ dropped and why.
 
 ## Endpoints
 
-### `GET /api/collections/just-raised`
+The site is static (GitHub Pages), so each endpoint is a file the nightly run
+regenerates. GitHub Pages serves them with open CORS and a 10-minute cache.
 
-Returns exactly the talent network's `GET /api/v1/collections/{slug}` response,
+### `/api/collections/just-raised.json`
+
+Exactly the response the talent network's `GET /api/v1/collections/{slug}` returns,
 so the list can be mounted in their **signals** group without a translation
 layer. It is a strict subset of their schema: every key is one they define, and
 `scripts/check_schema.py --strict` checks it against their OpenAPI document in
@@ -120,21 +126,21 @@ CI.
 | `members[].rank` | Position by score |
 | `members[].name, slug, url, tier, cohort, open_roles, location, blurb, logo` | Passed through from their Company object |
 | `members[].stage, remote_policy, functions, cities, investors` | Passed through from their `speedrun-companies` and `a16z-portfolio` collections |
-| `members_total`, `page` (0-based), `page_size` (100), `total_pages` | Standard paging |
+| `members_total`, `page` (0-based), `page_size` (100), `total_pages` | Standard paging; past 100 members, later pages are `just-raised/page-N.json` |
 
-### `GET /api/just-raised/filings[?slug=]`
+### `/api/just-raised/filings.json`
 
-The Form D side, keyed by slug. This is additive: amount, first-sale date,
+The Form D side, keyed by slug, plus run metadata (window, formula, counts). This is additive: amount, first-sale date,
 filing URL, issuer, amendments, roles posted since the raise, score inputs, and
 the match rung. None of it fits their member schema.
 
-### `GET /api/just-raised.csv`
+### `/api/just-raised.csv`
 
 Every column, for a spreadsheet.
 
-All three follow the talent network's conventions: open CORS, a one-hour edge
-cache, `{error: {code, message}}` errors, and an optional `?source=` tag that is
-validated, echoed back, and logged.
+If the talent team mounts it, the collection file drops into their API as-is.
+Hosting it statically gives up one of their conventions: a `?source=` tag is
+accepted but not logged, because GitHub Pages keeps no request logs.
 
 ## Pipeline
 
@@ -146,13 +152,14 @@ pipeline/fetch_companies.py  talent network /companies + portfolio collections -
 pipeline/fetch_formd.py      EDGAR index (form.idx backfill, full-text search daily) -> data/formd_index.parquet
                              gated primary_doc.xml downloads, parsed          -> data/filings.parquet
 pipeline/match.py            filters, ladder, matches.yaml                    -> data/matches.parquet, review/*.csv
-pipeline/score.py            offerings, score, guardrail                      -> public/*.json, public/*.csv, data/history.parquet
+pipeline/score.py            offerings, score, guardrail                      -> public/api/*, data/history.parquet
 pipeline/run_all.py          all four, in order
 ```
 
-GitHub Actions runs `run_all` at 10:00 UTC (02:00 Pacific in winter) and commits
-the regenerated files. The push triggers the Vercel deploy. The Next.js app
-imports the JSON at build time, so the routes are thin readers.
+GitHub Actions runs `run_all` at 10:00 UTC (02:00 Pacific in winter), commits
+the regenerated files, and redeploys GitHub Pages (`.github/workflows/pages.yml`).
+The Next.js page is a static export built from the same JSON files it links
+to.
 
 **XML gate.** A 180-day backfill indexes about 31,600 Form D and D/A filings.
 `fetch_formd.py` downloads a filing's `primary_doc.xml` only if its index name
@@ -214,12 +221,15 @@ uv sync
 export SEC_USER_AGENT="Just Raised you@example.com"   # SEC fair access: name and contact
 uv run python -m pipeline.run_all
 uv run pytest
-npm ci && npm run build && npm start
-uv run --with jsonschema python scripts/check_schema.py http://localhost:3000/api/collections/just-raised --strict
+uv run --with jsonschema python scripts/check_schema.py public/api/collections/just-raised.json --strict
+npm ci && npm run build && npx serve out      # static site in out/
 ```
 
-For the nightly workflow, set `SEC_USER_AGENT` as a repository variable under
-Settings → Secrets and variables → Actions → Variables.
+One-time GitHub setup:
+
+- Settings → Pages → Source: **GitHub Actions**.
+- Settings → Secrets and variables → Actions → Variables: `SEC_USER_AGENT`
+  (name and contact email, required by SEC fair access).
 
 ## Shared package
 

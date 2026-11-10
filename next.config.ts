@@ -1,15 +1,14 @@
 import type { NextConfig } from "next";
 
+// Static export for GitHub Pages. A project site lives under /<repo>, so the
+// deploy workflow passes that prefix in NEXT_PUBLIC_BASE_PATH (empty locally
+// and on a custom domain).
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const nextConfig: NextConfig = {
-  // The CSV route reads public/just-raised.csv at request time; make sure the
-  // file ships with the serverless function.
-  outputFileTracingIncludes: {
-    "/api/just-raised.csv": ["./public/just-raised.csv"],
-  },
-  // Keep the pipeline's Python environment and data out of the function bundles.
-  outputFileTracingExcludes: {
-    "*": [".venv/**", "data/**", "packages/**", "review/**", "tests/**"],
-  },
+  output: "export",
+  basePath,
+  trailingSlash: false,
   poweredByHeader: false,
 };
 
