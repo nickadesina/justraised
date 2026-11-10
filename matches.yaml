@@ -1,0 +1,49 @@
+# Human match decisions. The nightly run applies these before scoring.
+#   confirm:   pin (cik, slug) as a High match, whatever the ladder says
+#   reject:    never match this issuer to this company
+#   block_cik: never match this issuer to anything
+#
+# review/medium.csv lists every pair the ladder could not decide. Check a row,
+# then copy its yaml_confirm or yaml_reject cell here. A pinned pair never
+# needs review again.
+#
+# SUGGESTED from the 2026-11-10 backfill: commented out until you check them.
+# The evidence is the Form D's related-persons list (directors and officers)
+# against the talent-network blurb. Uncomment what you agree with, then
+# `uv run python -m pipeline.run_all`.
+
+confirm:
+  # Town.com, Inc. (San Francisco) <- Town. Related persons: Jean-Denis Greze,
+  # Alex Rampell (a16z GP), Kirsten Green. $104.4M sold, first sale 2026-10-07.
+  # - {cik: "2046793", slug: town, note: "a16z GP on the Form D"}
+
+  # Stuut, Inc. (New York) <- Stuut (San Francisco on the network). Related
+  # persons include Seema Amble (a16z). $67.6M sold, first sale 2026-09-03.
+  # - {cik: "2045111", slug: stuut, note: "a16z partner on the Form D; NY address"}
+
+  # Mariana Minerals Co. (San Francisco) <- Mariana Minerals (Moab, UT on the
+  # network). Related persons include Erin Price-Wright (a16z). $310.5M sold,
+  # first sale 2026-07-22.
+  # - {cik: "2123886", slug: mariana-minerals, note: "a16z partner on the Form D"}
+
+  # Neighbor Storage, Inc. (Lehi, UT) <- Neighbor. Related persons include
+  # Joseph Woodbury (Neighbor's CEO). Only $52,661 sold: likely a small
+  # closing, check the filing before confirming.
+  # - {cik: "1712600", slug: neighbor, note: "CEO on the Form D"}
+
+  # Apex Technology, Inc. (Los Angeles) <- Apex Space. Related persons include
+  # Ian Cinnamon (Apex CEO) and Katherine Boyle (a16z GP). First sale
+  # 2026-04-10 is outside the 180-day window today, but pin it for next time.
+  # - {cik: "1952065", slug: apex-space, note: "CEO and a16z GP on the Form D"}
+
+reject:
+  # Bounce, LLC (Indianapolis, LLC formed 2025, $200K): not the luggage network.
+  # - {cik: "2071999", slug: bounce, note: "different company"}
+  # Founders Clubhouse LLC (Sacramento): not Clubhouse.
+  # - {cik: "2139590", slug: clubhouse, note: "different company"}
+  # Rasa World Group, Inc. (West Hollywood): not Rasa.
+  # - {cik: "2069649", slug: rasa, note: "different company"}
+  # Alchemy Cloud, Inc. ($1M): Alchemy's legal name is Alchemy Insights.
+  # - {cik: "1704188", slug: alchemy, note: "different company"}
+
+block_cik: []

@@ -1,0 +1,31 @@
+[project]
+name = "just-raised-pipeline"
+version = "0.1.0"
+description = "Nightly Form D -> talent network join behind Just Raised"
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = [
+    "edgar-names",
+    "httpx>=0.27",
+    "lxml>=5.2",
+    "polars>=1.10",
+    "pyyaml>=6.0",
+    "rapidfuzz>=3.9",
+]
+
+[dependency-groups]
+dev = ["jsonschema>=4.23", "pytest>=8.3"]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+edgar-names = { path = "packages/edgar_names", editable = true }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"

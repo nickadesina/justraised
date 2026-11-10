@@ -1,0 +1,144 @@
+:root {
+  --ink: #000;
+  --paper: #fff;
+  --muted: #555;
+  --rule: #ddd;
+  --accent: #1a4fd6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Times New Roman", Times, ui-serif, Georgia, serif;
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 16px 64px;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: normal;
+  margin: 0 0 12px;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.lede {
+  max-width: 68ch;
+  margin: 0 0 28px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  align-items: baseline;
+  margin: 0 0 12px;
+  font-size: 15px;
+}
+
+.controls label {
+  display: inline-flex;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.controls select,
+.controls input {
+  font: inherit;
+}
+
+.count {
+  color: var(--muted);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border-top: 1px solid var(--ink);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+th,
+td {
+  padding: 7px 10px 7px 0;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+
+th {
+  font-weight: normal;
+  color: var(--muted);
+  border-bottom: 1px solid var(--ink);
+}
+
+th button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+th[aria-sort] button {
+  color: var(--ink);
+}
+
+td.num,
+th.num {
+  text-align: right;
+}
+
+td.company {
+  white-space: normal;
+  min-width: 160px;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.empty {
+  padding: 24px 0;
+  color: var(--muted);
+}
+
+footer {
+  margin-top: 28px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+footer p {
+  margin: 4px 0;
+}

@@ -1,0 +1,73 @@
+# Nightly refresh. Runs the pipeline, then commits the regenerated files;
+# the push to main triggers the Vercel deploy.
+#
+# GitHub cron is UTC only: 10:00 UTC is 02:00 Pacific in winter (PST) and
+# 03:00 in summer (PDT).
+#
+# Set a repository variable SEC_USER_AGENT (Settings > Secrets and variables >
+# Actions > Variables), e.g. "Just Raised you@example.com". SEC fair-access
+# rules require a contact address in the User-Agent.
+name: nightly
+
+on:
+  schedule:
+    - cron: "0 10 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Publish even if High matches dropped more than 30%"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nightly
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Require SEC_USER_AGENT
+        run: |
+          if [ -z "$SEC_USER_AGENT" ]; then
+            echo "::error::Set the SEC_USER_AGENT repository variable (name and contact email)."
+            exit 1
+          fi
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+          enable-cache: true
+
+      # Raw SEC downloads. Parsed rows are committed in data/filings.parquet, so
+      # a cold cache only costs re-downloading form.idx for the current quarter.
+      - uses: actions/cache@v4
+        with:
+          path: data/cache
+          key: sec-cache-${{ github.run_id }}
+          restore-keys: sec-cache-
+
+      - run: uv sync --frozen
+
+      - name: Run pipeline
+        run: uv run python -m pipeline.run_all ${{ inputs.force && '--force' || '' }}
+
+      - name: Commit refreshed data
+        run: |
+          git config user.name "just-raised-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public data review
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          git commit -m "Nightly refresh $(date -u +%Y-%m-%d)"
+          git push

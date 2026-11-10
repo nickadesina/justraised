@@ -1,0 +1,40 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+          enable-cache: true
+      - run: uv sync --frozen
+      - run: uv run pytest -q
+
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build
+      - name: Collection endpoint validates against the talent network's OpenAPI
+        run: |
+          npm run start -- -p 3000 &
+          for i in $(seq 1 30); do curl -sf http://localhost:3000/api/collections/just-raised >/dev/null && break; sleep 1; done
+          uv run --no-project --with jsonschema python scripts/check_schema.py http://localhost:3000/api/collections/just-raised --strict
+          curl -sf "http://localhost:3000/api/just-raised/filings?source=ci" > /dev/null
+          curl -sf "http://localhost:3000/api/just-raised.csv" | head -1

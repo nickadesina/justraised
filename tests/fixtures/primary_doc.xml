@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<edgarSubmission>
+
+    <schemaVersion>X0708</schemaVersion>
+
+    <submissionType>D</submissionType>
+
+    <testOrLive>LIVE</testOrLive>
+
+    <primaryIssuer>
+        <cik>0002164423</cik>
+        <entityName>D'LUX Storage, Inc.</entityName>
+        <issuerAddress>
+            <street1>105 N. FIRST STREET</street1>
+            <street2>UNIT #547</street2>
+            <city>SAN JOSE</city>
+            <stateOrCountry>CA</stateOrCountry>
+            <stateOrCountryDescription>CALIFORNIA</stateOrCountryDescription>
+            <zipCode>95106</zipCode>
+        </issuerAddress>
+        <issuerPhoneNumber>14084993289</issuerPhoneNumber>
+        <jurisdictionOfInc>DELAWARE</jurisdictionOfInc>
+        <issuerPreviousNameList>
+            <value>None</value>
+        </issuerPreviousNameList>
+        <edgarPreviousNameList>
+            <value>None</value>
+        </edgarPreviousNameList>
+        <entityType>Corporation</entityType>
+        <yearOfInc>
+            <withinFiveYears>true</withinFiveYears>
+            <value>2025</value>
+        </yearOfInc>
+    </primaryIssuer>
+
+    <relatedPersonsList>
+        <relatedPersonInfo>
+            <relatedPersonName>
+                <firstName>Scott</firstName>
+                <lastName>Slinker</lastName>
+            </relatedPersonName>
+            <relatedPersonAddress>
+                <street1>1713 Little Orchard St</street1>
+                <street2>Suite A &amp; B</street2>
+                <city>San Jose</city>
+                <stateOrCountry>CA</stateOrCountry>
+                <stateOrCountryDescription>CALIFORNIA</stateOrCountryDescription>
+                <zipCode>95125</zipCode>
+            </relatedPersonAddress>
+            <relatedPersonRelationshipList>
+                <relationship>Executive Officer</relationship>
+                <relationship>Director</relationship>
+            </relatedPersonRelationshipList>
+            <relationshipClarification></relationshipClarification>
+        </relatedPersonInfo>
+        <relatedPersonInfo>
+            <relatedPersonName>
+                <firstName>Tony</firstName>
+                <lastName>Shah</lastName>
+            </relatedPersonName>
+            <relatedPersonAddress>
+                <street1>1713 Little Orchard St</street1>
+                <street2>Suite A &amp; B</street2>
+                <city>San Jose</city>
+                <stateOrCountry>CA</stateOrCountry>
+                <stateOrCountryDescription>CALIFORNIA</stateOrCountryDescription>
+                <zipCode>95125</zipCode>
+            </relatedPersonAddress>
+            <relatedPersonRelationshipList>
+                <relationship>Executive Officer</relationship>
+            </relatedPersonRelationshipList>
+            <relationshipClarification></relationshipClarification>
+        </relatedPersonInfo>
+        <relatedPersonInfo>
+            <relatedPersonName>
+                <firstName>Joseph</firstName>
+                <lastName>Salamon</lastName>
+            </relatedPersonName>
+            <relatedPersonAddress>
+                <street1>1713 Little Orchard St</street1>
+                <street2>Suite A &amp; B</street2>
+                <city>San Jose</city>
+                <stateOrCountry>CA</stateOrCountry>
+                <stateOrCountryDescription>CALIFORNIA</stateOrCountryDescription>
+                <zipCode>95125</zipCode>
+            </relatedPersonAddress>
+            <relatedPersonRelationshipList>
+                <relationship>Executive Officer</relationship>
+            </relatedPersonRelationshipList>
+            <relationshipClarification></relationshipClarification>
+        </relatedPersonInfo>
+        <relatedPersonInfo>
+            <relatedPersonName>
+                <firstName>Adam</firstName>
+                <lastName>Rauwerdink</lastName>
+            </relatedPersonName>
+            <relatedPersonAddress>
+                <street1>1713 Little Orchard St</street1>
+                <street2>Suite A &amp; B</street2>
+                <city>San Jose</city>
+                <stateOrCountry>CA</stateOrCountry>
+                <stateOrCountryDescription>CALIFORNIA</stateOrCountryDescription>
+                <zipCode>95125</zipCode>
+            </relatedPersonAddress>
+            <relatedPersonRelationshipList>
+                <relationship>Executive Officer</relationship>
+            </relatedPersonRelationshipList>
+            <relationshipClarification></relationshipClarification>
+        </relatedPersonInfo>
+    </relatedPersonsList>
+
+    <offeringData>
+        <industryGroup>
+            <industryGroupType>Other</industryGroupType>
+        </industryGroup>
+        <issuerSize>
+            <revenueRange>Decline to Disclose</revenueRange>
+        </issuerSize>
+        <federalExemptionsExclusions>
+            <item>06c</item>
+        </federalExemptionsExclusions>
+        <typeOfFiling>
+            <newOrAmendment>
+                <isAmendment>false</isAmendment>
+            </newOrAmendment>
+            <dateOfFirstSale>
+                <value>2026-10-26</value>
+            </dateOfFirstSale>
+        </typeOfFiling>
+        <durationOfOffering>
+            <moreThanOneYear>false</moreThanOneYear>
+        </durationOfOffering>
+        <typesOfSecuritiesOffered>
+            <isEquityType>true</isEquityType>
+        </typesOfSecuritiesOffered>
+        <businessCombinationTransaction>
+            <isBusinessCombinationTransaction>false</isBusinessCombinationTransaction>
+            <clarificationOfResponse></clarificationOfResponse>
+        </businessCombinationTransaction>
+        <minimumInvestmentAccepted>0</minimumInvestmentAccepted>
+        <salesCompensationList></salesCompensationList>
+        <offeringSalesAmounts>
+            <totalOfferingAmount>5000002</totalOfferingAmount>
+            <totalAmountSold>249993</totalAmountSold>
+            <totalRemaining>4750009</totalRemaining>
+            <clarificationOfResponse></clarificationOfResponse>
+        </offeringSalesAmounts>
+        <investors>
+            <hasNonAccreditedInvestors>false</hasNonAccreditedInvestors>
+            <totalNumberAlreadyInvested>1</totalNumberAlreadyInvested>
+        </investors>
+        <salesCommissionsFindersFees>
+            <salesCommissions>
+                <dollarAmount>0</dollarAmount>
+            </salesCommissions>
+            <findersFees>
+                <dollarAmount>0</dollarAmount>
+            </findersFees>
+            <clarificationOfResponse></clarificationOfResponse>
+        </salesCommissionsFindersFees>
+        <useOfProceeds>
+            <grossProceedsUsed>
+                <dollarAmount>0</dollarAmount>
+            </grossProceedsUsed>
+            <clarificationOfResponse></clarificationOfResponse>
+        </useOfProceeds>
+        <signatureBlock>
+            <authorizedRepresentative>false</authorizedRepresentative>
+            <signature>
+                <issuerName>D'LUX Storage, Inc.</issuerName>
+                <signatureName>Adam Rauwerdink</signatureName>
+                <nameOfSigner>Adam Rauwerdink</nameOfSigner>
+                <signatureTitle>CFO</signatureTitle>
+                <signatureDate>2026-11-09</signatureDate>
+            </signature>
+        </signatureBlock>
+    </offeringData>
+</edgarSubmission>

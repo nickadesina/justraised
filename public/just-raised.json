@@ -1,0 +1,188 @@
+{
+ "meta": {
+  "generated_at": "2026-11-10T06:21:18Z",
+  "run_date": "2026-11-10",
+  "window_days": 180,
+  "half_life_days": 45,
+  "formula": "log10(amount + 1) / (open_roles + 1) * 0.5 ^ (days_since_first_sale / 45)",
+  "high_matches": 6,
+  "members": 5,
+  "lag_assumption": "Postings follow a raise by one to three months. Assumed, not yet measured."
+ },
+ "collection": {
+  "slug": "just-raised",
+  "title": "Just raised",
+  "description": "Portfolio companies with a Form D in the last 180 days, ranked by cash per open role",
+  "group": "signals",
+  "url": "https://justraised.nickadesina.com",
+  "companies": 5,
+  "roles": 471,
+  "portfolio_members": 5,
+  "members": [
+   {
+    "rank": 1,
+    "name": "Sunflower",
+    "slug": "sunflower",
+    "url": "https://speedrun-talent-network.com/companies/sunflower",
+    "tier": "speedrun",
+    "cohort": "SR004",
+    "open_roles": 2,
+    "location": "San Francisco, California",
+    "blurb": "We're building an AI-enabled toolkit to keep you sober, for the 1.2 billion humans who struggle with addiction.",
+    "stage": "seed",
+    "remote_policy": "remote-first",
+    "investors": [
+     "Andreessen Horowitz"
+    ],
+    "functions": [
+     "other"
+    ],
+    "cities": [],
+    "logo": "https://cdn.a16zspeedrun.com/platform/companies/5ee2ce76-6380-444e-ba9f-882f87388e17/logos/sunflower_icon_256x256.png"
+   },
+   {
+    "rank": 2,
+    "name": "Armadin",
+    "slug": "armadin",
+    "url": "https://speedrun-talent-network.com/companies/armadin",
+    "tier": "a16z",
+    "cohort": null,
+    "open_roles": 26,
+    "location": "Palo Alto, CA",
+    "blurb": "Offensive security run by AI agents: specialized agents probe a company's systems and test whether weaknesses chain into real attack paths. Founded by Mandiant founder Kevin Mandia.",
+    "stage": "series-a",
+    "remote_policy": "hybrid-friendly",
+    "investors": [],
+    "functions": [
+     "engineering",
+     "operations",
+     "other",
+     "research",
+     "sales"
+    ],
+    "cities": [
+     "Mexico",
+     "Palo Alto",
+     "Washington"
+    ],
+    "logo": "https://pbs.twimg.com/profile_images/2031294777694760962/jmspnYnW_400x400.png"
+   },
+   {
+    "rank": 3,
+    "name": "Primitive Labs",
+    "slug": "primitive-labs",
+    "url": "https://speedrun-talent-network.com/companies/primitive-labs",
+    "tier": "speedrun",
+    "cohort": "SR007",
+    "open_roles": 3,
+    "location": "San Francisco, California",
+    "blurb": "Primitive Labs is building the behavioral intelligence layer for AI, modeling human behavior so companies can predict how people will respond to software and agents before they launch.",
+    "stage": "seed",
+    "remote_policy": "onsite-leaning",
+    "investors": [],
+    "functions": [
+     "engineering",
+     "research"
+    ],
+    "cities": [
+     "San Francisco"
+    ],
+    "logo": "https://cdn.a16zspeedrun.com/platform/companies/f3988b15-bf80-4233-9867-a345969c77fc/logos/cropped_i8mE99A.png"
+   },
+   {
+    "rank": 4,
+    "name": "Exa",
+    "slug": "exa",
+    "url": "https://speedrun-talent-network.com/companies/exa",
+    "tier": "a16z",
+    "cohort": null,
+    "open_roles": 66,
+    "location": "San Francisco, California",
+    "blurb": "Search API built for AI agents: real-time web search, crawling, and deep research from one endpoint.",
+    "stage": "growth",
+    "remote_policy": "onsite-leaning",
+    "investors": [
+     "Andreessen Horowitz",
+     "Lightspeed"
+    ],
+    "functions": [
+     "design",
+     "engineering",
+     "marketing",
+     "operations",
+     "product",
+     "research",
+     "sales"
+    ],
+    "cities": [
+     "India",
+     "London",
+     "New York",
+     "New York / San Francisco",
+     "San Francisco",
+     "Singapore",
+     "Singapore / India / Sydney",
+     "Sydney",
+     "Zurich"
+    ],
+    "logo": "https://app.ashbyhq.com/api/images/org-theme-logo/528e5060-c438-49f0-a3b6-ba1f0417bbd6/a872c1ea-8c84-4d88-abb0-3366a3c1b3b5/142124b6-e130-4cf6-8b8c-113a4ef6ed88.png"
+   },
+   {
+    "rank": 5,
+    "name": "Harvey",
+    "slug": "harvey",
+    "url": "https://speedrun-talent-network.com/companies/harvey",
+    "tier": "a16z",
+    "cohort": null,
+    "open_roles": 374,
+    "location": "San Francisco, California",
+    "blurb": "AI agents that execute legal work end-to-end: contract analysis, due diligence, compliance, and litigation, for law firms and corporate legal teams.",
+    "stage": "growth",
+    "remote_policy": "onsite-leaning",
+    "investors": [
+     "Andreessen Horowitz",
+     "DataPower Ventures",
+     "GV",
+     "Kleiner Perkins",
+     "Prospect",
+     "Sequoia Capital"
+    ],
+    "functions": [
+     "design",
+     "engineering",
+     "marketing",
+     "operations",
+     "other",
+     "product",
+     "research",
+     "sales"
+    ],
+    "cities": [
+     "Bengaluru",
+     "Boston",
+     "Chicago",
+     "Dallas",
+     "Dublin",
+     "Germany",
+     "London",
+     "Madrid",
+     "Mexico",
+     "Milan",
+     "Munich",
+     "New York",
+     "Paris",
+     "Quebec",
+     "San Francisco",
+     "Seoul",
+     "Singapore",
+     "Stockholm",
+     "Sydney",
+     "Tokyo",
+     "Toronto",
+     "Washington DC"
+    ],
+    "logo": "https://www.harvey.ai/icons/brand-favicon.png"
+   }
+  ]
+ }
+}

@@ -1,0 +1,17 @@
+# node / next
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+.vercel
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# raw SEC downloads (parsed rows live in data/filings.parquet)
+data/cache/
+
+.DS_Store
