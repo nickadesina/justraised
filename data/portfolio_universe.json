@@ -1,7 +1,7 @@
 {
- "fetched_at": "2026-11-10T08:18:22Z",
+ "fetched_at": "2026-11-10T17:32:00Z",
  "on_network": 340,
- "off_network": 1106,
+ "off_network": 1107,
  "companies": [
   {
    "slug": "abridge",
@@ -630,7 +630,7 @@
    "url": "https://speedrun-talent-network.com/companies/anduril-industries",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 2580,
+   "open_roles": 2575,
    "location": "Costa Mesa, California",
    "industries": [
     "American Dynamism",
@@ -1652,7 +1652,7 @@
    "blurb": "AI observability platform for teams shipping agents: trace production traffic, run evals, and catch regressions before they reach users.",
    "logo": "https://www.braintrust.dev/icon180.png?v=2",
    "stage": "growth",
-   "remote_policy": null,
+   "remote_policy": "onsite-leaning",
    "functions": [
     "design",
     "engineering",
@@ -1755,7 +1755,7 @@
    "blurb": "The most advanced AI character creator. Unleash AI bots that talk, feel, and capture their adventures with selfies.",
    "logo": "https://dzh2zima160vx.cloudfront.net/logo/088e852b4ed1db261d8072d1b2853c77_208_160?Expires=1861920000&Signature=VxMqeEQSbQl9KvFqQK9DGmslzx~6WKpRDH~gSzyjcxZlLrM6gaMP~x50HR4WaX~IubJBJ9PsJmaYEIImGr7APN1JaP5GTksJQFXusVgU8Fyn1ZKfD0JCpCA-wGQ7Ybla-LTo7fJvvjiqB0mA22snyh436H56VbVPBxP9IkH0efCcPyJ6SbI7j4B3Enr0jRpJ~2iIJZh03KCVVvXvi20ShPe2AqHVERTjAlIV0t84dGNN7qnsaZYO6NW7zWx1sZQqcKWetNigyrIpTzdiUdV7TKYCcA2ZpuHzemT2O7tD1jzjjyuHPiQjYUKKUo7ONHMUezPqyRN9HJq8AyjMIxy1Mg__&Key-Pair-Id=APKAII5OVX4LZ3WT422Q",
    "stage": "series-b",
-   "remote_policy": "hybrid-friendly",
+   "remote_policy": "onsite-leaning",
    "functions": [
     "design",
     "engineering",
@@ -2603,7 +2603,7 @@
    "url": "https://speedrun-talent-network.com/companies/cursor",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 95,
+   "open_roles": 115,
    "location": "San Francisco, CA",
    "industries": [
     "AI",
@@ -3078,7 +3078,7 @@
    "url": "https://speedrun-talent-network.com/companies/elevenlabs",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 128,
+   "open_roles": 129,
    "location": "New York, New York",
    "industries": [
     "Consumer"
@@ -3117,7 +3117,6 @@
     "Saudi Arabia",
     "Singapore",
     "Sweden",
-    "Switzerland",
     "UAE",
     "United Kingdom",
     "United States",
@@ -3625,7 +3624,7 @@
    "url": "https://speedrun-talent-network.com/companies/figma",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 142,
+   "open_roles": 143,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -4531,7 +4530,7 @@
    "url": "https://speedrun-talent-network.com/companies/harvey",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 376,
+   "open_roles": 377,
    "location": "San Francisco, California",
    "industries": [
     "AI"
@@ -5557,7 +5556,7 @@
    "url": "https://speedrun-talent-network.com/companies/kalshi",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 35,
+   "open_roles": 36,
    "location": "New York, New York",
    "industries": [
     "Fintech"
@@ -5870,7 +5869,7 @@
    "url": "https://speedrun-talent-network.com/companies/kong",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 107,
+   "open_roles": 109,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -6285,7 +6284,7 @@
    "url": "https://speedrun-talent-network.com/companies/luma-ai",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 16,
+   "open_roles": 17,
    "location": "San Francisco Bay Area",
    "industries": [
     "Consumer"
@@ -6306,6 +6305,7 @@
     "London",
     "Los Angeles",
     "Munich",
+    "New York",
     "Redwood City",
     "Riyadh"
    ],
@@ -7753,7 +7753,7 @@
    "url": "https://speedrun-talent-network.com/companies/opengov",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 90,
+   "open_roles": 92,
    "location": "Chicago, Illinois",
    "industries": [
     "American Dynamism",
@@ -7863,7 +7863,7 @@
    "blurb": "Orderful is the fastest way to trade EDI. We’re the first modern EDI platform to embed AI directly into workflows—automating rule writing, reducing errors, and making integrations effortless. By...",
    "logo": "https://orderful.com/apple-touch-icon.png",
    "stage": "growth",
-   "remote_policy": null,
+   "remote_policy": "remote-first",
    "functions": [
     "sales"
    ],
@@ -8345,7 +8345,7 @@
    "url": "https://speedrun-talent-network.com/companies/plaid",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 141,
+   "open_roles": 139,
    "location": "San Francisco, California",
    "industries": [
     "Fintecha16z"
@@ -9118,7 +9118,7 @@
    "url": "https://speedrun-talent-network.com/companies/roblox",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 272,
+   "open_roles": 273,
    "location": "San Mateo, CA",
    "industries": [
     "Games",
@@ -9221,7 +9221,9 @@
    "cities": [
     "Bucharest",
     "London",
+    "Palo Alto",
     "San Francisco",
+    "San Jose",
     "United Kingdom",
     "United States"
    ],
@@ -9579,7 +9581,7 @@
    "url": "https://speedrun-talent-network.com/companies/shield-ai",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 660,
+   "open_roles": 672,
    "location": "San Diego, California",
    "industries": [
     "American Dynamism",
@@ -10335,7 +10337,7 @@
    "url": "https://speedrun-talent-network.com/companies/sprinter-health",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 57,
+   "open_roles": 58,
    "location": "San Francisco, California",
    "industries": [
     "Bio Health"
@@ -10750,7 +10752,7 @@
    "url": "https://speedrun-talent-network.com/companies/talkiatry",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 186,
+   "open_roles": 187,
    "location": "New York, New York",
    "industries": [
     "Bio Health",
@@ -11012,7 +11014,7 @@
    "blurb": "Managed detection and response: AI investigates every security alert inside a company's Google SecOps or Microsoft Sentinel, and a named human analyst makes the call.",
    "logo": "https://cdn.prod.website-files.com/6ac68eee248a33cb205ee5d5/6ad26b9f84e6cf3f5744a7bc_tenex%20favicon.png",
    "stage": "growth",
-   "remote_policy": "onsite-leaning",
+   "remote_policy": "hybrid-friendly",
    "functions": [
     "engineering",
     "marketing",
@@ -11956,7 +11958,7 @@
    "url": "https://speedrun-talent-network.com/companies/volta",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 44,
+   "open_roles": 57,
    "location": "Palo Alto, California",
    "industries": [
     "AI"
@@ -11978,6 +11980,7 @@
     "California",
     "Europe",
     "Helsinki",
+    "Ireland",
     "London",
     "Netherlands",
     "New York",
@@ -12298,7 +12301,7 @@
    "url": "https://speedrun-talent-network.com/companies/zipline",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 345,
+   "open_roles": 344,
    "location": "South San Francisco, CA",
    "industries": [
     "American Dynamism",
@@ -12417,6 +12420,24 @@
     "a16z:zus-health"
    ],
    "website": "https://zushealth.com/"
+  },
+  {
+   "slug": "a16z:general-translation",
+   "name": "General Translation",
+   "tier": "a16z",
+   "on_network": false,
+   "location": null,
+   "blurb": "General Translation provides AI-powered localization software that helps developers translate apps, websites, and documentation, using shared product context and glossaries to keep translations consistent.",
+   "url": "https://a16z.com/companies/general-translation/",
+   "website": "https://generaltranslation.com",
+   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/11/logo_001Up00000S7c6rIAB-20261109235457.svg",
+   "focus_areas": [
+    "Infra"
+   ],
+   "first_funded": "2026-11-10 00:00:00",
+   "also": [
+    "a16z:general-translation"
+   ]
   },
   {
    "slug": "a16z:phaze",
@@ -19318,6 +19339,25 @@
    ]
   },
   {
+   "slug": "a16z:titus",
+   "name": "Titus",
+   "tier": "a16z",
+   "on_network": false,
+   "location": null,
+   "blurb": "Titus is the payment platform built specifically for the real estate industry. We’ve created a new checkout experience for service providers who help prepare homes for sale, with the unique ability to defer costs until the close of escrow. This drives larger cart sizes and higher conversion rates for providers, while helping agents and homeowners maximize sale prices.",
+   "url": "https://a16z.com/companies/titus/",
+   "website": "https://www.gotitus.com/",
+   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2025/12/logo_0011E00001ibBwiQAE-20251205210343.svg",
+   "focus_areas": [
+    "Consumer",
+    "Fintech"
+   ],
+   "first_funded": "2022-04-14 00:00:00",
+   "also": [
+    "a16z:titus"
+   ]
+  },
+  {
    "slug": "a16z:tlon",
    "name": "Tlon",
    "tier": "a16z",
@@ -22999,16 +23039,6 @@
   {
    "slug": "a16z:gamebeast",
    "name": "Gamebeast",
-   "tier": "a16z",
-   "on_network": false,
-   "location": null,
-   "blurb": null,
-   "url": null,
-   "website": null
-  },
-  {
-   "slug": "a16z:general-translation",
-   "name": "General Translation",
    "tier": "a16z",
    "on_network": false,
    "location": null,
