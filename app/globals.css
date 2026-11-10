@@ -44,6 +44,12 @@ a:hover {
   text-decoration: underline;
 }
 
+h2 {
+  font-size: 22px;
+  font-weight: normal;
+  margin: 40px 0 8px;
+}
+
 .lede {
   max-width: 68ch;
   margin: 0 0 28px;

@@ -122,3 +122,57 @@ def test_parse_primary_doc():
     assert rec["date_of_first_sale"] == date(2026, 10, 26)
     assert rec["total_offering_amount"] == 5000002 and rec["total_amount_sold"] == 249993
     assert "Slinker" in rec["related_surnames"]
+
+
+# --- wider portfolio and the a16z-person rung --------------------------------
+
+from pipeline.fetch_portfolio import build_universe
+from pipeline.match import person_key
+
+PEOPLE = frozenset({person_key("Erin Price-Wright"), person_key("Ben Horowitz")})
+
+
+def test_person_key_normalizes_form_d_names():
+    assert person_key("Schuyler (Baker) Tilney") == "schuyler tilney"
+    assert person_key("Erin Price-Wright") == person_key("ERIN PRICE WRIGHT".replace(" WRIGHT", "-WRIGHT"))
+    assert person_key("Cher") == ""
+
+
+def _off(name, slug):
+    return {"slug": slug, "name": name, "tier": "a16z", "location": None, "blurb": "", "on_network": False}
+
+
+def test_off_network_exact_name_needs_corroboration():
+    comps = _prep_companies([_off("Relay", "a16z:relay")])
+    best = ladder({"entity_name": "Relay, Inc.", "state": "NY", "related_persons": ["Pat Smith"]}, comps, PEOPLE)[0]
+    assert best.confidence == MEDIUM and "off-network" in best.notes[0]
+
+
+def test_a16z_person_promotes_off_network_match():
+    comps = _prep_companies([_off("Databricks", "a16z:databricks")])
+    f = {"entity_name": "Databricks, Inc.", "state": "CA", "related_persons": ["Ali Ghodsi", "Ben Horowitz"]}
+    best = ladder(f, comps, PEOPLE)[0]
+    assert (best.confidence, best.a16z_person) == (HIGH, "Ben Horowitz")
+
+
+def test_a16z_person_promotes_location_conflict():
+    comps = _prep_companies([{"slug": "mariana-minerals", "name": "Mariana Minerals", "tier": "a16z",
+                              "location": "Moab, Utah", "blurb": ""}])
+    f = {"entity_name": "Mariana Minerals Co.", "state": "CA", "related_persons": ["Erin Price-Wright"]}
+    assert ladder(f, comps, PEOPLE)[0].confidence == HIGH
+    f["related_persons"] = ["Someone Else"]
+    assert ladder(f, comps, PEOPLE)[0].confidence == MEDIUM
+
+
+def test_a16z_person_does_not_rescue_low():
+    comps = _prep_companies([{"slug": "modal", "name": "Modal", "tier": "a16z", "location": "New York, NY", "blurb": ""}])
+    f = {"entity_name": "Modal Health Group Inc", "state": "TX", "related_persons": ["Ben Horowitz"]}
+    assert [c for c in ladder(f, comps, PEOPLE) if c.slug == "modal"][0].confidence == LOW
+
+
+def test_universe_folds_duplicates_into_network_entry():
+    network = [{"slug": "harvey", "name": "Harvey", "tier": "a16z"}]
+    extra = [_off("Harvey", "a16z:harvey") | {"website": "https://harvey.ai"}, _off("Databricks", "a16z:databricks")]
+    uni = build_universe(network, extra)
+    assert [c["slug"] for c in uni] == ["harvey", "a16z:databricks"]
+    assert uni[0]["on_network"] is True and uni[0]["website"] == "https://harvey.ai"

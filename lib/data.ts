@@ -59,6 +59,18 @@ export interface Filing {
   days_to_first_post: number | null;
   match_rung: string;
   match_confidence: string;
+  a16z_person: string | null;
+  on_network: boolean;
+}
+
+// A portfolio company (a16z.com or speedrun.a16z.com) with a matched Form D
+// that is not on the talent network, so it has no open-role count.
+export interface OffNetworkFiling extends Omit<Filing, "roles_since_first_sale" | "first_post_since" | "days_to_first_post" | "stage_label" | "size_label"> {
+  url: string | null;
+  website: string | null;
+  location: string | null;
+  blurb: string | null;
+  cohort: string | null;
 }
 
 export interface Meta {
@@ -69,6 +81,7 @@ export interface Meta {
   formula: string;
   high_matches: number;
   members: number;
+  off_network: number;
   lag_assumption: string;
 }
 
@@ -93,6 +106,7 @@ export interface CollectionDoc {
 export interface FilingsDoc {
   meta: Meta;
   filings: Record<string, Filing>;
+  off_network: Record<string, OffNetworkFiling>;
 }
 
 export const collection = collectionDoc as unknown as CollectionDoc;

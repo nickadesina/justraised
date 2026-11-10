@@ -1,0 +1,590 @@
+{
+ "fetched_at": "2026-11-10T07:31:51Z",
+ "people": [
+  {
+   "slug": "abhishek-sinha",
+   "name": "Abhishek Sinha",
+   "role": "Investing"
+  },
+  {
+   "slug": "adam-cespedes-zaman",
+   "name": "Adam Cespedes-Zaman",
+   "role": "Growth Advisory"
+  },
+  {
+   "slug": "alex-immerman",
+   "name": "Alex Immerman",
+   "role": "Investing"
+  },
+  {
+   "slug": "alex-rampell",
+   "name": "Alex Rampell",
+   "role": "Investing"
+  },
+  {
+   "slug": "alonso-garcia",
+   "name": "Alonso Garcia",
+   "role": "Investing"
+  },
+  {
+   "slug": "andrew-chen",
+   "name": "Andrew Chen",
+   "role": "Investing"
+  },
+  {
+   "slug": "andy-baker",
+   "name": "Andy Baker",
+   "role": "Global Affairs, Special Advisors"
+  },
+  {
+   "slug": "andy-mccall",
+   "name": "Andy McCall",
+   "role": "Investing"
+  },
+  {
+   "slug": "angela-strange",
+   "name": "Angela Strange",
+   "role": "Investing"
+  },
+  {
+   "slug": "anish-acharya",
+   "name": "Anish Acharya",
+   "role": "Investing"
+  },
+  {
+   "slug": "anjney-midha",
+   "name": "Anjney Midha",
+   "role": "Investing"
+  },
+  {
+   "slug": "asaf-ezra",
+   "name": "Asaf Ezra",
+   "role": "Investing"
+  },
+  {
+   "slug": "ben-horowitz",
+   "name": "Ben Horowitz",
+   "role": "Investing"
+  },
+  {
+   "slug": "ben-portney",
+   "name": "Ben Portney",
+   "role": "Investing"
+  },
+  {
+   "slug": "bill-chen",
+   "name": "Bill Chen",
+   "role": "Investing"
+  },
+  {
+   "slug": "bill-krause",
+   "name": "Bill Krause",
+   "role": "Board Partners"
+  },
+  {
+   "slug": "bing-wong",
+   "name": "Bing Wong",
+   "role": "Investing"
+  },
+  {
+   "slug": "bob-swan",
+   "name": "Bob Swan",
+   "role": "Growth Advisory, Investing"
+  },
+  {
+   "slug": "brian-roberts",
+   "name": "Brian Roberts",
+   "role": "Investing"
+  },
+  {
+   "slug": "bryan-fenton",
+   "name": "Gen. (Ret.) Bryan Fenton",
+   "role": "Special Advisors"
+  },
+  {
+   "slug": "carilu-dietrich",
+   "name": "Carilu Dietrich",
+   "role": "Growth Advisory"
+  },
+  {
+   "slug": "caroline-goggins",
+   "name": "Caroline Goggins",
+   "role": "Investing"
+  },
+  {
+   "slug": "chris-dixon",
+   "name": "Chris Dixon",
+   "role": "Investing"
+  },
+  {
+   "slug": "chris-schnabl",
+   "name": "Chris Schnabl",
+   "role": "Investing"
+  },
+  {
+   "slug": "christian-keil",
+   "name": "Christian Keil",
+   "role": "Investing"
+  },
+  {
+   "slug": "christine-cheng",
+   "name": "Christine Cheng",
+   "role": "Investing"
+  },
+  {
+   "slug": "connie-chan",
+   "name": "Connie Chan",
+   "role": "Investing"
+  },
+  {
+   "slug": "connor-love",
+   "name": "Connor Love",
+   "role": "Investing"
+  },
+  {
+   "slug": "daisy-wolf",
+   "name": "Daisy Wolf",
+   "role": "Investing"
+  },
+  {
+   "slug": "dan-nomura",
+   "name": "Dan Nomura",
+   "role": "Special Advisors"
+  },
+  {
+   "slug": "dan-rosenthal",
+   "name": "Dan Rosenthal",
+   "role": "Special Advisors"
+  },
+  {
+   "slug": "daniel-penny",
+   "name": "Daniel Penny",
+   "role": "Investing"
+  },
+  {
+   "slug": "david-george",
+   "name": "David George",
+   "role": "Investing"
+  },
+  {
+   "slug": "david-haber",
+   "name": "David Haber",
+   "role": "Investing"
+  },
+  {
+   "slug": "david-ulevitch",
+   "name": "David Ulevitch",
+   "role": "Investing"
+  },
+  {
+   "slug": "eddy-lazzarin",
+   "name": "Eddy Lazzarin",
+   "role": "Investing"
+  },
+  {
+   "slug": "emily-bennett",
+   "name": "Emily Bennett",
+   "role": "Investing"
+  },
+  {
+   "slug": "eric-alby",
+   "name": "Eric Alby",
+   "role": "Investing"
+  },
+  {
+   "slug": "erik-torenberg",
+   "name": "Erik Torenberg",
+   "role": "Marketing, Investing"
+  },
+  {
+   "slug": "erin-price-wright",
+   "name": "Erin Price-Wright",
+   "role": "Investing"
+  },
+  {
+   "slug": "eva-steinman",
+   "name": "Eva Steinman",
+   "role": "Investing"
+  },
+  {
+   "slug": "fabrizio-serafini",
+   "name": "Fabrizio Serafini",
+   "role": "Investing"
+  },
+  {
+   "slug": "fareed-mosavat",
+   "name": "Fareed Mosavat",
+   "role": "Investing"
+  },
+  {
+   "slug": "gabriel-vasquez",
+   "name": "Gabriel Vasquez",
+   "role": "Investing"
+  },
+  {
+   "slug": "gio-ahern",
+   "name": "Gio Ahern",
+   "role": "Investing"
+  },
+  {
+   "slug": "greg-barbaccia",
+   "name": "Greg Barbaccia",
+   "role": "Special Advisors"
+  },
+  {
+   "slug": "greg-verdine",
+   "name": "Greg Verdine",
+   "role": "Special Advisors"
+  },
+  {
+   "slug": "guido-appenzeller",
+   "name": "Guido Appenzeller",
+   "role": "Investing"
+  },
+  {
+   "slug": "guy-wuollet",
+   "name": "Guy Wuollet",
+   "role": "Investing"
+  },
+  {
+   "slug": "jacqueline-young",
+   "name": "Jacqueline Young",
+   "role": "Investing"
+  },
+  {
+   "slug": "james-da-costa",
+   "name": "James da Costa",
+   "role": "Investing"
+  },
+  {
+   "slug": "jamie-sullivan",
+   "name": "Jamie Sullivan",
+   "role": "Investing"
+  },
+  {
+   "slug": "jane-rhee",
+   "name": "Jane Rhee",
+   "role": "Investing"
+  },
+  {
+   "slug": "jason-cui",
+   "name": "Jason Cui",
+   "role": "Investing"
+  },
+  {
+   "slug": "jay-rughani",
+   "name": "Jay Rughani",
+   "role": "Investing"
+  },
+  {
+   "slug": "jeff-bramel",
+   "name": "Jeff Bramel",
+   "role": "Investing"
+  },
+  {
+   "slug": "jeff-jordan",
+   "name": "Jeff Jordan",
+   "role": "Investing"
+  },
+  {
+   "slug": "jeffrey-glover",
+   "name": "Col. Jeffrey Glover",
+   "role": "Special Advisors"
+  },
+  {
+   "slug": "jennifer-li",
+   "name": "Jennifer Li",
+   "role": "Investing"
+  },
+  {
+   "slug": "jessica-leao",
+   "name": "Jessica Le\u00e3o",
+   "role": "Investing"
+  },
+  {
+   "slug": "joe-schmidt",
+   "name": "Joe Schmidt",
+   "role": "Investing"
+  },
+  {
+   "slug": "joel-de-la-garza",
+   "name": "Joel de la Garza",
+   "role": "Investing"
+  },
+  {
+   "slug": "john-aguillard",
+   "name": "John Aguillard",
+   "role": "Investing"
+  },
+  {
+   "slug": "john-m-jack",
+   "name": "John M. Jack",
+   "role": "Board Partners"
+  },
+  {
+   "slug": "jonathan-lai",
+   "name": "Jonathan Lai",
+   "role": "Investing"
+  },
+  {
+   "slug": "jorge-conde",
+   "name": "Jorge Conde",
+   "role": "Investing"
+  },
+  {
+   "slug": "josh-elman",
+   "name": "Josh Elman",
+   "role": "Investing"
+  },
+  {
+   "slug": "joshua-lu",
+   "name": "Joshua Lu",
+   "role": "Investing"
+  },
+  {
+   "slug": "julie-klapstein",
+   "name": "Julie Klapstein",
+   "role": "Special Advisors"
+  },
+  {
+   "slug": "julie-yoo",
+   "name": "Julie Yoo",
+   "role": "Investing"
+  },
+  {
+   "slug": "justin-kahl",
+   "name": "Justin Kahl",
+   "role": "Investing"
+  },
+  {
+   "slug": "justine-moore",
+   "name": "Justine Moore",
+   "role": "Investing"
+  },
+  {
+   "slug": "katherine-boyle",
+   "name": "Katherine Boyle",
+   "role": "Investing"
+  },
+  {
+   "slug": "katia-ameri",
+   "name": "Katia Ameri",
+   "role": "Partner, a16z speedrun Alpha"
+  },
+  {
+   "slug": "ken-coleman",
+   "name": "Ken Coleman",
+   "role": "Special Advisors"
+  },
+  {
+   "slug": "kenan-saleh",
+   "name": "Kenan Saleh",
+   "role": "Investing"
+  },
+  {
+   "slug": "kimberly-tan",
+   "name": "Kimberly Tan",
+   "role": "Investing"
+  },
+  {
+   "slug": "lars-dalgaard",
+   "name": "Lars Dalgaard",
+   "role": "Board Partners"
+  },
+  {
+   "slug": "lejla-johnsen",
+   "name": "Lejla Johnsen",
+   "role": "Investing"
+  },
+  {
+   "slug": "lisha-li",
+   "name": "Lisha Li",
+   "role": "Investing"
+  },
+  {
+   "slug": "marc-andreessen",
+   "name": "Marc Andreessen",
+   "role": "Investing"
+  },
+  {
+   "slug": "marcus-segal",
+   "name": "Marcus Segal",
+   "role": "Investing"
+  },
+  {
+   "slug": "margaret-mckenna",
+   "name": "Margaret McKenna",
+   "role": "Special Advisors"
+  },
+  {
+   "slug": "mark-regan",
+   "name": "Mark Regan",
+   "role": "Growth Advisory"
+  },
+  {
+   "slug": "martin-casado",
+   "name": "Martin Casado",
+   "role": "Investing"
+  },
+  {
+   "slug": "matt-bornstein",
+   "name": "Matt Bornstein",
+   "role": "Investing"
+  },
+  {
+   "slug": "michael-amoako",
+   "name": "Michael Amoako",
+   "role": "Investing, Technology & Operations"
+  },
+  {
+   "slug": "michael-cialone",
+   "name": "Michael Cialone",
+   "role": "Investing"
+  },
+  {
+   "slug": "michel-del-buono",
+   "name": "Michel Del Buono",
+   "role": "Investing"
+  },
+  {
+   "slug": "mindy-isenstein",
+   "name": "Mindy Isenstein",
+   "role": "Investing"
+  },
+  {
+   "slug": "nathan-abramoff",
+   "name": "Nathan Abramoff",
+   "role": "Investing"
+  },
+  {
+   "slug": "oliver-hsu",
+   "name": "Oliver Hsu",
+   "role": "Investing"
+  },
+  {
+   "slug": "olivia-moore",
+   "name": "Olivia Moore",
+   "role": "Investing"
+  },
+  {
+   "slug": "owen-colby",
+   "name": "Owen Colby",
+   "role": "Investing"
+  },
+  {
+   "slug": "peter-levine",
+   "name": "Peter Levine",
+   "role": "Investing"
+  },
+  {
+   "slug": "raghu-raghuram",
+   "name": "Raghu Raghuram",
+   "role": "Growth Advisory, Investing"
+  },
+  {
+   "slug": "robbie-petersen",
+   "name": "Robbie Petersen",
+   "role": "Investing"
+  },
+  {
+   "slug": "rod-johnson",
+   "name": "Rod Johnson",
+   "role": "Board Partners"
+  },
+  {
+   "slug": "ryan-mcentush",
+   "name": "Ryan McEntush",
+   "role": "Investing"
+  },
+  {
+   "slug": "santiago-rodriguez-lebrija",
+   "name": "Santiago Rodriguez",
+   "role": "Investing"
+  },
+  {
+   "slug": "sarah-wang",
+   "name": "Sarah Wang",
+   "role": "Investing"
+  },
+  {
+   "slug": "sean-cai",
+   "name": "Sean Cai",
+   "role": "Investing"
+  },
+  {
+   "slug": "seeam-noor",
+   "name": "Seeam Noor",
+   "role": "Investing"
+  },
+  {
+   "slug": "seema-amble",
+   "name": "Seema Amble",
+   "role": "Investing"
+  },
+  {
+   "slug": "shana-fisher",
+   "name": "Shana Fisher",
+   "role": "Board Partners"
+  },
+  {
+   "slug": "shangda-xu",
+   "name": "Shangda Xu",
+   "role": "Investing"
+  },
+  {
+   "slug": "spencer-rascoff",
+   "name": "Spencer Rascoff",
+   "role": "Board Partners"
+  },
+  {
+   "slug": "stephenie-zhang",
+   "name": "Stephenie Zhang",
+   "role": "Investing"
+  },
+  {
+   "slug": "steven-sinofsky",
+   "name": "Steven Sinofsky",
+   "role": "Board Partners"
+  },
+  {
+   "slug": "sue-hager",
+   "name": "Sue Hager",
+   "role": "Special Advisors"
+  },
+  {
+   "slug": "troy-kirwin",
+   "name": "Troy Kirwin",
+   "role": "Investing"
+  },
+  {
+   "slug": "tugce-erten",
+   "name": "Tugce Erten",
+   "role": "Growth Advisory"
+  },
+  {
+   "slug": "vineeta-agarwala",
+   "name": "Vineeta Agarwala",
+   "role": "Investing"
+  },
+  {
+   "slug": "will-bitsky",
+   "name": "Will Bitsky",
+   "role": "Investing"
+  },
+  {
+   "slug": "yoko-li",
+   "name": "Yoko Li",
+   "role": "Investing"
+  },
+  {
+   "slug": "zak-doric",
+   "name": "Zak Doric",
+   "role": "Investing"
+  },
+  {
+   "slug": "zane-lackey",
+   "name": "Zane Lackey",
+   "role": "Investing"
+  }
+ ]
+}

@@ -1,5 +1,6 @@
 import { API, REPO_URL, collection, filings } from "@/lib/data";
 
+import OffNetwork from "./off-network";
 import RaisedTable, { type Row } from "./raised-table";
 
 export default function Page() {
@@ -21,6 +22,8 @@ export default function Page() {
       </p>
 
       <RaisedTable rows={rows} />
+
+      <OffNetwork rows={Object.values(filings.off_network ?? {}).sort((a, b) => a.rank - b.rank)} />
 
       <footer>
         <p>

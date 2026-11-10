@@ -16,14 +16,23 @@ Ladder (first hit wins):
 "guard" is token_sort_ratio >= SUBSET_GUARD_MIN; see config.py. A rung 3
 candidate that fails only the guard goes to review as Medium.
 
-Three precision rules on top of the ladder, all of which only ever demote
-High to Medium (never promote):
+Precision rules that demote High to Medium:
 
 * location conflict: rung 1 or 2 hit, but both sides have a known location
   and they disagree ("Gamma, Inc." in Texas vs "Gamma" in San Francisco).
+* off-network, no location: rung 1 or 2 against a wider-portfolio company
+  (a16z.com or speedrun.a16z.com, not on the talent network) with no location
+  to check.
 * ambiguous issuer: one filing reaches its best rung against two companies.
 * contested company: two different issuers (CIKs) reach High for the same
   company.
+
+One rule that promotes:
+
+* rung P: a Medium from rung 1, 2 or 3 (location conflict, off-network, or
+  extra words) becomes High when the Form D lists a member of the a16z
+  investing team (a16z.com/team) as a director or officer. Ambiguity and
+  contest still apply afterwards.
 
 matches.yaml overrides everything: confirm pins a pair to High, reject and
 block_cik remove pairs.
@@ -33,6 +42,7 @@ from __future__ import annotations
 
 import csv
 import logging
+import re
 from dataclasses import dataclass, field
 
 import polars as pl
@@ -46,7 +56,7 @@ from edgar_names import (
 from rapidfuzz import fuzz
 
 from . import config
-from .fetch_companies import load_companies
+from .fetch_portfolio import load_people, load_universe
 
 log = logging.getLogger(__name__)
 
@@ -73,6 +83,8 @@ MATCH_SCHEMA = {
     "location_match": pl.Boolean,
     "surname_hit": pl.Utf8,
     "notes": pl.Utf8,
+    "a16z_person": pl.Utf8,
+    "on_network": pl.Boolean,
     "adshs": pl.List(pl.Utf8),
 }
 
@@ -85,6 +97,7 @@ class Company:
     location: str | None
     blurb: str
     region: str | None
+    on_network: bool = True
     variants: list = field(default_factory=list)
 
 
@@ -98,6 +111,7 @@ class Candidate:
     location_match: bool | None
     surname_hit: str | None
     notes: list[str] = field(default_factory=list)
+    a16z_person: str | None = None
 
 
 def company_variants(c: dict) -> list:
@@ -109,7 +123,7 @@ def company_variants(c: dict) -> list:
     """
     out = list(name_variants(c["name"]))
     seen = {v.strict for v in out}
-    for v in name_variants((c.get("slug") or "").replace("-", " ")):
+    for v in name_variants((c.get("slug") or "").split(":")[-1].replace("-", " ")):
         if v.strict and v.strict not in seen:
             out.append(v)
     return out
@@ -127,6 +141,7 @@ def _prep_companies(rows: list[dict]) -> list[Company]:
                 location=c.get("location"),
                 blurb=(c.get("blurb") or ""),
                 region=region,
+                on_network=c.get("on_network", True),
                 variants=company_variants(c),
             )
         )
@@ -139,6 +154,21 @@ def _surname_in_blurb(surnames: list[str], blurb: str) -> str | None:
         s_l = s.lower()
         if len(s_l) >= 3 and s_l in words:
             return s
+    return None
+
+
+def person_key(name: str) -> str:
+    """'Schuyler (Baker) Tilney' / 'Erin Price-Wright' -> 'schuyler tilney' / 'erin pricewright'."""
+    name = re.sub(r"\([^)]*\)", " ", name or "").lower()
+    tokens = [re.sub(r"[^a-z]", "", t) for t in name.replace("-", "").split()]
+    tokens = [t for t in tokens if len(t) > 1]
+    return f"{tokens[0]} {tokens[-1]}" if len(tokens) >= 2 else ""
+
+
+def a16z_person_on(filing: dict, people: frozenset[str]) -> str | None:
+    for p in filing.get("related_persons") or []:
+        if person_key(p) in people:
+            return p
     return None
 
 
@@ -158,11 +188,17 @@ def _score_pair(filing_variants, comp: Company) -> tuple[str | None, float, floa
     return exact, ts, so
 
 
-def ladder(filing: dict, companies: list[Company]) -> list[Candidate]:
-    """Every company this filing reaches on the ladder, best rung first."""
+def ladder(filing: dict, companies: list[Company], people: frozenset[str] = frozenset()) -> list[Candidate]:
+    """Every company this filing reaches on the ladder, best rung first.
+
+    ``people`` is the a16z investing team (person_key form). One of them on the
+    Form D as a director or officer corroborates a name match that the ladder
+    alone would send to review.
+    """
     variants = name_variants(filing["entity_name"] or "")
     issuer_region = edgar_region(filing.get("state"))
     surnames = filing.get("related_surnames") or []
+    partner = a16z_person_on(filing, people)
     out: list[Candidate] = []
     for comp in companies:
         exact, ts, so = _score_pair(variants, comp)
@@ -178,6 +214,12 @@ def ladder(filing: dict, companies: list[Company]) -> list[Candidate]:
             if loc_match is False:
                 cand.confidence = MEDIUM
                 cand.notes.append(f"location conflict: issuer {issuer_region}, company {comp.region}")
+            elif not comp.on_network and loc_match is None:
+                # Wider-portfolio companies often have no location to check, and
+                # many are single common words ("Relay", "Trunk"); a bare name
+                # match goes to review.
+                cand.confidence = MEDIUM
+                cand.notes.append("off-network name match, no location to check")
         elif ts >= config.RUNG3_MIN and loc_match and guard:
             cand = Candidate(comp.slug, "3", HIGH, ts, so, loc_match, surname)
         elif ts >= config.RUNG3_MIN and loc_match:
@@ -189,6 +231,12 @@ def ladder(filing: dict, companies: list[Company]) -> list[Candidate]:
             cand = Candidate(comp.slug, "4", MEDIUM, ts, so, loc_match, surname)
         else:
             cand = Candidate(comp.slug, "5", LOW, ts, so, loc_match, surname, [] if guard else ["fails subset guard"])
+        # Rung P: a Medium name match (exact, or rung 3 with extra words) with an
+        # a16z investing-team member on the Form D is High.
+        if partner and cand.confidence == MEDIUM and cand.rung in ("1", "2", "3"):
+            cand.confidence = HIGH
+            cand.notes.append(f"a16z person on the Form D: {partner}")
+        cand.a16z_person = partner
         out.append(cand)
 
     out.sort(key=lambda c: (*_strength(c.confidence, c.rung), -c.token_set))
@@ -214,7 +262,8 @@ def _drop_reason(f: dict, exact_name_hit: bool) -> str | None:
 
 
 def run_match() -> pl.DataFrame:
-    companies = _prep_companies(load_companies())
+    companies = _prep_companies(load_universe())
+    people = frozenset(k for k in (person_key(n) for n in load_people()) if k)
     by_slug = {c.slug: c for c in companies}
     strict_keys = {v.strict for c in companies for v in c.variants} | {v.brand for c in companies for v in c.variants}
     overrides = load_overrides(config.OVERRIDES_FILE)
@@ -232,7 +281,7 @@ def run_match() -> pl.DataFrame:
             dropped[reason.split(" '")[0]] = dropped.get(reason.split(" '")[0], 0) + 1
             continue
 
-        cands = ladder(f, companies)
+        cands = ladder(f, companies, people)
         pinned = overrides.confirmed_slug(f["cik"])
         if pinned and pinned in by_slug:
             cands = [c for c in cands if c.slug != pinned]
@@ -259,6 +308,8 @@ def run_match() -> pl.DataFrame:
                 "location_match": c.location_match,
                 "surname_hit": c.surname_hit,
                 "notes": "; ".join(c.notes),
+                "a16z_person": c.a16z_person,
+                "on_network": by_slug[c.slug].on_network,
                 "adshs": [f["adsh"]],
                 "_filing": f,
             }
@@ -325,6 +376,8 @@ REVIEW_FIELDS = [
     "entity_type",
     "year_of_inc",
     "related_persons",
+    "a16z_person",
+    "on_network",
     "total_amount_sold",
     "date_of_first_sale",
     "token_set",
@@ -356,13 +409,15 @@ def _review_row(f: dict, comp: Company, c) -> dict:
         "entity_type": f.get("entity_type"),
         "year_of_inc": f.get("year_of_inc"),
         "related_persons": "; ".join(f.get("related_persons") or []),
+        "a16z_person": get("a16z_person"),
+        "on_network": comp.on_network,
         "total_amount_sold": f.get("total_amount_sold"),
         "date_of_first_sale": f.get("date_of_first_sale"),
         "token_set": round(get("token_set"), 1),
         "token_sort": round(get("token_sort"), 1),
         "company_blurb": comp.blurb,
         "edgar_url": config.FILING_INDEX_URL.format(cik=f["cik"], adsh_nodash=adsh.replace("-", ""), adsh=adsh),
-        "talent_url": f"https://speedrun-talent-network.com/companies/{comp.slug}",
+        "talent_url": f"https://speedrun-talent-network.com/companies/{comp.slug}" if comp.on_network else "",
         "yaml_confirm": f'- {{cik: "{f["cik"]}", slug: {comp.slug}, note: ""}}',
         "yaml_reject": f'- {{cik: "{f["cik"]}", slug: {comp.slug}, note: ""}}',
     }

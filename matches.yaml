@@ -8,6 +8,27 @@
 # needs review again.
 #
 # SUGGESTED from the 2026-11-10 backfill: commented out until you check them.
+# (Town, Stuut, Mariana Minerals and Apex Space no longer need pinning: an a16z
+# partner on their Form D now makes them High automatically.)
+
+confirm:
+  # Neighbor Storage, Inc. (Lehi, UT) <- Neighbor. Related persons include
+  # Joseph Woodbury (Neighbor's CEO). Only $52,661 sold: likely a small
+  # closing, check the filing before confirming.
+  # - {cik: "1712600", slug: neighbor, note: "CEO on the Form D"}
+
+  # Wider-portfolio name matches with no a16z person on the filing are in
+  # review/medium.csv (Castelion, Boltz, Relay, Trunk, ...). Off-network
+  # companies pin the same way, e.g. slug: "a16z:castelion".
+
+reject:    never match this issuer to this company
+#   block_cik: never match this issuer to anything
+#
+# review/medium.csv lists every pair the ladder could not decide. Check a row,
+# then copy its yaml_confirm or yaml_reject cell here. A pinned pair never
+# needs review again.
+#
+# SUGGESTED from the 2026-11-10 backfill: commented out until you check them.
 # The evidence is the Form D's related-persons list (directors and officers)
 # against the talent-network blurb. Uncomment what you agree with, then
 # `uv run python -m pipeline.run_all`.

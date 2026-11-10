@@ -61,6 +61,16 @@ names ("Harvey"). There is no shared key. A false positive puts the wrong
 company on the page next to a dollar figure, so the matcher is tuned for
 precision, and only High rows are published.
 
+**Universe.** The talent network's `/companies` lists only companies with a
+live role (340 portfolio companies). The matcher also runs against every
+active, private company on [a16z.com/portfolio](https://a16z.com/portfolio/)
+and the public [speedrun list](https://speedrun.a16z.com/companies) (current
+cohort), both read from data embedded in those pages
+(`pipeline/fetch_portfolio.py`). That is 829 companies, 489 of them not on the
+talent network. Companies that aren't on the network are published in a
+separate section: they have no open-role count, so they can't be ranked on cash
+per role.
+
 **Normalization** (`packages/edgar_names`) runs on both sides: lowercase,
 strip punctuation, drop a leading "the", then strip legal suffixes from the end
 (inc, corp, co, llc, ltd, holdings, labs, technologies, ai, io, pbc, ...). A
@@ -84,13 +94,29 @@ other's. That is how "Anduril Industries" matches "Anduril", but also how
 "Modal Health Group" would match "Modal". Strings can't tell those two apart,
 so rung 3′ sends them to a person.
 
-Three rules only ever demote High to Medium:
+Rules that demote High to Medium:
 
 - **Location conflict.** The names are equal, but both locations are known and
   they disagree. Many portfolio names are single common words (Arena, Basis,
   Bounce), and "Bounce, LLC" in Indianapolis is not the luggage network.
+- **Off-network, no location.** An exact name match against a company that
+  isn't on the talent network, with no location to compare. Many are single
+  common words (Relay, Trunk, Space).
 - **Ambiguous issuer.** One filing reaches two companies at its best rung.
 - **Contested company.** Two different issuers reach High for one company.
+
+One rule promotes:
+
+- **Rung P: an a16z partner on the Form D.** A Medium from rungs 1–3 becomes
+  High when the filing lists a member of the a16z investing team
+  ([a16z.com/team](https://a16z.com/team/), 117 people) as a director or
+  officer. Board seats are how a16z shows up on a Form D, and a similar name
+  plus a16z partner on the board is near-certain. On the first run it
+  confirmed Town (Alex Rampell), Stuut (Seema Amble), Mariana Minerals (Erin
+  Price-Wright), Apex Space (Katherine Boyle), Databricks (Ben Horowitz),
+  Whatnot (Connie Chan), BigHat Biosciences (Vineeta Agarwala) and Fly.io
+  (Martin Casado). It never rescues a Low, and the ambiguity and contest rules
+  still apply.
 
 **Fund filters** run before matching. A filing is dropped if its industry group
 is Pooled Investment Fund, its entity type is Limited Partnership, it claims an
@@ -130,7 +156,9 @@ CI.
 
 ### `/api/just-raised/filings.json`
 
-The Form D side, keyed by slug, plus run metadata (window, formula, counts). This is additive: amount, first-sale date,
+The Form D side, keyed by slug, plus run metadata (window, formula, counts).
+`off_network` holds the matched companies that aren't on the talent network,
+keyed `a16z:<slug>` or `speedrun:<slug>`. This is additive: amount, first-sale date,
 filing URL, issuer, amendments, roles posted since the raise, score inputs, and
 the match rung. None of it fits their member schema.
 
@@ -149,6 +177,7 @@ query path and no database the page depends on.
 
 ```
 pipeline/fetch_companies.py  talent network /companies + portfolio collections -> data/companies.json
+pipeline/fetch_portfolio.py  a16z.com portfolio + team, speedrun.a16z.com     -> data/portfolio_universe.json, data/a16z_people.json
 pipeline/fetch_formd.py      EDGAR index (form.idx backfill, full-text search daily) -> data/formd_index.parquet
                              gated primary_doc.xml downloads, parsed          -> data/filings.parquet
 pipeline/match.py            filters, ladder, matches.yaml                    -> data/matches.parquet, review/*.csv
@@ -165,8 +194,8 @@ to.
 `fetch_formd.py` downloads a filing's `primary_doc.xml` only if its index name
 isn't obviously a fund and reaches token_set_ratio 85 against some portfolio
 name. That is below every ladder rung, so the gate never drops a filing the
-ladder could match. On the first run it let 236 filings through, roughly 130x
-fewer SEC requests. The full index is kept, so when a company joins the talent
+ladder could match. Against the full 829-company universe it lets about 1,570
+filings through, roughly 20x fewer SEC requests. The full index is kept, so when a company joins the talent
 network, the next run gates its past filings back in. `--no-gate` fetches
 everything.
 
@@ -196,8 +225,10 @@ These numbers shaped v1 and differ from the original design doc:
   "No roles posted since the raise" rather than "no open roles". A registry of
   every slug ever seen (`data/company_registry.json`) lets a company that drops
   to zero roles still be looked up.
-- **Yield is thin.** A 90-day window has 3 High matches; 180 days has 5 (6
-  before excluding Roblox). Full-text search of EDGAR for every portfolio brand
+- **Yield is thin on the talent network alone.** Matching only its 340
+  companies, a 90-day window had 3 High matches and 180 days had 5. Adding
+  the wider a16z and speedrun portfolio and rung P raised 180 days to 12
+  published companies (8 on the network, 4 off it). Full-text search of EDGAR for every portfolio brand
   name over the window found no operating-company Form D that the matcher
   missed. The other hits were SPVs and companies with similar names. So this is
   the base rate, not a matcher that's too strict. Per the design doc's fallback,
@@ -206,10 +237,12 @@ These numbers shaped v1 and differ from the original design doc:
 - **Many filings report an early first-sale date.** Kalshi's August filing
   reports a first sale in April; OpenRouter's July filing reports one in March.
   Anchoring on first sale, as designed, drops them.
-- **Related persons are the best tiebreak.** Several Medium rows list an a16z
-  partner as a director, which is near-certain corroboration. This is a
-  candidate rung for v2. For now it is review evidence, and the suggestions sit
-  commented out in `matches.yaml`.
+- **Related persons are the best tiebreak.** Several Medium rows listed an
+  a16z partner as a director. That became rung P.
+- **Why the newest raise is weeks old.** Rule 503 allows 15 days from first
+  sale to filing, and many companies file later. Town's first sale was Oct 7
+  and its Form D landed Oct 22. A round that closed in the last two or three
+  weeks usually isn't on EDGAR yet.
 - EDGAR full-text search with `q=*` returns zero hits. Leaving `q` out returns
   every Form D. Items `3C`, `3C.1` and `3C.7` mark funds before any XML is
   fetched.

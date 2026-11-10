@@ -37,7 +37,7 @@ from rapidfuzz import fuzz, process
 
 from . import config
 from .clients import SecClient
-from .fetch_companies import load_companies
+from .fetch_portfolio import load_universe
 from .formd_xml import parse_primary_doc
 
 log = logging.getLogger(__name__)
@@ -266,7 +266,7 @@ def gate_reason(name: str, items: list[str] | None, keys: list[str]) -> tuple[bo
 def fetch_filings(sec: SecClient, index: pl.DataFrame, today: date, no_gate: bool = False) -> pl.DataFrame:
     filings = _read(config.FILINGS, FILINGS_SCHEMA)
     have = set(filings["adsh"].to_list())
-    keys = portfolio_name_keys(load_companies())
+    keys = portfolio_name_keys(load_universe())
     start = today - timedelta(days=config.WINDOW_DAYS)
 
     todo: list[dict] = []

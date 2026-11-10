@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 
 import type { Filing, Member } from "@/lib/data";
+import { money, shortDate } from "@/lib/format";
 
 export interface Row {
   member: Member;
@@ -28,18 +29,7 @@ function stageName(stage: string | null): string {
   return STAGE_NAMES[stage] ?? stage.replace(/-/g, " ").replace(/^\w/, (c) => c.toUpperCase());
 }
 
-function money(n: number | null): string {
-  if (n === null || n === undefined) return "—";
-  if (n >= 1e9) return `$${(n / 1e9).toFixed(1)}B`;
-  if (n >= 1e6) return `$${(n / 1e6).toFixed(n >= 1e8 ? 0 : 1)}M`;
-  if (n >= 1e3) return `$${Math.round(n / 1e3)}K`;
-  return `$${Math.round(n)}`;
-}
 
-function shortDate(iso: string): string {
-  const d = new Date(`${iso}T00:00:00Z`);
-  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
-}
 
 const tierName = (t: string) => (t === "a16z" ? "a16z" : t === "speedrun" ? "speedrun" : t);
 

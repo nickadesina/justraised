@@ -1,4 +1,4 @@
-"""Run the nightly pipeline end to end: companies, Form Ds, match, score."""
+"""Run the nightly pipeline end to end: companies, wider portfolio, Form Ds, match, score."""
 
 from __future__ import annotations
 
@@ -9,6 +9,7 @@ from . import config
 from .clients import SecClient
 from .fetch_companies import fetch_companies
 from .fetch_formd import fetch_filings, update_index
+from .fetch_portfolio import fetch_portfolio
 from .match import run_match
 from .score import run_score
 
@@ -21,6 +22,7 @@ def main() -> None:
     args = ap.parse_args()
 
     fetch_companies()
+    fetch_portfolio()
     sec = SecClient()
     try:
         index = update_index(sec, config.today())

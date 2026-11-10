@@ -18,6 +18,8 @@ OVERRIDES_FILE = ROOT / "matches.yaml"
 
 COMPANIES_JSON = DATA / "companies.json"
 REGISTRY_JSON = DATA / "company_registry.json"
+UNIVERSE_JSON = DATA / "portfolio_universe.json"
+PEOPLE_JSON = DATA / "a16z_people.json"
 FORMD_INDEX = DATA / "formd_index.parquet"
 FILINGS = DATA / "filings.parquet"
 MATCHES = DATA / "matches.parquet"

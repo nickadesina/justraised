@@ -5,9 +5,9 @@
   "description": "Portfolio companies with a Form D in the last 180 days, ranked by cash per open role",
   "group": "signals",
   "url": "https://nickadesina.github.io/justraised",
-  "companies": 5,
-  "roles": 471,
-  "portfolio_members": 5,
+  "companies": 8,
+  "roles": 610,
+  "portfolio_members": 8,
   "members": [
    {
     "rank": 1,
@@ -32,6 +32,35 @@
    },
    {
     "rank": 2,
+    "name": "Town",
+    "slug": "town",
+    "url": "https://speedrun-talent-network.com/companies/town",
+    "tier": "a16z",
+    "cohort": null,
+    "open_roles": 16,
+    "location": "San Francisco, California",
+    "blurb": "Everyone gets a Townie: an AI assistant that keeps a wiki on how you work, then manages your inbox, drafts your morning briefing, and works through your todo list.",
+    "stage": "series-a",
+    "remote_policy": "onsite-leaning",
+    "investors": [
+     "Andreessen Horowitz",
+     "First Round Capital",
+     "South Park Commons"
+    ],
+    "functions": [
+     "design",
+     "engineering",
+     "marketing",
+     "operations"
+    ],
+    "cities": [
+     "New York",
+     "San Francisco"
+    ],
+    "logo": "https://www.google.com/s2/favicons?domain=town.com&sz=128"
+   },
+   {
+    "rank": 3,
     "name": "Armadin",
     "slug": "armadin",
     "url": "https://speedrun-talent-network.com/companies/armadin",
@@ -58,7 +87,40 @@
     "logo": "https://pbs.twimg.com/profile_images/2031294777694760962/jmspnYnW_400x400.png"
    },
    {
-    "rank": 3,
+    "rank": 4,
+    "name": "Stuut",
+    "slug": "stuut",
+    "url": "https://speedrun-talent-network.com/companies/stuut",
+    "tier": "a16z",
+    "cohort": null,
+    "open_roles": 23,
+    "location": "San Francisco, California",
+    "blurb": "Agentic AI for accounts receivable: runs collections outreach, payment matching, and dispute resolution across the order-to-cash cycle. Partnered with Fiserv on enterprise receivables.",
+    "stage": "seed",
+    "remote_policy": "onsite-leaning",
+    "investors": [
+     "Andreessen Horowitz",
+     "Khosla Ventures"
+    ],
+    "functions": [
+     "design",
+     "engineering",
+     "marketing",
+     "operations",
+     "other",
+     "product",
+     "sales"
+    ],
+    "cities": [
+     "Dublin",
+     "London",
+     "New York",
+     "San Francisco"
+    ],
+    "logo": "https://cdn.prod.website-files.com/6a071561c8d2a321a5d0a044/6a07419e7826e9c19b955997_stuut-webclip.png"
+   },
+   {
+    "rank": 5,
     "name": "Primitive Labs",
     "slug": "primitive-labs",
     "url": "https://speedrun-talent-network.com/companies/primitive-labs",
@@ -80,7 +142,38 @@
     "logo": "https://cdn.a16zspeedrun.com/platform/companies/f3988b15-bf80-4233-9867-a345969c77fc/logos/cropped_i8mE99A.png"
    },
    {
-    "rank": 4,
+    "rank": 6,
+    "name": "Mariana Minerals",
+    "slug": "mariana-minerals",
+    "url": "https://speedrun-talent-network.com/companies/mariana-minerals",
+    "tier": "a16z",
+    "cohort": null,
+    "open_roles": 100,
+    "location": "Moab, Utah",
+    "blurb": "Software-first minerals company that develops and operates its own copper, lithium and nickel projects, supplying the metals energy, AI and defense depend on.",
+    "stage": "series-a",
+    "remote_policy": "onsite-leaning",
+    "investors": [
+     "Andreessen Horowitz"
+    ],
+    "functions": [
+     "design",
+     "engineering",
+     "operations",
+     "other",
+     "product"
+    ],
+    "cities": [
+     "Ann Arbor",
+     "Houston",
+     "Joaquin",
+     "Moab",
+     "San Francisco"
+    ],
+    "logo": "https://framerusercontent.com/images/CEv70Ucnu5OXCMODAwycSPVFNWM.png"
+   },
+   {
+    "rank": 7,
     "name": "Exa",
     "slug": "exa",
     "url": "https://speedrun-talent-network.com/companies/exa",
@@ -118,7 +211,7 @@
     "logo": "https://app.ashbyhq.com/api/images/org-theme-logo/528e5060-c438-49f0-a3b6-ba1f0417bbd6/a872c1ea-8c84-4d88-abb0-3366a3c1b3b5/142124b6-e130-4cf6-8b8c-113a4ef6ed88.png"
    },
    {
-    "rank": 5,
+    "rank": 8,
     "name": "Harvey",
     "slug": "harvey",
     "url": "https://speedrun-talent-network.com/companies/harvey",
@@ -174,7 +267,7 @@
     "logo": "https://www.harvey.ai/icons/brand-favicon.png"
    }
   ],
-  "members_total": 5,
+  "members_total": 8,
   "page": 0,
   "page_size": 100,
   "total_pages": 1

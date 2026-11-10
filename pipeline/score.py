@@ -37,6 +37,7 @@ import polars as pl
 from . import config
 from .clients import TalentClient
 from .fetch_companies import load_companies
+from .fetch_portfolio import load_universe
 from .match import HIGH
 
 log = logging.getLogger(__name__)
@@ -165,6 +166,7 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
     today = config.today()
     window_start = today - timedelta(days=config.WINDOW_DAYS)
     companies = {c["slug"]: c for c in load_companies()}
+    universe = {c["slug"]: c for c in load_universe()}
     registry = json.loads(config.REGISTRY_JSON.read_text()) if config.REGISTRY_JSON.exists() else {}
 
     matches = pl.read_parquet(config.MATCHES).filter(pl.col("confidence") == HIGH)
@@ -178,7 +180,7 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
     high_pairs_in_window = 0
     for m in matches.iter_rows(named=True):
         slug = m["slug"]
-        if slug not in companies and slug not in registry:
+        if slug not in companies and slug not in registry and slug not in universe:
             continue
         # Keyed on CIK: every filing by this issuer, so amendments filed under a
         # slightly different name still attach to their original.
@@ -209,10 +211,17 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
             )
             sys.exit(2)
 
-    details = details if details is not None else fetch_details(sorted(chosen))
+    network_slugs = sorted(s for s in chosen if s in companies or s in registry)
+    details = details if details is not None else fetch_details(network_slugs)
 
     rows = []
+    off_rows = []
     for slug, off in chosen.items():
+        if slug not in network_slugs:
+            row = _off_network_row(universe[slug], off, today)
+            if row:
+                off_rows.append(row)
+            continue
         base = companies.get(slug)
         detail = details.get(slug)
         if base is None and detail is None:
@@ -229,10 +238,10 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
         posted = sorted(d for d in (_parse_ts(j.get("published_at")) for j in jobs) if d)
         since = [d for d in posted if d >= off["first_sale"]]
         days = (today - off["first_sale"]).days
-        root, latest, m = off["root"], off["latest"], off["match"]
         labels = (detail or {}).get("labels") or {}
         rows.append(
             {
+                "on_network": True,
                 "slug": slug,
                 "name": company["name"],
                 "url": company.get("url") or f"https://speedrun-talent-network.com/companies/{slug}",
@@ -251,38 +260,18 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
                 "stage_label": labels.get("stage"),
                 "size_label": labels.get("size"),
                 "score": score(off["amount"], open_roles, days),
-                "amount": off["amount"],
-                "amount_kind": off["amount_kind"],
-                "amount_sold": off["amount_sold"],
-                "offering_amount": off["offering_amount"],
-                "offering_indefinite": off["offering_indefinite"],
-                "date_of_first_sale": off["first_sale"].isoformat(),
-                "first_sale_reported": off["first_sale_reported"],
-                "days_since_first_sale": days,
-                "file_date": root["file_date"].isoformat(),
-                "latest_file_date": latest["file_date"].isoformat(),
-                "amendments": off["amendments"],
-                "offerings_in_window": off["offerings_in_window"],
-                "accession": root["adsh"],
-                "latest_accession": latest["adsh"],
-                "filing_url": config.FILING_INDEX_URL.format(
-                    cik=root["cik"], adsh_nodash=root["adsh"].replace("-", ""), adsh=root["adsh"]
-                ),
-                "issuer_name": root["entity_name"],
-                "issuer_cik": root["cik"],
-                "issuer_city": root["city"],
-                "issuer_state": root["state"],
-                "industry_group": root["industry_group"],
+                **_filing_fields(off, today),
                 "roles_since_first_sale": len(since),
                 "first_post_since": since[0].isoformat() if since else None,
                 "days_to_first_post": (since[0] - off["first_sale"]).days if since else None,
-                "match_rung": m["rung"],
-                "match_confidence": m["confidence"],
             }
         )
 
     rows.sort(key=lambda r: (-r["score"], r["name"].lower()))
     for i, r in enumerate(rows, 1):
+        r["rank"] = i
+    off_rows.sort(key=lambda r: (-r["score"], r["name"].lower()))
+    for i, r in enumerate(off_rows, 1):
         r["rank"] = i
 
     generated_at = config.now_iso()
@@ -294,6 +283,8 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
         "formula": f"log10(amount + 1) / (open_roles + 1) * 0.5 ^ (days_since_first_sale / {config.HALF_LIFE_DAYS})",
         "high_matches": high_pairs_in_window,
         "members": len(rows),
+        "off_network": len(off_rows),
+        "off_network_formula": f"log10(amount + 1) * 0.5 ^ (days_since_first_sale / {config.HALF_LIFE_DAYS}); open roles are not tracked",
         "lag_assumption": "Postings follow a raise by one to three months. Assumed, not yet measured.",
     }
     members = [{k: r[k] for k in MEMBER_FIELDS} for r in rows]
@@ -322,10 +313,13 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
                 }
             }
         )
-    filing_fields = [k for k in rows[0] if k not in MEMBER_FIELDS or k in ("rank", "slug", "name", "tier")] if rows else []
+    keep = ("rank", "slug", "name", "tier", "cohort")
     filings_doc = {
         "meta": meta,
-        "filings": {r["slug"]: {k: r[k] for k in filing_fields} for r in rows},
+        "filings": {r["slug"]: {k: v for k, v in r.items() if k not in MEMBER_FIELDS or k in keep} for r in rows},
+        # Portfolio companies (a16z.com, speedrun.a16z.com) with a matched Form D
+        # that are not on the talent network: no slug there, no open-role count.
+        "off_network": {r["slug"]: r for r in off_rows},
     }
 
     for path in (config.PUBLIC_COLLECTION, config.PUBLIC_FILINGS, config.PUBLIC_CSV):
@@ -338,19 +332,76 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
         extra_dir.mkdir(exist_ok=True)
         (extra_dir / f"page-{p}.json").write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
     config.PUBLIC_FILINGS.write_text(json.dumps(filings_doc, indent=1, ensure_ascii=False) + "\n")
-    config.PUBLIC_CSV.write_text(to_csv(rows))
+    config.PUBLIC_CSV.write_text(to_csv(rows + off_rows))
     _append_history(today, rows)
-    log.info("score: %d companies published (%d High pairs in window)", len(rows), high_pairs_in_window)
+    log.info(
+        "score: %d on the talent network + %d off it published (%d High pairs in window)",
+        len(rows), len(off_rows), high_pairs_in_window,
+    )
     return pages[0]
 
 
 CSV_FIELDS = [
-    "rank", "name", "slug", "tier", "cohort", "stage", "stage_label", "size_label", "location",
+    "on_network", "rank", "name", "slug", "tier", "cohort", "stage", "stage_label", "size_label", "location",
     "score", "amount", "amount_kind", "amount_sold", "offering_amount", "date_of_first_sale",
     "days_since_first_sale", "file_date", "latest_file_date", "amendments", "open_roles",
     "roles_since_first_sale", "first_post_since", "days_to_first_post", "issuer_name",
-    "issuer_cik", "issuer_city", "issuer_state", "accession", "filing_url", "url", "match_rung",
+    "issuer_cik", "issuer_city", "issuer_state", "accession", "filing_url", "url", "website",
+    "match_rung", "a16z_person",
 ]
+
+
+def _filing_fields(off: dict, today: date) -> dict:
+    root, latest, m = off["root"], off["latest"], off["match"]
+    return {
+        "amount": off["amount"],
+        "amount_kind": off["amount_kind"],
+        "amount_sold": off["amount_sold"],
+        "offering_amount": off["offering_amount"],
+        "offering_indefinite": off["offering_indefinite"],
+        "date_of_first_sale": off["first_sale"].isoformat(),
+        "first_sale_reported": off["first_sale_reported"],
+        "days_since_first_sale": (today - off["first_sale"]).days,
+        "file_date": root["file_date"].isoformat(),
+        "latest_file_date": latest["file_date"].isoformat(),
+        "amendments": off["amendments"],
+        "offerings_in_window": off["offerings_in_window"],
+        "accession": root["adsh"],
+        "latest_accession": latest["adsh"],
+        "filing_url": config.FILING_INDEX_URL.format(
+            cik=root["cik"], adsh_nodash=root["adsh"].replace("-", ""), adsh=root["adsh"]
+        ),
+        "issuer_name": root["entity_name"],
+        "issuer_cik": root["cik"],
+        "issuer_city": root["city"],
+        "issuer_state": root["state"],
+        "industry_group": root["industry_group"],
+        "match_rung": m["rung"],
+        "match_confidence": m["confidence"],
+        "a16z_person": m.get("a16z_person"),
+    }
+
+
+def _off_network_row(company: dict, off: dict, today: date) -> dict | None:
+    if (company.get("name") or "").strip().lower() == "stealth":
+        return None
+    days = (today - off["first_sale"]).days
+    return {
+        "on_network": False,
+        "slug": company["slug"],
+        "name": company["name"],
+        "tier": company["tier"],
+        "cohort": company.get("cohort"),
+        "url": company.get("url"),
+        "website": company.get("website"),
+        "location": company.get("location"),
+        "blurb": company.get("blurb"),
+        "open_roles": None,
+        "roles_since_first_sale": None,
+        # Cash and recency only: open roles are not tracked off the network.
+        "score": score(off["amount"], 0, days),
+        **_filing_fields(off, today),
+    }
 
 
 def to_csv(rows: list[dict]) -> str:
