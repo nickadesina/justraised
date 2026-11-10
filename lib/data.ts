@@ -66,6 +66,7 @@ export interface Filing {
 // A portfolio company (a16z.com or speedrun.a16z.com) with a matched Form D
 // that is not on the talent network, so it has no open-role count.
 export interface OffNetworkFiling extends Omit<Filing, "roles_since_first_sale" | "first_post_since" | "days_to_first_post" | "stage_label" | "size_label"> {
+  logo: string | null;
   url: string | null;
   website: string | null;
   location: string | null;
@@ -111,6 +112,10 @@ export interface SpvCompany {
   name: string;
   tier: Tier;
   cohort: string | null;
+  logo: string | null;
+  blurb: string | null;
+  location: string | null;
+  stage: string | null;
   on_network: boolean;
   has_own_form_d: boolean;
   url: string | null;

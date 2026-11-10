@@ -416,6 +416,7 @@ def _off_network_row(company: dict, off: dict, today: date) -> dict | None:
         "website": company.get("website"),
         "location": company.get("location"),
         "blurb": company.get("blurb"),
+        "logo": company.get("logo"),
         "open_roles": None,
         "roles_since_first_sale": None,
         # Cash and recency only: open roles are not tracked off the network.
@@ -454,6 +455,10 @@ def _spv_row(company: dict, group: list[dict], detail: dict | None, on_network: 
         "on_network": on_network,
         "has_own_form_d": has_direct,
         "url": company.get("url") if on_network else (company.get("website") or company.get("url")),
+        "logo": company.get("logo"),
+        "blurb": company.get("blurb"),
+        "location": company.get("location"),
+        "stage": company.get("stage"),
         "open_roles": company.get("open_roles") if on_network else None,
         "roles_since_first_spv": len(since) if on_network else None,
         "spvs": len(vehicles),

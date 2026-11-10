@@ -111,6 +111,7 @@ def parse_a16z_portfolio(page: str) -> list[dict]:
                 "blurb": (c.get("overview") or c.get("website_description") or "")[:400] or None,
                 "url": permalink or None,
                 "website": c.get("external_url") or c.get("url") or None,
+                "logo": c.get("logo") or None,
                 "focus_areas": c.get("focus_areas") or [],
                 "first_funded": c.get("initial_a16z_date_funded") or None,
             }
@@ -137,6 +138,7 @@ def parse_speedrun(page: str) -> list[dict]:
                 "blurb": c.get("preamble"),
                 "url": f"https://speedrun.a16z.com/companies/{c['slug']}",
                 "website": None,
+                "logo": c.get("logo") or None,
             }
         )
     return out
@@ -182,8 +184,9 @@ def build_universe(network: list[dict], extra: list[dict], aliases: dict[str, li
         hit = next((by_key[k] for k in keys if k in by_key), None)
         if hit is not None:
             hit.setdefault("also", []).append(c["slug"])
-            if c.get("website") and not hit.get("website"):
-                hit["website"] = c["website"]
+            for k in ("website", "logo", "blurb"):
+                if c.get(k) and not hit.get(k):
+                    hit[k] = c[k]
             continue
         out.append(c)
         for k in keys:
