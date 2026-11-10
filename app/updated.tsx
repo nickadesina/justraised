@@ -14,14 +14,14 @@ export default function Updated({ at }: { at: string }) {
     const hours = (Date.now() - Date.parse(at)) / 3_600_000;
     setFresh(hours < 48);
     if (hours < 1) setLabel("Updated within the hour");
-    else if (hours < 24) setLabel(`Updated ${Math.round(hours)} hour${Math.round(hours) === 1 ? "" : "s"} ago`);
+    else if (hours < 24) setLabel(`Updated ${Math.round(hours)}h ago`);
     else setLabel(`Updated ${fallback}`);
   }, [at, fallback]);
 
   return (
     <span className={`live ${fresh ? "" : "stale"}`}>
       <span className="dot" aria-hidden="true" />
-      {label} · refreshed nightly from SEC EDGAR
+      {label}
     </span>
   );
 }

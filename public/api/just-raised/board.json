@@ -1,0 +1,6 @@
+{
+ "generated_at": "1970-01-01T00:00:00Z",
+ "board": {"roles": 0, "distinct_company_titles": 0, "repeat_listings": 0},
+ "portfolio": {"companies": 0, "filter_misses": 0, "roles_behind_filter_misses": 0},
+ "companies": []
+}

@@ -3,6 +3,7 @@
 // nothing is read at request time and nothing can be down when a reviewer
 // clicks the link.
 import collectionDoc from "@/public/api/collections/just-raised.json";
+import boardDoc from "@/public/api/just-raised/board.json";
 import filingsDoc from "@/public/api/just-raised/filings.json";
 
 export type Tier = "speedrun" | "a16z" | "market" | "universe";
@@ -140,7 +141,38 @@ export interface FilingsDoc {
   spv: Record<string, SpvCompany>;
 }
 
+// Board health: one row per portfolio company on the talent network.
+export interface BoardCompany {
+  slug: string;
+  name: string;
+  tier: Tier;
+  cohort: string | null;
+  logo: string | null;
+  url: string | null;
+  open_roles: number;
+  filter_ok: boolean; // does /jobs?company=<name> find its roles
+  jobs_name: string | null; // the name company= accepts, if different
+  listings: number | null; // rows on /jobs.md
+  distinct_titles: number | null;
+  posted_24h: number | null;
+  posted_7d: number | null;
+  posted_30d: number | null;
+  comp_posted: number | null;
+  founding: number | null;
+  functions: { function: string; n: number }[];
+}
+
+export interface BoardDoc {
+  generated_at: string;
+  board: { roles: number; distinct_company_titles: number; repeat_listings: number };
+  portfolio: { companies: number; filter_misses: number; roles_behind_filter_misses: number };
+  companies: BoardCompany[];
+}
+
 export const collection = collectionDoc as unknown as CollectionDoc;
+export const board = boardDoc as unknown as BoardDoc;
+export const boardBySlug = new Map(board.companies.map((c) => [c.slug, c]));
+export const TALENT = "https://speedrun-talent-network.com";
 export const filings = filingsDoc as unknown as FilingsDoc;
 
 export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -149,5 +181,7 @@ export const API = {
   filings: `${BASE_PATH}/api/just-raised/filings.json`,
   csv: `${BASE_PATH}/api/just-raised.csv`,
   spvCsv: `${BASE_PATH}/api/just-raised-spvs.csv`,
+  board: `${BASE_PATH}/api/just-raised/board.json`,
 };
 export const REPO_URL = "https://github.com/nickadesina/justraised";
+export const API_NOTES = `${REPO_URL}#notes-on-the-talent-network-api`;

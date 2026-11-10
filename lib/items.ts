@@ -1,6 +1,6 @@
 // One card per company, merging the three signals the pipeline publishes:
 // the company's own Form D (on or off the talent network) and investor SPVs.
-import { type Tier, collection, filings } from "@/lib/data";
+import { type BoardCompany, type Tier, boardBySlug, collection, filings } from "@/lib/data";
 
 export interface Raise {
   amount: number | null;
@@ -44,6 +44,7 @@ export interface Item {
   filedDays: number; // days from that filing to the run date
   filedKind: "Form D" | "SPV";
   rank: number | null; // rank in the collection endpoint, if listed there
+  board: BoardCompany | null; // hiring mix and comp coverage, if on the talent network
 }
 
 const RUN_DATE = filings.meta.run_date;
@@ -53,16 +54,22 @@ function daysBefore(iso: string, until: string = RUN_DATE): number {
   return Math.max(0, Math.round(ms / 86_400_000));
 }
 
-function withFiled(base: Omit<Item, "filed" | "filedDays" | "filedKind">): Item {
+function withFiled(base: Omit<Item, "filed" | "filedDays" | "filedKind" | "board">): Item {
   const raiseFiled = base.raise?.filed ?? "";
   const spvFiled = base.spv?.latest ?? "";
   const spvNewer = spvFiled > raiseFiled;
   const filed = spvNewer ? spvFiled : raiseFiled;
-  return { ...base, filed, filedDays: daysBefore(filed), filedKind: spvNewer ? "SPV" : "Form D" };
+  return {
+    ...base,
+    filed,
+    filedDays: daysBefore(filed),
+    filedKind: spvNewer ? "SPV" : "Form D",
+    board: base.onNetwork ? (boardBySlug.get(base.slug) ?? null) : null,
+  };
 }
 
 export function buildItems(): Item[] {
-  const items = new Map<string, Omit<Item, "filed" | "filedDays" | "filedKind">>();
+  const items = new Map<string, Omit<Item, "filed" | "filedDays" | "filedKind" | "board">>();
   const members = new Map(collection.collection.members.map((m) => [m.slug ?? m.name, m]));
 
   for (const f of Object.values(filings.filings)) {

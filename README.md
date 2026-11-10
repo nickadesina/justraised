@@ -1,16 +1,26 @@
 # Just Raised
 
-A daily list of a16z and speedrun portfolio companies that filed a Form D with
-the SEC recently, next to how many roles they have open and how many they've
-posted since. It answers a question job boards don't: which companies have new
-money and haven't posted the roles yet. The page shows the newest filing first;
-"Best window" re-sorts by cash per open role, which is also the order of the
-collection endpoint.
+A console for the speedrun talent team, built on public data. It has two
+views:
 
-- Page: https://nickadesina.github.io/justraised/
+- **Just raised**, an outreach queue: a16z and speedrun portfolio companies
+  that filed a Form D (or had an investor SPV filed) recently, newest filing
+  first, next to how many roles they have open, posted in the last 30 days, and
+  posted since the money came in. It answers a question job boards don't:
+  which companies have new money and haven't posted the roles yet. Each row
+  has a triage status (saved in the browser) and a "copy brief" for Slack.
+  "Best window" re-sorts by cash per open role, the order of the collection
+  endpoint.
+- **Board health**, a fix list for the job board itself: companies whose
+  `company=` filter finds nothing, titles listed once per city, companies that
+  post no comp, and companies with plenty of open roles and nothing new in 30
+  days.
+
+- Console: https://nickadesina.github.io/justraised/ (board health at `/board`)
 - Collection (talent network schema): [`/api/collections/just-raised.json`](https://nickadesina.github.io/justraised/api/collections/just-raised.json)
 - Filing detail: [`/api/just-raised/filings.json`](https://nickadesina.github.io/justraised/api/just-raised/filings.json)
 - Spreadsheet: [`/api/just-raised.csv`](https://nickadesina.github.io/justraised/api/just-raised.csv)
+- Board health: [`/api/just-raised/board.json`](https://nickadesina.github.io/justraised/api/just-raised/board.json)
 
 Built as the "one idea, with a link" for the speedrun talent team's
 [Product Engineer](https://speedrun-talent-network.com/product-engineer/) role.
@@ -197,6 +207,15 @@ filing URL, issuer, amendments, roles posted since the raise, roles posted in
 the last 30 and 7 days (`roles_posted_30d`, `roles_posted_7d`), score inputs,
 and the match rung. None of it fits their member schema.
 
+### `/api/just-raised/board.json`
+
+One row per portfolio company on the talent network: open roles, roles posted
+in the last 24 hours / 7 days / 30 days, function mix, founding roles, roles
+with a posted pay band, listings vs distinct titles, and whether
+`/jobs?company=<name>` finds its roles (with the name that does, when one
+exists). Board-wide totals for repeat listings. The board-health view is built
+from this file.
+
 ### `/api/just-raised.csv`
 
 Every column, for a spreadsheet.
@@ -217,8 +236,9 @@ pipeline/spv.py              investor vehicles named after a portfolio company  
 pipeline/fetch_formd.py      EDGAR index (form.idx backfill, full-text search daily) -> data/formd_index.parquet
                              gated primary_doc.xml downloads, parsed          -> data/filings.parquet
 pipeline/match.py            filters, ladder, matches.yaml                    -> data/matches.parquet, review/*.csv
+pipeline/board.py            /jobs facets per portfolio company, /jobs.md     -> public/api/just-raised/board.json
 pipeline/score.py            offerings, score, guardrail                      -> public/api/*, data/history.parquet
-pipeline/run_all.py          all four, in order
+pipeline/run_all.py          all of them, in order
 ```
 
 GitHub Actions runs `run_all` at 10:00 UTC (02:00 Pacific in winter), commits
@@ -242,11 +262,13 @@ everything.
   never refetched, and raw XML is cached under `data/cache/`.
 - Talent-network calls are limited to 1 per second; their API returns 429 on
   bursts.
-- Roles posted in the last 30 days cost one `/jobs?company=<name>&page_size=1`
-  call per listed company, read from `facets.posted`. When that name returns
-  zero rows for a company with open roles, `score.py` looks up the name the
-  jobs carry (see API note 1) and retries; if that fails too it publishes
-  `null`, never a false 0.
+- `board.py` makes one `/jobs?company=<name>&page_size=1` call per portfolio
+  company (340, about six minutes) and reads the posting buckets, function
+  mix and comp coverage from its facets, plus one download of `/jobs.md`.
+  When a name returns zero rows for a company with open roles, it looks up
+  the name the jobs carry (see API note 1) and retries; if that fails too the
+  counts are `null`, never a false 0. `score.py` reuses tonight's buckets and
+  calls `/jobs` itself only for companies the board run didn't cover.
 - `score.py` refuses to publish if the High match count falls more than 30%
   from the previous run, which catches a broken normalizer before it empties
   the page. `--force` overrides it.
@@ -314,7 +336,9 @@ curl -s "$B/jobs?company=Anduril" | jq .total              # 0  (the name /compa
 curl -s "$B/jobs?company=Anduril%20Industries" | jq .total # 2580
 ```
 
-Checking every portfolio company on 2026-11-10, 20 of 340 return zero rows for
+The board's own surfaces disagree: `/companies` and `/jobs.md` say "Anduril",
+the `company` field on `/jobs` says "Anduril Industries". Checking every
+portfolio company on 2026-11-10, 20 of 340 return zero rows for
 the name `/companies` gives them, which hides 3,320 open roles from the filter.
 The jobs spell them differently: "Saronic Technologies", "Mercury
 Technologies", "Earnin" (not "EarnIn"), "Chronospace", "Runware (Picfinder)".
@@ -323,9 +347,10 @@ Just Raised works around it by searching
 retrying with that.
 
 **2. Bad parameter values fail silently.** `stealth`, `posted` and `comp_any`
-are enums in the OpenAPI document, but the server accepts anything, ignores
-what it doesn't recognize, and returns 200 with no warning. Unknown parameters
-are ignored the same way.
+are enums in the OpenAPI document, and the developers page says errors come
+back as `{"error":{"code","message"}}` with a matching status. But the server
+accepts any value, ignores what it doesn't recognize, and returns 200 with no
+warning. Unknown parameters are ignored the same way.
 
 ```bash
 curl -s "$B/jobs?stealth=true" | jq .total                  # 22985 (stealth=only: 1)
