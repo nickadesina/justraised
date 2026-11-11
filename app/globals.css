@@ -561,6 +561,12 @@ details[open] .chev {
   margin: 4px 0;
 }
 
+/* Links inside running text are underlined, not marked by colour alone. */
+.evidence p a,
+.evidence li a {
+  text-decoration: underline;
+}
+
 .evidence li::marker {
   color: var(--signal);
 }
