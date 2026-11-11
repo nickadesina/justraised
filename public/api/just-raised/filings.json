@@ -1,14 +1,14 @@
 {
  "meta": {
-  "generated_at": "2026-11-10T17:33:24Z",
-  "run_date": "2026-11-10",
+  "generated_at": "2026-11-11T17:45:33Z",
+  "run_date": "2026-11-11",
   "window_days": 180,
   "half_life_days": 45,
   "formula": "log10(amount + 1) / (open_roles + 1) * 0.5 ^ (days_since_first_sale / 45)",
   "high_matches": 13,
   "members": 8,
   "off_network": 4,
-  "spv_companies": 25,
+  "spv_companies": 26,
   "off_network_formula": "log10(amount + 1) * 0.5 ^ (days_since_first_sale / 45); open roles are not tracked",
   "lag_assumption": "Postings follow a raise by one to three months. Assumed, not yet measured."
  },
@@ -21,7 +21,7 @@
    "cohort": "SR004",
    "stage_label": "seed",
    "size_label": "1-10",
-   "score": 0.9344008702521985,
+   "score": 0.9201183220921113,
    "amount": 14902982.0,
    "amount_kind": "sold",
    "amount_sold": 14902982.0,
@@ -29,7 +29,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-09-10",
    "first_sale_reported": true,
-   "days_since_first_sale": 61,
+   "days_since_first_sale": 62,
    "file_date": "2026-09-28",
    "latest_file_date": "2026-09-28",
    "amendments": 0,
@@ -58,7 +58,7 @@
    "cohort": null,
    "stage_label": "series a",
    "size_label": "11-50",
-   "score": 0.2793844893172242,
+   "score": 0.27511402837172266,
    "amount": 104364967.0,
    "amount_kind": "sold",
    "amount_sold": 104364967.0,
@@ -66,7 +66,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-10-07",
    "first_sale_reported": true,
-   "days_since_first_sale": 34,
+   "days_since_first_sale": 35,
    "file_date": "2026-10-22",
    "latest_file_date": "2026-10-22",
    "amendments": 0,
@@ -95,7 +95,7 @@
    "cohort": null,
    "stage_label": null,
    "size_label": null,
-   "score": 0.16589904929130578,
+   "score": 0.1696464429247508,
    "amount": 264999494.0,
    "amount_kind": "sold",
    "amount_sold": 264999494.0,
@@ -103,7 +103,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-09-30",
    "first_sale_reported": true,
-   "days_since_first_sale": 41,
+   "days_since_first_sale": 42,
    "file_date": "2026-10-15",
    "latest_file_date": "2026-10-15",
    "amendments": 0,
@@ -124,43 +124,6 @@
    "days_to_first_post": 5,
    "rank": 3
   },
-  "stuut": {
-   "on_network": true,
-   "slug": "stuut",
-   "name": "Stuut",
-   "tier": "a16z",
-   "cohort": null,
-   "stage_label": "seed",
-   "size_label": "11-50",
-   "score": 0.1144608492121501,
-   "amount": 67597673.0,
-   "amount_kind": "sold",
-   "amount_sold": 67597673.0,
-   "offering_amount": 67597673.0,
-   "offering_indefinite": false,
-   "date_of_first_sale": "2026-09-03",
-   "first_sale_reported": true,
-   "days_since_first_sale": 68,
-   "file_date": "2026-09-16",
-   "latest_file_date": "2026-09-16",
-   "amendments": 0,
-   "offerings_in_window": 1,
-   "accession": "0002045111-26-000003",
-   "latest_accession": "0002045111-26-000003",
-   "filing_url": "https://www.sec.gov/Archives/edgar/data/2045111/000204511126000003/0002045111-26-000003-index.htm",
-   "issuer_name": "Stuut, Inc.",
-   "issuer_cik": "2045111",
-   "issuer_city": "NEW YORK",
-   "issuer_state": "NY",
-   "industry_group": "Other Technology",
-   "match_rung": "1",
-   "match_confidence": "high",
-   "a16z_person": "Seema Amble",
-   "roles_since_first_sale": 21,
-   "first_post_since": "2026-09-03",
-   "days_to_first_post": 0,
-   "rank": 4
-  },
   "primitive-labs": {
    "on_network": true,
    "slug": "primitive-labs",
@@ -169,7 +132,7 @@
    "cohort": "SR007",
    "stage_label": null,
    "size_label": null,
-   "score": 0.11080744448543964,
+   "score": 0.10911372531977541,
    "amount": 785000.0,
    "amount_kind": "sold",
    "amount_sold": 785000.0,
@@ -177,7 +140,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-05-26",
    "first_sale_reported": true,
-   "days_since_first_sale": 168,
+   "days_since_first_sale": 169,
    "file_date": "2026-07-02",
    "latest_file_date": "2026-07-02",
    "amendments": 0,
@@ -196,6 +159,43 @@
    "roles_since_first_sale": 3,
    "first_post_since": "2026-07-14",
    "days_to_first_post": 49,
+   "rank": 4
+  },
+  "stuut": {
+   "on_network": true,
+   "slug": "stuut",
+   "name": "Stuut",
+   "tier": "a16z",
+   "cohort": null,
+   "stage_label": "seed",
+   "size_label": "11-50",
+   "score": 0.10820283537850327,
+   "amount": 67597673.0,
+   "amount_kind": "sold",
+   "amount_sold": 67597673.0,
+   "offering_amount": 67597673.0,
+   "offering_indefinite": false,
+   "date_of_first_sale": "2026-09-03",
+   "first_sale_reported": true,
+   "days_since_first_sale": 69,
+   "file_date": "2026-09-16",
+   "latest_file_date": "2026-09-16",
+   "amendments": 0,
+   "offerings_in_window": 1,
+   "accession": "0002045111-26-000003",
+   "latest_accession": "0002045111-26-000003",
+   "filing_url": "https://www.sec.gov/Archives/edgar/data/2045111/000204511126000003/0002045111-26-000003-index.htm",
+   "issuer_name": "Stuut, Inc.",
+   "issuer_cik": "2045111",
+   "issuer_city": "NEW YORK",
+   "issuer_state": "NY",
+   "industry_group": "Other Technology",
+   "match_rung": "1",
+   "match_confidence": "high",
+   "a16z_person": "Seema Amble",
+   "roles_since_first_sale": 22,
+   "first_post_since": "2026-09-03",
+   "days_to_first_post": 0,
    "rank": 5
   },
   "mariana-minerals": {
@@ -206,7 +206,7 @@
    "cohort": null,
    "stage_label": "series a",
    "size_label": "1-10",
-   "score": 0.015061640276937596,
+   "score": 0.014831419384091883,
    "amount": 310499477.0,
    "amount_kind": "sold",
    "amount_sold": 310499477.0,
@@ -214,7 +214,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-07-22",
    "first_sale_reported": true,
-   "days_since_first_sale": 111,
+   "days_since_first_sale": 112,
    "file_date": "2026-08-06",
    "latest_file_date": "2026-08-06",
    "amendments": 0,
@@ -243,7 +243,7 @@
    "cohort": null,
    "stage_label": "growth or late stage",
    "size_label": "51-200",
-   "score": 0.007951346962410925,
+   "score": 0.007829808659586416,
    "amount": 247488419.0,
    "amount_kind": "sold",
    "amount_sold": 247488419.0,
@@ -251,7 +251,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-05-15",
    "first_sale_reported": true,
-   "days_since_first_sale": 179,
+   "days_since_first_sale": 180,
    "file_date": "2026-09-28",
    "latest_file_date": "2026-09-28",
    "amendments": 0,
@@ -280,7 +280,7 @@
    "cohort": null,
    "stage_label": "growth or late stage",
    "size_label": "501-1,000",
-   "score": 0.007396432464978838,
+   "score": 0.007245042608572327,
    "amount": 550299446.0,
    "amount_kind": "sold",
    "amount_sold": 550299446.0,
@@ -288,7 +288,7 @@
    "offering_indefinite": true,
    "date_of_first_sale": "2026-08-28",
    "first_sale_reported": true,
-   "days_since_first_sale": 74,
+   "days_since_first_sale": 75,
    "file_date": "2026-09-11",
    "latest_file_date": "2026-09-11",
    "amendments": 0,
@@ -304,7 +304,7 @@
    "match_rung": "1",
    "match_confidence": "high",
    "a16z_person": null,
-   "roles_since_first_sale": 257,
+   "roles_since_first_sale": 261,
    "first_post_since": "2026-08-28",
    "days_to_first_post": 0,
    "rank": 8
@@ -324,7 +324,7 @@
    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2023/09/logo_0018000000ztSVq-20230417220544.svg",
    "open_roles": null,
    "roles_since_first_sale": null,
-   "score": 2.4247424414987853,
+   "score": 2.387679654210106,
    "amount": 4999997255.0,
    "amount_kind": "sold",
    "amount_sold": 4999997255.0,
@@ -332,7 +332,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-08-12",
    "first_sale_reported": true,
-   "days_since_first_sale": 90,
+   "days_since_first_sale": 91,
    "file_date": "2026-08-27",
    "latest_file_date": "2026-08-27",
    "amendments": 0,
@@ -363,7 +363,7 @@
    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2023/09/logo_0011E00001nUg3N-20230418003645.svg",
    "open_roles": null,
    "roles_since_first_sale": null,
-   "score": 1.9612119506915429,
+   "score": 1.9312343414772766,
    "amount": 547000000.0,
    "amount_kind": "sold",
    "amount_sold": 547000000.0,
@@ -371,7 +371,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-08-05",
    "first_sale_reported": true,
-   "days_since_first_sale": 97,
+   "days_since_first_sale": 98,
    "file_date": "2026-08-18",
    "latest_file_date": "2026-08-18",
    "amendments": 0,
@@ -402,7 +402,7 @@
    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2024/10/logo_0011E00001jIo3f-20230417213426.svg",
    "open_roles": null,
    "roles_since_first_sale": null,
-   "score": 1.3191996209266252,
+   "score": 1.2990353287919572,
    "amount": 75141086.0,
    "amount_kind": "sold",
    "amount_sold": 75141086.0,
@@ -410,7 +410,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-07-17",
    "first_sale_reported": true,
-   "days_since_first_sale": 116,
+   "days_since_first_sale": 117,
    "file_date": "2026-10-26",
    "latest_file_date": "2026-10-26",
    "amendments": 0,
@@ -441,7 +441,7 @@
    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2024/10/logo_0011E00001liXWBQA2-20230512202016.svg",
    "open_roles": null,
    "roles_since_first_sale": null,
-   "score": 1.0622500351401076,
+   "score": 1.046013280907582,
    "amount": 24999937.0,
    "amount_kind": "sold",
    "amount_sold": 24999937.0,
@@ -449,7 +449,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-07-07",
    "first_sale_reported": true,
-   "days_since_first_sale": 126,
+   "days_since_first_sale": 127,
    "file_date": "2026-07-22",
    "latest_file_date": "2026-07-29",
    "amendments": 1,
@@ -469,41 +469,6 @@
   }
  },
  "spv": {
-  "zipline": {
-   "slug": "zipline",
-   "name": "Zipline",
-   "tier": "a16z",
-   "cohort": null,
-   "on_network": true,
-   "has_own_form_d": false,
-   "url": "https://speedrun-talent-network.com/companies/zipline",
-   "logo": "https://www.flyzipline.com/android-chrome-192x192.png",
-   "blurb": "Autonomous drones that deliver blood, medicine, and retail orders by parachute drop; past 1 million deliveries across Africa and the US.",
-   "location": "South San Francisco, CA",
-   "stage": "growth",
-   "open_roles": 344,
-   "roles_since_first_spv": 333,
-   "spvs": 2,
-   "spv_amount_sold": 20814000.0,
-   "first_spv_file_date": "2026-05-18",
-   "latest_spv_file_date": "2026-11-04",
-   "days_since_latest_spv": 6,
-   "vehicles": [
-    {
-     "name": "Inflection Ventures Zipline Fund I LLC",
-     "file_date": "2026-11-04",
-     "amount_sold": 4875000.0,
-     "filing_url": "https://www.sec.gov/Archives/edgar/data/2163573/000216357326000001/0002163573-26-000001-index.htm"
-    },
-    {
-     "name": "GREP VC ZIPLINE SPV I LTD.",
-     "file_date": "2026-05-18",
-     "amount_sold": 15939000.0,
-     "filing_url": "https://www.sec.gov/Archives/edgar/data/2132990/000213299026000001/0002132990-26-000001-index.htm"
-    }
-   ],
-   "rank": 1
-  },
   "anduril-industries": {
    "slug": "anduril-industries",
    "name": "Anduril",
@@ -516,25 +481,25 @@
    "blurb": "Builds autonomous defense systems for the US and its allies: Lattice software, Fury and Roadrunner aircraft, Ghost drones, Barracuda missiles and Dive-XL undersea vehicles.",
    "location": "Costa Mesa, California",
    "stage": "growth",
-   "open_roles": 2575,
-   "roles_since_first_spv": 2058,
+   "open_roles": 2588,
+   "roles_since_first_spv": 2072,
    "spvs": 10,
-   "spv_amount_sold": 56181176.0,
+   "spv_amount_sold": 56292939.0,
    "first_spv_file_date": "2026-05-26",
-   "latest_spv_file_date": "2026-11-02",
-   "days_since_latest_spv": 8,
+   "latest_spv_file_date": "2026-11-10",
+   "days_since_latest_spv": 1,
    "vehicles": [
+    {
+     "name": "Greenbird Intelligence Fund, LLC, Series ZC - Anduril",
+     "file_date": "2026-11-10",
+     "amount_sold": 917075.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2158784/000215878426000002/0002158784-26-000002-index.htm"
+    },
     {
      "name": "Greenbird Intelligence Fund, LLC Series Z - Anduril",
      "file_date": "2026-11-02",
      "amount_sold": 2084278.0,
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2133428/000213342826000004/0002133428-26-000004-index.htm"
-    },
-    {
-     "name": "Greenbird Intelligence Fund, LLC, Series ZC - Anduril",
-     "file_date": "2026-10-29",
-     "amount_sold": 805312.0,
-     "filing_url": "https://www.sec.gov/Archives/edgar/data/2158784/000215878426000001/0002158784-26-000001-index.htm"
     },
     {
      "name": "Valkyrie X LLC, Series II Anduril",
@@ -585,7 +550,71 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2134815/000213481526000001/0002134815-26-000001-index.htm"
     }
    ],
+   "rank": 1
+  },
+  "applied-intuition": {
+   "slug": "applied-intuition",
+   "name": "Applied Intuition",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/applied-intuition",
+   "logo": "https://appliedintuition.com/apple-icon.png?apple-icon.6f46eb95.png",
+   "blurb": "Autonomy software for vehicles and heavy machines: simulation and test tools, a vehicle OS and a self-driving stack, built for automotive, trucking, defense, mining and agriculture.",
+   "location": "Sunnyvale, California",
+   "stage": "growth",
+   "open_roles": 326,
+   "roles_since_first_spv": 3,
+   "spvs": 1,
+   "spv_amount_sold": 0,
+   "first_spv_file_date": "2026-11-10",
+   "latest_spv_file_date": "2026-11-10",
+   "days_since_latest_spv": 1,
+   "vehicles": [
+    {
+     "name": "Applied Intuition I, a Series of Cedar Legacy Master LLC",
+     "file_date": "2026-11-10",
+     "amount_sold": 0.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2164458/000216445826000001/0002164458-26-000001-index.htm"
+    }
+   ],
    "rank": 2
+  },
+  "zipline": {
+   "slug": "zipline",
+   "name": "Zipline",
+   "tier": "a16z",
+   "cohort": null,
+   "on_network": true,
+   "has_own_form_d": false,
+   "url": "https://speedrun-talent-network.com/companies/zipline",
+   "logo": "https://www.flyzipline.com/android-chrome-192x192.png",
+   "blurb": "Autonomous drones that deliver blood, medicine, and retail orders by parachute drop; past 1 million deliveries across Africa and the US.",
+   "location": "South San Francisco, CA",
+   "stage": "growth",
+   "open_roles": 341,
+   "roles_since_first_spv": 330,
+   "spvs": 2,
+   "spv_amount_sold": 20814000.0,
+   "first_spv_file_date": "2026-05-18",
+   "latest_spv_file_date": "2026-11-04",
+   "days_since_latest_spv": 7,
+   "vehicles": [
+    {
+     "name": "Inflection Ventures Zipline Fund I LLC",
+     "file_date": "2026-11-04",
+     "amount_sold": 4875000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2163573/000216357326000001/0002163573-26-000001-index.htm"
+    },
+    {
+     "name": "GREP VC ZIPLINE SPV I LTD.",
+     "file_date": "2026-05-18",
+     "amount_sold": 15939000.0,
+     "filing_url": "https://www.sec.gov/Archives/edgar/data/2132990/000213299026000001/0002132990-26-000001-index.htm"
+    }
+   ],
+   "rank": 3
   },
   "sourcerer-ai": {
    "slug": "sourcerer-ai",
@@ -605,7 +634,7 @@
    "spv_amount_sold": 1015439.0,
    "first_spv_file_date": "2026-10-16",
    "latest_spv_file_date": "2026-10-16",
-   "days_since_latest_spv": 25,
+   "days_since_latest_spv": 26,
    "vehicles": [
     {
      "name": "Sourcerer-2, a series of Jason's Syndicate, LLC",
@@ -614,7 +643,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2160424/000216042426000001/0002160424-26-000001-index.htm"
     }
    ],
-   "rank": 3
+   "rank": 4
   },
   "astro-mechanica": {
    "slug": "astro-mechanica",
@@ -628,13 +657,13 @@
    "blurb": "Builds engines, airframes and flight systems for a new age of aerospace, starting with the first jet engine engineered to run efficiently at both subsonic and supersonic speeds.",
    "location": "San Francisco, California",
    "stage": "seed",
-   "open_roles": 46,
-   "roles_since_first_spv": 29,
+   "open_roles": 44,
+   "roles_since_first_spv": 28,
    "spvs": 1,
    "spv_amount_sold": 2500000.0,
    "first_spv_file_date": "2026-10-14",
    "latest_spv_file_date": "2026-10-14",
-   "days_since_latest_spv": 27,
+   "days_since_latest_spv": 28,
    "vehicles": [
     {
      "name": "Voyager SPV - Astro Mechanica 2026, LP",
@@ -643,7 +672,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2160264/000216026426000001/0002160264-26-000001-index.htm"
     }
    ],
-   "rank": 4
+   "rank": 5
   },
   "ornn": {
    "slug": "ornn",
@@ -656,14 +685,14 @@
    "logo": "https://www.google.com/s2/favicons?domain=ornnai.com&sz=128",
    "blurb": "We believe intelligence shouldn't be bottlenecked by infrastructure. To advance that mission, we're building Ornn. Our work includes building a frictionless exchange for high-performance compute.",
    "location": "New York, New York",
-   "stage": null,
+   "stage": "seed",
    "open_roles": 13,
    "roles_since_first_spv": 13,
    "spvs": 1,
    "spv_amount_sold": 0,
    "first_spv_file_date": "2026-10-07",
    "latest_spv_file_date": "2026-10-07",
-   "days_since_latest_spv": 34,
+   "days_since_latest_spv": 35,
    "vehicles": [
     {
      "name": "021T Capital SPV Ornn, L.P.",
@@ -672,7 +701,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2158838/000215883826000002/0002158838-26-000002-index.htm"
     }
    ],
-   "rank": 5
+   "rank": 6
   },
   "amca": {
    "slug": "amca",
@@ -686,13 +715,13 @@
    "blurb": "Makes the critical components aerospace and defense systems depend on, like sensors and bearings, so one sole-source supplier can no longer stall a production line.",
    "location": "El Segundo, CA",
    "stage": "series-a",
-   "open_roles": 48,
+   "open_roles": 49,
    "roles_since_first_spv": 11,
    "spvs": 1,
    "spv_amount_sold": 0,
    "first_spv_file_date": "2026-10-01",
    "latest_spv_file_date": "2026-10-01",
-   "days_since_latest_spv": 40,
+   "days_since_latest_spv": 41,
    "vehicles": [
     {
      "name": "Caffeinated Capital Amca SPV II, LLC",
@@ -701,7 +730,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2156010/000215601026000001/0002156010-26-000001-index.htm"
     }
    ],
-   "rank": 6
+   "rank": 7
   },
   "apex-space": {
    "slug": "apex-space",
@@ -715,13 +744,13 @@
    "blurb": "Builds standardized satellite buses (Aries, Nova) on a production line in Los Angeles, so satellite operators fly a proven platform instead of a custom build.",
    "location": "Los Angeles, CA",
    "stage": "series-b",
-   "open_roles": 135,
-   "roles_since_first_spv": 101,
+   "open_roles": 136,
+   "roles_since_first_spv": 102,
    "spvs": 7,
    "spv_amount_sold": 0,
    "first_spv_file_date": "2026-09-21",
    "latest_spv_file_date": "2026-09-28",
-   "days_since_latest_spv": 43,
+   "days_since_latest_spv": 44,
    "vehicles": [
     {
      "name": "AUGUREY VENTURES QP FUND - SERIES APEX SPACE B",
@@ -766,7 +795,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2156292/000215629226000001/0002156292-26-000001-index.htm"
     }
    ],
-   "rank": 7
+   "rank": 8
   },
   "gimlet-labs": {
    "slug": "gimlet-labs",
@@ -786,7 +815,7 @@
    "spv_amount_sold": 0,
    "first_spv_file_date": "2026-09-22",
    "latest_spv_file_date": "2026-09-22",
-   "days_since_latest_spv": 49,
+   "days_since_latest_spv": 50,
    "vehicles": [
     {
      "name": "ABH Gimlet, a Series of A Master Series, LLC",
@@ -795,7 +824,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2156487/000215648726000001/0002156487-26-000001-index.htm"
     }
    ],
-   "rank": 8
+   "rank": 9
   },
   "a16z:databricks": {
    "slug": "a16z:databricks",
@@ -815,7 +844,7 @@
    "spv_amount_sold": 105179874.0,
    "first_spv_file_date": "2026-07-13",
    "latest_spv_file_date": "2026-09-18",
-   "days_since_latest_spv": 53,
+   "days_since_latest_spv": 54,
    "vehicles": [
     {
      "name": "HII Databricks-01, a Series of HII Databricks LLC",
@@ -836,7 +865,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2091400/000209140026000001/0002091400-26-000001-index.htm"
     }
    ],
-   "rank": 9
+   "rank": 10
   },
   "a16z:plai-labs": {
    "slug": "a16z:plai-labs",
@@ -856,7 +885,7 @@
    "spv_amount_sold": 176000.0,
    "first_spv_file_date": "2026-09-18",
    "latest_spv_file_date": "2026-09-18",
-   "days_since_latest_spv": 53,
+   "days_since_latest_spv": 54,
    "vehicles": [
     {
      "name": "PLAI SPV F&F a Series of CGF2021 LLC",
@@ -865,7 +894,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2143969/000214396926000001/0002143969-26-000001-index.htm"
     }
    ],
-   "rank": 10
+   "rank": 11
   },
   "hadrian": {
    "slug": "hadrian",
@@ -879,13 +908,13 @@
    "blurb": "Builds automated factories that make precision parts for aerospace and defense, run on its own Opus factory software. Sells parts, dedicated production cells, or whole factories as a service.",
    "location": "Los Angeles, California",
    "stage": "series-b",
-   "open_roles": 166,
-   "roles_since_first_spv": 110,
+   "open_roles": 169,
+   "roles_since_first_spv": 114,
    "spvs": 1,
    "spv_amount_sold": 50000000.0,
    "first_spv_file_date": "2026-09-17",
    "latest_spv_file_date": "2026-09-17",
-   "days_since_latest_spv": 54,
+   "days_since_latest_spv": 55,
    "vehicles": [
     {
      "name": "WCM Partners X, LLC - Series X5, Hadrian Automation",
@@ -894,7 +923,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2151832/000215183226000001/0002151832-26-000001-index.htm"
     }
    ],
-   "rank": 11
+   "rank": 12
   },
   "kalshi": {
    "slug": "kalshi",
@@ -914,7 +943,7 @@
    "spv_amount_sold": 27765587.0,
    "first_spv_file_date": "2026-05-15",
    "latest_spv_file_date": "2026-09-16",
-   "days_since_latest_spv": 55,
+   "days_since_latest_spv": 56,
    "vehicles": [
     {
      "name": "HII Kalshi-06, a Series of HII Kalshi-A LLC",
@@ -959,7 +988,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2134989/000213498926000001/0002134989-26-000001-index.htm"
     }
    ],
-   "rank": 12
+   "rank": 13
   },
   "abridge": {
    "slug": "abridge",
@@ -973,13 +1002,13 @@
    "blurb": "Ambient AI clinical documentation: records the clinician-patient conversation and drafts the note, coding detail, and patient summary. Used at Kaiser Permanente, Duke Health, and Johns Hopkins.",
    "location": "San Francisco, California",
    "stage": "growth",
-   "open_roles": 27,
-   "roles_since_first_spv": 18,
+   "open_roles": 23,
+   "roles_since_first_spv": 16,
    "spvs": 1,
    "spv_amount_sold": 13900045.0,
    "first_spv_file_date": "2026-09-11",
    "latest_spv_file_date": "2026-09-11",
-   "days_since_latest_spv": 60,
+   "days_since_latest_spv": 61,
    "vehicles": [
     {
      "name": "Dominari Master SPV LLC, Series XXXI Abridge",
@@ -988,7 +1017,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2147411/000214741126000001/0002147411-26-000001-index.htm"
     }
    ],
-   "rank": 13
+   "rank": 14
   },
   "shield-ai": {
    "slug": "shield-ai",
@@ -1002,13 +1031,13 @@
    "blurb": "Builds Hivemind, an AI pilot that flies drones and jets through GPS and comms jamming, plus its own V-BAT drone and X-BAT, an AI-piloted VTOL fighter jet, for the US and its allies.",
    "location": "San Diego, California",
    "stage": "growth",
-   "open_roles": 672,
-   "roles_since_first_spv": 577,
+   "open_roles": 669,
+   "roles_since_first_spv": 573,
    "spvs": 12,
    "spv_amount_sold": 35678419.0,
    "first_spv_file_date": "2026-05-15",
    "latest_spv_file_date": "2026-08-31",
-   "days_since_latest_spv": 71,
+   "days_since_latest_spv": 72,
    "vehicles": [
     {
      "name": "Greenbird Intelligence Fund, LLC, Series W - Shield AI",
@@ -1083,7 +1112,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2133341/000213334126000001/0002133341-26-000001-index.htm"
     }
    ],
-   "rank": 14
+   "rank": 15
   },
   "a16z:alpine-bio": {
    "slug": "a16z:alpine-bio",
@@ -1103,7 +1132,7 @@
    "spv_amount_sold": 695000.0,
    "first_spv_file_date": "2026-08-18",
    "latest_spv_file_date": "2026-08-18",
-   "days_since_latest_spv": 84,
+   "days_since_latest_spv": 85,
    "vehicles": [
     {
      "name": "G8 Alpine Bio SPV II, LLC",
@@ -1112,7 +1141,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2143904/000214390426000001/0002143904-26-000001-index.htm"
     }
    ],
-   "rank": 15
+   "rank": 16
   },
   "chronospace": {
    "slug": "chronospace",
@@ -1132,7 +1161,7 @@
    "spv_amount_sold": 150000.0,
    "first_spv_file_date": "2026-08-13",
    "latest_spv_file_date": "2026-08-13",
-   "days_since_latest_spv": 89,
+   "days_since_latest_spv": 90,
    "vehicles": [
     {
      "name": "Brown Angel Group ChronoSpace a Series of CGF2021 LLC",
@@ -1141,7 +1170,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2148766/000214876626000001/0002148766-26-000001-index.htm"
     }
    ],
-   "rank": 16
+   "rank": 17
   },
   "exowatt": {
    "slug": "exowatt",
@@ -1161,7 +1190,7 @@
    "spv_amount_sold": 0,
    "first_spv_file_date": "2026-08-12",
    "latest_spv_file_date": "2026-08-12",
-   "days_since_latest_spv": 90,
+   "days_since_latest_spv": 91,
    "vehicles": [
     {
      "name": "BBV Exowatt SPV III LLC",
@@ -1170,7 +1199,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2142133/000214213326000001/0002142133-26-000001-index.htm"
     }
    ],
-   "rank": 17
+   "rank": 18
   },
   "elevenlabs": {
    "slug": "elevenlabs",
@@ -1184,13 +1213,13 @@
    "blurb": "We have deployed a platform for creators & publishers to turn their long text to audio with compelling and natural voices.",
    "location": "New York, New York",
    "stage": "series-a",
-   "open_roles": 129,
-   "roles_since_first_spv": 116,
+   "open_roles": 130,
+   "roles_since_first_spv": 117,
    "spvs": 1,
    "spv_amount_sold": 0,
    "first_spv_file_date": "2026-07-23",
    "latest_spv_file_date": "2026-07-23",
-   "days_since_latest_spv": 110,
+   "days_since_latest_spv": 111,
    "vehicles": [
     {
      "name": "AGC ElevenLabs I, a Series of AGC Parallax Fund I LLC",
@@ -1199,7 +1228,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2145940/000214594026000001/0002145940-26-000001-index.htm"
     }
    ],
-   "rank": 18
+   "rank": 19
   },
   "kaizen-labs": {
    "slug": "kaizen-labs",
@@ -1219,7 +1248,7 @@
    "spv_amount_sold": 0,
    "first_spv_file_date": "2026-07-20",
    "latest_spv_file_date": "2026-07-20",
-   "days_since_latest_spv": 113,
+   "days_since_latest_spv": 114,
    "vehicles": [
     {
      "name": "Kaizen SPV TL A Series of V360 Holdings LLC",
@@ -1228,7 +1257,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2145272/000214527226000001/0002145272-26-000001-index.htm"
     }
    ],
-   "rank": 19
+   "rank": 20
   },
   "cursor": {
    "slug": "cursor",
@@ -1242,13 +1271,13 @@
    "blurb": "AI code editor built on a VS Code fork: codebase-aware chat, multi-file edits, and background agents that take on whole tasks. Made by Anysphere.",
    "location": "San Francisco, CA",
    "stage": "series-b",
-   "open_roles": 115,
-   "roles_since_first_spv": 114,
+   "open_roles": 116,
+   "roles_since_first_spv": 116,
    "spvs": 1,
    "spv_amount_sold": 6436633.0,
    "first_spv_file_date": "2026-06-18",
    "latest_spv_file_date": "2026-06-18",
-   "days_since_latest_spv": 145,
+   "days_since_latest_spv": 146,
    "vehicles": [
     {
      "name": "HII Anysphere-01, a Series of HII Anysphere LLC",
@@ -1257,7 +1286,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2139817/000213981726000001/0002139817-26-000001-index.htm"
     }
    ],
-   "rank": 20
+   "rank": 21
   },
   "mind-robotics": {
    "slug": "mind-robotics",
@@ -1277,7 +1306,7 @@
    "spv_amount_sold": 862500.0,
    "first_spv_file_date": "2026-06-15",
    "latest_spv_file_date": "2026-06-15",
-   "days_since_latest_spv": 148,
+   "days_since_latest_spv": 149,
    "vehicles": [
     {
      "name": "Garuda Ventures Mind Robotics a Series of CGF2021 LLC",
@@ -1286,7 +1315,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2134565/000213456526000001/0002134565-26-000001-index.htm"
     }
    ],
-   "rank": 21
+   "rank": 22
   },
   "saronic-technologies": {
    "slug": "saronic-technologies",
@@ -1300,13 +1329,13 @@
    "blurb": "Builds autonomous surface vessels for defense and commercial missions: Corsair, Mirage, and the 180' Marauder, with a range of up to 5,400 nautical miles and a top speed of 25+ knots.",
    "location": "Austin, Texas",
    "stage": "series-a",
-   "open_roles": 269,
-   "roles_since_first_spv": 203,
+   "open_roles": 271,
+   "roles_since_first_spv": 205,
    "spvs": 1,
    "spv_amount_sold": 3431039.0,
    "first_spv_file_date": "2026-06-05",
    "latest_spv_file_date": "2026-06-05",
-   "days_since_latest_spv": 158,
+   "days_since_latest_spv": 159,
    "vehicles": [
     {
      "name": "HII Saronic-01, a Series of HII Saronic, LLC",
@@ -1315,7 +1344,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2138620/000213862026000001/0002138620-26-000001-index.htm"
     }
    ],
-   "rank": 22
+   "rank": 23
   },
   "periodic-labs": {
    "slug": "periodic-labs",
@@ -1335,7 +1364,7 @@
    "spv_amount_sold": 4743803.0,
    "first_spv_file_date": "2026-05-29",
    "latest_spv_file_date": "2026-05-29",
-   "days_since_latest_spv": 165,
+   "days_since_latest_spv": 166,
    "vehicles": [
     {
      "name": "AGC Wealt Periodic Labs I a Series of AGC AI Nexus Fund LLC",
@@ -1344,7 +1373,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2122824/000212282426000001/0002122824-26-000001-index.htm"
     }
    ],
-   "rank": 23
+   "rank": 24
   },
   "a16z:ng-cash": {
    "slug": "a16z:ng-cash",
@@ -1364,7 +1393,7 @@
    "spv_amount_sold": 580000.0,
    "first_spv_file_date": "2026-05-15",
    "latest_spv_file_date": "2026-05-15",
-   "days_since_latest_spv": 179,
+   "days_since_latest_spv": 180,
    "vehicles": [
     {
      "name": "Norte NG.Cash SPV LLC",
@@ -1373,7 +1402,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2118864/000211886426000002/0002118864-26-000002-index.htm"
     }
    ],
-   "rank": 24
+   "rank": 25
   },
   "a16z:openai": {
    "slug": "a16z:openai",
@@ -1393,7 +1422,7 @@
    "spv_amount_sold": 8475135.0,
    "first_spv_file_date": "2026-05-15",
    "latest_spv_file_date": "2026-05-15",
-   "days_since_latest_spv": 179,
+   "days_since_latest_spv": 180,
    "vehicles": [
     {
      "name": "OpenAI-01, a Series of OpenAI Opp Fund LLC",
@@ -1402,7 +1431,7 @@
      "filing_url": "https://www.sec.gov/Archives/edgar/data/2134995/000213499526000001/0002134995-26-000001-index.htm"
     }
    ],
-   "rank": 25
+   "rank": 26
   }
  }
 }

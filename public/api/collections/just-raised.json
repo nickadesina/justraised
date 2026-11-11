@@ -6,7 +6,7 @@
   "group": "signals",
   "url": "https://nickadesina.github.io/justraised",
   "companies": 8,
-  "roles": 614,
+  "roles": 616,
   "portfolio_members": 8,
   "members": [
    {
@@ -66,7 +66,7 @@
     "url": "https://speedrun-talent-network.com/companies/armadin",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 26,
+    "open_roles": 25,
     "location": "Palo Alto, CA",
     "blurb": "Offensive security run by AI agents: specialized agents probe a company's systems and test whether weaknesses chain into real attack paths. Founded by Mandiant founder Kevin Mandia.",
     "stage": "series-a",
@@ -88,12 +88,34 @@
    },
    {
     "rank": 4,
+    "name": "Primitive Labs",
+    "slug": "primitive-labs",
+    "url": "https://speedrun-talent-network.com/companies/primitive-labs",
+    "tier": "speedrun",
+    "cohort": "SR007",
+    "open_roles": 3,
+    "location": "San Francisco, California",
+    "blurb": "Primitive Labs is building the behavioral intelligence layer for AI, modeling human behavior so companies can predict how people will respond to software and agents before they launch.",
+    "stage": "seed",
+    "remote_policy": "onsite-leaning",
+    "investors": [],
+    "functions": [
+     "engineering",
+     "research"
+    ],
+    "cities": [
+     "San Francisco"
+    ],
+    "logo": "https://cdn.a16zspeedrun.com/platform/companies/f3988b15-bf80-4233-9867-a345969c77fc/logos/cropped_i8mE99A.png"
+   },
+   {
+    "rank": 5,
     "name": "Stuut",
     "slug": "stuut",
     "url": "https://speedrun-talent-network.com/companies/stuut",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 23,
+    "open_roles": 24,
     "location": "San Francisco, California",
     "blurb": "Agentic AI for accounts receivable: runs collections outreach, payment matching, and dispute resolution across the order-to-cash cycle. Partnered with Fiserv on enterprise receivables.",
     "stage": "seed",
@@ -118,28 +140,6 @@
      "San Francisco"
     ],
     "logo": "https://cdn.prod.website-files.com/6a071561c8d2a321a5d0a044/6a07419e7826e9c19b955997_stuut-webclip.png"
-   },
-   {
-    "rank": 5,
-    "name": "Primitive Labs",
-    "slug": "primitive-labs",
-    "url": "https://speedrun-talent-network.com/companies/primitive-labs",
-    "tier": "speedrun",
-    "cohort": "SR007",
-    "open_roles": 3,
-    "location": "San Francisco, California",
-    "blurb": "Primitive Labs is building the behavioral intelligence layer for AI, modeling human behavior so companies can predict how people will respond to software and agents before they launch.",
-    "stage": "seed",
-    "remote_policy": "onsite-leaning",
-    "investors": [],
-    "functions": [
-     "engineering",
-     "research"
-    ],
-    "cities": [
-     "San Francisco"
-    ],
-    "logo": "https://cdn.a16zspeedrun.com/platform/companies/f3988b15-bf80-4233-9867-a345969c77fc/logos/cropped_i8mE99A.png"
    },
    {
     "rank": 6,
@@ -217,7 +217,7 @@
     "url": "https://speedrun-talent-network.com/companies/harvey",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 377,
+    "open_roles": 379,
     "location": "San Francisco, California",
     "blurb": "AI agents that execute legal work end-to-end: contract analysis, due diligence, compliance, and litigation, for law firms and corporate legal teams.",
     "stage": "growth",
@@ -254,7 +254,6 @@
      "Munich",
      "New York",
      "Paris",
-     "Quebec",
      "San Francisco",
      "Seoul",
      "Singapore",
