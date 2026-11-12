@@ -5,9 +5,9 @@
   "description": "Portfolio companies with a Form D in the last 180 days, ranked by cash per open role",
   "group": "signals",
   "url": "https://nickadesina.github.io/justraised",
-  "companies": 8,
-  "roles": 616,
-  "portfolio_members": 8,
+  "companies": 7,
+  "roles": 553,
+  "portfolio_members": 7,
   "members": [
    {
     "rank": 1,
@@ -148,7 +148,7 @@
     "url": "https://speedrun-talent-network.com/companies/mariana-minerals",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 101,
+    "open_roles": 102,
     "location": "Moab, Utah",
     "blurb": "Software-first minerals company that develops and operates its own copper, lithium and nickel projects, supplying the metals energy, AI and defense depend on.",
     "stage": "series-a",
@@ -174,50 +174,12 @@
    },
    {
     "rank": 7,
-    "name": "Exa",
-    "slug": "exa",
-    "url": "https://speedrun-talent-network.com/companies/exa",
-    "tier": "a16z",
-    "cohort": null,
-    "open_roles": 66,
-    "location": "San Francisco, California",
-    "blurb": "Search API built for AI agents: real-time web search, crawling, and deep research from one endpoint.",
-    "stage": "growth",
-    "remote_policy": "onsite-leaning",
-    "investors": [
-     "Andreessen Horowitz",
-     "Lightspeed"
-    ],
-    "functions": [
-     "design",
-     "engineering",
-     "marketing",
-     "operations",
-     "product",
-     "research",
-     "sales"
-    ],
-    "cities": [
-     "India",
-     "London",
-     "New York",
-     "New York / San Francisco",
-     "San Francisco",
-     "Singapore",
-     "Singapore / India / Sydney",
-     "Sydney",
-     "Zurich"
-    ],
-    "logo": "https://app.ashbyhq.com/api/images/org-theme-logo/528e5060-c438-49f0-a3b6-ba1f0417bbd6/a872c1ea-8c84-4d88-abb0-3366a3c1b3b5/142124b6-e130-4cf6-8b8c-113a4ef6ed88.png"
-   },
-   {
-    "rank": 8,
     "name": "Harvey",
     "slug": "harvey",
     "url": "https://speedrun-talent-network.com/companies/harvey",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 379,
+    "open_roles": 381,
     "location": "San Francisco, California",
     "blurb": "AI agents that execute legal work end-to-end: contract analysis, due diligence, compliance, and litigation, for law firms and corporate legal teams.",
     "stage": "growth",
@@ -266,7 +228,7 @@
     "logo": "https://www.harvey.ai/icons/brand-favicon.png"
    }
   ],
-  "members_total": 8,
+  "members_total": 7,
   "page": 0,
   "page_size": 100,
   "total_pages": 1
