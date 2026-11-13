@@ -5,9 +5,9 @@
   "description": "Portfolio companies with a Form D in the last 180 days, ranked by cash per open role",
   "group": "signals",
   "url": "https://nickadesina.github.io/justraised",
-  "companies": 7,
-  "roles": 553,
-  "portfolio_members": 7,
+  "companies": 8,
+  "roles": 596,
+  "portfolio_members": 8,
   "members": [
    {
     "rank": 1,
@@ -37,7 +37,7 @@
     "url": "https://speedrun-talent-network.com/companies/town",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 16,
+    "open_roles": 17,
     "location": "San Francisco, California",
     "blurb": "Everyone gets a Townie: an AI assistant that keeps a wiki on how you work, then manages your inbox, drafts your morning briefing, and works through your todo list.",
     "stage": "series-a",
@@ -88,6 +88,36 @@
    },
    {
     "rank": 4,
+    "name": "Fal",
+    "slug": "fal",
+    "url": "https://speedrun-talent-network.com/companies/fal",
+    "tier": "a16z",
+    "cohort": null,
+    "open_roles": 46,
+    "location": "San Francisco, California",
+    "blurb": "One API for image and video generation models, plus GPUs to deploy and fine-tune your own. Canva, Shopify and Quora build on it.",
+    "stage": "series-a",
+    "remote_policy": "onsite-leaning",
+    "investors": [],
+    "functions": [
+     "design",
+     "engineering",
+     "marketing",
+     "operations",
+     "other",
+     "sales"
+    ],
+    "cities": [
+     "Global",
+     "SF Office",
+     "San Francisco",
+     "Turkey",
+     "United States"
+    ],
+    "logo": "https://cdn.prod.website-files.com/6a72ef21c470312422dea9b3/6adae13a030770b54ecc8783_fal-icon-favicon.png"
+   },
+   {
+    "rank": 5,
     "name": "Primitive Labs",
     "slug": "primitive-labs",
     "url": "https://speedrun-talent-network.com/companies/primitive-labs",
@@ -109,7 +139,7 @@
     "logo": "https://cdn.a16zspeedrun.com/platform/companies/f3988b15-bf80-4233-9867-a345969c77fc/logos/cropped_i8mE99A.png"
    },
    {
-    "rank": 5,
+    "rank": 6,
     "name": "Stuut",
     "slug": "stuut",
     "url": "https://speedrun-talent-network.com/companies/stuut",
@@ -142,7 +172,7 @@
     "logo": "https://cdn.prod.website-files.com/6a071561c8d2a321a5d0a044/6a07419e7826e9c19b955997_stuut-webclip.png"
    },
    {
-    "rank": 6,
+    "rank": 7,
     "name": "Mariana Minerals",
     "slug": "mariana-minerals",
     "url": "https://speedrun-talent-network.com/companies/mariana-minerals",
@@ -173,13 +203,13 @@
     "logo": "https://framerusercontent.com/images/CEv70Ucnu5OXCMODAwycSPVFNWM.png"
    },
    {
-    "rank": 7,
+    "rank": 8,
     "name": "Harvey",
     "slug": "harvey",
     "url": "https://speedrun-talent-network.com/companies/harvey",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 381,
+    "open_roles": 377,
     "location": "San Francisco, California",
     "blurb": "AI agents that execute legal work end-to-end: contract analysis, due diligence, compliance, and litigation, for law firms and corporate legal teams.",
     "stage": "growth",
@@ -228,7 +258,7 @@
     "logo": "https://www.harvey.ai/icons/brand-favicon.png"
    }
   ],
-  "members_total": 7,
+  "members_total": 8,
   "page": 0,
   "page_size": 100,
   "total_pages": 1

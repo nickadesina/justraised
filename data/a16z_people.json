@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-12T17:57:21Z",
+ "fetched_at": "2026-11-13T17:32:48Z",
  "people": [
   {
    "slug": "abhishek-sinha",
@@ -145,16 +145,6 @@
    "slug": "daisy-wolf",
    "name": "Daisy Wolf",
    "role": "Investing"
-  },
-  {
-   "slug": "dan-nomura",
-   "name": "Dan Nomura",
-   "role": "Special Advisors"
-  },
-  {
-   "slug": "dan-rosenthal",
-   "name": "Dan Rosenthal",
-   "role": "Special Advisors"
   },
   {
    "slug": "daniel-penny",
@@ -410,11 +400,6 @@
    "slug": "marcus-segal",
    "name": "Marcus Segal",
    "role": "Investing"
-  },
-  {
-   "slug": "margaret-mckenna",
-   "name": "Margaret McKenna",
-   "role": "Special Advisors"
   },
   {
    "slug": "mark-regan",
