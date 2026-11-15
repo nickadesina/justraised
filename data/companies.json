@@ -1,10 +1,10 @@
 {
- "fetched_at": "2026-11-14T16:25:11Z",
- "listed_total": 727,
+ "fetched_at": "2026-11-15T16:50:48Z",
+ "listed_total": 721,
  "portfolio_total": 338,
  "tiers": {
   "a16z": 290,
-  "market": 389,
+  "market": 383,
   "speedrun": 48
  },
  "companies": [
@@ -543,7 +543,7 @@
    "url": "https://speedrun-talent-network.com/companies/anduril-industries",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 2599,
+   "open_roles": 2598,
    "location": "Costa Mesa, California",
    "industries": [
     "American Dynamism",
@@ -1045,7 +1045,7 @@
    "url": "https://speedrun-talent-network.com/companies/backstory",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 6,
+   "open_roles": 5,
    "location": null,
    "industries": [
     "Enterprise"
@@ -1438,7 +1438,7 @@
    "blurb": "AI observability platform for teams shipping agents: trace production traffic, run evals, and catch regressions before they reach users.",
    "logo": "https://www.braintrust.dev/icon180.png?v=2",
    "stage": "growth",
-   "remote_policy": "onsite-leaning",
+   "remote_policy": null,
    "functions": [
     "design",
     "engineering",
@@ -3859,7 +3859,7 @@
    "url": "https://speedrun-talent-network.com/companies/happyrobot",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 66,
+   "open_roles": 65,
    "location": "San Francisco, California",
    "industries": [
     "AI",
@@ -3894,7 +3894,6 @@
     "New York",
     "San Francisco",
     "Singapore",
-    "Spain",
     "Sydney",
     "United States"
    ],
@@ -3908,7 +3907,7 @@
    "url": "https://speedrun-talent-network.com/companies/harvey",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 387,
+   "open_roles": 388,
    "location": "San Francisco, California",
    "industries": [
     "AI"
@@ -4056,7 +4055,7 @@
    "url": "https://speedrun-talent-network.com/companies/hercules",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 30,
+   "open_roles": 31,
    "location": "San Francisco, California",
    "industries": [
     "AI"
@@ -5339,7 +5338,7 @@
    "url": "https://speedrun-talent-network.com/companies/lio",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 30,
+   "open_roles": 26,
    "location": "Munich, Germany",
    "industries": [
     "AI"
@@ -5350,7 +5349,6 @@
    "remote_policy": "onsite-leaning",
    "functions": [
     "engineering",
-    "marketing",
     "operations",
     "other",
     "product",
@@ -7994,7 +7992,7 @@
    "url": "https://speedrun-talent-network.com/companies/sardine",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 39,
+   "open_roles": 40,
    "location": "Austin, Texas",
    "industries": [
     "Fintecha16z"
@@ -9231,7 +9229,7 @@
    "url": "https://speedrun-talent-network.com/companies/tako",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 16,
+   "open_roles": 15,
    "location": "São Paulo, Brazil",
    "industries": [
     "Enterprise"
