@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-16T20:02:08Z",
+ "fetched_at": "2026-11-17T18:58:25Z",
  "people": [
   {
    "slug": "abhishek-sinha",
@@ -85,6 +85,11 @@
    "slug": "bing-wong",
    "name": "Bing Wong",
    "role": "Investing"
+  },
+  {
+   "slug": "bob-badal",
+   "name": "Bob Badal",
+   "role": "Special Advisors"
   },
   {
    "slug": "bob-swan",
@@ -210,6 +215,11 @@
    "slug": "gabriel-vasquez",
    "name": "Gabriel Vasquez",
    "role": "Investing"
+  },
+  {
+   "slug": "gijsbert-grotenbreg",
+   "name": "Gijsbert Grotenbreg",
+   "role": "Special Advisors"
   },
   {
    "slug": "gio-ahern",

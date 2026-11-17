@@ -6,7 +6,7 @@
   "group": "signals",
   "url": "https://nickadesina.github.io/justraised",
   "companies": 8,
-  "roles": 614,
+  "roles": 606,
   "portfolio_members": 8,
   "members": [
    {
@@ -118,6 +118,38 @@
    },
    {
     "rank": 5,
+    "name": "Stuut",
+    "slug": "stuut",
+    "url": "https://speedrun-talent-network.com/companies/stuut",
+    "tier": "a16z",
+    "cohort": null,
+    "open_roles": 22,
+    "location": "San Francisco, California",
+    "blurb": "Agentic AI for accounts receivable: runs collections outreach, payment matching, and dispute resolution across the order-to-cash cycle. Partnered with Fiserv on enterprise receivables.",
+    "stage": "seed",
+    "remote_policy": "onsite-leaning",
+    "investors": [
+     "Andreessen Horowitz",
+     "Khosla Ventures"
+    ],
+    "functions": [
+     "design",
+     "engineering",
+     "marketing",
+     "operations",
+     "other",
+     "sales"
+    ],
+    "cities": [
+     "Dublin",
+     "London",
+     "New York",
+     "San Francisco"
+    ],
+    "logo": "https://cdn.prod.website-files.com/6a071561c8d2a321a5d0a044/6a07419e7826e9c19b955997_stuut-webclip.png"
+   },
+   {
+    "rank": 6,
     "name": "Primitive Labs",
     "slug": "primitive-labs",
     "url": "https://speedrun-talent-network.com/companies/primitive-labs",
@@ -137,39 +169,6 @@
      "San Francisco"
     ],
     "logo": "https://cdn.a16zspeedrun.com/platform/companies/f3988b15-bf80-4233-9867-a345969c77fc/logos/cropped_i8mE99A.png"
-   },
-   {
-    "rank": 6,
-    "name": "Stuut",
-    "slug": "stuut",
-    "url": "https://speedrun-talent-network.com/companies/stuut",
-    "tier": "a16z",
-    "cohort": null,
-    "open_roles": 25,
-    "location": "San Francisco, California",
-    "blurb": "Agentic AI for accounts receivable: runs collections outreach, payment matching, and dispute resolution across the order-to-cash cycle. Partnered with Fiserv on enterprise receivables.",
-    "stage": "seed",
-    "remote_policy": "onsite-leaning",
-    "investors": [
-     "Andreessen Horowitz",
-     "Khosla Ventures"
-    ],
-    "functions": [
-     "design",
-     "engineering",
-     "marketing",
-     "operations",
-     "other",
-     "product",
-     "sales"
-    ],
-    "cities": [
-     "Dublin",
-     "London",
-     "New York",
-     "San Francisco"
-    ],
-    "logo": "https://cdn.prod.website-files.com/6a071561c8d2a321a5d0a044/6a07419e7826e9c19b955997_stuut-webclip.png"
    },
    {
     "rank": 7,
@@ -209,7 +208,7 @@
     "url": "https://speedrun-talent-network.com/companies/harvey",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 392,
+    "open_roles": 387,
     "location": "San Francisco, California",
     "blurb": "AI agents that execute legal work end-to-end: contract analysis, due diligence, compliance, and litigation, for law firms and corporate legal teams.",
     "stage": "growth",
