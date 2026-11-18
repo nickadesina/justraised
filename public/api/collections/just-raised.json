@@ -6,7 +6,7 @@
   "group": "signals",
   "url": "https://nickadesina.github.io/justraised",
   "companies": 8,
-  "roles": 606,
+  "roles": 600,
   "portfolio_members": 8,
   "members": [
    {
@@ -28,7 +28,7 @@
      "other"
     ],
     "cities": [],
-    "logo": "https://cdn.a16zspeedrun.com/platform/companies/5ee2ce76-6380-444e-ba9f-882f87388e17/logos/sunflower_icon_256x256.png"
+    "logo": "https://cdn.a16zspeedrun.com/platform/companies/5ee2ce76-6380-444e-ba9f-882f87388e17/logos/Frame_2147226926white.png"
    },
    {
     "rank": 2,
@@ -66,7 +66,7 @@
     "url": "https://speedrun-talent-network.com/companies/armadin",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 25,
+    "open_roles": 23,
     "location": "Palo Alto, CA",
     "blurb": "Offensive security run by AI agents: specialized agents probe a company's systems and test whether weaknesses chain into real attack paths. Founded by Mandiant founder Kevin Mandia.",
     "stage": "series-a",
@@ -80,7 +80,6 @@
      "sales"
     ],
     "cities": [
-     "Mexico",
      "Palo Alto",
      "Washington"
     ],
@@ -93,7 +92,7 @@
     "url": "https://speedrun-talent-network.com/companies/fal",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 48,
+    "open_roles": 49,
     "location": "San Francisco, California",
     "blurb": "One API for image and video generation models, plus GPUs to deploy and fine-tune your own. Canva, Shopify and Quora build on it.",
     "stage": "series-a",
@@ -123,7 +122,7 @@
     "url": "https://speedrun-talent-network.com/companies/stuut",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 22,
+    "open_roles": 21,
     "location": "San Francisco, California",
     "blurb": "Agentic AI for accounts receivable: runs collections outreach, payment matching, and dispute resolution across the order-to-cash cycle. Partnered with Fiserv on enterprise receivables.",
     "stage": "seed",
@@ -136,11 +135,11 @@
      "design",
      "engineering",
      "marketing",
-     "operations",
      "other",
      "sales"
     ],
     "cities": [
+     "Atlanta",
      "Dublin",
      "London",
      "New York",
@@ -208,7 +207,7 @@
     "url": "https://speedrun-talent-network.com/companies/harvey",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 387,
+    "open_roles": 383,
     "location": "San Francisco, California",
     "blurb": "AI agents that execute legal work end-to-end: contract analysis, due diligence, compliance, and litigation, for law firms and corporate legal teams.",
     "stage": "growth",
