@@ -7,57 +7,26 @@
 # then copy its yaml_confirm or yaml_reject cell here. A pinned pair never
 # needs review again.
 #
-# SUGGESTED from the 2026-11-10 backfill: commented out until you check them.
-# (Town, Stuut, Mariana Minerals and Apex Space no longer need pinning: an a16z
-# partner on their Form D now makes them High automatically.)
 
 confirm:
-  # Neighbor Storage, Inc. (Lehi, UT) <- Neighbor. Related persons include
-  # Joseph Woodbury (Neighbor's CEO). Only $52,661 sold: likely a small
-  # closing, check the filing before confirming.
+  # Adaptive announced the Series B. The SEC filing names cofounders Matthew
+  # Calvano and Henry Bradlow: https://www.adaptive.build/blog/why-we-built-an-ai-project-accountant-and-raised-30m-to-build-more-of-it
+  - {cik: "1939243", slug: adaptive, note: "Founder and round confirmed by Adaptive."}
+  # https://help.harvey.ai/articles/harvey-faq
+  - {cik: "1974654", slug: harvey, note: "The filing names cofounders Winston Weinberg and Gabriel Pereyra."}
+  # https://speedrun.a16z.com/companies/primitive-labs
+  - {cik: "2142659", slug: primitive-labs, note: "All three speedrun-listed founders are on the filing."}
+
+  # Suggested from the 2026-11-10 backfill; verify before confirming.
+  # Neighbor Storage, Inc. (Lehi, UT) lists Joseph Woodbury, Neighbor's CEO.
   # - {cik: "1712600", slug: neighbor, note: "CEO on the Form D"}
-
-  # Wider-portfolio name matches with no a16z person on the filing are in
-  # review/medium.csv (Castelion, Boltz, Relay, Trunk, ...). Off-network
-  # companies pin the same way, e.g. slug: "a16z:castelion".
-
-reject:    never match this issuer to this company
-#   block_cik: never match this issuer to anything
-#
-# review/medium.csv lists every pair the ladder could not decide. Check a row,
-# then copy its yaml_confirm or yaml_reject cell here. A pinned pair never
-# needs review again.
-#
-# SUGGESTED from the 2026-11-10 backfill: commented out until you check them.
-# The evidence is the Form D's related-persons list (directors and officers)
-# against the talent-network blurb. Uncomment what you agree with, then
-# `uv run python -m pipeline.run_all`.
-
-confirm:
-  # Town.com, Inc. (San Francisco) <- Town. Related persons: Jean-Denis Greze,
-  # Alex Rampell (a16z GP), Kirsten Green. $104.4M sold, first sale 2026-10-07.
-  # - {cik: "2046793", slug: town, note: "a16z GP on the Form D"}
-
-  # Stuut, Inc. (New York) <- Stuut (San Francisco on the network). Related
-  # persons include Seema Amble (a16z). $67.6M sold, first sale 2026-09-03.
-  # - {cik: "2045111", slug: stuut, note: "a16z partner on the Form D; NY address"}
-
-  # Mariana Minerals Co. (San Francisco) <- Mariana Minerals (Moab, UT on the
-  # network). Related persons include Erin Price-Wright (a16z). $310.5M sold,
-  # first sale 2026-07-22.
-  # - {cik: "2123886", slug: mariana-minerals, note: "a16z partner on the Form D"}
-
-  # Neighbor Storage, Inc. (Lehi, UT) <- Neighbor. Related persons include
-  # Joseph Woodbury (Neighbor's CEO). Only $52,661 sold: likely a small
-  # closing, check the filing before confirming.
-  # - {cik: "1712600", slug: neighbor, note: "CEO on the Form D"}
-
-  # Apex Technology, Inc. (Los Angeles) <- Apex Space. Related persons include
-  # Ian Cinnamon (Apex CEO) and Katherine Boyle (a16z GP). First sale
-  # 2026-04-10 is outside the 180-day window today, but pin it for next time.
-  # - {cik: "1952065", slug: apex-space, note: "CEO and a16z GP on the Form D"}
 
 reject:
+  # https://sunflower-labs.com/post/press-release-2026-05-05 identifies the
+  # issuer's CEO Alex Pachikov. https://speedrun.a16z.com/companies/sunflower is the sobriety app.
+  - {cik: "1876339", slug: sunflower, note: "The issuer is the drone company Sunflower Labs."}
+
+  # Suggested from the 2026-11-10 backfill; verify before rejecting.
   # Bounce, LLC (Indianapolis, LLC formed 2025, $200K): not the luggage network.
   # - {cik: "2071999", slug: bounce, note: "different company"}
   # Founders Clubhouse LLC (Sacramento): not Clubhouse.
@@ -68,6 +37,12 @@ reject:
   # - {cik: "1704188", slug: alchemy, note: "different company"}
 
 block_cik: []
+
+# Reject only the named vehicle and target pair. Other vehicles can match Linq.
+# https://www.sec.gov/Archives/edgar/data/2140814/000214081426000001/0002140814-26-000001-index.htm
+# https://www.wearlinq.com/ and https://a16z.com/announcement/investing-in-linq/
+spv_reject:
+  - {cik: "2140814", slug: "a16z:linq", note: "The filing names Wear Linq. The a16z company Linq builds messaging infrastructure."}
 
 # Investor-SPV matches to drop (pipeline/spv.py). Seeded from the first run:
 # names where the brand is a fund family or the target is unclear.

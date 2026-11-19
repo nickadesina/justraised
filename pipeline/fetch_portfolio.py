@@ -16,8 +16,8 @@ against:
   that lists one of them as a director or officer is strong evidence the
   issuer is an a16z company (see match.py).
 
-Writes data/portfolio_universe.json and data/a16z_people.json. If a page
-cannot be fetched or parsed, the previous file is kept and the run goes on.
+Rebuilds data/portfolio_universe.json with current hiring companies every run.
+Each external source has its own last successful snapshot in portfolio_sources.json.
 Off-network companies get an identity like ``a16z:databricks`` or
 ``speedrun:abliteration`` so they can be pinned in matches.yaml like any other.
 """
@@ -28,6 +28,9 @@ import html
 import json
 import logging
 import re
+from collections import defaultdict
+from collections.abc import Iterable
+from pathlib import Path
 
 import httpx
 from edgar_names import name_variants
@@ -123,10 +126,11 @@ def parse_speedrun(page: str) -> list[dict]:
     m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', page, re.S)
     if not m:
         raise ValueError("no __NEXT_DATA__ on speedrun.a16z.com/companies")
-    rows = json.loads(m.group(1))["props"]["pageProps"]["companies"]["results"]
+    props = json.loads(m.group(1))["props"]["pageProps"]
+    rows = props["list"]["companies"] if "list" in props else props["companies"]["results"]
     out = []
     for c in rows:
-        loc = ", ".join(x for x in (c.get("city"), c.get("state") or c.get("country")) if x) or None
+        loc = c.get("location") or ", ".join(x for x in (c.get("city"), c.get("state") or c.get("country")) if x) or None
         out.append(
             {
                 "slug": f"speedrun:{c['slug']}",
@@ -135,10 +139,10 @@ def parse_speedrun(page: str) -> list[dict]:
                 "on_network": False,
                 "cohort": c.get("cohort"),
                 "location": loc,
-                "blurb": c.get("preamble"),
+                "blurb": c.get("oneLiner") or c.get("preamble"),
                 "url": f"https://speedrun.a16z.com/companies/{c['slug']}",
                 "website": None,
-                "logo": c.get("logo") or None,
+                "logo": c.get("logoUrl") or c.get("logo") or None,
             }
         )
     return out
@@ -167,73 +171,159 @@ def load_aliases() -> dict[str, list[str]]:
     return {str(k): [str(x) for x in v] for k, v in (yaml.safe_load(config.ALIASES_FILE.read_text()) or {}).items()}
 
 
-def build_universe(network: list[dict], extra: list[dict], aliases: dict[str, list[str]] | None = None) -> list[dict]:
-    """Talent-network companies first; wider-portfolio companies whose name is
-    already present are folded into that entry, not duplicated. Earlier sources
-    win, so pass a16z.com/portfolio (which has websites) before the bare
-    investment list."""
-    by_key: dict[str, dict] = {}
-    out = []
-    for c in network:
-        entry = {**c, "on_network": True}
-        out.append(entry)
-        for v in name_variants(c["name"]):
-            by_key.setdefault(v.strict, entry)
+def _names(company: dict) -> list[str]:
+    return [company["name"], *company.get("aliases", [])]
+
+
+def _name_keys(names: list[str]) -> set[str]:
+    return {v.strict for name in names for v in name_variants(name) if v.strict}
+
+
+def _merge_company(row: dict, other: dict) -> None:
+    """Keep the preferred record's identity and retain the other record's spellings."""
+    for field, primary, values in (
+        ("aliases", "name", _names(other)),
+        ("also", "slug", [other["slug"], *other.get("also", [])]),
+    ):
+        merged = list(dict.fromkeys([*row.get(field, []), *values]))
+        merged = [value for value in merged if value != row[primary]]
+        if merged:
+            row[field] = merged
+    for field in ("website", "logo", "blurb"):
+        if other.get(field) and not row.get(field):
+            row[field] = other[field]
+
+
+def build_universe(network: list[dict], extra: list[dict], aliases: dict[str, list[str]] | None = None,
+                   previous: list[dict] | None = None) -> list[dict]:
+    # A renamed portfolio company and its old investment-list entry can share
+    # one permalink. Combine these before matching either name to the network.
+    sources: dict[str, dict] = {}
     for c in extra:
-        keys = [v.strict for v in name_variants(c["name"])]
-        hit = next((by_key[k] for k in keys if k in by_key), None)
-        if hit is not None:
-            hit.setdefault("also", []).append(c["slug"])
-            for k in ("website", "logo", "blurb"):
-                if c.get(k) and not hit.get(k):
-                    hit[k] = c[k]
-            continue
-        out.append(c)
-        for k in keys:
-            by_key.setdefault(k, c)
-    alias_by_key = {v.strict: names for brand, names in (aliases or {}).items() for v in name_variants(brand)}
-    for c in out:
-        for v in name_variants(c["name"]):
-            if v.strict in alias_by_key:
-                c["aliases"] = alias_by_key[v.strict]
-    return out
+        if c["slug"] in sources:
+            _merge_company(sources[c["slug"]], c)
+        else:
+            sources[c["slug"]] = dict(c)
+
+    historical: dict[str, list[dict]] = defaultdict(list)
+    for old in previous or []:
+        for slug in {old["slug"], *old.get("also", [])}:
+            historical[slug].append(old)
+    alias_keys = {k: names for brand, names in (aliases or {}).items() for k in _name_keys([brand])}
+    out: dict[str, dict] = {}
+    by_name: dict[str, set[str]] = defaultdict(set)
+    by_id: dict[str, str] = {}
+    network_rows = [{**c, "on_network": True} for c in network]
+    for c in [*network_rows, *sources.values()]:
+        row = dict(c)
+        for old in historical.get(row["slug"], []):
+            # Identity persists between snapshots; jobs and profile fields always
+            # come from the current source. Never carry a former network's jobs.
+            _merge_company(row, {k: old[k] for k in ("name", "slug", "also", "aliases") if k in old})
+        for key in _name_keys(_names(row)):
+            for alias in alias_keys.get(key, []):
+                _merge_company(row, {"slug": row["slug"], "name": alias})
+
+        ids = [row["slug"], *row.get("also", [])]
+        matches = {by_id[key] for key in ids if key in by_id}
+        if not row["on_network"] and not matches:
+            matches = {slug for key in _name_keys(_names(row)) for slug in by_name.get(key, ())}
+        if len(matches) == 1 and (not row["on_network"] or row["slug"] in out):
+            (slug,) = matches
+            _merge_company(out[slug], row)
+        else:
+            slug = row["slug"]
+            out[slug] = row
+        for key in ids:
+            by_id.setdefault(key, slug)
+        for key in _name_keys(_names(row)):
+            by_name[key].add(slug)
+    return list(out.values())
+
+
+def _legacy_source(previous: list[dict], source: str) -> list[dict]:
+    """Recover a failed source on the first upgrade from the old merged snapshot."""
+    rows = []
+    for c in previous:
+        ids = [c["slug"], *c.get("also", [])]
+        for slug in dict.fromkeys(ids):
+            if ":" not in slug:
+                continue
+            if slug.startswith("speedrun:"):
+                origin = "speedrun"
+            elif slug == c["slug"] and "focus_areas" in c:
+                origin = "portfolio"
+            else:
+                origin = "investments"
+            # Before per-source snapshots, a network row retained its external
+            # IDs but not which of the two a16z pages supplied each ID.
+            if origin != source and not (source == "portfolio" and c["on_network"] and slug.startswith("a16z:")):
+                continue
+            row = {k: c[k] for k in ("name", "location", "blurb", "website", "logo", "aliases") if k in c}
+            row.update(slug=slug, on_network=False, tier=slug.split(":")[0],
+                       url=c.get("url") if not c["on_network"] else None)
+            rows.append(row)
+    return rows
+
+
+def _write_json(path: Path, doc: dict) -> None:
+    tmp = path.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
+    tmp.replace(path)
+
+
+def refresh_universe() -> None:
+    previous = json.loads(config.UNIVERSE_JSON.read_text()) if config.UNIVERSE_JSON.exists() else {}
+    cache = json.loads(config.PORTFOLIO_SOURCES_JSON.read_text()) if config.PORTFOLIO_SOURCES_JSON.exists() else {}
+    now = config.now_iso()
+    for source, url, parse in (
+        ("portfolio", A16Z_PORTFOLIO_URL, parse_a16z_portfolio),
+        ("speedrun", SPEEDRUN_COMPANIES_URL, parse_speedrun),
+        ("investments", A16Z_INVESTMENT_LIST_URL, lambda page: parse_investment_list(page, set())),
+    ):
+        try:
+            page = _get(url)
+            rows = parse(page)
+            if not rows:
+                raise ValueError("empty company list")
+            snapshot = {"fetched_at": now, "companies": rows}
+            if source == "portfolio":
+                snapshot["exited"] = sorted(exited_keys(page))
+            cache[source] = snapshot
+            log.info("portfolio: %d companies from %s", len(rows), url)
+        except (httpx.HTTPError, ValueError, KeyError, TypeError) as exc:
+            if source not in cache:
+                cache[source] = {"fetched_at": previous.get("fetched_at"),
+                                 "companies": _legacy_source(previous.get("companies", []), source)}
+            log.warning("portfolio: using last known %s snapshot after %s", source, exc)
+
+    # Keep the investment source unfiltered in its cache, so a refreshed
+    # portfolio can remove exits even when the investment-list request fails.
+    exited = cache["portfolio"].get("exited")
+    old_keys = _name_keys([c["name"] for c in previous.get("companies", [])]) if exited is None else set()
+    excluded = set(exited or [])
+    extra = [*cache["portfolio"]["companies"], *cache["speedrun"]["companies"]]
+    for c in cache["investments"]["companies"]:
+        keys = _name_keys(_names(c))
+        # A legacy snapshot has no exit list. Until its first successful
+        # refresh, retain only investment names already in the filtered universe.
+        if not keys & excluded and (exited is not None or keys & old_keys):
+            extra.append(c)
+    universe = build_universe(load_companies(), extra, load_aliases(), previous.get("companies", []))
+    doc = {
+        "fetched_at": now,
+        "source_fetched_at": {key: value["fetched_at"] for key, value in cache.items()},
+        "on_network": sum(1 for c in universe if c["on_network"]),
+        "off_network": sum(1 for c in universe if not c["on_network"]),
+        "companies": universe,
+    }
+    _write_json(config.PORTFOLIO_SOURCES_JSON, cache)
+    _write_json(config.UNIVERSE_JSON, doc)
+    log.info("universe: %d on the talent network, %d off it", doc["on_network"], doc["off_network"])
 
 
 def fetch_portfolio() -> None:
-    extra: list[dict] = []
-    ok = True
-    exited: set[str] = set()
-    try:
-        page = _get(A16Z_PORTFOLIO_URL)
-        exited = exited_keys(page)
-        rows = parse_a16z_portfolio(page)
-        log.info("portfolio: %d active companies from a16z.com/portfolio (%d exited names)", len(rows), len(exited))
-        extra += rows
-    except Exception as exc:  # a redesign of any page must not stop the nightly run
-        ok = False
-        log.warning("portfolio: could not read a16z.com/portfolio (%s)", exc)
-    for url, parse in ((SPEEDRUN_COMPANIES_URL, parse_speedrun), (A16Z_INVESTMENT_LIST_URL, lambda p: parse_investment_list(p, exited))):
-        try:
-            rows = parse(_get(url))
-            log.info("portfolio: %d companies from %s", len(rows), url)
-            extra += rows
-        except Exception as exc:
-            ok = False
-            log.warning("portfolio: could not read %s (%s)", url, exc)
-
-    if ok or not config.UNIVERSE_JSON.exists():
-        universe = build_universe(load_companies(), extra, load_aliases())
-        doc = {
-            "fetched_at": config.now_iso(),
-            "on_network": sum(1 for c in universe if c["on_network"]),
-            "off_network": sum(1 for c in universe if not c["on_network"]),
-            "companies": universe,
-        }
-        config.UNIVERSE_JSON.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
-        log.info("universe: %d on the talent network, %d off it", doc["on_network"], doc["off_network"])
-    else:
-        log.warning("universe: keeping the previous %s", config.UNIVERSE_JSON.name)
-
+    refresh_universe()
     try:
         people = parse_a16z_team(_get(A16Z_TEAM_URL))
         config.PEOPLE_JSON.write_text(json.dumps({"fetched_at": config.now_iso(), "people": people}, indent=1) + "\n")
@@ -246,6 +336,21 @@ def load_universe() -> list[dict]:
     if not config.UNIVERSE_JSON.exists():
         return [{**c, "on_network": True} for c in load_companies()]
     return json.loads(config.UNIVERSE_JSON.read_text())["companies"]
+
+
+def canonical_slugs(universe: Iterable[dict]) -> dict[str, str]:
+    """Resolve alternate source IDs only when they have a single current owner."""
+    current = {}
+    owners: dict[str, set[str]] = defaultdict(set)
+    for c in universe:
+        slug = c["slug"]
+        current[slug] = slug
+        for alias in c.get("also", []):
+            owners[alias].add(slug)
+    for alias, slugs in owners.items():
+        if len(slugs) == 1:
+            current.setdefault(alias, next(iter(slugs)))
+    return current
 
 
 def load_people() -> list[str]:

@@ -31,6 +31,8 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    outputs:
+      refresh_sha: ${{ steps.commit.outputs.sha }}
     env:
       SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT || 'Just Raised nick@yuurei.ai' }}
     steps:
@@ -61,18 +63,25 @@ jobs:
       - name: Run pipeline
         run: uv run python -m pipeline.run_all ${{ inputs.force && '--force' || '' }}
 
+      - name: Validate the refreshed feed before publishing
+        run: |
+          uv run --frozen pytest -q
+          uv run --frozen python scripts/check_schema.py public/api/collections/just-raised.json --strict
+
       - name: Commit refreshed data
+        id: commit
         run: |
           git config user.name "just-raised-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public data review
-          if git diff --cached --quiet; then
-            echo "No changes."
-            exit 0
+          if ! git diff --cached --quiet; then
+            git commit -m "Nightly refresh $(date -u +%Y-%m-%d)"
+            git push
           fi
-          git commit -m "Nightly refresh $(date -u +%Y-%m-%d)"
-          git push
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
   deploy:
     needs: refresh
     uses: ./.github/workflows/pages.yml
+    with:
+      refresh_sha: ${{ needs.refresh.outputs.refresh_sha }}

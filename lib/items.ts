@@ -1,25 +1,39 @@
-// One card per company, merging the three signals the pipeline publishes:
-// the company's own Form D (on or off the talent network) and investor SPVs.
-import { type Tier, collection, filings } from "@/lib/data";
+// Merge evidence by company while retaining the dates and hiring observations for each signal.
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
+import {
+  type AdditionalNotice,
+  type CollectionDoc,
+  type Filing,
+  type OffNetworkFiling,
+  type PostingHistory,
+  type SpvCompany,
+  type Tier,
+  collection,
+  filings,
+} from "@/lib/data";
+
+export interface HiringHistory extends PostingHistory {
+  openPostedSince: number | null;
+}
 
 export interface Raise {
   amount: number | null;
-  kind: "sold" | "offering" | "unknown";
-  firstSale: string;
+  sold: number | null;
+  kind: Filing["amount_kind"];
+  firstSale: string | null;
+  filed: string;
   days: number;
   filingUrl: string;
+  firstSaleUrl: string;
+  amountUrl: string;
   issuer: string;
   amendments: number;
   partner: string | null;
-  score: number | null; // only for companies on the talent network
-}
-
-export interface Spv {
-  count: number;
-  sold: number;
-  latest: string;
-  days: number;
-  vehicles: { name: string; file_date: string; amount_sold: number | null; filing_url: string }[];
+  score: number | null;
+  hiring: HiringHistory;
+  additionalNotices: AdditionalNotice[];
 }
 
 export interface Item {
@@ -34,49 +48,66 @@ export interface Item {
   url: string | null;
   onNetwork: boolean;
   openRoles: number | null;
-  rolesSince: number | null; // since the raise, or since the first SPV
   raise: Raise | null;
-  spv: Spv | null;
-  days: number; // age of the newest signal
-  rank: number | null; // rank in the collection endpoint, if listed there
+  spv: SpvCompany | null;
+}
+
+function raiseFrom(f: Filing | OffNetworkFiling): Raise {
+  const latestUrl =
+    f.latest_accession === f.accession
+      ? f.filing_url
+      : `https://www.sec.gov/Archives/edgar/data/${f.issuer_cik}/${f.latest_accession.replaceAll("-", "")}/${f.latest_accession}-index.htm`;
+  return {
+    amount: f.amount,
+    sold: f.amount_sold,
+    kind: f.amount_kind,
+    firstSale: f.first_sale_reported ? f.date_of_first_sale : null,
+    filed: f.file_date,
+    days: f.days_since_first_sale,
+    filingUrl: f.filing_url,
+    firstSaleUrl: f.first_sale_filing_url ?? f.filing_url,
+    amountUrl: f.amount_filing_url ?? latestUrl,
+    issuer: f.issuer_name,
+    amendments: f.amendments,
+    additionalNotices: f.additional_notices ?? [],
+    partner: f.a16z_person,
+    score: f.on_network && f.amount_kind === "sold" && f.first_sale_reported ? f.score : null,
+    hiring: {
+      openPostedSince:
+        "roles_since_first_sale" in f && f.first_sale_reported ? f.roles_since_first_sale : null,
+      observed_postings_since_signal: f.observed_postings_since_signal,
+      hiring_coverage: f.hiring_coverage,
+      hiring_tracked_since: f.hiring_tracked_since,
+    },
+  };
 }
 
 export function buildItems(): Item[] {
   const items = new Map<string, Item>();
   const members = new Map(collection.collection.members.map((m) => [m.slug ?? m.name, m]));
-
+  for (let page = 1; page < collection.collection.total_pages; page++) {
+    const path = join(process.cwd(), "public/api/collections/just-raised", `page-${page}.json`);
+    const doc: CollectionDoc = JSON.parse(readFileSync(path, "utf8"));
+    for (const member of doc.collection.members) members.set(member.slug ?? member.name, member);
+  }
   for (const f of Object.values(filings.filings)) {
     const m = members.get(f.slug);
     items.set(f.slug, {
       slug: f.slug,
       name: f.name,
       tier: f.tier,
-      cohort: m?.cohort ?? null,
-      logo: m?.logo ?? null,
-      blurb: m?.blurb ?? null,
-      location: m?.location ?? null,
-      stage: m?.stage ?? null,
-      url: m?.url ?? null,
+      cohort: m?.cohort ?? f.cohort ?? null,
+      logo: m?.logo ?? f.logo ?? null,
+      blurb: m?.blurb ?? f.blurb ?? null,
+      location: m?.location ?? f.location ?? null,
+      stage: m?.stage ?? f.stage ?? null,
+      url: m?.url ?? f.url ?? null,
       onNetwork: true,
-      openRoles: m?.open_roles ?? null,
-      rolesSince: f.roles_since_first_sale,
-      raise: {
-        amount: f.amount,
-        kind: f.amount_kind,
-        firstSale: f.date_of_first_sale,
-        days: f.days_since_first_sale,
-        filingUrl: f.filing_url,
-        issuer: f.issuer_name,
-        amendments: f.amendments,
-        partner: f.a16z_person,
-        score: f.score,
-      },
+      openRoles: m?.open_roles ?? f.open_roles ?? null,
+      raise: raiseFrom(f),
       spv: null,
-      days: f.days_since_first_sale,
-      rank: f.rank,
     });
   }
-
   for (const f of Object.values(filings.off_network ?? {})) {
     items.set(f.slug, {
       slug: f.slug,
@@ -90,36 +121,14 @@ export function buildItems(): Item[] {
       url: f.website ?? f.url,
       onNetwork: false,
       openRoles: null,
-      rolesSince: null,
-      raise: {
-        amount: f.amount,
-        kind: f.amount_kind,
-        firstSale: f.date_of_first_sale,
-        days: f.days_since_first_sale,
-        filingUrl: f.filing_url,
-        issuer: f.issuer_name,
-        amendments: f.amendments,
-        partner: f.a16z_person,
-        score: null,
-      },
+      raise: raiseFrom(f),
       spv: null,
-      days: f.days_since_first_sale,
-      rank: null,
     });
   }
-
   for (const s of Object.values(filings.spv ?? {})) {
-    const spv: Spv = {
-      count: s.spvs,
-      sold: s.spv_amount_sold,
-      latest: s.latest_spv_file_date,
-      days: s.days_since_latest_spv,
-      vehicles: s.vehicles,
-    };
     const existing = items.get(s.slug);
     if (existing) {
-      existing.spv = spv;
-      existing.days = Math.min(existing.days, spv.days);
+      existing.spv = s;
       continue;
     }
     items.set(s.slug, {
@@ -134,13 +143,9 @@ export function buildItems(): Item[] {
       url: s.url,
       onNetwork: s.on_network,
       openRoles: s.open_roles,
-      rolesSince: s.roles_since_first_spv,
       raise: null,
-      spv,
-      days: spv.days,
-      rank: null,
+      spv: s,
     });
   }
-
   return Array.from(items.values());
 }

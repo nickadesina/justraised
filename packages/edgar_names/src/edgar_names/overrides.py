@@ -26,6 +26,14 @@ from pathlib import Path
 import yaml
 
 
+class _OverrideLoader(yaml.SafeLoader):
+    def construct_mapping(self, node, deep=False):
+        mapping = super().construct_mapping(node, deep=deep)
+        if len(mapping) != len(node.value):
+            raise ValueError(f"duplicate YAML key in overrides near line {node.start_mark.line + 1}")
+        return mapping
+
+
 def _cik(value: object) -> str:
     return str(value).strip().lstrip("0") or "0"
 
@@ -35,6 +43,8 @@ class Overrides:
     confirm: dict[str, str] = field(default_factory=dict)  # cik -> slug
     reject: set[tuple[str, str]] = field(default_factory=set)  # (cik, slug)
     block_cik: set[str] = field(default_factory=set)
+    spv_ignore: set[str] = field(default_factory=set)
+    spv_reject: set[tuple[str, str]] = field(default_factory=set)  # (vehicle CIK, target slug)
 
     def confirmed_slug(self, cik: str) -> str | None:
         return self.confirm.get(_cik(cik))
@@ -43,17 +53,29 @@ class Overrides:
         c = _cik(cik)
         return c in self.block_cik or (c, slug) in self.reject
 
+    def is_spv_rejected(self, vehicle_cik: str, target_slug: str) -> bool:
+        return target_slug in self.spv_ignore or (_cik(vehicle_cik), target_slug) in self.spv_reject
 
-def load_overrides(path: str | Path) -> Overrides:
+
+def load_overrides(path: str | Path, *, slug_aliases: dict[str, str] | None = None) -> Overrides:
     p = Path(path)
     if not p.exists():
         return Overrides()
-    raw = yaml.safe_load(p.read_text()) or {}
+    raw = yaml.load(p.read_text(), Loader=_OverrideLoader) or {}
     ov = Overrides()
+    aliases = slug_aliases or {}
+
+    def canonical(value: object) -> str:
+        slug = str(value)
+        return aliases.get(slug, slug)
+
     for row in raw.get("confirm") or []:
-        ov.confirm[_cik(row["cik"])] = str(row["slug"])
+        ov.confirm[_cik(row["cik"])] = canonical(row["slug"])
     for row in raw.get("reject") or []:
-        ov.reject.add((_cik(row["cik"]), str(row["slug"])))
+        ov.reject.add((_cik(row["cik"]), canonical(row["slug"])))
     for row in raw.get("block_cik") or []:
         ov.block_cik.add(_cik(row["cik"]))
+    ov.spv_ignore = {canonical(slug) for slug in raw.get("spv_ignore") or []}
+    for row in raw.get("spv_reject") or []:
+        ov.spv_reject.add((_cik(row["cik"]), canonical(row["slug"])))
     return ov

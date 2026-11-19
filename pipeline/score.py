@@ -2,10 +2,9 @@
 
     score = log10(amount + 1) / (open_roles + 1) * 0.5 ** (days_since_first_sale / 45)
 
-amount is totalAmountSold when nonzero, else totalOfferingAmount (flagged
-"offering, not yet sold"). The window (config.WINDOW_DAYS) and the decay both run from
-dateOfFirstSale on the original notice; an amendment updates the amount and
-nothing else.
+Only positive reported sales with a reported first-sale date qualify for a rank.
+The first-sale date defines the window and decay. The latest amendment supplies
+the cumulative amount. Other notices remain available as supplemental evidence.
 
 Writes (static files; GitHub Pages serves them as the API):
   public/api/collections/just-raised.json  exactly the talent network's
@@ -30,20 +29,23 @@ import json
 import logging
 import math
 import sys
-from datetime import date, datetime, timedelta
+from datetime import date, timedelta
 
 import polars as pl
+from edgar_names import load_overrides
 
 from . import config
 from .clients import TalentClient
 from .fetch_companies import load_companies
-from .fetch_portfolio import load_universe
+from .fetch_portfolio import canonical_slugs, load_universe
+from .jobs import JobHistory
 from .match import HIGH
 
 log = logging.getLogger(__name__)
 
 def collection_description() -> str:
-    return f"Portfolio companies with a Form D in the last {config.WINDOW_DAYS} days, ranked by cash per open role"
+    return (f"Portfolio companies reporting a sale of securities with a first sale in the last "
+            f"{config.WINDOW_DAYS} days, ranked by cash per open role")
 PAGE_SIZE = 100  # their collection page size
 MEMBER_FIELDS = (
     "rank", "name", "slug", "url", "tier", "cohort", "open_roles", "location", "blurb",
@@ -99,15 +101,16 @@ def build_offerings(filings: list[dict]) -> list[dict]:
     offerings = []
     for root_adsh, members in groups.items():
         members.sort(key=lambda x: (x["file_date"], x["adsh"]))
-        root = members[0]
-        latest = members[-1]
-        first_sale = root["date_of_first_sale"]
-        if first_sale is None:
-            # "Yet to occur" or missing: the notice itself is the earliest date we have.
-            first_sale = root["file_date"]
-        sold = latest["total_amount_sold"] or 0.0
+        root = by_adsh[root_adsh]
+        amendments = [f for f in members if f["is_amendment"]]
+        latest = amendments[-1] if amendments else root
+        # A notice may precede the first sale. Use the first dated report, keeping
+        # its evidence separate from the cumulative amount on the latest amendment.
+        sale_notice = next((f for f in [root, *amendments] if f["date_of_first_sale"]), None)
+        first_sale = sale_notice["date_of_first_sale"] if sale_notice else root["file_date"]
+        sold = latest["total_amount_sold"]
         offered = latest["total_offering_amount"]
-        if sold > 0:
+        if sold is not None and sold > 0:
             amount, kind = sold, "sold"
         elif offered:
             amount, kind = offered, "offering"
@@ -117,9 +120,10 @@ def build_offerings(filings: list[dict]) -> list[dict]:
             {
                 "root": root,
                 "latest": latest,
-                "amendments": len(members) - 1,
+                "amendments": len(amendments),
                 "first_sale": first_sale,
-                "first_sale_reported": root["date_of_first_sale"] is not None,
+                "first_sale_reported": sale_notice is not None,
+                "sale_notice": sale_notice,
                 "amount": amount,
                 "amount_kind": kind,
                 "amount_sold": sold,
@@ -130,16 +134,21 @@ def build_offerings(filings: list[dict]) -> list[dict]:
     return offerings
 
 
+def _dated_sale(offering: dict) -> bool:
+    return offering["first_sale_reported"] and offering["amount_kind"] == "sold" and offering["amount_sold"] > 0
+
+
+def _choose_offering(offerings: list[dict], today: date) -> dict:
+    # A later notice may describe a new offering before any securities have been sold.
+    ordered = sorted(offerings, key=lambda o: (
+        _dated_sale(o), o["first_sale"], o["latest"]["file_date"], o["latest"]["adsh"],
+    ), reverse=True)
+    chosen = ordered[0]
+    chosen["additional_notices"] = [_filing_fields(o, today) for o in ordered[1:] if not _dated_sale(o)]
+    return chosen
+
+
 # --- talent network detail ----------------------------------------------------
-
-
-def _parse_ts(value: str | None) -> date | None:
-    if not value:
-        return None
-    try:
-        return datetime.fromisoformat(value.replace("Z", "+00:00")).date()
-    except ValueError:
-        return None
 
 
 def fetch_details(slugs: list[str]) -> dict[str, dict | None]:
@@ -167,6 +176,7 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
     window_start = today - timedelta(days=config.WINDOW_DAYS)
     companies = {c["slug"]: c for c in load_companies()}
     universe = {c["slug"]: c for c in load_universe()}
+    slug_aliases = canonical_slugs(universe.values())
     registry = json.loads(config.REGISTRY_JSON.read_text()) if config.REGISTRY_JSON.exists() else {}
 
     matches = pl.read_parquet(config.MATCHES).filter(pl.col("confidence") == HIGH)
@@ -176,10 +186,10 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
         by_cik.setdefault(f["cik"], []).append(f)
 
     # Best in-window offering per company.
-    chosen: dict[str, dict] = {}
+    candidates: dict[str, list[dict]] = {}
     high_pairs_in_window = 0
     for m in matches.iter_rows(named=True):
-        slug = m["slug"]
+        slug = slug_aliases.get(m["slug"], m["slug"])
         if slug not in companies and slug not in registry and slug not in universe:
             continue
         # Keyed on CIK: every filing by this issuer, so amendments filed under a
@@ -192,12 +202,10 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
         if not in_window:
             continue
         high_pairs_in_window += 1
-        best = max(in_window, key=lambda o: (o["first_sale"], o["latest"]["file_date"]))
-        best["match"] = m
-        best["offerings_in_window"] = len(in_window)
-        prev = chosen.get(slug)
-        if prev is None or best["first_sale"] > prev["first_sale"]:
-            chosen[slug] = best
+        for offering in in_window:
+            offering.update(match=m, offerings_in_window=len(in_window))
+        candidates.setdefault(slug, []).extend(in_window)
+    chosen = {slug: _choose_offering(offerings, today) for slug, offerings in candidates.items()}
 
     # Guardrail before any network calls or writes.
     prev_high = _previous_high_count()
@@ -212,9 +220,19 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
             sys.exit(2)
 
     network_slugs = sorted(s for s in chosen if s in companies or s in registry)
-    spv_groups = _spv_groups(window_start, today)
+    spv_groups = _spv_groups(window_start, today, slug_aliases)
     spv_network = sorted(s for s in spv_groups if s in companies and s not in network_slugs)
-    details = details if details is not None else fetch_details(network_slugs + spv_network)
+    job_history_path = config.DATA / "job_history.json"
+    job_history = JobHistory.load(job_history_path)
+    # Keep following previously observed companies between funding signals.
+    previous_slugs = set(job_history.companies) & (companies.keys() | registry.keys())
+    tracked_slugs = sorted(set(network_slugs) | set(spv_network) | previous_slugs)
+    details = details if details is not None else fetch_details(tracked_slugs)
+    for slug in tracked_slugs:
+        detail = details.get(slug)
+        company = companies.get(slug) or detail or {}
+        if company.get("stage") not in config.EXCLUDE_STAGES and (company.get("name") or "").strip().lower() != "stealth":
+            job_history.observe(slug, detail, today)
 
     rows = []
     off_rows = []
@@ -235,10 +253,17 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
         if company.get("stage") in config.EXCLUDE_STAGES:
             log.info("skip %s: stage %s", slug, company.get("stage"))
             continue
-        jobs = (detail or {}).get("jobs") or []
-        open_roles = int(company.get("open_roles") if base else len(jobs))
-        posted = sorted(d for d in (_parse_ts(j.get("published_at")) for j in jobs) if d)
-        since = [d for d in posted if d >= off["first_sale"]]
+        open_roles = company.get("open_roles")
+        if open_roles is None:
+            jobs = (detail or {}).get("jobs")
+            if not isinstance(jobs, list):
+                # The collection schema requires an actual integer role count.
+                log.warning("skip %s: open role count unavailable", slug)
+                continue
+            open_roles = len(jobs)
+        hiring = job_history.since(slug, off["first_sale"], today)
+        current_postings = hiring.pop("current_postings")
+        first_current = hiring.pop("first_current_post")
         days = (today - off["first_sale"]).days
         labels = (detail or {}).get("labels") or {}
         rows.append(
@@ -261,11 +286,12 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
                 # --- filing detail (additive endpoint) ---
                 "stage_label": labels.get("stage"),
                 "size_label": labels.get("size"),
-                "score": score(off["amount"], open_roles, days),
+                "score": score(off["amount_sold"], open_roles, days) if _dated_sale(off) else None,
                 **_filing_fields(off, today),
-                "roles_since_first_sale": len(since),
-                "first_post_since": since[0].isoformat() if since else None,
-                "days_to_first_post": (since[0] - off["first_sale"]).days if since else None,
+                **hiring,
+                "roles_since_first_sale": current_postings,
+                "first_post_since": first_current,
+                "days_to_first_post": (date.fromisoformat(first_current) - off["first_sale"]).days if first_current else None,
             }
         )
 
@@ -277,17 +303,16 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
             continue
         if company.get("stage") in config.EXCLUDE_STAGES:
             continue
-        spv_rows.append(_spv_row(company, group, details.get(slug), slug in companies, slug in direct, today))
+        spv_rows.append(_spv_row(company, group, details.get(slug), slug in companies, slug in direct, today, job_history))
     spv_rows.sort(key=lambda r: (r["latest_spv_file_date"], r["spvs"]), reverse=True)
     for i, r in enumerate(spv_rows, 1):
         r["rank"] = i
 
-    rows.sort(key=lambda r: (-r["score"], r["name"].lower()))
-    for i, r in enumerate(rows, 1):
-        r["rank"] = i
-    off_rows.sort(key=lambda r: (-r["score"], r["name"].lower()))
-    for i, r in enumerate(off_rows, 1):
-        r["rank"] = i
+    for group in (rows, off_rows):
+        group.sort(key=lambda r: (r["score"] is None, -(r["score"] or 0), r["name"].lower()))
+        for i, r in enumerate(group, 1):
+            r["rank"] = i if r["score"] is not None else None
+    ranked = [r for r in rows if r["rank"] is not None]
 
     generated_at = config.now_iso()
     meta = {
@@ -297,22 +322,23 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
         "half_life_days": config.HALF_LIFE_DAYS,
         "formula": f"log10(amount + 1) / (open_roles + 1) * 0.5 ^ (days_since_first_sale / {config.HALF_LIFE_DAYS})",
         "high_matches": high_pairs_in_window,
-        "members": len(rows),
+        "members": len(ranked),
         "off_network": len(off_rows),
+        "direct_sales_reported": len(ranked) + sum(r["rank"] is not None for r in off_rows),
         "spv_companies": len(spv_rows),
         "off_network_formula": f"log10(amount + 1) * 0.5 ^ (days_since_first_sale / {config.HALF_LIFE_DAYS}); open roles are not tracked",
         "lag_assumption": "Postings follow a raise by one to three months. Assumed, not yet measured.",
     }
-    members = [{k: r[k] for k in MEMBER_FIELDS} for r in rows]
+    members = [{k: r[k] for k in MEMBER_FIELDS} for r in ranked]
     header = {
         "slug": "just-raised",
         "title": "Just raised",
         "description": collection_description(),
         "group": "signals",
         "url": config.SITE_URL,
-        "companies": len(rows),
-        "roles": sum(r["open_roles"] for r in rows),
-        "portfolio_members": sum(1 for r in rows if r["tier"] in config.PORTFOLIO_TIERS),
+        "companies": len(ranked),
+        "roles": sum(r["open_roles"] for r in ranked),
+        "portfolio_members": sum(1 for r in ranked if r["tier"] in config.PORTFOLIO_TIERS),
     }
     total_pages = math.ceil(len(members) / PAGE_SIZE)
     pages = []
@@ -332,7 +358,10 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
     keep = ("rank", "slug", "name", "tier", "cohort")
     filings_doc = {
         "meta": meta,
-        "filings": {r["slug"]: {k: v for k, v in r.items() if k not in MEMBER_FIELDS or k in keep} for r in rows},
+        "filings": {
+            r["slug"]: {k: v for k, v in r.items() if r["rank"] is None or k not in MEMBER_FIELDS or k in keep}
+            for r in rows
+        },
         # Portfolio companies (a16z.com, speedrun.a16z.com) with a matched Form D
         # that are not on the talent network: no slug there, no open-role count.
         "off_network": {r["slug"]: r for r in off_rows},
@@ -353,7 +382,8 @@ def run_score(force: bool = False, details: dict | None = None) -> dict:
     config.PUBLIC_FILINGS.write_text(json.dumps(filings_doc, indent=1, ensure_ascii=False) + "\n")
     config.PUBLIC_CSV.write_text(to_csv(rows + off_rows))
     config.PUBLIC_SPV_CSV.write_text(_spv_csv(spv_rows))
-    _append_history(today, rows)
+    _append_history(today, ranked)
+    job_history.save(job_history_path)
     log.info(
         "score: %d on the talent network + %d off it + %d with investor SPVs published (%d High pairs in window)",
         len(rows), len(off_rows), len(spv_rows), high_pairs_in_window,
@@ -367,8 +397,15 @@ CSV_FIELDS = [
     "days_since_first_sale", "file_date", "latest_file_date", "amendments", "open_roles",
     "roles_since_first_sale", "first_post_since", "days_to_first_post", "issuer_name",
     "issuer_cik", "issuer_city", "issuer_state", "accession", "filing_url", "url", "website",
-    "match_rung", "a16z_person",
+    "match_rung", "a16z_person", "latest_accession", "amount_filing_url", "first_sale_filing_url",
+    "first_sale_reported", "observed_postings_since_signal", "hiring_tracked_since", "hiring_coverage",
+    "additional_notices",
 ]
+
+
+def _filing_url(filing: dict) -> str:
+    accession = filing["adsh"]
+    return config.FILING_INDEX_URL.format(cik=filing["cik"], adsh_nodash=accession.replace("-", ""), adsh=accession)
 
 
 def _filing_fields(off: dict, today: date) -> dict:
@@ -388,10 +425,11 @@ def _filing_fields(off: dict, today: date) -> dict:
         "offerings_in_window": off["offerings_in_window"],
         "accession": root["adsh"],
         "latest_accession": latest["adsh"],
-        "filing_url": config.FILING_INDEX_URL.format(
-            cik=root["cik"], adsh_nodash=root["adsh"].replace("-", ""), adsh=root["adsh"]
-        ),
+        "filing_url": _filing_url(root),
+        "amount_filing_url": _filing_url(latest),
+        "first_sale_filing_url": _filing_url(off["sale_notice"]) if off["sale_notice"] else None,
         "issuer_name": root["entity_name"],
+        **({"additional_notices": off["additional_notices"]} if off.get("additional_notices") else {}),
         "issuer_cik": root["cik"],
         "issuer_city": root["city"],
         "issuer_state": root["state"],
@@ -419,34 +457,75 @@ def _off_network_row(company: dict, off: dict, today: date) -> dict | None:
         "logo": company.get("logo"),
         "open_roles": None,
         "roles_since_first_sale": None,
+        "observed_postings_since_signal": None,
+        "hiring_tracked_since": None,
+        "hiring_coverage": "unavailable",
         # Cash and recency only: open roles are not tracked off the network.
-        "score": score(off["amount"], 0, days),
+        "score": score(off["amount_sold"], 0, days) if _dated_sale(off) else None,
         **_filing_fields(off, today),
     }
 
 
-def _spv_groups(window_start: date, today: date) -> dict[str, list[dict]]:
+def _spv_groups(window_start: date, today: date, slug_aliases: dict[str, str]) -> dict[str, list[dict]]:
     if not config.SPV_FILINGS.exists():
         return {}
-    from .spv import load_ignore
-
-    ignore = load_ignore()
+    overrides = load_overrides(config.OVERRIDES_FILE, slug_aliases=slug_aliases)
     groups: dict[str, list[dict]] = {}
     for r in pl.read_parquet(config.SPV_FILINGS).iter_rows(named=True):
-        if r["slug"] not in ignore and window_start <= r["file_date"] <= today:
-            groups.setdefault(r["slug"], []).append(r)
+        slug = slug_aliases.get(r["slug"], r["slug"])
+        if not overrides.is_spv_rejected(r["cik"], slug) and window_start <= r["file_date"] <= today:
+            groups.setdefault(slug, []).append(r)
     return groups
 
 
-def _spv_row(company: dict, group: list[dict], detail: dict | None, on_network: bool, has_direct: bool, today: date) -> dict:
+def _spv_vehicle(filing: dict, today: date) -> dict:
+    sold = filing["total_amount_sold"]
+    first_sale = filing["date_of_first_sale"]
+    if sold is None:
+        status = "unknown"
+    elif sold == 0:
+        status = "no_sales_reported"
+    elif first_sale is None or first_sale > today:
+        status = "sale_date_unknown"
+    elif first_sale < today - timedelta(days=config.WINDOW_DAYS):
+        status = "historical_first_sale"
+    else:
+        status = "recent_first_sale"
+    return {
+        "name": filing["spv_name"],
+        "file_date": filing["file_date"].isoformat(),
+        "date_of_first_sale": first_sale.isoformat() if first_sale else None,
+        "amount_sold": sold,
+        "offering_amount": filing["total_offering_amount"],
+        "sale_status": status,
+        "is_amendment": filing["is_amendment"],
+        "filing_url": _filing_url(filing),
+    }
+
+
+def _spv_row(company: dict, group: list[dict], detail: dict | None, on_network: bool, has_direct: bool, today: date, job_history: JobHistory | None = None) -> dict:
     # One entry per vehicle (CIK); an amendment updates its vehicle.
     by_vehicle: dict[str, dict] = {}
     for f in sorted(group, key=lambda x: (x["file_date"], x["adsh"])):
         by_vehicle[f["cik"]] = f
-    vehicles = sorted(by_vehicle.values(), key=lambda x: x["file_date"], reverse=True)
-    first = min(v["file_date"] for v in vehicles)
-    jobs = (detail or {}).get("jobs") or []
-    since = [d for d in (_parse_ts(j.get("published_at")) for j in jobs) if d and d >= first]
+    filings = sorted(by_vehicle.values(), key=lambda x: (x["file_date"], x["adsh"]), reverse=True)
+    vehicles = [_spv_vehicle(f, today) for f in filings]
+    amounts = [v["amount_sold"] for v in vehicles]
+    statuses = {v["sale_status"] for v in vehicles}
+    # A dated recent sale takes precedence. An unknown amount cannot turn a
+    # group of disclosures into a claim that every vehicle reported zero.
+    status_order = ("recent_first_sale", "sale_date_unknown", "historical_first_sale", "unknown", "no_sales_reported")
+    status = next(value for value in status_order if value in statuses)
+    first_sales = [v["date_of_first_sale"] for v in vehicles
+                   if v["sale_status"] in ("recent_first_sale", "historical_first_sale")]
+    first = min(f["file_date"] for f in group)
+    if job_history is None:
+        job_history = JobHistory()
+        if on_network:
+            job_history.observe(company["slug"], detail, today)
+    hiring = job_history.since(company["slug"], first, today)
+    current_postings = hiring.pop("current_postings")
+    hiring.pop("first_current_post")
     return {
         "slug": company["slug"],
         "name": company["name"],
@@ -460,29 +539,24 @@ def _spv_row(company: dict, group: list[dict], detail: dict | None, on_network: 
         "location": company.get("location"),
         "stage": company.get("stage"),
         "open_roles": company.get("open_roles") if on_network else None,
-        "roles_since_first_spv": len(since) if on_network else None,
+        "roles_since_first_spv": current_postings,
+        **hiring,
         "spvs": len(vehicles),
-        "spv_amount_sold": sum(v["total_amount_sold"] or 0 for v in vehicles),
+        "spv_amount_sold": sum(amounts) if None not in amounts else None,
+        "sale_status": status,
+        "latest_first_sale_date": max(first_sales, default=None),
         "first_spv_file_date": first.isoformat(),
-        "latest_spv_file_date": vehicles[0]["file_date"].isoformat(),
-        "days_since_latest_spv": (today - vehicles[0]["file_date"]).days,
-        "vehicles": [
-            {
-                "name": v["spv_name"],
-                "file_date": v["file_date"].isoformat(),
-                "amount_sold": v["total_amount_sold"],
-                "filing_url": config.FILING_INDEX_URL.format(
-                    cik=v["cik"], adsh_nodash=v["adsh"].replace("-", ""), adsh=v["adsh"]
-                ),
-            }
-            for v in vehicles
-        ],
+        "latest_spv_file_date": vehicles[0]["file_date"],
+        "days_since_latest_spv": (today - filings[0]["file_date"]).days,
+        "vehicles": vehicles,
     }
 
 
 SPV_CSV_FIELDS = [
     "rank", "name", "slug", "tier", "on_network", "has_own_form_d", "spvs", "spv_amount_sold",
     "first_spv_file_date", "latest_spv_file_date", "open_roles", "roles_since_first_spv", "url", "vehicle_names",
+    "observed_postings_since_signal", "hiring_tracked_since", "hiring_coverage",
+    "sale_status", "latest_first_sale_date", "vehicle_evidence",
 ]
 
 
@@ -491,7 +565,11 @@ def _spv_csv(rows: list[dict]) -> str:
     w = csv.DictWriter(buf, fieldnames=SPV_CSV_FIELDS, extrasaction="ignore", lineterminator="\n")
     w.writeheader()
     for r in rows:
-        w.writerow({**r, "vehicle_names": " | ".join(v["name"] for v in r["vehicles"])})
+        w.writerow({
+            **r,
+            "vehicle_names": " | ".join(v["name"] for v in r["vehicles"]),
+            "vehicle_evidence": json.dumps(r["vehicles"], ensure_ascii=False),
+        })
     return buf.getvalue()
 
 
@@ -500,7 +578,11 @@ def to_csv(rows: list[dict]) -> str:
     w = csv.DictWriter(buf, fieldnames=CSV_FIELDS, extrasaction="ignore", lineterminator="\n")
     w.writeheader()
     for r in rows:
-        w.writerow({**r, "score": f"{r['score']:.4f}"})
+        w.writerow({
+            **r,
+            "score": f"{r['score']:.4f}" if r["score"] is not None else "",
+            "additional_notices": json.dumps(r["additional_notices"], ensure_ascii=False) if r.get("additional_notices") else "",
+        })
     return buf.getvalue()
 
 
