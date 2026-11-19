@@ -217,6 +217,7 @@ export default function Feed({ items }: { items: Item[] }) {
   useLayoutEffect(() => {
     if (view) {
       wasInBrief.current = true;
+      document.querySelector("details.data-notes[open]")?.removeAttribute("open");
       document.getElementById("company-brief-title")?.focus({ preventScroll: true });
       window.scrollTo(0, 0);
     } else if (wasInBrief.current) {
