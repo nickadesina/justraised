@@ -22,8 +22,16 @@ function sales(sold: number | null, offered?: number | null) {
   return offered == null ? sale : `${sale} against a ${currency.format(offered)} offering`;
 }
 
+function ExternalArrow() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true" focusable="false">
+      <path d="M2.5 9.5 9 3M3.5 3H9v5.5" />
+    </svg>
+  );
+}
+
 function SourceLink({ href, children }: { href: string; children: ReactNode }) {
-  return <a className="brief-source" href={href} target="_blank" rel="noopener noreferrer">{children} <span aria-hidden="true">↗</span></a>;
+  return <a className="brief-source" href={href} target="_blank" rel="noopener noreferrer">{children} <ExternalArrow /></a>;
 }
 
 interface EntryProps {
@@ -225,7 +233,7 @@ export default function CompanyBrief({ item, investor, onBack }: { item: Item; i
             <h2 id="company-brief-title" tabIndex={-1}>{item.name}</h2>
             {context && <p className="brief-context">{context}</p>}
           </div>
-          {item.url && <a className="brief-action" href={item.url} target="_blank" rel="noopener noreferrer">{companyLabel} <span aria-hidden="true">↗</span></a>}
+          {item.url && <a className="brief-action" href={item.url} target="_blank" rel="noopener noreferrer">{companyLabel} <ExternalArrow /></a>}
         </header>
         <dl className="brief-facts"><FundingFact raise={item.raise} spv={primarySpv} /><HiringFact item={item} spv={primarySpv} /></dl>
         {primarySpv && <InvestorHistory spv={primarySpv} />}
