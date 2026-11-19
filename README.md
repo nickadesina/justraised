@@ -2,7 +2,8 @@
 
 A daily list for job seekers comparing a16z and speedrun portfolio companies.
 The default view shows matched company filings that report securities sold.
-Each row links to the SEC evidence and shows available hiring data. A separate
+Each company name opens a shareable brief with the filing history and links
+to the SEC evidence. Open-role counts link directly to hiring profiles. A separate
 view tracks filings by investor vehicles associated with those companies.
 
 - Page: https://nickadesina.github.io/justraised/

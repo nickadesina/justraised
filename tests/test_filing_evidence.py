@@ -38,15 +38,23 @@ def _spv(*filings):
 def test_amended_amount_and_first_sale_cite_their_respective_filings():
     sale_date = date(2026, 7, 7)
     original = _filing("01", date(2026, 7, 22), 23_199_945, sale_date)
-    amendment = _filing("02", date(2026, 7, 29), 24_999_937, sale_date, previous="01")
+    amendment = _filing("02", date(2026, 7, 29), 24_999_937, sale_date, previous="01") | {
+        "total_offering_amount": 24_999_937,
+    }
     result = _direct_fields(amendment, original)
     assert result["amount"] == 24_999_937
+    assert result["original_amount_sold"] == 23_199_945
+    assert result["original_offering_amount"] == 50_000_000
+    assert result["offering_amount"] == 24_999_937
+    orphan = _direct_fields(amendment)
+    assert orphan["original_amount_sold"] is None and orphan["original_offering_amount"] is None
     assert result["filing_url"] == result["first_sale_filing_url"]
     assert result["filing_url"].endswith("/01-index.htm")
     assert result["amount_filing_url"].endswith("/02-index.htm")
     (export,) = csv.DictReader(io.StringIO(to_csv([result | {"score": 0.0}])))
     assert export["amount_filing_url"] == result["amount_filing_url"]
     assert export["latest_accession"] == "02"
+    assert export["original_amount_sold"] == "23199945"
 
 
 def test_amendment_can_be_first_evidence_of_a_sale():

@@ -53,6 +53,8 @@ export interface Filing extends PostingHistory {
   amount_kind: "sold" | "offering" | "unknown";
   amount_sold: number | null;
   offering_amount: number | null;
+  original_amount_sold?: number | null;
+  original_offering_amount?: number | null;
   offering_indefinite: boolean;
   date_of_first_sale: string;
   first_sale_reported: boolean;

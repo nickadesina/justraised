@@ -1,6 +1,6 @@
 import { API, REPO_URL, filings } from "@/lib/data";
 import { buildItems } from "@/lib/items";
-import { EARLY_MAX_DAYS, EARLY_MAX_POSTINGS, hasIssuerSale } from "@/lib/signals";
+import { EARLY_MAX_DAYS, EARLY_MAX_POSTINGS } from "@/lib/signals";
 
 import Feed from "./feed";
 
@@ -19,40 +19,46 @@ function TitleCard() {
 export default function Page() {
   const { meta } = filings;
   const items = buildItems();
-  const sales = items.filter(hasIssuerSale).length;
-  const investors = items.filter(item => item.spv).length;
-  const refreshed = new Date(meta.generated_at)
-    .toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })
-    .replace(",", "");
+  const refreshed = new Date(meta.generated_at);
+  const shortDate = refreshed.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+  const fullDate = refreshed.toLocaleDateString("en-US", {
+    month: "long", day: "numeric", year: "numeric", timeZone: "UTC",
+  });
 
   return (
     <main>
-      <header className="hero">
-        <h1>
-          <span className="sr-only">Just raised</span>
-          <TitleCard />
-        </h1>
-        <div className="hero-side">
-          <p className="sub">
-            {sales} portfolio {sales === 1 ? "company reported" : "companies reported"} a securities sale with a first sale
-            in the last {meta.window_days} days. Compare those filings with open jobs across a16z and speedrun.
-            Investor vehicles filed notices naming {investors} {investors === 1 ? "company" : "companies"}.
-          </p>
-          <dl className="readout">
-            <div>
-              <dt>Source</dt>
-              <dd>SEC EDGAR · Form D</dd>
-            </div>
-            <div>
-              <dt>Refreshed</dt>
-              <dd>{refreshed}</dd>
-            </div>
-            <div>
-              <dt>Window</dt>
-              <dd>{meta.window_days} days</dd>
-            </div>
-          </dl>
+      <header className="masthead">
+        <div className="masthead-row">
+          <h1>
+            <span className="sr-only">Just Raised</span>
+            <TitleCard />
+          </h1>
+          <p className="masthead-context">Funding and hiring across a16z and speedrun</p>
+          <time className="masthead-updated" dateTime={meta.generated_at}>Updated {shortDate}</time>
         </div>
+        <details className="data-notes">
+          <summary>Data notes</summary>
+          <div className="data-notes-body">
+            <dl>
+              <div>
+                <dt>Source</dt>
+                <dd><a href="https://www.sec.gov/edgar/search/">SEC EDGAR · Form D</a></dd>
+              </div>
+              <div>
+                <dt>Window</dt>
+                <dd>{meta.window_days} days</dd>
+              </div>
+              <div>
+                <dt>Updated</dt>
+                <dd><time dateTime={meta.generated_at}>{fullDate}</time></dd>
+              </div>
+            </dl>
+            <p>
+              Company sales use the issuer’s reported first sale. Investor filings describe separate vehicles.
+              Open roles come from the <a href="https://speedrun-talent-network.com/">talent network</a>.
+            </p>
+          </div>
+        </details>
       </header>
 
       <Feed items={items} />

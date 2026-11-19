@@ -399,7 +399,7 @@ CSV_FIELDS = [
     "issuer_cik", "issuer_city", "issuer_state", "accession", "filing_url", "url", "website",
     "match_rung", "a16z_person", "latest_accession", "amount_filing_url", "first_sale_filing_url",
     "first_sale_reported", "observed_postings_since_signal", "hiring_tracked_since", "hiring_coverage",
-    "additional_notices",
+    "additional_notices", "original_amount_sold", "original_offering_amount",
 ]
 
 
@@ -415,6 +415,8 @@ def _filing_fields(off: dict, today: date) -> dict:
         "amount_kind": off["amount_kind"],
         "amount_sold": off["amount_sold"],
         "offering_amount": off["offering_amount"],
+        "original_amount_sold": None if root["is_amendment"] else root["total_amount_sold"],
+        "original_offering_amount": None if root["is_amendment"] else root["total_offering_amount"],
         "offering_indefinite": off["offering_indefinite"],
         "date_of_first_sale": off["first_sale"].isoformat(),
         "first_sale_reported": off["first_sale_reported"],

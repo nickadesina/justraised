@@ -1,0 +1,193 @@
+.company-brief {
+  container: companyBrief / inline-size;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--ui);
+}
+
+.brief-body {
+  width: min(100%, 862px);
+  margin-inline: auto;
+  padding: 16px clamp(0px, 3%, 36px) 34px;
+}
+
+.company-brief :where(h2, h3, p, ol, dl, dd) {
+  margin: 0;
+}
+
+.brief-back {
+  min-height: 32px;
+  padding: 3px 0;
+  border: 0;
+  color: var(--dim);
+  background: transparent;
+  font: 500 13px/1.45 var(--ui);
+  cursor: pointer;
+}
+
+.brief-back:hover, .brief-action:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.brief-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 14px 0 18px;
+  margin-top: 9px;
+  border-top: 1px solid var(--rule);
+}
+
+.brief-kicker, .brief-fact dt {
+  color: var(--dim);
+  font: 600 12px/1.4 var(--ui);
+  font-stretch: 75%;
+  letter-spacing: .075em;
+  text-transform: uppercase;
+}
+
+.brief-kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--signal-ink);
+}
+
+.brief-kicker::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: var(--signal);
+}
+
+.brief-heading h2 {
+  margin: 4px 0;
+  overflow-wrap: anywhere;
+  font: 900 clamp(38px, 7.5cqw, 72px)/1.08 var(--display);
+  letter-spacing: -.065em;
+}
+
+.brief-context, .brief-intro {
+  max-width: 66ch;
+  color: var(--dim);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.brief-action {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 9px;
+  min-height: 40px;
+  padding: 10px 14px;
+  border-radius: 3px;
+  color: var(--ground);
+  background: var(--ink);
+  font: 600 13px/1.3 var(--ui);
+}
+
+.brief-facts {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+  padding: 16px 0;
+  margin-bottom: 22px;
+  border-block: 1px solid var(--rule);
+}
+
+.brief-fact {
+  min-width: 0;
+  padding-right: 14px;
+}
+
+.brief-fact + .brief-fact {
+  border-left: 1px solid var(--rule);
+  padding: 0 0 0 22px;
+}
+
+.brief-value {
+  margin: 2px 0;
+  overflow-wrap: anywhere;
+  font: 900 clamp(26px, 4.2cqw, 42px)/1.16 var(--display);
+  letter-spacing: -.055em;
+}
+
+.brief-value a { color: inherit; }
+
+.brief-caption, .brief-note {
+  color: var(--dim);
+  font: 400 13px/1.45 var(--ui);
+}
+
+.brief-caption p + p, .brief-note p + p { margin-top: 3px; }
+.brief-history + .brief-history, .brief-profile { margin-top: 24px; }
+
+.brief-history h3 {
+  margin-bottom: 9px;
+  font: 900 clamp(23px, 3.3cqw, 30px)/1.2 var(--display);
+  letter-spacing: -.04em;
+}
+
+.brief-intro { margin: 0 0 10px; }
+.brief-events { padding: 0; list-style: none; }
+
+.brief-entry {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 15px;
+  padding: 10px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.brief-entry time, .brief-undated {
+  color: var(--dim);
+  padding-top: 1px;
+  font: 500 12px/1.5 var(--ui);
+  font-variant-numeric: tabular-nums;
+}
+
+.brief-entry strong {
+  font: 650 14px/1.4 var(--ui);
+  overflow-wrap: anywhere;
+}
+
+.brief-entry p {
+  margin: 2px 0 0;
+  color: var(--dim);
+  font: 400 13px/1.45 var(--ui);
+  overflow-wrap: anywhere;
+}
+
+.brief-source {
+  font: 550 13px/1.45 var(--ui);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.brief-history details, .brief-profile { border-top: 1px solid var(--rule); }
+
+.company-brief summary {
+  padding-block: 10px;
+  cursor: pointer;
+  font: 550 13px/1.45 var(--ui);
+}
+
+.brief-note { padding: 3px 0 10px; }
+
+@container companyBrief (max-width: 510px) {
+  .brief-body { padding: 6px 0 22px; }
+  .brief-heading { flex-wrap: wrap; gap: 10px; padding-bottom: 13px; }
+  .brief-facts { grid-template-columns: minmax(0, 1fr); gap: 9px; padding: 11px 0; margin-bottom: 17px; }
+  .brief-fact + .brief-fact { padding: 8px 0 0; border-left: 0; border-top: 1px solid var(--rule); }
+  .brief-entry { grid-template-columns: 63px minmax(0, 1fr); gap: 10px; }
+}
+
+@media (pointer: coarse) {
+  .company-brief :is(.brief-back, .brief-action, .brief-source) {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}

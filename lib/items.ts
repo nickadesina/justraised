@@ -21,11 +21,17 @@ export interface HiringHistory extends PostingHistory {
 export interface Raise {
   amount: number | null;
   sold: number | null;
+  originalSold: number | null;
+  originalOffered: number | null;
+  offeringAmount: number | null;
   kind: Filing["amount_kind"];
   firstSale: string | null;
   filed: string;
+  latestFiled: string | null;
+  amountFiled: string | null;
   days: number;
   filingUrl: string;
+  latestUrl: string;
   firstSaleUrl: string;
   amountUrl: string;
   issuer: string;
@@ -53,20 +59,29 @@ export interface Item {
 }
 
 function raiseFrom(f: Filing | OffNetworkFiling): Raise {
+  const sameFiling = f.latest_accession === f.accession;
   const latestUrl =
-    f.latest_accession === f.accession
+    sameFiling
       ? f.filing_url
       : `https://www.sec.gov/Archives/edgar/data/${f.issuer_cik}/${f.latest_accession.replaceAll("-", "")}/${f.latest_accession}-index.htm`;
+  const amountUrl = f.amount_filing_url ?? latestUrl;
+  const latestFiled = f.latest_file_date ?? (sameFiling ? f.file_date : null);
   return {
     amount: f.amount,
     sold: f.amount_sold,
+    originalSold: f.original_amount_sold ?? null,
+    originalOffered: f.original_offering_amount ?? null,
+    offeringAmount: f.offering_amount,
     kind: f.amount_kind,
     firstSale: f.first_sale_reported ? f.date_of_first_sale : null,
     filed: f.file_date,
+    latestFiled,
+    amountFiled: amountUrl === latestUrl ? latestFiled : amountUrl === f.filing_url ? f.file_date : null,
     days: f.days_since_first_sale,
     filingUrl: f.filing_url,
+    latestUrl,
     firstSaleUrl: f.first_sale_filing_url ?? f.filing_url,
-    amountUrl: f.amount_filing_url ?? latestUrl,
+    amountUrl,
     issuer: f.issuer_name,
     amendments: f.amendments,
     additionalNotices: f.additional_notices ?? [],
