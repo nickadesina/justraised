@@ -1,11 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { type MouseEvent, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 
 import type { SpvCompany } from "@/lib/data";
 import { money, shortDate } from "@/lib/format";
-import type { HiringHistory, Item, Raise } from "@/lib/items";
+import type { Item, Raise } from "@/lib/items";
 import { hasIssuerSale, isEarly, saleLabels, vehicleStatus } from "@/lib/signals";
+
+import CompanyBrief from "./company-brief";
+import "./feed.css";
 
 const FILTERS = {
   raised: "Company sales",
@@ -18,6 +21,26 @@ type Filter = keyof typeof FILTERS;
 type Sort = "newest" | "score" | "biggest";
 const DEFAULT_FILTER: Filter = "raised";
 const DEFAULT_SORT: Sort = "score";
+const PAGE_SIZE = 5;
+const HASH_PREFIX = "#company/";
+
+function subscribeToHash(notify: () => void) {
+  window.addEventListener("hashchange", notify);
+  return () => window.removeEventListener("hashchange", notify);
+}
+
+function resolveCompany(hash: string, items: Item[]) {
+  if (!hash.startsWith(HASH_PREFIX)) return null;
+  const [encodedSlug, source, extra] = hash.slice(HASH_PREFIX.length).split("/");
+  if (!encodedSlug || extra !== undefined || (source !== undefined && source !== "investor")) return null;
+  try {
+    const slug = decodeURIComponent(encodedSlug);
+    const item = items.find(i => i.slug === slug);
+    return item ? { item, investor: !!item.spv && (source === "investor" || !item.raise) } : null;
+  } catch {
+    return null;
+  }
+}
 
 const STAGES: Record<string, string> = {
   "pre-seed": "Pre-seed",
@@ -96,29 +119,6 @@ function InvestorSignal({ spv }: { spv: SpvCompany }) {
   );
 }
 
-function PostingCounts({ history, anchor }: { history: HiringHistory; anchor: string }) {
-  const count = history.observed_postings_since_signal;
-  const coverage = history.hiring_coverage;
-  return (
-    <>
-      {history.openPostedSince !== null && (
-        <div className="figure-label">
-          {history.openPostedSince.toLocaleString("en-US")} currently open, posted since {anchor}
-        </div>
-      )}
-      {count != null && (coverage === "partial" || coverage === "since_signal") ? (
-        <div className="figure-label">
-          {coverage === "partial" ? "At least " : ""}
-          {count.toLocaleString("en-US")} {count === 1 ? "posting" : "postings"} observed since {anchor}
-          {coverage === "partial" && " · partial history"}
-        </div>
-      ) : (
-        <div className="figure-label">Posting history unavailable</div>
-      )}
-    </>
-  );
-}
-
 function Hiring({ item, investor }: { item: Item; investor: SpvCompany | null }) {
   if (!item.onNetwork) {
     return (
@@ -132,9 +132,7 @@ function Hiring({ item, investor }: { item: Item; investor: SpvCompany | null })
       </div>
     );
   }
-  const history = investor
-    ? { ...investor, openPostedSince: investor.roles_since_first_spv }
-    : item.raise?.hiring;
+  const openPostedSince = investor ? investor.roles_since_first_spv : item.raise?.hiring.openPostedSince;
   const anchor = investor ? "first vehicle filing" : "first sale";
   const roles =
     item.openRoles == null ? (
@@ -154,146 +152,48 @@ function Hiring({ item, investor }: { item: Item; investor: SpvCompany | null })
       ) : (
         <div className="figure roles">{roles}</div>
       )}
-      {history && (investor || item.raise?.firstSale) && <PostingCounts history={history} anchor={anchor} />}
-    </div>
-  );
-}
-
-const dollars = (amount: number) =>
-  amount.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
-
-function IssuerEvidence({ sale }: { sale: Raise }) {
-  const knownSold = sale.sold !== null ? `${dollars(sale.sold)} sold` : "Amount sold undisclosed";
-  return (
-    <div>
-      <h3>Company filing</h3>
-      <p>
-        {sale.issuer} · <a href={sale.amountUrl}>{knownSold}</a>
-        {sale.kind === "offering" && sale.amount !== null && (
-          <>
-            {" "}
-            · <a href={sale.amountUrl}>{dollars(sale.amount)} offered</a>
-          </>
-        )}
-        .
-      </p>
-      <p>
-        <a href={sale.filingUrl}>Earliest notice on record</a> filed {shortDate(sale.filed)}.
-        {sale.firstSale ? (
-          <>
-            {" "}
-            <a href={sale.firstSaleUrl}>First sale</a> on {shortDate(sale.firstSale)}.
-          </>
-        ) : (
-          " First sale date not reported."
-        )}
-        {sale.amendments > 0 && (
-          <>
-            {" "}
-            <a href={sale.amountUrl}>Latest amendment</a> supplies the amount.
-          </>
-        )}
-        {sale.partner && <> The filing lists {sale.partner} of a16z as a director or officer.</>}
-      </p>
-      {sale.additionalNotices.length > 0 && (
-        <>
-          <h3>Other company notices</h3>
-          <ul>
-            {sale.additionalNotices.map((notice) => (
-              <li key={notice.accession}>
-                {notice.issuer_name} · <a href={notice.filing_url}>Filed {shortDate(notice.file_date)}</a>
-                {" · "}
-                <a href={notice.amount_filing_url ?? notice.filing_url}>
-                  {notice.amount_sold === null
-                    ? "Amount sold undisclosed"
-                    : `${dollars(notice.amount_sold)} sold`}
-                </a>
-                {notice.offering_amount != null && ` · offering target ${dollars(notice.offering_amount)}`}
-                {notice.first_sale_reported && (
-                  <>
-                    {" "}
-                    ·{" "}
-                    <a href={notice.first_sale_filing_url ?? notice.filing_url}>
-                      First sale {shortDate(notice.date_of_first_sale)}
-                    </a>
-                  </>
-                )}
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
-      {sale.score !== null && (
-        <p className="muted">
-          Issuer sale score {sale.score.toFixed(3)}. The score uses the amount sold, the current number of
-          open roles and the age of the first sale.
-        </p>
+      {openPostedSince != null && (investor || item.raise?.firstSale) && (
+        <span className="open-posted-since">{openPostedSince.toLocaleString("en-US")} open, posted since {anchor}</span>
       )}
     </div>
   );
 }
 
-function InvestorEvidence({ spv }: { spv: SpvCompany }) {
-  return (
-    <div>
-      <h3>Investor filings</h3>
-      <p>
-        These vehicles may buy newly issued or existing shares. Amounts are the latest reported totals for the offerings shown.
-      </p>
-      <p className="muted">
-        Reported vehicle sales {spv.spv_amount_sold == null ? "unknown" : dollars(spv.spv_amount_sold)}.
-        Earliest vehicle filing in view {shortDate(spv.first_spv_file_date)}.
-      </p>
-      <ul>
-        {spv.vehicles.map((v) => (
-          <li key={v.filing_url}>
-            <a href={v.filing_url}>{v.name}</a> · {v.is_amendment ? "amendment" : "filing"}{" "}
-            {shortDate(v.file_date)}
-            {" · "}
-            {v.amount_sold === null ? "amount sold unknown" : `${dollars(v.amount_sold)} sold`}
-            {v.offering_amount != null &&
-              v.offering_amount > 0 &&
-              ` · offering target ${dollars(v.offering_amount)}`}
-            {" · "}
-            {saleLabels[vehicleStatus(v.sale_status, v.amount_sold)]}
-            {v.date_of_first_sale && ` (${shortDate(v.date_of_first_sale)})`}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function Card({ item, filter }: { item: Item; filter: Filter }) {
-  const meta = [item.stage ? (STAGES[item.stage] ?? item.stage) : null, item.location].filter(Boolean);
+function CompanyRow({
+  item, filter, onOpen,
+}: {
+  item: Item;
+  filter: Filter;
+  onOpen: (event: MouseEvent<HTMLAnchorElement>) => void;
+}) {
   const investor = investorFor(item, filter);
+  const href = HASH_PREFIX + encodeURIComponent(item.slug) + (investor ? "/investor" : "");
+  const meta = [item.stage ? (STAGES[item.stage] ?? item.stage) : null, item.location].filter(Boolean);
   return (
-    <li className="card">
-      <details>
-        <summary>
-          <Logo item={item} />
-          <div className="who">
-            <div className="name-row">
-              <span className="name">{item.name}</span>
-              <span className={`chip tier-${item.tier}`}>
-                {item.tier}
-                {item.cohort && ` ${item.cohort}`}
-              </span>
-              {!investor && isEarly(item) && <span className="chip early">Early window</span>}
-            </div>
-            {item.blurb && <p className="blurb">{item.blurb}</p>}
-            {meta.length > 0 && <div className="meta">{meta.join(" · ")}</div>}
-          </div>
-          {investor ? <InvestorSignal spv={investor} /> : item.raise && <IssuerSignal sale={item.raise} />}
-          <Hiring item={item} investor={investor} />
-          <span className="chev" aria-hidden="true" />
-        </summary>
-        <div className="evidence">
-          {!investor && item.raise && <IssuerEvidence sale={item.raise} />}
-          {item.spv && <InvestorEvidence spv={item.spv} />}
-          {investor && item.raise && <IssuerEvidence sale={item.raise} />}
+    <li className="company-row">
+      <Logo item={item} />
+      <div className="who">
+        <div className="name-row">
+          <a
+            className="name company-link"
+            href={href}
+            id={`company-link-${item.slug}`}
+            aria-label={`Open ${item.name} company brief`}
+            onClick={onOpen}
+          >
+            {item.name}
+          </a>
+          <span className={`chip tier-${item.tier}`}>
+            {item.tier}{item.cohort && ` ${item.cohort}`}
+          </span>
+          {!investor && isEarly(item) && <span className="chip early">Early window</span>}
         </div>
-      </details>
+        {item.blurb && <p className="blurb">{item.blurb}</p>}
+        {meta.length > 0 && <div className="meta">{meta.join(" · ")}</div>}
+      </div>
+      {investor ? <InvestorSignal spv={investor} /> : item.raise && <IssuerSignal sale={item.raise} />}
+      <Hiring item={item} investor={investor} />
+      <span className="chev" aria-hidden="true" />
     </li>
   );
 }
@@ -302,13 +202,62 @@ export default function Feed({ items }: { items: Item[] }) {
   const [filter, setFilter] = useState<Filter>(DEFAULT_FILTER);
   const [sort, setSort] = useState<Sort>(DEFAULT_SORT);
   const [query, setQuery] = useState("");
-  const shown = useMemo(() => {
+  const [limit, setLimit] = useState(PAGE_SIZE);
+  const hash = useSyncExternalStore(subscribeToHash, () => window.location.hash, () => "");
+  const view = useMemo(() => resolveCompany(hash, items), [hash, items]);
+  const origin = useRef<{ link: HTMLAnchorElement; hash: string; scrollY: number } | null>(null);
+  const wasInBrief = useRef(false);
+  const firstNewSlug = useRef<string | null>(null);
+  const searchInput = useRef<HTMLInputElement>(null);
+  const allMatches = useMemo(() => {
     const q = query.trim().toLowerCase();
-    const out = items.filter(
-      (i) =>
-        matchesFilter(i, filter) &&
-        (!q || [i.name, i.blurb, i.location].some((t) => t?.toLowerCase().includes(q))),
-    );
+    return q ? items.filter(i => [i.name, i.blurb, i.location].some(t => t?.toLowerCase().includes(q))) : items;
+  }, [items, query]);
+
+  useLayoutEffect(() => {
+    if (view) {
+      wasInBrief.current = true;
+      document.querySelector("details.data-notes[open]")?.removeAttribute("open");
+      document.getElementById("company-brief-title")?.focus({ preventScroll: true });
+      window.scrollTo(0, 0);
+    } else if (wasInBrief.current) {
+      wasInBrief.current = false;
+      const from = origin.current;
+      if (from && hash === from.hash && from.link.isConnected) {
+        from.link.focus({ preventScroll: true });
+        window.scrollTo(0, from.scrollY);
+      } else if (!hash) {
+        searchInput.current?.focus({ preventScroll: true });
+        window.scrollTo(0, 0);
+      }
+    }
+  }, [view, hash]);
+
+  useLayoutEffect(() => {
+    if (firstNewSlug.current) {
+      document.getElementById(`company-link-${firstNewSlug.current}`)?.focus();
+      firstNewSlug.current = null;
+    }
+  }, [limit]);
+
+  function rememberOpener(event: MouseEvent<HTMLAnchorElement>) {
+    if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey && event.button === 0) {
+      origin.current = { link: event.currentTarget, hash: window.location.hash, scrollY: window.scrollY };
+    }
+  }
+
+  function backToFeed() {
+    if (origin.current?.link.hash === hash) window.history.back();
+    else window.location.replace("#");
+  }
+
+  function selectFilter(next: Filter) {
+    setFilter(next);
+    setLimit(PAGE_SIZE);
+  }
+
+  const shown = useMemo(() => {
+    const out = allMatches.filter(i => matchesFilter(i, filter));
     function facts(i: Item) {
       const investor = investorFor(i, filter);
       if (investor)
@@ -323,68 +272,92 @@ export default function Feed({ items }: { items: Item[] }) {
       if (sort === "score" && left.score !== right.score) return (right.score ?? -1) - (left.score ?? -1);
       return left.days - right.days || a.name.localeCompare(b.name);
     });
-  }, [items, filter, sort, query]);
+  }, [allMatches, filter, sort]);
+  const visible = shown.slice(0, limit);
+
   return (
-    <section aria-label="Companies">
-      <div className="toolbar">
-        <div className="pills" role="group" aria-label="Filter companies">
-          {(Object.keys(FILTERS) as Filter[]).map((key) => (
-            <button
-              key={key}
-              type="button"
-              aria-pressed={filter === key}
-              className={`pill ${filter === key ? "on" : ""}`}
-              onClick={() => setFilter(key)}
-            >
-              {FILTERS[key]}{" "}
-              <span className="count">{items.filter((i) => matchesFilter(i, key)).length}</span>
-            </button>
-          ))}
+    <>
+      <section id="company-feed" className="company-feed" aria-label="Companies" hidden={!!view}>
+        <div className="toolbar">
+          <div className="pills" role="group" aria-label="Filter companies">
+            {(Object.keys(FILTERS) as Filter[]).map((key) => (
+              <button
+                key={key}
+                type="button"
+                aria-pressed={filter === key}
+                className={`pill ${filter === key ? "on" : ""}`}
+                onClick={() => selectFilter(key)}
+              >
+                {FILTERS[key]}{" "}
+                <span className="count">{items.filter((i) => matchesFilter(i, key)).length}</span>
+              </button>
+            ))}
+          </div>
+          <div className="tools">
+            <input
+              type="search"
+              placeholder="Search companies"
+              value={query}
+              ref={searchInput}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setLimit(PAGE_SIZE);
+              }}
+              aria-label="Search companies"
+            />
+            <label className="sort">
+              <span className="sort-label">Sort</span>
+              <select
+                aria-label="Sort companies"
+                value={filter === "spv" && sort === "score" ? "newest" : sort}
+                onChange={(e) => {
+                  setSort(e.target.value as Sort);
+                  setLimit(PAGE_SIZE);
+                }}
+              >
+                {filter !== "spv" && <option value="score">Issuer sale score</option>}
+                <option value="newest">{filter === "spv" ? "Latest filing" : "Most recent"}</option>
+                <option value="biggest">
+                  {filter === "spv" ? "Most sold by vehicles" : "Most reported sold"}
+                </option>
+              </select>
+            </label>
+          </div>
         </div>
-        <div className="tools">
-          <input
-            type="search"
-            placeholder="Search companies"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            aria-label="Search companies"
-          />
-          <label className="sort">
-            <span className="sort-label">Sort</span>
-            <select
-              aria-label="Sort companies"
-              value={filter === "spv" && sort === "score" ? "newest" : sort}
-              onChange={(e) => setSort(e.target.value as Sort)}
-            >
-              {filter !== "spv" && <option value="score">Issuer sale score</option>}
-              <option value="newest">{filter === "spv" ? "Latest filing" : "Most recent"}</option>
-              <option value="biggest">
-                {filter === "spv" ? "Most sold by vehicles" : "Most reported sold"}
-              </option>
-            </select>
-          </label>
+        <div className="columns" aria-hidden="true">
+          <span>Company</span>
+          <span>{filter === "spv" ? "Investor disclosures" : "Filing evidence"}</span>
+          <span>Hiring</span>
         </div>
-      </div>
-      <div className="columns" aria-hidden="true">
-        <span>Company</span>
-        <span>{filter === "spv" ? "Investor disclosures" : "Filing evidence"}</span>
-        <span>Hiring</span>
-      </div>
-      <p className="sr-only" aria-live="polite">
-        {shown.length} of {items.length} companies shown
-      </p>
-      <ol className="cards">
-        {shown.map((i) => (
-          <Card key={i.slug} item={i} filter={filter} />
-        ))}
-      </ol>
-      {shown.length === 0 && (
-        <p className="empty">
-          {filter === "early" && !query
-            ? "No company currently has a recent issuer sale and enough posting history to qualify."
-            : "No companies match. Try another filter or clear the search."}
-        </p>
-      )}
-    </section>
+        <ol className="cards">
+          {visible.map(item => <CompanyRow key={item.slug} item={item} filter={filter} onOpen={rememberOpener} />)}
+        </ol>
+        {shown.length === 0 && (
+          <div className="empty">
+            {filter === "early" && !query
+              ? "No company currently has a recent issuer sale and enough posting history to qualify."
+              : "No companies match this filter."}
+            {query.trim() && allMatches.length > 0 && filter !== "all" && (
+              <button type="button" className="feed-action cross-filter" onClick={() => {
+                selectFilter("all");
+                searchInput.current?.focus();
+              }}>
+                Show {allMatches.length} {allMatches.length === 1 ? "match" : "matches"} in All filings
+              </button>
+            )}
+          </div>
+        )}
+        <div className="feed-pagination">
+          <span aria-live="polite">{visible.length} of {shown.length} companies shown</span>
+          {limit < shown.length && (
+            <button type="button" className="feed-action" onClick={() => {
+              firstNewSlug.current = shown[limit].slug;
+              setLimit(limit + PAGE_SIZE);
+            }}>Show more companies</button>
+          )}
+        </div>
+      </section>
+      {view && <CompanyBrief key={view.item.slug} item={view.item} investor={view.investor} onBack={backToFeed} />}
+    </>
   );
 }

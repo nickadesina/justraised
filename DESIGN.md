@@ -3,7 +3,7 @@
 Light and restrained, with one loud move: the page title set like an anime
 title card, in heavy serif capitals compressed narrow. An orange rule and
 orange money figures carry structure. Everything else is a plain working list.
-Filters, search, sort and expandable rows are ordinary web controls.
+Company names link to their briefs. Hiring counts link to jobs independently.
 
 ## Palette (`app/globals.css` `:root`)
 
@@ -34,18 +34,15 @@ Bright `--signal` fails text contrast on the light ground, so never use it for t
 
 ## Signature move
 
-The title is `TitleCard` in `app/page.tsx`. "JUST RAISED" sits on one line,
-compressed in SVG (`textLength`, `lengthAdjust="spacingAndGlyphs"`). It cuts
-in once on load. Nothing else animates, apart from hover colour changes and
-the row chevron, and reduced motion turns both the cut-in and the transitions
-off.
+The masthead pairs the compressed SVG wordmark (`TitleCard` in `app/page.tsx`)
+with the Data notes disclosure on one line.
 
 ## Layout
 
-- Feed rows, not cards. Rows are separated by hairlines, and the column
-  header row uses the same five-column grid. Below 820px each row stacks:
-  logo, then name and blurb, then money, then roles.
+- Hairlines separate feed rows. The column headings and results share a
+  five-column grid. At narrow widths, funding and hiring sit side by side
+  beneath the company name.
 - Square corners. No shadows, gradients, glows or rounded pills.
-- No eyebrow labels above headings. Metadata lives in the hero readout.
+- Data notes contains the reporting window, source and refresh date.
 - Keep it to one move. Earlier passes with hazard stripes and Japanese
   labels were too much.

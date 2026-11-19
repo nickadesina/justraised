@@ -1,0 +1,262 @@
+.company-feed {
+  container-type: inline-size;
+}
+
+.company-feed .toolbar {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.company-feed .pill,
+.feed-action {
+  padding: 9px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: .05em;
+}
+
+.company-feed .tools {
+  width: auto;
+  max-width: 100%;
+}
+
+.company-feed .tools input,
+.company-feed .tools select {
+  height: 34px;
+  max-width: 100%;
+  padding-block: 4px;
+  font-size: 14px;
+}
+
+.company-feed .columns,
+.company-row {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1.6fr) minmax(0, .81fr) minmax(0, .84fr) 12px;
+  align-items: center;
+  gap: 11px;
+  padding-inline: clamp(3px, 1.15%, 12px);
+}
+
+.company-feed .columns {
+  padding-bottom: 6px;
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+
+.company-row {
+  position: relative;
+  isolation: isolate;
+  padding-block: 13px;
+  border-bottom: 1px solid var(--rule);
+  line-height: 1.3;
+}
+
+.company-row:hover {
+  background: var(--hover);
+}
+
+.company-row .logo {
+  width: 38px;
+  height: 38px;
+}
+
+.company-row .name-row {
+  gap: 5px 8px;
+}
+
+.company-link {
+  color: var(--ink);
+  font-size: clamp(19px, 2.8cqw, 25px);
+}
+
+.company-link::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+
+.company-link:focus-visible::after {
+  outline: 2px solid var(--signal-ink);
+  outline-offset: -2px;
+}
+
+/* Keep the hiring action above the company link's full-row hit area. */
+.company-row .hiring a {
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+}
+
+.company-row .chev {
+  width: 7px;
+  height: 7px;
+  transform: rotate(-45deg);
+}
+
+.company-row .chip {
+  font-size: 10px;
+  padding: 2px 4px;
+}
+
+.company-row .blurb {
+  margin-top: 4px;
+  font-size: 13px;
+  -webkit-line-clamp: 1;
+}
+
+.company-row .meta,
+.company-row .figure-label,
+.feed-pagination {
+  font-size: 11px;
+  letter-spacing: .045em;
+}
+
+.company-row .meta {
+  margin-top: 4px;
+}
+
+.company-row .figure {
+  font-size: clamp(18px, 2.45cqw, 26px);
+}
+
+.company-row .figure-label {
+  margin-top: 3px;
+}
+
+.company-row .figure-unit {
+  font-size: 11px;
+}
+
+.open-posted-since {
+  display: block;
+  margin-top: 3px;
+  color: var(--dim);
+  font-size: 12px;
+}
+
+.feed-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding-block: 11px;
+  color: var(--dim);
+  text-transform: uppercase;
+}
+
+.feed-action {
+  background: transparent;
+  border: 1px solid var(--rule-strong);
+  color: var(--ink);
+  font-family: inherit;
+  font-stretch: 70%;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.feed-action:hover {
+  border-color: var(--ink);
+}
+
+.company-feed .empty {
+  padding: 16px 3px;
+}
+
+.cross-filter {
+  display: block;
+  margin-top: 8px;
+}
+
+@container (max-width: 630px) {
+  .company-feed .columns,
+  .company-row {
+    grid-template-columns: 29px minmax(0, 1.22fr) minmax(0, .83fr) minmax(0, .83fr) 8px;
+    gap: 7px;
+  }
+
+  .company-row .logo {
+    width: 29px;
+    height: 29px;
+  }
+}
+
+@container (max-width: 490px) {
+  .company-feed .toolbar {
+    margin-bottom: 9px;
+    gap: 7px;
+  }
+
+  .company-feed .pills {
+    gap: 4px;
+  }
+
+  .company-feed .pill {
+    padding: 7px 8px;
+  }
+
+  .company-feed .tools {
+    align-self: stretch;
+  }
+
+  .company-feed .tools input,
+  .company-feed .tools select {
+    min-width: 0;
+    padding-inline: 7px;
+  }
+
+  .company-feed .tools select {
+    width: 100%;
+    padding-right: 24px;
+    background-position: right 7px center;
+  }
+
+  .company-feed .sort {
+    width: 46%;
+  }
+
+  .company-feed .columns {
+    display: none;
+  }
+
+  .company-row {
+    grid-template-columns: 29px minmax(0, 1fr) minmax(0, .9fr) 9px;
+    grid-template-areas:
+      "logo who who arrow"
+      ". signal hiring .";
+    align-items: start;
+    gap: 8px;
+    padding: 11px 1px;
+  }
+
+  .company-row .logo { grid-area: logo; }
+  .company-row .who { grid-area: who; }
+  .company-row .signal { grid-area: signal; }
+  .company-row .hiring { grid-area: hiring; }
+  .company-row .chev { grid-area: arrow; align-self: center; }
+
+  .company-row .open-posted-since {
+    font-size: 11px;
+  }
+}
+
+@media (pointer: coarse) {
+  .company-row .hiring a {
+    display: block;
+    align-content: center;
+    min-height: 44px;
+  }
+
+  .company-feed .pill,
+  .company-feed .tools input,
+  .company-feed .tools select,
+  .feed-action {
+    min-height: 44px;
+  }
+
+  .company-feed .tools input {
+    font-size: 16px;
+  }
+}
