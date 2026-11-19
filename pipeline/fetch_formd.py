@@ -313,6 +313,9 @@ def fetch_filings(sec: SecClient, index: pl.DataFrame, today: date, no_gate: boo
         filings = pl.concat([filings, pl.DataFrame(parsed, schema=FILINGS_SCHEMA)]).unique("adsh", keep="last")
     filings = filings.sort(["file_date", "adsh"])
     filings.write_parquet(config.FILINGS)
+    state = json.loads(config.STATE_JSON.read_text()) if config.STATE_JSON.exists() else {}
+    state["formd_last_run"] = config.now_iso()
+    config.STATE_JSON.write_text(json.dumps(state, indent=1) + "\n")
     log.info("filings: %d parsed rows total (%d new), %d SEC requests this run", filings.height, len(parsed), sec.requests)
     return filings
 
@@ -330,9 +333,6 @@ def main() -> None:
         fetch_filings(sec, index, today, no_gate=args.no_gate)
     finally:
         sec.close()
-    state = json.loads(config.STATE_JSON.read_text()) if config.STATE_JSON.exists() else {}
-    state["formd_last_run"] = config.now_iso()
-    config.STATE_JSON.write_text(json.dumps(state, indent=1) + "\n")
 
 
 if __name__ == "__main__":

@@ -1,9 +1,9 @@
 # Just Raised
 
-A daily list of a16z and speedrun portfolio companies that filed a Form D with
-the SEC recently, ranked by how much they raised relative to how many roles they
-have open. It answers a question job boards don't: which companies have new
-money and haven't posted the roles yet.
+A daily list for job seekers comparing a16z and speedrun portfolio companies.
+The default view shows matched company filings that report securities sold.
+Each row links to the SEC evidence and shows available hiring data. A separate
+view tracks filings by investor vehicles associated with those companies.
 
 - Page: https://nickadesina.github.io/justraised/
 - Collection (talent network schema): [`/api/collections/just-raised.json`](https://nickadesina.github.io/justraised/api/collections/just-raised.json)
@@ -24,15 +24,13 @@ Regulation D, which covers nearly every venture round. Rule 503 says to file it
 within 15 days of the first sale. It names the issuer, the amount sold, the
 date of first sale, and the directors and officers.
 
-New roles usually show up on a careers page one to three months after a round
-closes. That lag is an **assumption** in v1. `data/history.parquet` records
-every listed company's open roles each night, so after a few weeks the gap
-between first sale and new postings can be measured per company and the
-assumption replaced.
-
-What the list tells a job seeker: this company has cash it did not have a few
-months ago, roughly how much, and whether its postings have caught up. What it
-does not tell them: that any particular role is coming, or when.
+A one-to-three-month lag between a raise and hiring is a hypothesis. The live
+role count includes postings that are still open on the talent network. The
+pipeline also tracks individual job IDs over time so a closed listing still
+counts as an observed posting. Coverage starts with the first successful
+snapshot for each company. Older rounds and gaps in observation can leave
+earlier postings unknown. The tracker starts with companies that have a filing
+signal and continues observing them while their talent profiles are available.
 
 ## Score
 
@@ -40,9 +38,10 @@ does not tell them: that any particular role is coming, or when.
 score = log10(amount + 1) / (open_roles + 1) * 0.5 ^ (days_since_first_sale / 45)
 ```
 
-- **amount** is `totalAmountSold`, or `totalOfferingAmount` when nothing is sold
-  yet (shown as "offering, not yet sold"). The log keeps a $500M growth round
-  from burying every seed round.
+- **amount** is the positive `totalAmountSold` of an issuer offering with a
+  reported first-sale date in the window. The score uses a logarithm to keep
+  very large offerings from overwhelming smaller rounds. The filing details
+  can also show an unranked notice that only reports an offering target.
 - **open_roles** is the company's live role count on the talent network at run
   time. The +1 avoids dividing by zero. A company with 300 open roles has
   already told the market what it needs.
@@ -52,7 +51,7 @@ score = log10(amount + 1) / (open_roles + 1) * 0.5 ^ (days_since_first_sale / 45
   amendment (D/A) updates the amount and nothing else; it never restarts the
   window.
 
-The page and the CSV print every input next to the score.
+The CSV includes the inputs to each score.
 
 ## Matching
 
@@ -62,17 +61,17 @@ company on the page next to a dollar figure, so the matcher is tuned for
 precision, and only High rows are published.
 
 **Universe.** The talent network's `/companies` lists only companies with a
-live role (340 portfolio companies). The matcher also runs against every
+live role. The matcher also runs against every
 active, private company on [a16z.com/portfolio](https://a16z.com/portfolio/),
 every disclosed name on the [investment list](https://a16z.com/investment-list/)
 that a16z.com doesn't mark as exited, and the public
 [speedrun list](https://speedrun.a16z.com/companies) (current cohort), all read
-from those pages each night (`pipeline/fetch_portfolio.py`). That is 1,446
-companies, 1,106 of them not on the talent network.
+from those pages each night (`pipeline/fetch_portfolio.py`). The pipeline
+keeps the last successful data for each external source and reconciles it
+with the current talent-network roster.
 [`aliases.yaml`](aliases.yaml) maps brands to legal names the matcher can't
-guess (Cursor is Anysphere). Companies that aren't on the network are published in a
-separate section: they have no open-role count, so they can't be ranked on cash
-per role.
+guess (Cursor is Anysphere). Direct company sales can appear on the page even
+when the talent network has no hiring data for the company.
 
 **Normalization** (`packages/edgar_names`) runs on both sides: lowercase,
 strip punctuation, drop a leading "the", then strip legal suffixes from the end
@@ -99,6 +98,9 @@ so rung 3′ sends them to a person.
 
 Rules that demote High to Medium:
 
+- **Short or shortened names.** One-word and suffix-stripped exact matches
+  require independent evidence, such as a known investing-team member on the
+  filing or a reviewed issuer ID in `matches.yaml`.
 - **Location conflict.** The names are equal, but both locations are known and
   they disagree. Many portfolio names are single common words (Arena, Basis,
   Bounce), and "Bounce, LLC" in Indianapolis is not the luggage network.
@@ -151,14 +153,16 @@ finds Form Ds whose issuer is a vehicle and whose name contains exactly one
 portfolio brand as whole words. A one-word brand counts only if it is rare in
 English (wordfreq Zipf < 2.5: "saronic" passes, "titan" doesn't), and a brand
 followed by a manager word ("Koru Ventures", "Celo Capital") is the manager,
-not the target. `spv_ignore` in `matches.yaml` drops a slug for good.
+not the target. `spv_ignore` in `matches.yaml` excludes a company from this
+view. A reviewed `spv_reject` entry excludes a specific vehicle and target
+pair while leaving other vehicles eligible.
 
-An SPV means money is being pooled to buy in now. That can be a new round or a
-purchase of existing shares from employees and early investors, so the page
-shows these in their own section, "Investors buying in", ordered by the latest
-SPV filing, with open roles and roles posted since the first SPV. On the first
-run that section had 25 companies, including Cursor, Anduril, Shield AI,
-Kalshi, Databricks, Saronic, ElevenLabs, Periodic Labs, Hadrian and Zipline.
+A vehicle's filing describes its own offering. Even when it reports a sale,
+the ultimate transaction might be a purchase of existing shares. The investor
+view distinguishes vehicles reporting zero sold, first sales inside or
+outside the window, and sales with an unknown date. It shows the filing date
+independently of the first-sale date. The company-raise count uses direct
+issuer filings only.
 
 ## Endpoints
 
@@ -190,9 +194,12 @@ The Form D side, keyed by slug, plus run metadata (window, formula, counts).
 keyed `a16z:<slug>` or `speedrun:<slug>`. `spv` holds the companies with
 investor SPVs, each with its vehicles and their filings
 ([`/api/just-raised-spvs.csv`](https://nickadesina.github.io/justraised/api/just-raised-spvs.csv)
-as a spreadsheet). This is additive: amount, first-sale date,
-filing URL, issuer, amendments, roles posted since the raise, score inputs, and
-the match rung. None of it fits their member schema.
+as a spreadsheet). For a direct filing, `amount_filing_url` identifies the
+document supporting the amount, and `first_sale_filing_url` supports the
+reported sale date. `filing_url` still identifies the original available
+notice. `additional_notices` preserves supplemental offering notices when
+a company also has a qualifying sale. The detail endpoint includes the issuer,
+amendments, hiring coverage, score inputs, and match rung.
 
 ### `/api/just-raised.csv`
 
@@ -218,8 +225,9 @@ pipeline/score.py            offerings, score, guardrail                      ->
 pipeline/run_all.py          all four, in order
 ```
 
-GitHub Actions runs `run_all` at 10:00 UTC (02:00 Pacific in winter), commits
-the regenerated files, and redeploys GitHub Pages (`.github/workflows/pages.yml`).
+GitHub Actions schedules `run_all` for 10:00 UTC (02:00 Pacific in winter),
+validates the regenerated files, and deploys that commit to GitHub Pages
+(`.github/workflows/pages.yml`).
 The Next.js page is a static export built from the same JSON files it links
 to.
 
@@ -254,18 +262,16 @@ These numbers shaped v1 and differ from the original design doc:
 - **The talent network lists 778 companies, not 1,300**: 438 market tier, 291
   a16z, 49 speedrun. Only the 340 portfolio companies are matched. `/companies`
   lists **only companies with at least one live role**, so a company that raised
-  and has posted nothing is invisible until it posts one. The page's toggle is
-  "No roles posted since the raise" rather than "no open roles". A registry of
+  and has posted nothing is invisible to that endpoint until it posts one. A registry of
   every slug ever seen (`data/company_registry.json`) lets a company that drops
   to zero roles still be looked up.
 - **Yield is thin on the talent network alone.** Matching only its 340
   companies, a 90-day window had 3 High matches and 180 days had 5. Adding
   the wider a16z and speedrun portfolio and rung P raised 180 days to 12
   companies with their own Form D (8 on the network, 4 off it); investor SPVs
-  add 25 more, 36 distinct companies in all. Full-text search of EDGAR for every portfolio brand
-  name over the window found no operating-company Form D that the matcher
-  missed. The other hits were SPVs and companies with similar names. So this is
-  the base rate, not a matcher that's too strict. Per the design doc's fallback,
+  brought the first published feed to 36 distinct companies. A later review
+  corrected the Sunflower issuer match and confirmed Adaptive from the review
+  queue. Per the design doc's fallback,
   v1 runs a **180-day window** and the header says so. Set
   `JUST_RAISED_WINDOW_DAYS=90` to go back.
 - **Many filings report an early first-sale date.** Kalshi's August filing

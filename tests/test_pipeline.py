@@ -25,8 +25,8 @@ def _filing(name, state=None, surnames=()):
 
 
 def test_rung1_exact_is_high():
-    best = ladder(_filing("Modal Labs, Inc.", "NY"), _companies())[0]
-    assert (best.slug, best.rung, best.confidence) == ("modal", "1", HIGH)
+    best = ladder(_filing("Acme Robotics, Inc.", "CA"), _companies())[0]
+    assert (best.slug, best.rung, best.confidence) == ("acme-robotics", "1", HIGH)
 
 
 def test_rung1_location_conflict_demotes():

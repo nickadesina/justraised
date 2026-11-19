@@ -86,7 +86,7 @@ a:hover {
 .meta,
 .figure,
 .figure-label,
-.evidence h4,
+.evidence h3,
 .sort-label,
 footer .links {
   font-stretch: 70%;
@@ -534,7 +534,7 @@ details[open] .chev {
   color: var(--ink-2);
 }
 
-.evidence h4 {
+.evidence h3 {
   margin: 0 0 8px;
   font-size: 12px;
   font-weight: 600;

@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-19T18:53:54Z",
+ "fetched_at": "2026-11-19T22:01:45Z",
  "listed_total": 773,
  "portfolio_total": 341,
  "tiers": {
@@ -3180,7 +3180,7 @@
    "url": "https://speedrun-talent-network.com/companies/figma",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 143,
+   "open_roles": 145,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -3971,7 +3971,7 @@
    "url": "https://speedrun-talent-network.com/companies/harvey",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 392,
+   "open_roles": 393,
    "location": "San Francisco, California",
    "industries": [
     "AI"
@@ -5496,7 +5496,7 @@
    "url": "https://speedrun-talent-network.com/companies/lyft",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 147,
+   "open_roles": 146,
    "location": "San Francisco, CA",
    "industries": [
     "Consumer"

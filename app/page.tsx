@@ -1,5 +1,6 @@
 import { API, REPO_URL, filings } from "@/lib/data";
 import { buildItems } from "@/lib/items";
+import { EARLY_MAX_DAYS, EARLY_MAX_POSTINGS, hasIssuerSale } from "@/lib/signals";
 
 import Feed from "./feed";
 
@@ -18,7 +19,8 @@ function TitleCard() {
 export default function Page() {
   const { meta } = filings;
   const items = buildItems();
-  const months = Math.round(meta.window_days / 30);
+  const sales = items.filter(hasIssuerSale).length;
+  const investors = items.filter(item => item.spv).length;
   const refreshed = new Date(meta.generated_at)
     .toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })
     .replace(",", "");
@@ -31,10 +33,10 @@ export default function Page() {
           <TitleCard />
         </h1>
         <div className="hero-side">
-          {/* DRAFT COPY: rewrite in your own voice before publishing. */}
           <p className="sub">
-            {items.length} a16z and speedrun companies took in new money in the last {months} months. New roles
-            usually follow a raise by one to three months. This is the window before they&apos;re posted.
+            {sales} portfolio {sales === 1 ? "company reported" : "companies reported"} a securities sale with a first sale
+            in the last {meta.window_days} days. Compare those filings with open jobs across a16z and speedrun.
+            Investor vehicles filed notices naming {investors} {investors === 1 ? "company" : "companies"}.
           </p>
           <dl className="readout">
             <div>
@@ -59,25 +61,25 @@ export default function Page() {
         <h2 id="how-title">How this works</h2>
         <ol>
           <li>
-            <strong>Find the money.</strong> Every night the list reads new Form D filings from SEC EDGAR. A Form D is
-            the notice a company files when it sells stock in a private round. It names the company, how much it
-            sold, and when.
+            <strong>Read the issuer filing.</strong> Company sales require a positive amount sold and a reported
+            first sale date in the window. Each company card links to its SEC Form D and any amendment supporting
+            the amount.
           </li>
           <li>
-            <strong>Match it to the portfolio.</strong> Filings are matched by name against every a16z and speedrun
-            company. Only confident matches are shown, and a filing that names an a16z partner as a director counts
-            as strong evidence.
+            <strong>Check the investor activity.</strong> A special purpose vehicle (SPV) may buy new securities or existing
+            shares. The investor view shows its filing date, reported sales and first sale date when available.
+            A recent filing can describe a much older sale.
           </li>
           <li>
-            <strong>Compare with hiring.</strong> For companies on the talent network, the list counts open roles
-            and how many were posted since the money came in. Few new roles after a big raise is the early window.
+            <strong>Compare with hiring.</strong> Open roles are a current snapshot. Observed postings include
+            roles that have since closed. When tracking began after the signal or missed days, the observed
+            count is a lower bound.
           </li>
         </ol>
         <p className="how-note">
-          Many large rounds never produce a Form D from the company itself, so the list also shows{" "}
-          <em>investor SPVs</em>: vehicles named after a company, formed to buy in. They can mean a new round or a
-          purchase of existing shares, so they are a weaker signal. The one-to-three-month lag is an assumption until
-          a few weeks of nightly data can measure it.
+          “Early window” means a company reported a sale within {EARLY_MAX_DAYS} days and the tracker has
+          observed at most {EARLY_MAX_POSTINGS} postings with daily coverage since that sale.
+          The idea that hiring follows a raise by one to three months is a hypothesis.
         </p>
       </section>
 

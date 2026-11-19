@@ -8,7 +8,7 @@ schema" means in the README.
     python scripts/check_schema.py http://localhost:3000/api/collections/just-raised --strict
     python scripts/check_schema.py response.json --live-spec
 
-With a URL, every page is fetched and checked.
+For a collection endpoint or static export, every advertised page is checked.
 """
 
 from __future__ import annotations
@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -65,13 +66,29 @@ def strict_errors(doc: dict, spec: dict) -> list[str]:
 
 
 def _pages(target: str) -> list[tuple[str, dict]]:
-    if not target.startswith("http"):
-        return [(target, _load(target))]
-    sep = "&" if "?" in target else "?"
-    first = _load(f"{target}{sep}page=0")
-    out = [(f"{target} page 0", first)]
-    for p in range(1, first.get("collection", {}).get("total_pages", 1)):
-        out.append((f"{target} page {p}", _load(f"{target}{sep}page={p}")))
+    remote = target.startswith(("http://", "https://"))
+    url = urllib.parse.urlsplit(target)
+
+    def source(page: int) -> str:
+        if not remote:
+            return str(Path(target).with_suffix("") / f"page-{page}.json") if page else target
+        if url.path.endswith(".json"):
+            path = f"{url.path[:-5]}/page-{page}.json" if page else url.path
+            return url._replace(path=path).geturl()
+        params = dict(urllib.parse.parse_qsl(url.query))
+        return url._replace(query=urllib.parse.urlencode({**params, "page": page})).geturl()
+
+    first = _load(source(0))
+    out = [(source(0), first)]
+    collection = first.get("collection", {})
+    if collection.get("page", 0) != 0:
+        return out  # An explicitly supplied later page can be checked on its own.
+    for page in range(1, collection.get("total_pages", 1)):
+        path = source(page)
+        doc = _load(path)
+        if doc.get("collection", {}).get("page") != page:
+            raise ValueError(f"Expected page {page} at {path}")
+        out.append((path, doc))
     return out
 
 

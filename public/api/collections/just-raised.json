@@ -2,36 +2,15 @@
  "collection": {
   "slug": "just-raised",
   "title": "Just raised",
-  "description": "Portfolio companies with a Form D in the last 180 days, ranked by cash per open role",
+  "description": "Portfolio companies reporting a sale of securities with a first sale in the last 180 days, ranked by cash per open role",
   "group": "signals",
   "url": "https://nickadesina.github.io/justraised",
   "companies": 8,
-  "roles": 610,
+  "roles": 617,
   "portfolio_members": 8,
   "members": [
    {
     "rank": 1,
-    "name": "Sunflower",
-    "slug": "sunflower",
-    "url": "https://speedrun-talent-network.com/companies/sunflower",
-    "tier": "speedrun",
-    "cohort": "SR004",
-    "open_roles": 2,
-    "location": "San Francisco, California",
-    "blurb": "We're building an AI-enabled toolkit to keep you sober, for the 1.2 billion humans who struggle with addiction.",
-    "stage": "seed",
-    "remote_policy": "remote-first",
-    "investors": [
-     "Andreessen Horowitz"
-    ],
-    "functions": [
-     "other"
-    ],
-    "cities": [],
-    "logo": "https://cdn.a16zspeedrun.com/platform/companies/5ee2ce76-6380-444e-ba9f-882f87388e17/logos/Frame_2147226926white.png"
-   },
-   {
-    "rank": 2,
     "name": "Town",
     "slug": "town",
     "url": "https://speedrun-talent-network.com/companies/town",
@@ -60,7 +39,7 @@
     "logo": "https://www.google.com/s2/favicons?domain=town.com&sz=128"
    },
    {
-    "rank": 3,
+    "rank": 2,
     "name": "Armadin",
     "slug": "armadin",
     "url": "https://speedrun-talent-network.com/companies/armadin",
@@ -86,7 +65,7 @@
     "logo": "https://pbs.twimg.com/profile_images/2031294777694760962/jmspnYnW_400x400.png"
    },
    {
-    "rank": 4,
+    "rank": 3,
     "name": "Fal",
     "slug": "fal",
     "url": "https://speedrun-talent-network.com/companies/fal",
@@ -114,6 +93,34 @@
      "United States"
     ],
     "logo": "https://cdn.prod.website-files.com/6a72ef21c470312422dea9b3/6adae13a030770b54ecc8783_fal-icon-favicon.png"
+   },
+   {
+    "rank": 4,
+    "name": "Adaptive",
+    "slug": "adaptive",
+    "url": "https://speedrun-talent-network.com/companies/adaptive",
+    "tier": "a16z",
+    "cohort": null,
+    "open_roles": 8,
+    "location": "New York, New York",
+    "blurb": "AI agents that run construction accounting: job costing, AP, billing, WIP, and compliance, kept current as field updates roll in. Built for $5M-$1B builders.",
+    "stage": "series-a",
+    "remote_policy": "onsite-leaning",
+    "investors": [
+     "Andreessen Horowitz"
+    ],
+    "functions": [
+     "engineering",
+     "operations",
+     "product",
+     "sales"
+    ],
+    "cities": [
+     "Boston",
+     "New York",
+     "New York or Boston"
+    ],
+    "logo": "https://www.google.com/s2/favicons?domain=adaptive.build&sz=128"
    },
    {
     "rank": 5,
@@ -207,7 +214,7 @@
     "url": "https://speedrun-talent-network.com/companies/harvey",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 392,
+    "open_roles": 393,
     "location": "San Francisco, California",
     "blurb": "AI agents that execute legal work end-to-end: contract analysis, due diligence, compliance, and litigation, for law firms and corporate legal teams.",
     "stage": "growth",

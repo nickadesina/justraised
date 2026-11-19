@@ -23,6 +23,8 @@ Precision rules that demote High to Medium:
 * off-network, no location: rung 1 or 2 against a wider-portfolio company
   (a16z.com or speedrun.a16z.com, not on the talent network) with no location
   to check.
+* one-word or stripped brand: matching the state and a single word, or names
+  that only agree after dropping a brand suffix, needs independent evidence.
 * ambiguous issuer: one filing reaches its best rung against two companies.
 * contested company: two different issuers (CIKs) reach High for the same
   company.
@@ -56,7 +58,7 @@ from edgar_names import (
 from rapidfuzz import fuzz
 
 from . import config
-from .fetch_portfolio import load_people, load_universe
+from .fetch_portfolio import canonical_slugs, load_people, load_universe
 
 log = logging.getLogger(__name__)
 
@@ -122,11 +124,11 @@ def company_variants(c: dict) -> list:
     into an exact one.
     """
     out = list(name_variants(c["name"]))
-    seen = {v.strict for v in out}
+    seen = {(v.strict, v.brand) for v in out}
     for extra in [(c.get("slug") or "").split(":")[-1].replace("-", " "), *(c.get("aliases") or [])]:
         for v in name_variants(extra):
-            if v.strict and v.strict not in seen:
-                seen.add(v.strict)
+            if v.strict and (v.strict, v.brand) not in seen:
+                seen.add((v.strict, v.brand))
                 out.append(v)
     return out
 
@@ -174,20 +176,24 @@ def a16z_person_on(filing: dict, people: frozenset[str]) -> str | None:
     return None
 
 
-def _score_pair(filing_variants, comp: Company) -> tuple[str | None, float, float]:
-    """(exact_rung, best token_set, best token_sort) over every variant pair."""
+def _score_pair(filing_variants, comp: Company) -> tuple[str | None, bool, float, float]:
+    """Track whether an exact match preserved an entire multi-word brand."""
     exact = None
+    full_brand_match = False
     ts = so = 0.0
     for fv in filing_variants:
         for cv in comp.variants:
             if fv.strict and fv.strict == cv.strict:
                 exact = "1"
-            elif exact is None and fv.brand and fv.brand == cv.brand:
-                exact = "2"
+            if fv.brand and fv.brand == cv.brand:
+                if exact is None:
+                    exact = "2"
+                if " " in fv.brand:
+                    full_brand_match = True
             for a, b in ((fv.strict, cv.strict), (fv.brand, cv.brand)):
                 ts = max(ts, fuzz.token_set_ratio(a, b))
                 so = max(so, fuzz.token_sort_ratio(a, b))
-    return exact, ts, so
+    return exact, full_brand_match, ts, so
 
 
 def ladder(filing: dict, companies: list[Company], people: frozenset[str] = frozenset()) -> list[Candidate]:
@@ -203,7 +209,7 @@ def ladder(filing: dict, companies: list[Company], people: frozenset[str] = froz
     partner = a16z_person_on(filing, people)
     out: list[Candidate] = []
     for comp in companies:
-        exact, ts, so = _score_pair(variants, comp)
+        exact, full_brand_match, ts, so = _score_pair(variants, comp)
         if exact is None and ts < config.RUNG5_MIN:
             continue
         loc_known = issuer_region is not None and comp.region is not None
@@ -222,13 +228,17 @@ def ladder(filing: dict, companies: list[Company], people: frozenset[str] = froz
                 # match goes to review.
                 cand.confidence = MEDIUM
                 cand.notes.append("off-network name match, no location to check")
-        elif ts >= config.RUNG3_MIN and loc_match and guard:
+            elif not full_brand_match:
+                cand.confidence = MEDIUM
+                cand.notes.append("single-word or suffix-stripped name: needs independent confirmation")
+        elif ts >= config.RUNG3_MIN and loc_match and guard and " " in comp.variants[0].brand:
             cand = Candidate(comp.slug, "3", HIGH, ts, so, loc_match, surname)
         elif ts >= config.RUNG3_MIN and loc_match:
             # Rung 3 by the doc, but the legal name carries extra words
             # ("Anduril Industries" or "Modal Health Group" vs "Modal"). Strings
             # cannot tell those apart, so a person does, once, in matches.yaml.
-            cand = Candidate(comp.slug, "3", MEDIUM, ts, so, loc_match, surname, ["extra words: subset guard"])
+            note = "single-word brand: needs independent confirmation" if guard else "extra words: subset guard"
+            cand = Candidate(comp.slug, "3", MEDIUM, ts, so, loc_match, surname, [note])
         elif ts >= config.RUNG4_MIN and loc_match and surname:
             cand = Candidate(comp.slug, "4", MEDIUM, ts, so, loc_match, surname)
         else:
@@ -264,11 +274,12 @@ def _drop_reason(f: dict, exact_name_hit: bool) -> str | None:
 
 
 def run_match() -> pl.DataFrame:
-    companies = _prep_companies(load_universe())
+    universe = load_universe()
+    companies = _prep_companies(universe)
     people = frozenset(k for k in (person_key(n) for n in load_people()) if k)
     by_slug = {c.slug: c for c in companies}
     strict_keys = {v.strict for c in companies for v in c.variants} | {v.brand for c in companies for v in c.variants}
-    overrides = load_overrides(config.OVERRIDES_FILE)
+    overrides = load_overrides(config.OVERRIDES_FILE, slug_aliases=canonical_slugs(universe))
 
     filings = pl.read_parquet(config.FILINGS) if config.FILINGS.exists() else pl.DataFrame()
     dropped: dict[str, int] = {}

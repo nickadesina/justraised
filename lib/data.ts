@@ -26,17 +26,32 @@ export interface Member {
   logo: string | null;
 }
 
-export interface Filing {
-  rank: number;
+export type Coverage = "since_signal" | "partial" | "unavailable";
+
+export interface PostingHistory {
+  observed_postings_since_signal?: number | null;
+  hiring_coverage?: Coverage;
+  hiring_tracked_since?: string | null;
+}
+
+export interface Filing extends PostingHistory {
+  rank: number | null;
+  cohort?: string | null;
+  logo?: string | null;
+  blurb?: string | null;
+  location?: string | null;
+  stage?: string | null;
+  url?: string | null;
+  open_roles?: number | null;
   slug: string;
   name: string;
   tier: Tier;
   stage_label: string | null;
   size_label: string | null;
-  score: number;
+  score: number | null;
   amount: number | null;
   amount_kind: "sold" | "offering" | "unknown";
-  amount_sold: number;
+  amount_sold: number | null;
   offering_amount: number | null;
   offering_indefinite: boolean;
   date_of_first_sale: string;
@@ -49,19 +64,27 @@ export interface Filing {
   accession: string;
   latest_accession: string;
   filing_url: string;
+  amount_filing_url?: string;
+  first_sale_filing_url?: string | null;
   issuer_name: string;
   issuer_cik: string;
   issuer_city: string | null;
   issuer_state: string | null;
   industry_group: string | null;
-  roles_since_first_sale: number;
+  roles_since_first_sale: number | null;
   first_post_since: string | null;
   days_to_first_post: number | null;
   match_rung: string;
   match_confidence: string;
   a16z_person: string | null;
   on_network: boolean;
+  additional_notices?: AdditionalNotice[];
 }
+
+export type AdditionalNotice = Pick<Filing,
+  "accession" | "issuer_name" | "file_date" | "filing_url" | "first_sale_filing_url" | "amount_filing_url" |
+  "date_of_first_sale" | "first_sale_reported" | "amount_sold" | "offering_amount"
+>;
 
 // A portfolio company (a16z.com or speedrun.a16z.com) with a matched Form D
 // that is not on the talent network, so it has no open-role count.
@@ -106,7 +129,20 @@ export interface CollectionDoc {
 }
 
 // A portfolio company with investor SPVs named after it in the window.
-export interface SpvCompany {
+export type SaleStatus = "recent_first_sale" | "historical_first_sale" | "sale_date_unknown" | "no_sales_reported" | "unknown";
+
+export interface Vehicle {
+  name: string;
+  file_date: string;
+  filing_url: string;
+  amount_sold: number | null;
+  sale_status?: SaleStatus;
+  date_of_first_sale?: string | null;
+  offering_amount?: number | null;
+  is_amendment?: boolean;
+}
+
+export interface SpvCompany extends PostingHistory {
   rank: number;
   slug: string;
   name: string;
@@ -122,11 +158,13 @@ export interface SpvCompany {
   open_roles: number | null;
   roles_since_first_spv: number | null;
   spvs: number;
-  spv_amount_sold: number;
+  spv_amount_sold: number | null;
+  sale_status?: SaleStatus;
+  latest_first_sale_date?: string | null;
   first_spv_file_date: string;
   latest_spv_file_date: string;
   days_since_latest_spv: number;
-  vehicles: { name: string; file_date: string; amount_sold: number | null; filing_url: string }[];
+  vehicles: Vehicle[];
 }
 
 export interface FilingsDoc {

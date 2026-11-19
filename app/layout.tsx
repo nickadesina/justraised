@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Noto_Serif_JP } from "next/font/google";
 
+import { filings } from "@/lib/data";
+
 import "./globals.css";
 
 // Display: a black-weight mincho for title-card lettering. UI: Archivo's width
@@ -22,7 +24,7 @@ const ui = Archivo({
 export const metadata: Metadata = {
   title: "Just Raised",
   description:
-    "a16z and speedrun portfolio companies with a Form D in the last 90 days, ranked by cash raised per open role.",
+    `Company-reported securities sales in the a16z and speedrun portfolios over the last ${filings.meta.window_days} days, alongside hiring data and investor filings.`,
 };
 
 export const viewport: Viewport = {

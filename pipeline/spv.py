@@ -19,7 +19,8 @@ Matching runs on the issuer name only:
 * the brand must not be the manager's name: "Koru Ventures", "Celo Capital",
   "OpenAI Startup Fund" are rejected because a manager word follows it.
 
-``spv_ignore`` in matches.yaml drops a slug for good.
+``spv_ignore`` in matches.yaml drops a target slug. ``spv_reject`` drops a
+particular vehicle CIK and target pair across filings and amendments.
 """
 
 from __future__ import annotations
@@ -29,12 +30,12 @@ import re
 from datetime import date, timedelta
 
 import polars as pl
-import yaml
-from edgar_names import fund_name_reason, name_variants
+from edgar_names import fund_name_reason, load_overrides, name_variants
 from wordfreq import zipf_frequency
 
 from . import config
 from .clients import SecClient
+from .fetch_portfolio import canonical_slugs
 from .formd_xml import parse_primary_doc
 
 log = logging.getLogger(__name__)
@@ -113,16 +114,9 @@ def spv_target(name: str, items: list[str] | None, phrases: dict[str, str], patt
     return found.pop() if len(found) == 1 else None
 
 
-def load_ignore() -> set[str]:
-    if not config.OVERRIDES_FILE.exists():
-        return set()
-    raw = yaml.safe_load(config.OVERRIDES_FILE.read_text()) or {}
-    return {str(x) for x in raw.get("spv_ignore") or []}
-
-
 def update_spvs(sec: SecClient, index: pl.DataFrame, universe: list[dict], today: date) -> pl.DataFrame:
-    ignore = load_ignore()
-    phrases = brand_phrases(universe, ignore)
+    overrides = load_overrides(config.OVERRIDES_FILE, slug_aliases=canonical_slugs(universe))
+    phrases = brand_phrases(universe, overrides.spv_ignore)
     patterns = {p: re.compile(r"\b" + re.escape(p) + r"\b") for p in phrases}
     start = today - timedelta(days=config.WINDOW_DAYS)
 
@@ -131,7 +125,7 @@ def update_spvs(sec: SecClient, index: pl.DataFrame, universe: list[dict], today
     rows = []
     for r in index.filter(pl.col("file_date") >= start).iter_rows(named=True):
         slug = spv_target(r["index_name"], r["items"], phrases, patterns)
-        if slug is None:
+        if slug is None or overrides.is_spv_rejected(r["cik"], slug):
             continue
         prev = parsed.get(r["adsh"])
         if prev is None:

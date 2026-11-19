@@ -6,7 +6,7 @@ back:
 
 * ``strict``: legal suffixes and brand-ish suffix words removed
   ("Modal Labs, Inc." -> "modal").
-* ``brand``: legal suffixes removed but "labs", "ai" and "technologies"
+* ``brand``: legal suffixes removed but "labs", "ai", "io" and technology terms
   kept, because for some companies that word is the brand
   ("Scale AI, Inc." -> "scale ai").
 
@@ -41,7 +41,7 @@ LEGAL_SUFFIXES: frozenset[str] = frozenset(
 )
 
 # Kept in the brand form even though they are in LEGAL_SUFFIXES.
-BRAND_WORDS: frozenset[str] = frozenset({"labs", "ai", "technologies"})
+BRAND_WORDS: frozenset[str] = frozenset({"labs", "ai", "io", "technology", "technologies"})
 
 # "pbc" and "plc" are legal forms that show up on SEC filings but never in a
 # brand name; stripping them is the same rule as "inc".
@@ -103,14 +103,14 @@ def name_variants(name: str) -> list[NormalizedName]:
     "Acme Holdings, Inc. d/b/a Rocket" yields both "acme" and "rocket".
     """
     parts = [p.strip(" ,;()") for p in _DBA_SPLIT.split(name or "")]
-    seen: set[str] = set()
+    seen: set[tuple[str, str]] = set()
     out: list[NormalizedName] = []
     for part in [name, *parts] if len(parts) > 1 else [name]:
         if not part:
             continue
         n = normalize(part)
-        if n.strict and n.strict not in seen:
-            seen.add(n.strict)
+        if n.strict and (n.strict, n.brand) not in seen:
+            seen.add((n.strict, n.brand))
             out.append(n)
     if len(parts) > 1:
         # Drop the combined form; the split parts are the real names.
