@@ -6,7 +6,7 @@
   "group": "signals",
   "url": "https://nickadesina.github.io/justraised",
   "companies": 8,
-  "roles": 617,
+  "roles": 613,
   "portfolio_members": 8,
   "members": [
    {
@@ -129,7 +129,7 @@
     "url": "https://speedrun-talent-network.com/companies/stuut",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 22,
+    "open_roles": 23,
     "location": "San Francisco, California",
     "blurb": "Agentic AI for accounts receivable: runs collections outreach, payment matching, and dispute resolution across the order-to-cash cycle. Partnered with Fiserv on enterprise receivables.",
     "stage": "seed",
@@ -146,7 +146,7 @@
      "sales"
     ],
     "cities": [
-     "Atlanta",
+     "Chicago",
      "Dublin",
      "London",
      "New York",
@@ -214,7 +214,7 @@
     "url": "https://speedrun-talent-network.com/companies/harvey",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 393,
+    "open_roles": 388,
     "location": "San Francisco, California",
     "blurb": "AI agents that execute legal work end-to-end: contract analysis, due diligence, compliance, and litigation, for law firms and corporate legal teams.",
     "stage": "growth",

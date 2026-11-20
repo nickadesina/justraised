@@ -3,589 +3,589 @@
   "name": "Abridge",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "adaptive": {
   "name": "Adaptive",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "adaptive-security": {
   "name": "Adaptive Security",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "addi": {
   "name": "ADDI",
   "tier": "a16z",
   "location": "Bogotá, Colombia",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "aghanim": {
   "name": "Aghanim",
   "tier": "speedrun",
   "location": "Los Angeles, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "air-space-intelligence": {
   "name": "Air Space Intelligence",
   "tier": "a16z",
   "location": "Boston, Massachusetts",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "airgarage": {
   "name": "AirGarage",
   "tier": "a16z",
   "location": "Philadelphia, Pennsylvania",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "akasa": {
   "name": "AKASA",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "alchemy": {
   "name": "Alchemy",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "alleviate-health": {
   "name": "Alleviate Health",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "alluxio": {
   "name": "Alluxio",
   "tier": "a16z",
   "location": "San Mateo, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "alpha-9-oncology": {
   "name": "Alpha-9 Oncology",
   "tier": "a16z",
   "location": "Boston, Massachusetts",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "ambience-healthcare": {
   "name": "Ambience Healthcare",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "ambient": {
   "name": "Ambient",
   "tier": "a16z",
   "location": "Redwood City, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "amca": {
   "name": "AMCA",
   "tier": "a16z",
   "location": "El Segundo, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "anchorage": {
   "name": "Anchorage",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "anduril-industries": {
   "name": "Anduril",
   "tier": "a16z",
   "location": "Costa Mesa, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "anyscale": {
   "name": "AnyScale",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "apex-space": {
   "name": "Apex Space",
   "tier": "a16z",
   "location": "Los Angeles, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "apollo-graphql": {
   "name": "Apollo GraphQL",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "applied-intuition": {
   "name": "Applied Intuition",
   "tier": "a16z",
   "location": "Sunnyvale, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "aptos-labs": {
   "name": "Aptos Labs",
   "tier": "a16z",
   "location": "Palo Alto, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "arc-boat-company": {
   "name": "Arc Boats",
   "tier": "a16z",
   "location": "Los Angeles, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "arena": {
   "name": "Arena",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "armadin": {
   "name": "Armadin",
   "tier": "a16z",
   "location": "Palo Alto, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "asimov": {
   "name": "Asimov",
   "tier": "a16z",
   "location": "Boston, Massachusetts",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "astranis": {
   "name": "Astranis",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "astro-mechanica": {
   "name": "Astro Mechanica",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "ava-labs": {
   "name": "Ava Labs",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "backflip-ai": {
   "name": "Backflip.AI",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "backstory": {
   "name": "Backstory",
   "tier": "a16z",
   "location": null,
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "baro": {
   "name": "Baro",
   "tier": "speedrun",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "base-power-company": {
   "name": "Base Power",
   "tier": "a16z",
   "location": "Austin, Texas",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "basis": {
   "name": "Basis",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "bastion": {
   "name": "Bastion",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "bayesian-health": {
   "name": "Bayesian Health",
   "tier": "a16z",
   "location": "Baltimore, Maryland",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "bead": {
   "name": "Bead AI",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "belisar": {
   "name": "Belisar",
   "tier": "a16z",
   "location": "Boston, Massachusetts",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "benchling": {
   "name": "Benchling",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "black-forest-labs": {
   "name": "Black Forest Labs",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "blackbird": {
   "name": "Blackbird",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "bold": {
   "name": "Bold",
   "tier": "a16z",
   "location": "Los Angeles, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "bonfire-studios": {
   "name": "Bonfire Studios",
   "tier": "a16z",
   "location": "Irvine, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "bounce": {
   "name": "Bounce",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "braintrust-data": {
   "name": "Braintrust",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "brief": {
   "name": "Brief",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "camber": {
   "name": "Camber",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "cantina": {
   "name": "Cantina",
   "tier": "a16z",
   "location": "Los Angeles, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "cape": {
   "name": "Cape",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "carta": {
   "name": "Carta",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "cascade": {
   "name": "Cascade",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "catena-labs": {
   "name": "Catena Labs",
   "tier": "a16z",
   "location": "Boston, Massachusetts",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "chariot-defense": {
   "name": "Chariot Defense",
   "tier": "a16z",
   "location": "South San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "charthop": {
   "name": "ChartHop",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "chestnut": {
   "name": "Chestnut",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "chronospace": {
   "name": "ChronoSpace",
   "tier": "speedrun",
   "location": "Bay Area, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "clair-health": {
   "name": "Clair Health",
   "tier": "speedrun",
   "location": "Mountain View, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "clerk": {
   "name": "Clerk",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "clickup": {
   "name": "ClickUp",
   "tier": "a16z",
   "location": "Dublin, Ireland",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "clouted": {
   "name": "Clouted",
   "tier": "speedrun",
   "location": "Los Angeles, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "clubhouse": {
   "name": "Clubhouse",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "cluely": {
   "name": "Cluely",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "clutch": {
   "name": "Clutch",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "cognition-technologies": {
   "name": "Cognition",
   "tier": "a16z",
   "location": "San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "concourse": {
   "name": "Concourse",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "conductorai": {
   "name": "ConductorAI",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "convex": {
   "name": "Convex",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "corlen": {
   "name": "Corlen",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "counsel-health": {
   "name": "Counsel Health",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "cowboy-space-corporation": {
   "name": "Cowboy Space Corporation",
   "tier": "a16z",
   "location": "San Carlos, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "cresta": {
   "name": "Cresta",
   "tier": "a16z",
   "location": "Sunnyvale, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "crux": {
   "name": "Crux",
   "tier": "a16z",
   "location": null,
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "cursor": {
   "name": "Cursor",
   "tier": "a16z",
   "location": "San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "cx2": {
   "name": "CX2",
   "tier": "a16z",
   "location": "El Segundo, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "darwin": {
   "name": "Darwin",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "daylight-energy": {
   "name": "Daylight Energy",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "decagon": {
   "name": "Decagon",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "descript": {
   "name": "Descript",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "dex": {
   "name": "Dex",
   "tier": "speedrun",
   "location": "London & San Francisco",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "dialpad": {
   "name": "Dialpad",
   "tier": "a16z",
   "location": "San Ramon, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "doppel": {
   "name": "Doppel",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "dream-technologies": {
   "name": "Dream Technologies",
   "tier": "a16z",
   "location": "San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "dyno-therapeutics": {
   "name": "Dyno Therapeutics",
   "tier": "a16z",
   "location": "Watertown, Massachusetts",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "earnin": {
   "name": "EarnIn",
   "tier": "a16z",
   "location": "Palo Alto, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "eigenlayer": {
   "name": "EigenLayer",
   "tier": "a16z",
   "location": "Seattle, Washington",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "electrokare": {
   "name": "Electrokare",
   "tier": "speedrun",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "elevenlabs": {
   "name": "ElevenLabs",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "eliseai": {
   "name": "EliseAI",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "emanate": {
   "name": "Emanate",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "endra": {
   "name": "Endra",
   "tier": "a16z",
   "location": "Stockholm, Sweden",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "engflow": {
   "name": "EngFlow",
   "tier": "a16z",
   "location": "Denver, Colorado",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "envoy": {
   "name": "Envoy",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "eragon": {
   "name": "Eragon",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "eve": {
   "name": "Eve",
   "tier": "a16z",
   "location": "San Mateo, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "everlaw": {
   "name": "Everlaw",
   "tier": "a16z",
   "location": "Oakland, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "exa": {
   "name": "Exa",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "exowatt": {
   "name": "Exowatt",
   "tier": "a16z",
   "location": "Miami, FL",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "fal": {
   "name": "Fal",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "favorited": {
   "name": "Favorited",
@@ -597,403 +597,403 @@
   "name": "Ferry Health",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "figma": {
   "name": "Figma",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "filmhub": {
   "name": "Filmhub",
   "tier": "a16z",
   "location": "United States",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "fleek": {
   "name": "Fleek",
   "tier": "a16z",
   "location": "London",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "flexport": {
   "name": "Flexport",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "flock-homes": {
   "name": "Flock Homes",
   "tier": "a16z",
   "location": "Denver, Colorado",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "flock-safety": {
   "name": "Flock Safety",
   "tier": "a16z",
   "location": "Atlanta, GA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "flora": {
   "name": "FLORA",
   "tier": "speedrun",
   "location": "New York City, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "flow": {
   "name": "Flow",
   "tier": "a16z",
   "location": null,
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "forgepoint": {
   "name": "Forgepoint",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "formation-bio": {
   "name": "Formation Bio",
   "tier": "a16z",
   "location": "New York, NY",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "forward-networks": {
   "name": "Forward Networks",
   "tier": "a16z",
   "location": "Santa Clara, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "freenome": {
   "name": "Freenome",
   "tier": "a16z",
   "location": "Brisbane, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "gamma": {
   "name": "Gamma",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "general-magic": {
   "name": "General Magic",
   "tier": "speedrun",
   "location": "Toronto",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "general-medicine": {
   "name": "General Medicine",
   "tier": "a16z",
   "location": "San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "genesis-molecular-ai": {
   "name": "Genesis Molecular AI",
   "tier": "a16z",
   "location": "San Mateo, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "gensyn": {
   "name": "Gensyn",
   "tier": "a16z",
   "location": "Los Angeles, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "ghost": {
   "name": "Ghost",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "gimlet-labs": {
   "name": "Gimlet Labs",
   "tier": "a16z",
   "location": "San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "glimpse": {
   "name": "Glimpse",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "gooddata-ai": {
   "name": "GoodData.AI",
   "tier": "a16z",
   "location": "Prague, Czech Republic",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "greenlight": {
   "name": "Greenlight",
   "tier": "a16z",
   "location": "Atlanta, GA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "hadrian": {
   "name": "Hadrian",
   "tier": "a16z",
   "location": "Los Angeles, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "happyrobot": {
   "name": "HappyRobot",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "harvey": {
   "name": "Harvey",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "headway": {
   "name": "Headway",
   "tier": "a16z",
   "location": "New York City Area",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "hebbia-ai": {
   "name": "Hebbia AI",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "hedra": {
   "name": "Hedra",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "hercules": {
   "name": "Hercules",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "heron-power": {
   "name": "Heron Power",
   "tier": "a16z",
   "location": "Scotts Valley, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "hex": {
   "name": "Hex",
   "tier": "a16z",
   "location": "San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "hippocratic-ai": {
   "name": "Hippocratic AI",
   "tier": "a16z",
   "location": "Menlo Park, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "honor": {
   "name": "Honor",
   "tier": "a16z",
   "location": "San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "horowitz-andreessen-academy": {
   "name": "Horowitz Andreessen Academy",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "hyperexponential": {
   "name": "hyperexponential",
   "tier": "a16z",
   "location": "London, United Kingdom",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "ideogram": {
   "name": "Ideogram",
   "tier": "a16z",
   "location": "Toronto, Canada",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "illumio": {
   "name": "Illumio",
   "tier": "a16z",
   "location": "Sunnyvale, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "improbable": {
   "name": "Improbable",
   "tier": "a16z",
   "location": "London, United Kingdom",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "inceptive": {
   "name": "Inceptive",
   "tier": "a16z",
   "location": "Berlin, Germany",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "inductive-bio": {
   "name": "Inductive Bio",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "inferact": {
   "name": "Inferact",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "infinite-machine": {
   "name": "Infinite Machine",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "infinitus-systems": {
   "name": "Infinitus Systems",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "infragrid": {
   "name": "Infragrid",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "inngest": {
   "name": "Inngest",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "insitro": {
   "name": "Insitro",
   "tier": "a16z",
   "location": "South San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "intangible": {
   "name": "Intangible",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "intro": {
   "name": "Intro",
   "tier": "a16z",
   "location": "Los Angeles, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "jeeves": {
   "name": "Jeeves",
   "tier": "a16z",
   "location": "Mexico City",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "k-id": {
   "name": "k-ID",
   "tier": "a16z",
   "location": "Singapore",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "kaizen-labs": {
   "name": "Kaizen Labs",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "kalshi": {
   "name": "Kalshi",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "kanu-ai": {
   "name": "Kanu AI",
   "tier": "speedrun",
   "location": "Seattle, Washington",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "keycard": {
   "name": "Keycard",
   "tier": "a16z",
   "location": "Wilmington, Delaware",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "kiloforge": {
   "name": "KiloForge",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "kindred": {
   "name": "Kindred",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "knownwell": {
   "name": "knownwell",
   "tier": "a16z",
   "location": "Boston, Massachusetts",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "kobold-metals": {
   "name": "KoBold Metals",
   "tier": "a16z",
   "location": "Berkeley, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "kodex": {
   "name": "Kodex",
   "tier": "a16z",
   "location": "Massachusetts",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "komodo-health": {
   "name": "Komodo Health",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "kong": {
   "name": "Kong",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "krea-ai": {
   "name": "krea.ai",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "labelbox": {
   "name": "Labelbox",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "lassie": {
   "name": "Lassie",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "layerzero-labs": {
   "name": "LayerZero Labs",
   "tier": "a16z",
   "location": "Vancouver, Canada Area",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "leona-health": {
   "name": "Leona Health",
   "tier": "a16z",
   "location": "Mexico City, Mexico",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "lido": {
   "name": "Lido",
@@ -1005,1056 +1005,1056 @@
   "name": "Lightspark",
   "tier": "a16z",
   "location": "Los Angeles, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "lio": {
   "name": "Lio",
   "tier": "a16z",
   "location": "Munich, Germany",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "longeye": {
   "name": "Longeye",
   "tier": "a16z",
   "location": "San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "ltse": {
   "name": "LTSE",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "luma-ai": {
   "name": "Luma AI",
   "tier": "a16z",
   "location": "San Francisco Bay Area",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "lyft": {
   "name": "Lyft",
   "tier": "a16z",
   "location": "San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "maestro": {
   "name": "Maestro",
   "tier": "speedrun",
   "location": null,
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "management-leadership-for-tomorrow": {
   "name": "Management Leadership for Tomorrow",
   "tier": "a16z",
   "location": "Bethesda, Maryland",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "mariana-minerals": {
   "name": "Mariana Minerals",
   "tier": "a16z",
   "location": "Moab, Utah",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "material-security": {
   "name": "Material Security",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "matik": {
   "name": "Matik",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "matter-labs": {
   "name": "Matter Labs",
   "tier": "a16z",
   "location": null,
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "maven": {
   "name": "Maven",
   "tier": "a16z",
   "location": "United States",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "medium-com": {
   "name": "Medium.com",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "mem": {
   "name": "Mem",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "mercury-technologies": {
   "name": "Mercury",
   "tier": "a16z",
   "location": "San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "metal": {
   "name": "Metal",
   "tier": "speedrun",
   "location": "Los Angeles, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "method": {
   "name": "Method",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "method-security": {
   "name": "Method Security",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "midstream-health": {
   "name": "Midstream Health",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "mind-robotics": {
   "name": "Mind Robotics",
   "tier": "a16z",
   "location": "Palo Alto, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "mintlify": {
   "name": "Mintlify",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "mirage": {
   "name": "Mirage",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "mirelo-ai": {
   "name": "Mirelo AI",
   "tier": "a16z",
   "location": "Berlin, Germany",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "mirendil": {
   "name": "Mirendil",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "mixpanel": {
   "name": "Mixpanel",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "modernfi": {
   "name": "ModernFi",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "moment": {
   "name": "Moment",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "morpho-labs": {
   "name": "Morpho Labs",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "motherboard": {
   "name": "Motherboard",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "motherduck": {
   "name": "MotherDuck",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "munari-labs": {
   "name": "Munari Labs",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "mux": {
   "name": "Mux",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "mysten-labs": {
   "name": "Mysten Labs",
   "tier": "a16z",
   "location": "United States",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "nash": {
   "name": "Nash",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "neighbor": {
   "name": "Neighbor",
   "tier": "a16z",
   "location": "Lehi, Utah",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "neon": {
   "name": "Neon",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "netlify": {
   "name": "Netlify",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "nexxa-ai": {
   "name": "Nexxa.ai",
   "tier": "speedrun",
   "location": "Sunnyvale, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "nomic": {
   "name": "Nomic",
   "tier": "a16z",
   "location": "Switzerland",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "northwood-space": {
   "name": "Northwood Space",
   "tier": "a16z",
   "location": "Torrance, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "odyssey": {
   "name": "Odyssey",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "offerup": {
   "name": "OfferUp",
   "tier": "a16z",
   "location": "Bellevue, Washington",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "omada-health": {
   "name": "Omada Health",
   "tier": "a16z",
   "location": "San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "omi-health": {
   "name": "Omi Health",
   "tier": "speedrun",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "op-labs": {
   "name": "OP Labs",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "openevidence": {
   "name": "OpenEvidence",
   "tier": "a16z",
   "location": "Miami, FL",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "opengov": {
   "name": "OpenGov",
   "tier": "a16z",
   "location": "Chicago, Illinois",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "openrouter": {
   "name": "OpenRouter",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "orchestra": {
   "name": "Orchestra",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "orderful": {
   "name": "Orderful",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "ornn": {
   "name": "Ornn",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "palmstreet": {
   "name": "Palmstreet",
   "tier": "a16z",
   "location": "Menlo Park, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "partiful": {
   "name": "Partiful",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "patch": {
   "name": "Patch",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "pave": {
   "name": "Pave",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "payrails": {
   "name": "Payrails",
   "tier": "a16z",
   "location": "Berlin, Germany",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "pearl-health": {
   "name": "Pearl Health",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "periodic-labs": {
   "name": "Periodic Labs",
   "tier": "a16z",
   "location": "Menlo Park, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "phantom": {
   "name": "Phantom",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "philyron": {
   "name": "Philyron",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "phylo": {
   "name": "Phylo",
   "tier": "a16z",
   "location": "South San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "pindrop": {
   "name": "Pindrop",
   "tier": "a16z",
   "location": "Atlanta, GA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "pinecone": {
   "name": "Pinecone",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "plaid": {
   "name": "Plaid",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "planetscale": {
   "name": "PlanetScale",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "podium-automation": {
   "name": "Podium Automation",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "post": {
   "name": "Post",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "preference-model": {
   "name": "Preference Model",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "primitive-labs": {
   "name": "Primitive Labs",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "probook": {
   "name": "Probook",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "promise": {
   "name": "Promise",
   "tier": "a16z",
   "location": "Los Angeles, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "propel": {
   "name": "Propel",
   "tier": "a16z",
   "location": "Brooklyn, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "prosper-ai": {
   "name": "Prosper AI",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "protege": {
   "name": "Protege",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "pylon": {
   "name": "Pylon",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "quora": {
   "name": "Quora",
   "tier": "a16z",
   "location": "Mountain View, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "radiant": {
   "name": "Radiant",
   "tier": "a16z",
   "location": "El Segundo, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "rasa": {
   "name": "Rasa",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "replit": {
   "name": "Replit",
   "tier": "a16z",
   "location": "Foster City, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "resend": {
   "name": "Resend",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "rezo-therapeutics": {
   "name": "Rezo Therapeutics",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "rigetti-computing": {
   "name": "Rigetti Computing",
   "tier": "a16z",
   "location": "Berkeley, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "rigup": {
   "name": "RigUp",
   "tier": "a16z",
   "location": "Austin, Texas",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "rillet": {
   "name": "Rillet",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "ripline": {
   "name": "Ripline",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "roblox": {
   "name": "Roblox",
   "tier": "a16z",
   "location": "San Mateo, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "rune-technologies": {
   "name": "Rune Technologies",
   "tier": "a16z",
   "location": "Arlington, Virginia",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "runware": {
   "name": "Runware",
   "tier": "speedrun",
   "location": "London",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "salient": {
   "name": "Salient",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sardine": {
   "name": "Sardine",
   "tier": "a16z",
   "location": "Austin, Texas",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "saronic-technologies": {
   "name": "Saronic",
   "tier": "a16z",
   "location": "Austin, Texas",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "schemata": {
   "name": "Schemata",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sekai": {
   "name": "Sekai",
   "tier": "speedrun",
   "location": "Sunnyvale, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sentilink": {
   "name": "SentiLink",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sentra": {
   "name": "Sentra",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sesame": {
   "name": "Sesame",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "setpoint-io": {
   "name": "Setpoint.io",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "shield-ai": {
   "name": "Shield AI",
   "tier": "a16z",
   "location": "San Diego, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sirius-technology": {
   "name": "Sirius Technology",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sky-mavis": {
   "name": "Sky Mavis",
   "tier": "a16z",
   "location": "Singapore",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "skydio": {
   "name": "Skydio",
   "tier": "a16z",
   "location": "San Mateo, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sleeper": {
   "name": "Sleeper",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "slingshot-ai": {
   "name": "Slingshot AI",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "snag": {
   "name": "snag",
   "tier": "speedrun",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "snaplogic": {
   "name": "SnapLogic",
   "tier": "a16z",
   "location": "San Mateo, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "socket-dev": {
   "name": "Socket.dev",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sola": {
   "name": "Sola",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "solana-foundation": {
   "name": "Solana Foundation",
   "tier": "a16z",
   "location": "Switzerland",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sonder": {
   "name": "Sonder",
   "tier": "speedrun",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sound-xyz": {
   "name": "sound.xyz",
   "tier": "a16z",
   "location": "United States",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sourcegraph": {
   "name": "Sourcegraph",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sourcerer-ai": {
   "name": "Sourcerer AI",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "specter": {
   "name": "Specter",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "speedrun": {
   "name": "speedrun",
   "tier": "speedrun",
   "location": "San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sphere": {
   "name": "Sphere",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "spoton": {
   "name": "SpotOn",
   "tier": "a16z",
   "location": "Chicago, Illinois",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sprig": {
   "name": "Sprig",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sprinter-health": {
   "name": "Sprinter Health",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "spruce-systems": {
   "name": "Spruce Systems",
   "tier": "a16z",
   "location": "New York City Area",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "standard-nuclear": {
   "name": "Standard Nuclear",
   "tier": "a16z",
   "location": "United States",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "starburst": {
   "name": "Starburst",
   "tier": "a16z",
   "location": "Boston, Massachusetts",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "straia": {
   "name": "Straia",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "stuut": {
   "name": "Stuut",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "substack": {
   "name": "Substack",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sunflower": {
   "name": "Sunflower",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "svix": {
   "name": "Svix",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "sweatpals": {
   "name": "SweatPals",
   "tier": "speedrun",
   "location": "Austin, Texas",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "syzygy": {
   "name": "Syzygy",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "tako": {
   "name": "Tako",
   "tier": "a16z",
   "location": "São Paulo, Brazil",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "talkiatry": {
   "name": "Talkiatry",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "talos": {
   "name": "Talos",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "tanium": {
   "name": "Tanium",
   "tier": "a16z",
   "location": "Kirkland, Washington",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "taya": {
   "name": "Taya",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "temporal-technologies": {
   "name": "Temporal",
   "tier": "a16z",
   "location": "Bellevue, Washington",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "tenera": {
   "name": "Tenera",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "tenex-ai": {
   "name": "TENEX.AI",
   "tier": "a16z",
   "location": "Kansas City, Missouri",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "tennr": {
   "name": "Tennr",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "thatch": {
   "name": "Thatch",
   "tier": "a16z",
   "location": "San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "the-believer-company": {
   "name": "The Believer Company",
   "tier": "a16z",
   "location": "Los Angeles, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "the-better-money-company": {
   "name": "The Better Money Company",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "thinking-machines-lab": {
   "name": "Thinking Machines Lab",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "titan": {
   "name": "Titan",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "town": {
   "name": "Town",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "treeline": {
   "name": "Treeline",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "truemed": {
   "name": "Truemed",
   "tier": "a16z",
   "location": "Los Angeles, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "truffle-security": {
   "name": "Truffle Security",
   "tier": "a16z",
   "location": "San Francisco Bay Area",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "turquoise-health": {
   "name": "Turquoise Health",
   "tier": "a16z",
   "location": "San Diego, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "typesafe": {
   "name": "TypeSafe",
   "tier": "a16z",
   "location": "San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "udio": {
   "name": "Udio",
   "tier": "a16z",
   "location": "London",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "ultima-genomics": {
   "name": "Ultima Genomics",
   "tier": "a16z",
   "location": "Fremont, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "unconventional-ai": {
   "name": "Unconventional AI",
   "tier": "a16z",
   "location": "Mountain View, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "uniswap": {
   "name": "UniSwap",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "unitedmasters": {
   "name": "UnitedMasters",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "unlimited-industries": {
   "name": "Unlimited Industries",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "ursa-mining": {
   "name": "URSA Mining",
   "tier": "speedrun",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "valon-labs": {
   "name": "Valon Labs",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "vals-ai": {
   "name": "Vals AI",
   "tier": "a16z",
   "location": "San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "vantage": {
   "name": "Vantage",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "veefriends": {
   "name": "VeeFriends",
   "tier": "a16z",
   "location": "New York, New York",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "very-good-security": {
   "name": "Very Good Security",
   "tier": "a16z",
   "location": "San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "vesta": {
   "name": "Vesta",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "viggle": {
   "name": "Viggle",
   "tier": "a16z",
   "location": "Toronto, Canada",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "voldex": {
   "name": "Voldex",
   "tier": "a16z",
   "location": "Mexico City, Mexico",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "volta": {
   "name": "Volta",
   "tier": "a16z",
   "location": "Palo Alto, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "walrus-foundation": {
   "name": "Walrus Foundation",
   "tier": "a16z",
   "location": null,
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "waymark": {
   "name": "Waymark",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "wingspan": {
   "name": "Wingspan",
   "tier": "a16z",
   "location": "New York City Area",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "wonderschool": {
   "name": "Wonderschool",
   "tier": "a16z",
   "location": "San Francisco, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "workboard": {
   "name": "WorkBoard",
   "tier": "a16z",
   "location": "Redwood City, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "wrapbook": {
   "name": "Wrapbook",
   "tier": "a16z",
   "location": "West Hollywood, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "xmtp-labs": {
   "name": "XMTP Labs",
   "tier": "a16z",
   "location": "United States",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "yuno": {
   "name": "Yuno",
   "tier": "a16z",
   "location": "Mexico City",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "zipline": {
   "name": "Zipline",
   "tier": "a16z",
   "location": "South San Francisco, CA",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "zuma": {
   "name": "Zuma",
   "tier": "a16z",
   "location": "Santa Monica, California",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  },
  "zus-health": {
   "name": "Zus Health",
   "tier": "a16z",
   "location": "Boston, Massachusetts",
-  "last_seen": "2026-11-19"
+  "last_seen": "2026-11-20"
  }
 }
