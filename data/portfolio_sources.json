@@ -1,6 +1,6 @@
 {
  "portfolio": {
-  "fetched_at": "2026-11-20T18:22:54Z",
+  "fetched_at": "2026-11-21T17:10:01Z",
   "companies": [
    {
     "slug": "a16z:boltz",
@@ -121,96 +121,6 @@
      "Frontier"
     ],
     "first_funded": "2026-10-23 00:00:00"
-   },
-   {
-    "slug": "a16z:circle",
-    "name": "Circle",
-    "tier": "a16z",
-    "on_network": false,
-    "location": null,
-    "blurb": "Circle issues USDC and EURC stablecoins and provides financial infrastructure that helps businesses and developers move money globally and build blockchain-based financial applications.",
-    "url": "https://a16z.com/companies/circle/",
-    "website": "https://www.circle.com",
-    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_0011E00001j8ukuQAA-20261027150054.svg",
-    "focus_areas": [
-     "Frontier"
-    ],
-    "first_funded": "2026-10-22 00:00:00"
-   },
-   {
-    "slug": "a16z:cowrie",
-    "name": "Cowrie",
-    "tier": "a16z",
-    "on_network": false,
-    "location": null,
-    "blurb": "Cowrie provides tax compliance, entity structuring, and administrative services for decentralized protocols, using blockchain analysis to support onchain reporting and tax filings.",
-    "url": "https://a16z.com/companies/cowrie/",
-    "website": "https://cowrie.io/",
-    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_001Up00000713UTIAY-20261023201934.svg",
-    "focus_areas": [
-     "Frontier"
-    ],
-    "first_funded": "2026-10-22 00:00:00"
-   },
-   {
-    "slug": "a16z:digital-asset-holdings",
-    "name": "Digital Asset Holdings",
-    "tier": "a16z",
-    "on_network": false,
-    "location": null,
-    "blurb": "Digital Asset builds blockchain technology that helps financial institutions tokenize assets and connect applications on Canton, a public blockchain with configurable privacy.",
-    "url": "https://a16z.com/companies/digital-asset-holdings/",
-    "website": "https://www.digitalasset.com",
-    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_0018000001KJOWRAA5-20261023202018.svg",
-    "focus_areas": [
-     "Frontier"
-    ],
-    "first_funded": "2026-10-22 00:00:00"
-   },
-   {
-    "slug": "a16z:felix-pago",
-    "name": "Felix Pago",
-    "tier": "a16z",
-    "on_network": false,
-    "location": null,
-    "blurb": "Félix helps people in the United States send money to Latin America through WhatsApp, with delivery to bank accounts, digital wallets, and cash pickup locations.",
-    "url": "https://a16z.com/companies/felix-pago/",
-    "website": "https://www.felixpago.com/en",
-    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_001Uh00000xaCblIAE-20261023202255.svg",
-    "focus_areas": [
-     "Frontier"
-    ],
-    "first_funded": "2026-10-22 00:00:00"
-   },
-   {
-    "slug": "a16z:openreserve",
-    "name": "OpenReserve",
-    "tier": "a16z",
-    "on_network": false,
-    "location": null,
-    "blurb": "Openreserve is building a blockchain-based bank and capital markets platform for institutions, designed to connect deposits, payments, financing, and tokenized assets.",
-    "url": "https://a16z.com/companies/openreserve/",
-    "website": "https://www.openreserve.ai/",
-    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_001Uh00000qpUPYIA2-20261023202426.svg",
-    "focus_areas": [
-     "Frontier"
-    ],
-    "first_funded": "2026-10-22 00:00:00"
-   },
-   {
-    "slug": "a16z:ornn",
-    "name": "Ornn",
-    "tier": "a16z",
-    "on_network": false,
-    "location": null,
-    "blurb": "Ornn builds market infrastructure for GPU compute, combining pricing benchmarks with a marketplace that lets AI companies secure capacity and resell unused reservations.",
-    "url": "https://a16z.com/companies/ornn/",
-    "website": "https://ornn.com/",
-    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_001Up00000QnitmIAB-20261023202434.svg",
-    "focus_areas": [
-     "Frontier"
-    ],
-    "first_funded": "2026-10-22 00:00:00"
    },
    {
     "slug": "a16z:hopin",
@@ -1738,6 +1648,21 @@
     "first_funded": "2020-09-17 00:00:00"
    },
    {
+    "slug": "a16z:circle",
+    "name": "Circle",
+    "tier": "a16z",
+    "on_network": false,
+    "location": null,
+    "blurb": "Circle issues USDC and EURC stablecoins and provides financial infrastructure that helps businesses and developers move money globally and build blockchain-based financial applications.",
+    "url": "https://a16z.com/companies/circle/",
+    "website": "https://www.circle.com",
+    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_0011E00001j8ukuQAA-20261027150054.svg",
+    "focus_areas": [
+     "Frontier"
+    ],
+    "first_funded": "2026-10-22 00:00:00"
+   },
+   {
     "slug": "a16z:civitai",
     "name": "Civitai",
     "tier": "a16z",
@@ -2083,6 +2008,21 @@
      "American Dynamism"
     ],
     "first_funded": "2025-01-14 00:00:00"
+   },
+   {
+    "slug": "a16z:cowrie",
+    "name": "Cowrie",
+    "tier": "a16z",
+    "on_network": false,
+    "location": null,
+    "blurb": "Cowrie provides tax compliance, entity structuring, and administrative services for decentralized protocols, using blockchain analysis to support onchain reporting and tax filings.",
+    "url": "https://a16z.com/companies/cowrie/",
+    "website": "https://cowrie.io/",
+    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_001Up00000713UTIAY-20261023201934.svg",
+    "focus_areas": [
+     "Frontier"
+    ],
+    "first_funded": "2026-10-22 00:00:00"
    },
    {
     "slug": "a16z:createra",
@@ -2556,6 +2496,21 @@
      "Enterprise"
     ],
     "first_funded": "2012-07-17 00:00:00"
+   },
+   {
+    "slug": "a16z:digital-asset-holdings",
+    "name": "Digital Asset Holdings",
+    "tier": "a16z",
+    "on_network": false,
+    "location": null,
+    "blurb": "Digital Asset builds blockchain technology that helps financial institutions tokenize assets and connect applications on Canton, a public blockchain with configurable privacy.",
+    "url": "https://a16z.com/companies/digital-asset-holdings/",
+    "website": "https://www.digitalasset.com",
+    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_0018000001KJOWRAA5-20261023202018.svg",
+    "focus_areas": [
+     "Frontier"
+    ],
+    "first_funded": "2026-10-22 00:00:00"
    },
    {
     "slug": "a16z:diode",
@@ -3265,6 +3220,21 @@
      "Frontier"
     ],
     "first_funded": "2021-02-26 00:00:00"
+   },
+   {
+    "slug": "a16z:felix-pago",
+    "name": "Felix Pago",
+    "tier": "a16z",
+    "on_network": false,
+    "location": null,
+    "blurb": "Félix helps people in the United States send money to Latin America through WhatsApp, with delivery to bank accounts, digital wallets, and cash pickup locations.",
+    "url": "https://a16z.com/companies/felix-pago/",
+    "website": "https://www.felixpago.com/en",
+    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_001Uh00000xaCblIAE-20261023202255.svg",
+    "focus_areas": [
+     "Frontier"
+    ],
+    "first_funded": "2026-10-22 00:00:00"
    },
    {
     "slug": "a16z:ccp-games",
@@ -6605,6 +6575,21 @@
     "first_funded": null
    },
    {
+    "slug": "a16z:openreserve",
+    "name": "OpenReserve",
+    "tier": "a16z",
+    "on_network": false,
+    "location": null,
+    "blurb": "Openreserve is building a blockchain-based bank and capital markets platform for institutions, designed to connect deposits, payments, financing, and tokenized assets.",
+    "url": "https://a16z.com/companies/openreserve/",
+    "website": "https://www.openreserve.ai/",
+    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_001Uh00000qpUPYIA2-20261023202426.svg",
+    "focus_areas": [
+     "Frontier"
+    ],
+    "first_funded": "2026-10-22 00:00:00"
+   },
+   {
     "slug": "a16z:opensea",
     "name": "OpenSea",
     "tier": "a16z",
@@ -6679,6 +6664,21 @@
      "Games"
     ],
     "first_funded": "2024-07-24 00:00:00"
+   },
+   {
+    "slug": "a16z:ornn",
+    "name": "Ornn",
+    "tier": "a16z",
+    "on_network": false,
+    "location": null,
+    "blurb": "Ornn builds market infrastructure for GPU compute, combining pricing benchmarks with a marketplace that lets AI companies secure capacity and resell unused reservations.",
+    "url": "https://a16z.com/companies/ornn/",
+    "website": "https://ornn.com/",
+    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_001Up00000QnitmIAB-20261023202434.svg",
+    "focus_areas": [
+     "Frontier"
+    ],
+    "first_funded": "2026-10-22 00:00:00"
    },
    {
     "slug": "a16z:otter",
@@ -10642,7 +10642,7 @@
   ]
  },
  "speedrun": {
-  "fetched_at": "2026-11-20T18:22:54Z",
+  "fetched_at": "2026-11-21T17:10:01Z",
   "companies": [
    {
     "slug": "speedrun:abliteration",
@@ -11595,7 +11595,7 @@
   ]
  },
  "investments": {
-  "fetched_at": "2026-11-20T18:22:54Z",
+  "fetched_at": "2026-11-21T17:10:01Z",
   "companies": [
    {
     "slug": "a16z:0x",

@@ -1,12 +1,12 @@
 {
- "fetched_at": "2026-11-20T18:22:54Z",
+ "fetched_at": "2026-11-21T17:10:01Z",
  "source_fetched_at": {
-  "portfolio": "2026-11-20T18:22:54Z",
-  "speedrun": "2026-11-20T18:22:54Z",
-  "investments": "2026-11-20T18:22:54Z"
+  "portfolio": "2026-11-21T17:10:01Z",
+  "speedrun": "2026-11-21T17:10:01Z",
+  "investments": "2026-11-21T17:10:01Z"
  },
- "on_network": 341,
- "off_network": 1075,
+ "on_network": 340,
+ "off_network": 1076,
  "companies": [
   {
    "slug": "abridge",
@@ -113,7 +113,7 @@
    "cities": [
     "Austin",
     "Chicago",
-    "NYC; LA",
+    "LA",
     "New York"
    ],
    "investors": [
@@ -133,7 +133,7 @@
    "url": "https://speedrun-talent-network.com/companies/addi",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 33,
+   "open_roles": 34,
    "location": "Bogotá, Colombia",
    "industries": [
     "Fintecha16z"
@@ -640,7 +640,7 @@
    "url": "https://speedrun-talent-network.com/companies/anduril-industries",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 2624,
+   "open_roles": 2631,
    "location": "Costa Mesa, California",
    "industries": [
     "American Dynamism",
@@ -841,7 +841,7 @@
    "url": "https://speedrun-talent-network.com/companies/applied-intuition",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 334,
+   "open_roles": 336,
    "location": "Sunnyvale, California",
    "industries": [
     "American Dynamism",
@@ -935,7 +935,7 @@
    "url": "https://speedrun-talent-network.com/companies/arc-boat-company",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 39,
+   "open_roles": 40,
    "location": "Los Angeles, California",
    "industries": [
     "Consumer"
@@ -1068,7 +1068,7 @@
    "url": "https://speedrun-talent-network.com/companies/astranis",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 173,
+   "open_roles": 170,
    "location": "San Francisco, California",
    "industries": [
     "American Dynamism",
@@ -1139,7 +1139,7 @@
    "url": "https://speedrun-talent-network.com/companies/ava-labs",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 7,
+   "open_roles": 8,
    "location": "New York, New York",
    "industries": [
     "Crypto/Web3"
@@ -1267,7 +1267,7 @@
    "url": "https://speedrun-talent-network.com/companies/base-power-company",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 199,
+   "open_roles": 196,
    "location": "Austin, Texas",
    "industries": [
     "Industrials",
@@ -1293,8 +1293,7 @@
     "Houston",
     "North Haven",
     "San Antonio",
-    "San Carlos",
-    "Springfield"
+    "San Carlos"
    ],
    "investors": [
     "Andreessen Horowitz",
@@ -1478,7 +1477,7 @@
    "url": "https://speedrun-talent-network.com/companies/benchling",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 57,
+   "open_roles": 60,
    "location": "San Francisco, California",
    "industries": [
     "Bio Health"
@@ -1502,6 +1501,7 @@
     "Indianapolis",
     "London",
     "New York",
+    "San Diego",
     "San Francisco",
     "Tarrytown",
     "Zurich"
@@ -1685,47 +1685,6 @@
    "website": "https://bounce.com/"
   },
   {
-   "slug": "braintrust-data",
-   "name": "Braintrust",
-   "url": "https://speedrun-talent-network.com/companies/braintrust-data",
-   "tier": "a16z",
-   "cohort": null,
-   "open_roles": 32,
-   "location": "San Francisco, California",
-   "industries": [
-    "AI"
-   ],
-   "blurb": "AI observability platform for teams shipping agents: trace production traffic, run evals, and catch regressions before they reach users.",
-   "logo": "https://www.braintrust.dev/icon180.png?v=2",
-   "stage": "growth",
-   "remote_policy": null,
-   "functions": [
-    "design",
-    "engineering",
-    "marketing",
-    "operations",
-    "sales"
-   ],
-   "cities": [
-    "Austin",
-    "Chicago",
-    "Denver",
-    "London",
-    "New York",
-    "San Francisco"
-   ],
-   "investors": [
-    "Andreessen Horowitz",
-    "Greylock Partners"
-   ],
-   "on_network": true,
-   "also": [
-    "a16z:braintrust-data",
-    "a16z:braintrust"
-   ],
-   "website": "https://www.braintrust.dev/"
-  },
-  {
    "slug": "brief",
    "name": "Brief",
    "url": "https://speedrun-talent-network.com/companies/brief",
@@ -1873,7 +1832,7 @@
    "url": "https://speedrun-talent-network.com/companies/carta",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 79,
+   "open_roles": 80,
    "location": "San Francisco, California",
    "industries": [
     "Fintecha16z"
@@ -2167,7 +2126,7 @@
    "url": "https://speedrun-talent-network.com/companies/clickup",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 47,
+   "open_roles": 48,
    "location": "Dublin, Ireland",
    "industries": [
     "Enterprise"
@@ -2185,6 +2144,7 @@
    ],
    "cities": [
     "Australia",
+    "Canada",
     "Czechia",
     "Ireland",
     "Ireland - Dublin Office",
@@ -2557,7 +2517,7 @@
    "url": "https://speedrun-talent-network.com/companies/cowboy-space-corporation",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 63,
+   "open_roles": 62,
    "location": "San Carlos, California",
    "industries": [
     "American Dynamism"
@@ -2645,7 +2605,7 @@
    "url": "https://speedrun-talent-network.com/companies/crux",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 25,
+   "open_roles": 24,
    "location": null,
    "industries": [
     "Fintecha16z"
@@ -2680,7 +2640,7 @@
    "url": "https://speedrun-talent-network.com/companies/cursor",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 88,
+   "open_roles": 89,
    "location": "San Francisco, CA",
    "industries": [
     "AI",
@@ -3152,7 +3112,7 @@
    "url": "https://speedrun-talent-network.com/companies/elevenlabs",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 125,
+   "open_roles": 122,
    "location": "New York, New York",
    "industries": [
     "Consumer"
@@ -3214,7 +3174,7 @@
    "url": "https://speedrun-talent-network.com/companies/eliseai",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 105,
+   "open_roles": 104,
    "location": "New York, New York",
    "industries": [
     "AI",
@@ -3468,7 +3428,7 @@
    "url": "https://speedrun-talent-network.com/companies/everlaw",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 34,
+   "open_roles": 37,
    "location": "Oakland, California",
    "industries": [
     "Enterprise"
@@ -3583,7 +3543,7 @@
    "url": "https://speedrun-talent-network.com/companies/fal",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 50,
+   "open_roles": 51,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -3657,7 +3617,7 @@
    "url": "https://speedrun-talent-network.com/companies/figma",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 146,
+   "open_roles": 147,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -3757,7 +3717,7 @@
    "url": "https://speedrun-talent-network.com/companies/flexport",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 211,
+   "open_roles": 212,
    "location": "San Francisco, California",
    "industries": [
     "American Dynamism",
@@ -3881,7 +3841,7 @@
    "url": "https://speedrun-talent-network.com/companies/flock-safety",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 14,
+   "open_roles": 17,
    "location": "Atlanta, GA",
    "industries": [
     "American Dynamism",
@@ -3896,14 +3856,17 @@
     "other"
    ],
    "cities": [
+    "Alameda",
     "Atlanta",
     "Boston",
     "Bushyhead",
     "Charlotte",
     "Cleveland",
+    "Farmington",
     "Indianapolis",
     "Jacksonville",
     "Kansas City",
+    "San Jose",
     "Seattle",
     "Selma",
     "United States"
@@ -4105,7 +4068,7 @@
    "url": "https://speedrun-talent-network.com/companies/freenome",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 24,
+   "open_roles": 25,
    "location": "Brisbane, California",
    "industries": [
     "Bio Health"
@@ -4227,7 +4190,7 @@
    "url": "https://speedrun-talent-network.com/companies/genesis-molecular-ai",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 10,
+   "open_roles": 11,
    "location": "San Mateo, California",
    "industries": [
     "Bio Health"
@@ -4242,6 +4205,7 @@
     "research"
    ],
    "cities": [
+    "NYC or SF Bay Area",
     "San Diego",
     "San Mateo"
    ],
@@ -4428,7 +4392,7 @@
    "url": "https://speedrun-talent-network.com/companies/greenlight",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 14,
+   "open_roles": 15,
    "location": "Atlanta, GA",
    "industries": [
     "Fintech"
@@ -4440,6 +4404,7 @@
    "functions": [
     "design",
     "engineering",
+    "marketing",
     "operations",
     "other",
     "product",
@@ -4464,7 +4429,7 @@
    "url": "https://speedrun-talent-network.com/companies/hadrian",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 176,
+   "open_roles": 177,
    "location": "Los Angeles, California",
    "industries": [
     "American Dynamism",
@@ -4512,7 +4477,7 @@
    "url": "https://speedrun-talent-network.com/companies/happyrobot",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 36,
+   "open_roles": 34,
    "location": "San Francisco, California",
    "industries": [
     "AI",
@@ -4627,7 +4592,7 @@
    "url": "https://speedrun-talent-network.com/companies/headway",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 93,
+   "open_roles": 94,
    "location": "New York City Area",
    "industries": [
     "Bio Health"
@@ -5034,7 +4999,7 @@
    "url": "https://speedrun-talent-network.com/companies/illumio",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 70,
+   "open_roles": 74,
    "location": "Sunnyvale, California",
    "industries": [
     "Enterprise"
@@ -5060,9 +5025,9 @@
     "Germany",
     "HQ - Sunnyvale Office",
     "London",
+    "Melbourne",
     "Mexico",
     "Netherlands",
-    "Nevada",
     "Reading",
     "Saudi Arabia",
     "Singapore",
@@ -5454,7 +5419,7 @@
    "url": "https://speedrun-talent-network.com/companies/jeeves",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 76,
+   "open_roles": 79,
    "location": "Mexico City",
    "industries": [
     "Enterprise",
@@ -5863,7 +5828,7 @@
    "url": "https://speedrun-talent-network.com/companies/komodo-health",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 19,
+   "open_roles": 20,
    "location": "San Francisco, California",
    "industries": [
     "Bio Health",
@@ -5947,6 +5912,7 @@
     "Paris",
     "San Francisco",
     "Shanghai",
+    "South Carolina",
     "Spain",
     "Sweden",
     "Switzerland",
@@ -6191,7 +6157,7 @@
    "url": "https://speedrun-talent-network.com/companies/lio",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 29,
+   "open_roles": 30,
    "location": "Munich, Germany",
    "industries": [
     "AI"
@@ -6327,7 +6293,7 @@
    "url": "https://speedrun-talent-network.com/companies/lyft",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 144,
+   "open_roles": 148,
    "location": "San Francisco, CA",
    "industries": [
     "Consumer"
@@ -6649,7 +6615,7 @@
    "url": "https://speedrun-talent-network.com/companies/mercury-technologies",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 72,
+   "open_roles": 70,
    "location": "San Francisco, CA",
    "industries": [
     "Fintech"
@@ -6818,7 +6784,7 @@
    "url": "https://speedrun-talent-network.com/companies/mind-robotics",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 34,
+   "open_roles": 35,
    "location": "Palo Alto, California",
    "industries": [
     "AI"
@@ -6837,7 +6803,8 @@
    ],
    "cities": [
     "Normal",
-    "Palo Alto"
+    "Palo Alto",
+    "San Francisco"
    ],
    "investors": [
     "Andreessen Horowitz"
@@ -7080,7 +7047,7 @@
    "url": "https://speedrun-talent-network.com/companies/moment",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 12,
+   "open_roles": 11,
    "location": "New York, New York",
    "industries": [
     "Fintecha16z"
@@ -7299,7 +7266,7 @@
    "url": "https://speedrun-talent-network.com/companies/mysten-labs",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 10,
+   "open_roles": 9,
    "location": "United States",
    "industries": [
     "Crypto/Web3"
@@ -7530,7 +7497,7 @@
    "url": "https://speedrun-talent-network.com/companies/northwood-space",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 63,
+   "open_roles": 64,
    "location": "Torrance, California",
    "industries": [
     "American Dynamism"
@@ -7628,7 +7595,7 @@
    "url": "https://speedrun-talent-network.com/companies/omada-health",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 24,
+   "open_roles": 23,
    "location": "San Francisco, CA",
    "industries": [
     "Bio Health"
@@ -7747,7 +7714,7 @@
    "url": "https://speedrun-talent-network.com/companies/opengov",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 92,
+   "open_roles": 89,
    "location": "Chicago, Illinois",
    "industries": [
     "American Dynamism",
@@ -8018,7 +7985,7 @@
    "url": "https://speedrun-talent-network.com/companies/pave",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 16,
+   "open_roles": 17,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise",
@@ -8086,7 +8053,7 @@
    "url": "https://speedrun-talent-network.com/companies/pearl-health",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 7,
+   "open_roles": 8,
    "location": "New York, New York",
    "industries": [
     "Bio Health"
@@ -8258,7 +8225,7 @@
    "url": "https://speedrun-talent-network.com/companies/pindrop",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 19,
+   "open_roles": 20,
    "location": "Atlanta, GA",
    "industries": [
     "Security",
@@ -8331,7 +8298,7 @@
    "url": "https://speedrun-talent-network.com/companies/plaid",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 146,
+   "open_roles": 147,
    "location": "San Francisco, California",
    "industries": [
     "Fintecha16z"
@@ -8416,7 +8383,7 @@
    "url": "https://speedrun-talent-network.com/companies/podium-automation",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 6,
+   "open_roles": 7,
    "location": "New York, New York",
    "industries": [
     "Industrials",
@@ -8680,7 +8647,7 @@
    "url": "https://speedrun-talent-network.com/companies/protege",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 19,
+   "open_roles": 21,
    "location": "New York, New York",
    "industries": [
     "AI",
@@ -8786,7 +8753,7 @@
    "url": "https://speedrun-talent-network.com/companies/radiant",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 112,
+   "open_roles": 113,
    "location": "El Segundo, California",
    "industries": [
     "Industrials",
@@ -8827,7 +8794,7 @@
    "url": "https://speedrun-talent-network.com/companies/rasa",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 2,
+   "open_roles": 3,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -8859,7 +8826,7 @@
    "url": "https://speedrun-talent-network.com/companies/replit",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 37,
+   "open_roles": 38,
    "location": "Foster City, California",
    "industries": [
     "AI",
@@ -9029,7 +8996,7 @@
    "url": "https://speedrun-talent-network.com/companies/rillet",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 45,
+   "open_roles": 46,
    "location": "San Francisco, California",
    "industries": [
     "Fintech",
@@ -9070,7 +9037,7 @@
    "url": "https://speedrun-talent-network.com/companies/ripline",
    "tier": "speedrun",
    "cohort": "SR007",
-   "open_roles": 2,
+   "open_roles": 1,
    "location": "San Francisco, California",
    "industries": [
     "AI Agents",
@@ -9082,8 +9049,7 @@
    "stage": "seed",
    "remote_policy": "onsite-leaning",
    "functions": [
-    "engineering",
-    "operations"
+    "engineering"
    ],
    "cities": [
     "San Francisco"
@@ -9097,7 +9063,7 @@
    "url": "https://speedrun-talent-network.com/companies/roblox",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 265,
+   "open_roles": 260,
    "location": "San Mateo, CA",
    "industries": [
     "Games",
@@ -9231,7 +9197,8 @@
     "product"
    ],
    "cities": [
-    "SF Headquarters"
+    "SF Headquarters",
+    "within the U.S. only"
    ],
    "investors": [
     "Andreessen Horowitz"
@@ -9300,7 +9267,7 @@
    "url": "https://speedrun-talent-network.com/companies/saronic-technologies",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 288,
+   "open_roles": 294,
    "location": "Austin, Texas",
    "industries": [
     "AI",
@@ -9409,7 +9376,7 @@
    "url": "https://speedrun-talent-network.com/companies/sentilink",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 43,
+   "open_roles": 46,
    "location": "San Francisco, California",
    "industries": [
     "Fintecha16z"
@@ -9551,7 +9518,7 @@
    "url": "https://speedrun-talent-network.com/companies/shield-ai",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 661,
+   "open_roles": 664,
    "location": "San Diego, California",
    "industries": [
     "American Dynamism",
@@ -9675,7 +9642,7 @@
    "url": "https://speedrun-talent-network.com/companies/skydio",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 191,
+   "open_roles": 185,
    "location": "San Mateo, California",
    "industries": [
     "AI",
@@ -9829,7 +9796,7 @@
    "url": "https://speedrun-talent-network.com/companies/snaplogic",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 7,
+   "open_roles": 8,
    "location": "San Mateo, California",
    "industries": [
     "Enterprise"
@@ -9863,7 +9830,7 @@
    "url": "https://speedrun-talent-network.com/companies/socket-dev",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 24,
+   "open_roles": 23,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -10174,7 +10141,7 @@
    "url": "https://speedrun-talent-network.com/companies/spoton",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 78,
+   "open_roles": 77,
    "location": "Chicago, Illinois",
    "industries": [
     "Enterprise"
@@ -10195,7 +10162,6 @@
     "Albany",
     "Albuquerque-Santa Fe Metropolitan Area",
     "Atascadero",
-    "Atlanta",
     "Austin",
     "Bakersfield",
     "Bengaluru",
@@ -10203,6 +10169,7 @@
     "Brentwood",
     "Chicago",
     "Cicero",
+    "Clearwater",
     "Dallas",
     "Decatur",
     "Durham",
@@ -10275,7 +10242,7 @@
    "url": "https://speedrun-talent-network.com/companies/sprig",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 6,
+   "open_roles": 7,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -10310,7 +10277,7 @@
    "url": "https://speedrun-talent-network.com/companies/sprinter-health",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 66,
+   "open_roles": 65,
    "location": "San Francisco, California",
    "industries": [
     "Bio Health"
@@ -10382,7 +10349,7 @@
    "url": "https://speedrun-talent-network.com/companies/spruce-systems",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 7,
+   "open_roles": 8,
    "location": "New York City Area",
    "industries": [
     "Enterprise"
@@ -10393,6 +10360,7 @@
    "remote_policy": "remote-first",
    "functions": [
     "engineering",
+    "operations",
     "product"
    ],
    "cities": [
@@ -10510,7 +10478,7 @@
    "url": "https://speedrun-talent-network.com/companies/stuut",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 23,
+   "open_roles": 24,
    "location": "San Francisco, California",
    "industries": [
     "AI",
@@ -10525,6 +10493,7 @@
     "engineering",
     "marketing",
     "other",
+    "product",
     "sales"
    ],
    "cities": [
@@ -10550,7 +10519,7 @@
    "url": "https://speedrun-talent-network.com/companies/substack",
    "tier": "a16z",
    "cohort": "Other",
-   "open_roles": 22,
+   "open_roles": 20,
    "location": "San Francisco, California",
    "industries": [
     "Consumer"
@@ -10734,7 +10703,7 @@
    "url": "https://speedrun-talent-network.com/companies/talkiatry",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 189,
+   "open_roles": 188,
    "location": "New York, New York",
    "industries": [
     "Bio Health",
@@ -10876,7 +10845,7 @@
    "url": "https://speedrun-talent-network.com/companies/tanium",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 64,
+   "open_roles": 65,
    "location": "Kirkland, Washington",
    "industries": [
     "Enterprise"
@@ -10955,7 +10924,7 @@
    "url": "https://speedrun-talent-network.com/companies/temporal-technologies",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 93,
+   "open_roles": 92,
    "location": "Bellevue, Washington",
    "industries": [
     "Enterprise",
@@ -11535,7 +11504,7 @@
    "url": "https://speedrun-talent-network.com/companies/unconventional-ai",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 27,
+   "open_roles": 28,
    "location": "Mountain View, CA",
    "industries": [
     "AI",
@@ -11608,7 +11577,7 @@
    "url": "https://speedrun-talent-network.com/companies/unitedmasters",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 30,
+   "open_roles": 29,
    "location": "San Francisco, California",
    "industries": [
     "Consumer"
@@ -11875,7 +11844,7 @@
    "url": "https://speedrun-talent-network.com/companies/vesta",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 14,
+   "open_roles": 13,
    "location": "San Francisco, California",
    "industries": [
     "Fintecha16z"
@@ -12285,6 +12254,7 @@
    "stage": "series-b",
    "remote_policy": "remote-first",
    "functions": [
+    "engineering",
     "marketing",
     "operations",
     "other",
@@ -12294,7 +12264,7 @@
     "Americas",
     "Brazil",
     "Colombia",
-    "Global",
+    "Europe",
     "Hyderabad"
    ],
    "investors": [],
@@ -12310,7 +12280,7 @@
    "url": "https://speedrun-talent-network.com/companies/zipline",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 320,
+   "open_roles": 315,
    "location": "South San Francisco, CA",
    "industries": [
     "American Dynamism",
@@ -12549,81 +12519,6 @@
    "also": [
     "a16z:lighter"
    ]
-  },
-  {
-   "slug": "a16z:circle",
-   "name": "Circle",
-   "tier": "a16z",
-   "on_network": false,
-   "location": null,
-   "blurb": "Circle issues USDC and EURC stablecoins and provides financial infrastructure that helps businesses and developers move money globally and build blockchain-based financial applications.",
-   "url": "https://a16z.com/companies/circle/",
-   "website": "https://www.circle.com",
-   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_0011E00001j8ukuQAA-20261027150054.svg",
-   "focus_areas": [
-    "Frontier"
-   ],
-   "first_funded": "2026-10-22 00:00:00"
-  },
-  {
-   "slug": "a16z:cowrie",
-   "name": "Cowrie",
-   "tier": "a16z",
-   "on_network": false,
-   "location": null,
-   "blurb": "Cowrie provides tax compliance, entity structuring, and administrative services for decentralized protocols, using blockchain analysis to support onchain reporting and tax filings.",
-   "url": "https://a16z.com/companies/cowrie/",
-   "website": "https://cowrie.io/",
-   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_001Up00000713UTIAY-20261023201934.svg",
-   "focus_areas": [
-    "Frontier"
-   ],
-   "first_funded": "2026-10-22 00:00:00"
-  },
-  {
-   "slug": "a16z:digital-asset-holdings",
-   "name": "Digital Asset Holdings",
-   "tier": "a16z",
-   "on_network": false,
-   "location": null,
-   "blurb": "Digital Asset builds blockchain technology that helps financial institutions tokenize assets and connect applications on Canton, a public blockchain with configurable privacy.",
-   "url": "https://a16z.com/companies/digital-asset-holdings/",
-   "website": "https://www.digitalasset.com",
-   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_0018000001KJOWRAA5-20261023202018.svg",
-   "focus_areas": [
-    "Frontier"
-   ],
-   "first_funded": "2026-10-22 00:00:00"
-  },
-  {
-   "slug": "a16z:felix-pago",
-   "name": "Felix Pago",
-   "tier": "a16z",
-   "on_network": false,
-   "location": null,
-   "blurb": "Félix helps people in the United States send money to Latin America through WhatsApp, with delivery to bank accounts, digital wallets, and cash pickup locations.",
-   "url": "https://a16z.com/companies/felix-pago/",
-   "website": "https://www.felixpago.com/en",
-   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_001Uh00000xaCblIAE-20261023202255.svg",
-   "focus_areas": [
-    "Frontier"
-   ],
-   "first_funded": "2026-10-22 00:00:00"
-  },
-  {
-   "slug": "a16z:openreserve",
-   "name": "OpenReserve",
-   "tier": "a16z",
-   "on_network": false,
-   "location": null,
-   "blurb": "Openreserve is building a blockchain-based bank and capital markets platform for institutions, designed to connect deposits, payments, financing, and tokenized assets.",
-   "url": "https://a16z.com/companies/openreserve/",
-   "website": "https://www.openreserve.ai/",
-   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_001Uh00000qpUPYIA2-20261023202426.svg",
-   "focus_areas": [
-    "Frontier"
-   ],
-   "first_funded": "2026-10-22 00:00:00"
   },
   {
    "slug": "a16z:hopin",
@@ -13242,6 +13137,25 @@
    "first_funded": "2023-10-04 00:00:00"
   },
   {
+   "slug": "a16z:braintrust-data",
+   "name": "Braintrust",
+   "tier": "a16z",
+   "on_network": false,
+   "location": null,
+   "blurb": null,
+   "url": "https://a16z.com/companies/braintrust-data/",
+   "website": "https://www.braintrust.dev/",
+   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/04/logo_0018b00002YcK2wAAF-20260406210450.svg",
+   "focus_areas": [
+    "Infra"
+   ],
+   "first_funded": "2024-02-27 00:00:00",
+   "also": [
+    "braintrust-data",
+    "a16z:braintrust"
+   ]
+  },
+  {
    "slug": "a16z:branch-international",
    "name": "Branch International",
    "tier": "a16z",
@@ -13500,6 +13414,21 @@
    "first_funded": "2020-09-17 00:00:00"
   },
   {
+   "slug": "a16z:circle",
+   "name": "Circle",
+   "tier": "a16z",
+   "on_network": false,
+   "location": null,
+   "blurb": "Circle issues USDC and EURC stablecoins and provides financial infrastructure that helps businesses and developers move money globally and build blockchain-based financial applications.",
+   "url": "https://a16z.com/companies/circle/",
+   "website": "https://www.circle.com",
+   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_0011E00001j8ukuQAA-20261027150054.svg",
+   "focus_areas": [
+    "Frontier"
+   ],
+   "first_funded": "2026-10-22 00:00:00"
+  },
+  {
    "slug": "a16z:civitai",
    "name": "Civitai",
    "tier": "a16z",
@@ -13695,6 +13624,21 @@
     "Infra"
    ],
    "first_funded": "2025-07-01 00:00:00"
+  },
+  {
+   "slug": "a16z:cowrie",
+   "name": "Cowrie",
+   "tier": "a16z",
+   "on_network": false,
+   "location": null,
+   "blurb": "Cowrie provides tax compliance, entity structuring, and administrative services for decentralized protocols, using blockchain analysis to support onchain reporting and tax filings.",
+   "url": "https://a16z.com/companies/cowrie/",
+   "website": "https://cowrie.io/",
+   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_001Up00000713UTIAY-20261023201934.svg",
+   "focus_areas": [
+    "Frontier"
+   ],
+   "first_funded": "2026-10-22 00:00:00"
   },
   {
    "slug": "a16z:createra",
@@ -14076,6 +14020,21 @@
     "Frontier"
    ],
    "first_funded": "2018-03-08 00:00:00"
+  },
+  {
+   "slug": "a16z:digital-asset-holdings",
+   "name": "Digital Asset Holdings",
+   "tier": "a16z",
+   "on_network": false,
+   "location": null,
+   "blurb": "Digital Asset builds blockchain technology that helps financial institutions tokenize assets and connect applications on Canton, a public blockchain with configurable privacy.",
+   "url": "https://a16z.com/companies/digital-asset-holdings/",
+   "website": "https://www.digitalasset.com",
+   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_0018000001KJOWRAA5-20261023202018.svg",
+   "focus_areas": [
+    "Frontier"
+   ],
+   "first_funded": "2026-10-22 00:00:00"
   },
   {
    "slug": "a16z:diode",
@@ -14577,6 +14536,21 @@
     "Frontier"
    ],
    "first_funded": "2021-02-26 00:00:00"
+  },
+  {
+   "slug": "a16z:felix-pago",
+   "name": "Felix Pago",
+   "tier": "a16z",
+   "on_network": false,
+   "location": null,
+   "blurb": "Félix helps people in the United States send money to Latin America through WhatsApp, with delivery to bank accounts, digital wallets, and cash pickup locations.",
+   "url": "https://a16z.com/companies/felix-pago/",
+   "website": "https://www.felixpago.com/en",
+   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_001Uh00000xaCblIAE-20261023202255.svg",
+   "focus_areas": [
+    "Frontier"
+   ],
+   "first_funded": "2026-10-22 00:00:00"
   },
   {
    "slug": "a16z:ccp-games",
@@ -16640,6 +16614,21 @@
     "Frontier"
    ],
    "first_funded": "2015-04-24 00:00:00"
+  },
+  {
+   "slug": "a16z:openreserve",
+   "name": "OpenReserve",
+   "tier": "a16z",
+   "on_network": false,
+   "location": null,
+   "blurb": "Openreserve is building a blockchain-based bank and capital markets platform for institutions, designed to connect deposits, payments, financing, and tokenized assets.",
+   "url": "https://a16z.com/companies/openreserve/",
+   "website": "https://www.openreserve.ai/",
+   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_001Uh00000qpUPYIA2-20261023202426.svg",
+   "focus_areas": [
+    "Frontier"
+   ],
+   "first_funded": "2026-10-22 00:00:00"
   },
   {
    "slug": "a16z:opensea",
