@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_at": "2026-11-21T17:11:16Z",
-  "run_date": "2026-11-21",
+  "generated_at": "2026-11-22T17:40:41Z",
+  "run_date": "2026-11-22",
   "window_days": 180,
   "half_life_days": 45,
   "formula": "log10(amount + 1) / (open_roles + 1) * 0.5 ^ (days_since_first_sale / 45)",
@@ -22,7 +22,7 @@
    "cohort": null,
    "stage_label": "series a",
    "size_label": "11-50",
-   "score": 0.2358398454201288,
+   "score": 0.23223497511497662,
    "amount": 104364967.0,
    "amount_kind": "sold",
    "amount_sold": 104364967.0,
@@ -32,7 +32,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-10-07",
    "first_sale_reported": true,
-   "days_since_first_sale": 45,
+   "days_since_first_sale": 46,
    "file_date": "2026-10-22",
    "latest_file_date": "2026-10-22",
    "amendments": 0,
@@ -66,7 +66,7 @@
    "cohort": null,
    "stage_label": null,
    "size_label": null,
-   "score": 0.1512455281060567,
+   "score": 0.14893370284139318,
    "amount": 264999494.0,
    "amount_kind": "sold",
    "amount_sold": 264999494.0,
@@ -76,7 +76,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-09-30",
    "first_sale_reported": true,
-   "days_since_first_sale": 52,
+   "days_since_first_sale": 53,
    "file_date": "2026-10-15",
    "latest_file_date": "2026-10-15",
    "amendments": 0,
@@ -110,7 +110,7 @@
    "cohort": null,
    "stage_label": "series a",
    "size_label": "51-200",
-   "score": 0.11977146965710357,
+   "score": 0.12025329654712551,
    "amount": 1032193939.0,
    "amount_kind": "sold",
    "amount_sold": 1032193939.0,
@@ -120,7 +120,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-10-28",
    "first_sale_reported": true,
-   "days_since_first_sale": 24,
+   "days_since_first_sale": 25,
    "file_date": "2026-11-12",
    "latest_file_date": "2026-11-12",
    "amendments": 0,
@@ -141,7 +141,7 @@
    "observed_postings_since_signal": 13,
    "hiring_tracked_since": "2026-11-19",
    "hiring_coverage": "partial",
-   "roles_since_first_sale": 13,
+   "roles_since_first_sale": 12,
    "first_post_since": "2026-10-30",
    "days_to_first_post": 2,
    "rank": 3
@@ -154,7 +154,7 @@
    "cohort": null,
    "stage_label": "series a",
    "size_label": "11-50",
-   "score": 0.10546089736198928,
+   "score": 0.1038489014900547,
    "amount": 29999975.0,
    "amount_kind": "sold",
    "amount_sold": 29999975.0,
@@ -164,7 +164,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-07-10",
    "first_sale_reported": true,
-   "days_since_first_sale": 134,
+   "days_since_first_sale": 135,
    "file_date": "2026-10-28",
    "latest_file_date": "2026-10-28",
    "amendments": 0,
@@ -198,7 +198,7 @@
    "cohort": "SR007",
    "stage_label": null,
    "size_label": null,
-   "score": 0.09353708447706043,
+   "score": 0.0921073470310356,
    "amount": 785000.0,
    "amount_kind": "sold",
    "amount_sold": 785000.0,
@@ -208,7 +208,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-05-26",
    "first_sale_reported": true,
-   "days_since_first_sale": 179,
+   "days_since_first_sale": 180,
    "file_date": "2026-07-02",
    "latest_file_date": "2026-07-02",
    "amendments": 0,
@@ -242,7 +242,7 @@
    "cohort": null,
    "stage_label": "seed",
    "size_label": "11-50",
-   "score": 0.09275622955586353,
+   "score": 0.09133842767023155,
    "amount": 67597673.0,
    "amount_kind": "sold",
    "amount_sold": 67597673.0,
@@ -252,7 +252,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-09-03",
    "first_sale_reported": true,
-   "days_since_first_sale": 79,
+   "days_since_first_sale": 80,
    "file_date": "2026-09-16",
    "latest_file_date": "2026-09-16",
    "amendments": 0,
@@ -286,7 +286,7 @@
    "cohort": null,
    "stage_label": "series a",
    "size_label": "1-10",
-   "score": 0.012714145024183193,
+   "score": 0.012519806176261083,
    "amount": 310499477.0,
    "amount_kind": "sold",
    "amount_sold": 310499477.0,
@@ -296,7 +296,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-07-22",
    "first_sale_reported": true,
-   "days_since_first_sale": 122,
+   "days_since_first_sale": 123,
    "file_date": "2026-08-06",
    "latest_file_date": "2026-08-06",
    "amendments": 0,
@@ -330,7 +330,7 @@
    "cohort": null,
    "stage_label": "growth or late stage",
    "size_label": "501-1,000",
-   "score": 0.00606707529318984,
+   "score": 0.005943779271905785,
    "amount": 550299446.0,
    "amount_kind": "sold",
    "amount_sold": 550299446.0,
@@ -340,7 +340,7 @@
    "offering_indefinite": true,
    "date_of_first_sale": "2026-08-28",
    "first_sale_reported": true,
-   "days_since_first_sale": 85,
+   "days_since_first_sale": 86,
    "file_date": "2026-09-11",
    "latest_file_date": "2026-09-11",
    "amendments": 0,
@@ -358,10 +358,10 @@
    "match_rung": "pinned",
    "match_confidence": "high",
    "a16z_person": null,
-   "observed_postings_since_signal": 289,
+   "observed_postings_since_signal": 291,
    "hiring_tracked_since": "2026-11-19",
    "hiring_coverage": "partial",
-   "roles_since_first_sale": 280,
+   "roles_since_first_sale": 282,
    "first_post_since": "2026-08-28",
    "days_to_first_post": 0,
    "rank": 8
@@ -384,7 +384,7 @@
    "observed_postings_since_signal": null,
    "hiring_tracked_since": null,
    "hiring_coverage": "unavailable",
-   "score": 2.046824016552319,
+   "score": 2.015537805759577,
    "amount": 4999997255.0,
    "amount_kind": "sold",
    "amount_sold": 4999997255.0,
@@ -394,7 +394,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-08-12",
    "first_sale_reported": true,
-   "days_since_first_sale": 101,
+   "days_since_first_sale": 102,
    "file_date": "2026-08-27",
    "latest_file_date": "2026-08-27",
    "amendments": 0,
@@ -430,7 +430,7 @@
    "observed_postings_since_signal": null,
    "hiring_tracked_since": null,
    "hiring_coverage": "unavailable",
-   "score": 1.6555390187106118,
+   "score": 1.6302336957829309,
    "amount": 547000000.0,
    "amount_kind": "sold",
    "amount_sold": 547000000.0,
@@ -440,7 +440,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-08-05",
    "first_sale_reported": true,
-   "days_since_first_sale": 108,
+   "days_since_first_sale": 109,
    "file_date": "2026-08-18",
    "latest_file_date": "2026-08-18",
    "amendments": 0,
@@ -476,7 +476,7 @@
    "observed_postings_since_signal": null,
    "hiring_tracked_since": null,
    "hiring_coverage": "unavailable",
-   "score": 1.1135902191204683,
+   "score": 1.0965687174914112,
    "amount": 75141086.0,
    "amount_kind": "sold",
    "amount_sold": 75141086.0,
@@ -486,7 +486,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-07-17",
    "first_sale_reported": true,
-   "days_since_first_sale": 127,
+   "days_since_first_sale": 128,
    "file_date": "2026-10-26",
    "latest_file_date": "2026-10-26",
    "amendments": 0,
@@ -522,7 +522,7 @@
    "observed_postings_since_signal": null,
    "hiring_tracked_since": null,
    "hiring_coverage": "unavailable",
-   "score": 0.8966885910424258,
+   "score": 0.8829824843874653,
    "amount": 24999937.0,
    "amount_kind": "sold",
    "amount_sold": 24999937.0,
@@ -532,7 +532,7 @@
    "offering_indefinite": false,
    "date_of_first_sale": "2026-07-07",
    "first_sale_reported": true,
-   "days_since_first_sale": 137,
+   "days_since_first_sale": 138,
    "file_date": "2026-07-22",
    "latest_file_date": "2026-07-29",
    "amendments": 1,
@@ -566,7 +566,7 @@
    "blurb": "Autonomous drones that deliver blood, medicine, and retail orders by parachute drop; past 1 million deliveries across Africa and the US.",
    "location": "South San Francisco, CA",
    "stage": "growth",
-   "open_roles": 315,
+   "open_roles": 314,
    "roles_since_first_spv": 21,
    "observed_postings_since_signal": 21,
    "hiring_tracked_since": "2026-11-19",
@@ -577,7 +577,7 @@
    "latest_first_sale_date": "2026-11-16",
    "first_spv_file_date": "2026-11-04",
    "latest_spv_file_date": "2026-11-17",
-   "days_since_latest_spv": 4,
+   "days_since_latest_spv": 5,
    "vehicles": [
     {
      "name": "BARRAMUNDI - SERIES 50 - ZIPLINE",
@@ -614,7 +614,7 @@
    "blurb": "Autonomy software for vehicles and heavy machines: simulation and test tools, a vehicle OS and a self-driving stack, built for automotive, trucking, defense, mining and agriculture.",
    "location": "Sunnyvale, California",
    "stage": "growth",
-   "open_roles": 336,
+   "open_roles": 333,
    "roles_since_first_spv": 26,
    "observed_postings_since_signal": 29,
    "hiring_tracked_since": "2026-11-19",
@@ -625,7 +625,7 @@
    "latest_first_sale_date": null,
    "first_spv_file_date": "2026-11-10",
    "latest_spv_file_date": "2026-11-12",
-   "days_since_latest_spv": 9,
+   "days_since_latest_spv": 10,
    "vehicles": [
     {
      "name": "HDV-NP Applied Intuition, a Series of 1988 Master, LP",
@@ -673,7 +673,7 @@
    "latest_first_sale_date": "2023-12-25",
    "first_spv_file_date": "2026-11-12",
    "latest_spv_file_date": "2026-11-12",
-   "days_since_latest_spv": 9,
+   "days_since_latest_spv": 10,
    "vehicles": [
     {
      "name": "OPENAI SPV",
@@ -700,9 +700,9 @@
    "blurb": "Builds autonomous defense systems for the US and its allies: Lattice software, Fury and Roadrunner aircraft, Ghost drones, Barracuda missiles and Dive-XL undersea vehicles.",
    "location": "Costa Mesa, California",
    "stage": "growth",
-   "open_roles": 2631,
-   "roles_since_first_spv": 2128,
-   "observed_postings_since_signal": 2187,
+   "open_roles": 2633,
+   "roles_since_first_spv": 2130,
+   "observed_postings_since_signal": 2189,
    "hiring_tracked_since": "2026-11-19",
    "hiring_coverage": "partial",
    "spvs": 10,
@@ -711,7 +711,7 @@
    "latest_first_sale_date": "2026-10-16",
    "first_spv_file_date": "2026-05-26",
    "latest_spv_file_date": "2026-11-10",
-   "days_since_latest_spv": 11,
+   "days_since_latest_spv": 12,
    "vehicles": [
     {
      "name": "Greenbird Intelligence Fund, LLC, Series ZC - Anduril",
@@ -839,7 +839,7 @@
    "latest_first_sale_date": "2026-10-15",
    "first_spv_file_date": "2026-10-16",
    "latest_spv_file_date": "2026-10-16",
-   "days_since_latest_spv": 36,
+   "days_since_latest_spv": 37,
    "vehicles": [
     {
      "name": "Sourcerer-2, a series of Jason's Syndicate, LLC",
@@ -877,7 +877,7 @@
    "latest_first_sale_date": "2026-09-10",
    "first_spv_file_date": "2026-10-14",
    "latest_spv_file_date": "2026-10-14",
-   "days_since_latest_spv": 38,
+   "days_since_latest_spv": 39,
    "vehicles": [
     {
      "name": "Voyager SPV - Astro Mechanica 2026, LP",
@@ -915,7 +915,7 @@
    "latest_first_sale_date": null,
    "first_spv_file_date": "2026-10-07",
    "latest_spv_file_date": "2026-10-07",
-   "days_since_latest_spv": 45,
+   "days_since_latest_spv": 46,
    "vehicles": [
     {
      "name": "021T Capital SPV Ornn, L.P.",
@@ -953,7 +953,7 @@
    "latest_first_sale_date": null,
    "first_spv_file_date": "2026-10-01",
    "latest_spv_file_date": "2026-10-01",
-   "days_since_latest_spv": 51,
+   "days_since_latest_spv": 52,
    "vehicles": [
     {
      "name": "Caffeinated Capital Amca SPV II, LLC",
@@ -991,7 +991,7 @@
    "latest_first_sale_date": null,
    "first_spv_file_date": "2026-09-21",
    "latest_spv_file_date": "2026-09-28",
-   "days_since_latest_spv": 54,
+   "days_since_latest_spv": 55,
    "vehicles": [
     {
      "name": "AUGUREY VENTURES QP FUND - SERIES APEX SPACE B",
@@ -1089,7 +1089,7 @@
    "latest_first_sale_date": null,
    "first_spv_file_date": "2026-09-22",
    "latest_spv_file_date": "2026-09-22",
-   "days_since_latest_spv": 60,
+   "days_since_latest_spv": 61,
    "vehicles": [
     {
      "name": "ABH Gimlet, a Series of A Master Series, LLC",
@@ -1127,7 +1127,7 @@
    "latest_first_sale_date": "2026-08-11",
    "first_spv_file_date": "2026-07-13",
    "latest_spv_file_date": "2026-09-18",
-   "days_since_latest_spv": 64,
+   "days_since_latest_spv": 65,
    "vehicles": [
     {
      "name": "HII Databricks-01, a Series of HII Databricks LLC",
@@ -1185,7 +1185,7 @@
    "latest_first_sale_date": "2026-09-16",
    "first_spv_file_date": "2026-09-18",
    "latest_spv_file_date": "2026-09-18",
-   "days_since_latest_spv": 64,
+   "days_since_latest_spv": 65,
    "vehicles": [
     {
      "name": "PLAI SPV F&F a Series of CGF2021 LLC",
@@ -1223,7 +1223,7 @@
    "latest_first_sale_date": "2026-07-27",
    "first_spv_file_date": "2026-09-17",
    "latest_spv_file_date": "2026-09-17",
-   "days_since_latest_spv": 65,
+   "days_since_latest_spv": 66,
    "vehicles": [
     {
      "name": "WCM Partners X, LLC - Series X5, Hadrian Automation",
@@ -1261,7 +1261,7 @@
    "latest_first_sale_date": "2026-07-01",
    "first_spv_file_date": "2026-07-16",
    "latest_spv_file_date": "2026-09-16",
-   "days_since_latest_spv": 66,
+   "days_since_latest_spv": 67,
    "vehicles": [
     {
      "name": "HII Kalshi-05, a Series of HII Kalshi-A, LLC",
@@ -1339,7 +1339,7 @@
    "latest_first_sale_date": "2026-07-21",
    "first_spv_file_date": "2026-09-11",
    "latest_spv_file_date": "2026-09-11",
-   "days_since_latest_spv": 71,
+   "days_since_latest_spv": 72,
    "vehicles": [
     {
      "name": "Dominari Master SPV LLC, Series XXXI Abridge",
@@ -1366,9 +1366,9 @@
    "blurb": "Builds Hivemind, an AI pilot that flies drones and jets through GPS and comms jamming, plus its own V-BAT drone and X-BAT, an AI-piloted VTOL fighter jet, for the US and its allies.",
    "location": "San Diego, California",
    "stage": "growth",
-   "open_roles": 664,
-   "roles_since_first_spv": 664,
-   "observed_postings_since_signal": 679,
+   "open_roles": 665,
+   "roles_since_first_spv": 665,
+   "observed_postings_since_signal": 681,
    "hiring_tracked_since": "2026-11-19",
    "hiring_coverage": "partial",
    "spvs": 10,
@@ -1377,7 +1377,7 @@
    "latest_first_sale_date": "2026-07-14",
    "first_spv_file_date": "2026-06-01",
    "latest_spv_file_date": "2026-08-31",
-   "days_since_latest_spv": 82,
+   "days_since_latest_spv": 83,
    "vehicles": [
     {
      "name": "Greenbird Intelligence Fund, LLC, Series W - Shield AI",
@@ -1505,7 +1505,7 @@
    "latest_first_sale_date": "2026-08-03",
    "first_spv_file_date": "2026-08-18",
    "latest_spv_file_date": "2026-08-18",
-   "days_since_latest_spv": 95,
+   "days_since_latest_spv": 96,
    "vehicles": [
     {
      "name": "G8 Alpine Bio SPV II, LLC",
@@ -1543,7 +1543,7 @@
    "latest_first_sale_date": "2026-08-10",
    "first_spv_file_date": "2026-08-13",
    "latest_spv_file_date": "2026-08-13",
-   "days_since_latest_spv": 100,
+   "days_since_latest_spv": 101,
    "vehicles": [
     {
      "name": "Brown Angel Group ChronoSpace a Series of CGF2021 LLC",
@@ -1581,7 +1581,7 @@
    "latest_first_sale_date": null,
    "first_spv_file_date": "2026-08-12",
    "latest_spv_file_date": "2026-08-12",
-   "days_since_latest_spv": 101,
+   "days_since_latest_spv": 102,
    "vehicles": [
     {
      "name": "BBV Exowatt SPV III LLC",
@@ -1610,7 +1610,7 @@
    "stage": "series-a",
    "open_roles": 122,
    "roles_since_first_spv": 111,
-   "observed_postings_since_signal": 118,
+   "observed_postings_since_signal": 119,
    "hiring_tracked_since": "2026-11-19",
    "hiring_coverage": "partial",
    "spvs": 1,
@@ -1619,7 +1619,7 @@
    "latest_first_sale_date": null,
    "first_spv_file_date": "2026-07-23",
    "latest_spv_file_date": "2026-07-23",
-   "days_since_latest_spv": 121,
+   "days_since_latest_spv": 122,
    "vehicles": [
     {
      "name": "AGC ElevenLabs I, a Series of AGC Parallax Fund I LLC",
@@ -1657,7 +1657,7 @@
    "latest_first_sale_date": null,
    "first_spv_file_date": "2026-07-20",
    "latest_spv_file_date": "2026-07-20",
-   "days_since_latest_spv": 124,
+   "days_since_latest_spv": 125,
    "vehicles": [
     {
      "name": "Kaizen SPV TL A Series of V360 Holdings LLC",
@@ -1695,7 +1695,7 @@
    "latest_first_sale_date": "2026-05-27",
    "first_spv_file_date": "2026-06-18",
    "latest_spv_file_date": "2026-06-18",
-   "days_since_latest_spv": 156,
+   "days_since_latest_spv": 157,
    "vehicles": [
     {
      "name": "HII Anysphere-01, a Series of HII Anysphere LLC",
@@ -1733,7 +1733,7 @@
    "latest_first_sale_date": "2026-06-11",
    "first_spv_file_date": "2026-06-15",
    "latest_spv_file_date": "2026-06-15",
-   "days_since_latest_spv": 159,
+   "days_since_latest_spv": 160,
    "vehicles": [
     {
      "name": "Garuda Ventures Mind Robotics a Series of CGF2021 LLC",
@@ -1771,7 +1771,7 @@
    "latest_first_sale_date": "2026-03-20",
    "first_spv_file_date": "2026-06-05",
    "latest_spv_file_date": "2026-06-05",
-   "days_since_latest_spv": 169,
+   "days_since_latest_spv": 170,
    "vehicles": [
     {
      "name": "HII Saronic-01, a Series of HII Saronic, LLC",
@@ -1809,7 +1809,7 @@
    "latest_first_sale_date": "2026-05-28",
    "first_spv_file_date": "2026-05-29",
    "latest_spv_file_date": "2026-05-29",
-   "days_since_latest_spv": 176,
+   "days_since_latest_spv": 177,
    "vehicles": [
     {
      "name": "AGC Wealt Periodic Labs I a Series of AGC AI Nexus Fund LLC",

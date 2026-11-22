@@ -1,6 +1,6 @@
 {
  "portfolio": {
-  "fetched_at": "2026-11-21T17:10:01Z",
+  "fetched_at": "2026-11-22T17:39:17Z",
   "companies": [
    {
     "slug": "a16z:boltz",
@@ -104,23 +104,6 @@
     "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_0011E00001qCZ4yQAG-20261014145852.svg",
     "focus_areas": [],
     "first_funded": "2026-11-02 00:00:00"
-   },
-   {
-    "slug": "a16z:lunchclub",
-    "name": "Lighter",
-    "tier": "a16z",
-    "on_network": false,
-    "location": null,
-    "blurb": "Lighter is a decentralized exchange for crypto trading that uses zero-knowledge proofs to verify order matching and liquidations on Ethereum.",
-    "url": "https://a16z.com/companies/lunchclub/",
-    "website": "https://lighter.xyz/",
-    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_0011E00001ibamlQAA-20261023202446.svg",
-    "focus_areas": [
-     "Consumer",
-     "Seed",
-     "Frontier"
-    ],
-    "first_funded": "2026-10-23 00:00:00"
    },
    {
     "slug": "a16z:hopin",
@@ -5120,6 +5103,23 @@
      "Frontier"
     ],
     "first_funded": "2023-10-24 00:00:00"
+   },
+   {
+    "slug": "a16z:lunchclub",
+    "name": "Lighter",
+    "tier": "a16z",
+    "on_network": false,
+    "location": null,
+    "blurb": "Lighter is a decentralized exchange for crypto trading that uses zero-knowledge proofs to verify order matching and liquidations on Ethereum.",
+    "url": "https://a16z.com/companies/lunchclub/",
+    "website": "https://lighter.xyz/",
+    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_0011E00001ibamlQAA-20261023202446.svg",
+    "focus_areas": [
+     "Consumer",
+     "Seed",
+     "Frontier"
+    ],
+    "first_funded": "2026-10-23 00:00:00"
    },
    {
     "slug": "a16z:lightfield",
@@ -10642,7 +10642,7 @@
   ]
  },
  "speedrun": {
-  "fetched_at": "2026-11-21T17:10:01Z",
+  "fetched_at": "2026-11-22T17:39:17Z",
   "companies": [
    {
     "slug": "speedrun:abliteration",
@@ -11595,7 +11595,7 @@
   ]
  },
  "investments": {
-  "fetched_at": "2026-11-21T17:10:01Z",
+  "fetched_at": "2026-11-22T17:39:17Z",
   "companies": [
    {
     "slug": "a16z:0x",

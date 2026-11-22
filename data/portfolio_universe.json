@@ -1,12 +1,12 @@
 {
- "fetched_at": "2026-11-21T17:10:01Z",
+ "fetched_at": "2026-11-22T17:39:17Z",
  "source_fetched_at": {
-  "portfolio": "2026-11-21T17:10:01Z",
-  "speedrun": "2026-11-21T17:10:01Z",
-  "investments": "2026-11-21T17:10:01Z"
+  "portfolio": "2026-11-22T17:39:17Z",
+  "speedrun": "2026-11-22T17:39:17Z",
+  "investments": "2026-11-22T17:39:17Z"
  },
- "on_network": 340,
- "off_network": 1076,
+ "on_network": 341,
+ "off_network": 1075,
  "companies": [
   {
    "slug": "abridge",
@@ -640,7 +640,7 @@
    "url": "https://speedrun-talent-network.com/companies/anduril-industries",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 2631,
+   "open_roles": 2633,
    "location": "Costa Mesa, California",
    "industries": [
     "American Dynamism",
@@ -841,7 +841,7 @@
    "url": "https://speedrun-talent-network.com/companies/applied-intuition",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 336,
+   "open_roles": 333,
    "location": "Sunnyvale, California",
    "industries": [
     "American Dynamism",
@@ -1267,7 +1267,7 @@
    "url": "https://speedrun-talent-network.com/companies/base-power-company",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 196,
+   "open_roles": 195,
    "location": "Austin, Texas",
    "industries": [
     "Industrials",
@@ -1683,6 +1683,47 @@
     "a16z:bounce"
    ],
    "website": "https://bounce.com/"
+  },
+  {
+   "slug": "braintrust-data",
+   "name": "Braintrust",
+   "url": "https://speedrun-talent-network.com/companies/braintrust-data",
+   "tier": "a16z",
+   "cohort": null,
+   "open_roles": 32,
+   "location": "San Francisco, California",
+   "industries": [
+    "AI"
+   ],
+   "blurb": "AI observability platform for teams shipping agents: trace production traffic, run evals, and catch regressions before they reach users.",
+   "logo": "https://www.braintrust.dev/icon180.png?v=2",
+   "stage": "growth",
+   "remote_policy": "onsite-leaning",
+   "functions": [
+    "design",
+    "engineering",
+    "marketing",
+    "operations",
+    "sales"
+   ],
+   "cities": [
+    "Austin",
+    "Chicago",
+    "Denver",
+    "London",
+    "New York",
+    "San Francisco"
+   ],
+   "investors": [
+    "Andreessen Horowitz",
+    "Greylock Partners"
+   ],
+   "on_network": true,
+   "also": [
+    "a16z:braintrust-data",
+    "a16z:braintrust"
+   ],
+   "website": "https://www.braintrust.dev/"
   },
   {
    "slug": "brief",
@@ -2517,7 +2558,7 @@
    "url": "https://speedrun-talent-network.com/companies/cowboy-space-corporation",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 62,
+   "open_roles": 61,
    "location": "San Carlos, California",
    "industries": [
     "American Dynamism"
@@ -3543,7 +3584,7 @@
    "url": "https://speedrun-talent-network.com/companies/fal",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 51,
+   "open_roles": 50,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -4530,7 +4571,7 @@
    "url": "https://speedrun-talent-network.com/companies/harvey",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 388,
+   "open_roles": 390,
    "location": "San Francisco, California",
    "industries": [
     "AI"
@@ -4814,7 +4855,7 @@
    "url": "https://speedrun-talent-network.com/companies/hippocratic-ai",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 54,
+   "open_roles": 55,
    "location": "Menlo Park, California",
    "industries": [
     "AI",
@@ -5985,7 +6026,7 @@
    "url": "https://speedrun-talent-network.com/companies/labelbox",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 12,
+   "open_roles": 13,
    "location": "San Francisco, California",
    "industries": [
     "American Dynamism",
@@ -6293,7 +6334,7 @@
    "url": "https://speedrun-talent-network.com/companies/lyft",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 148,
+   "open_roles": 145,
    "location": "San Francisco, CA",
    "industries": [
     "Consumer"
@@ -7714,7 +7755,7 @@
    "url": "https://speedrun-talent-network.com/companies/opengov",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 89,
+   "open_roles": 90,
    "location": "Chicago, Illinois",
    "industries": [
     "American Dynamism",
@@ -9063,7 +9104,7 @@
    "url": "https://speedrun-talent-network.com/companies/roblox",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 260,
+   "open_roles": 259,
    "location": "San Mateo, CA",
    "industries": [
     "Games",
@@ -9518,7 +9559,7 @@
    "url": "https://speedrun-talent-network.com/companies/shield-ai",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 664,
+   "open_roles": 665,
    "location": "San Diego, California",
    "industries": [
     "American Dynamism",
@@ -12280,7 +12321,7 @@
    "url": "https://speedrun-talent-network.com/companies/zipline",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 315,
+   "open_roles": 314,
    "location": "South San Francisco, CA",
    "industries": [
     "American Dynamism",
@@ -12499,26 +12540,6 @@
    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_0011E00001qCZ4yQAG-20261014145852.svg",
    "focus_areas": [],
    "first_funded": "2026-11-02 00:00:00"
-  },
-  {
-   "slug": "a16z:lunchclub",
-   "name": "Lighter",
-   "tier": "a16z",
-   "on_network": false,
-   "location": null,
-   "blurb": "Lighter is a decentralized exchange for crypto trading that uses zero-knowledge proofs to verify order matching and liquidations on Ethereum.",
-   "url": "https://a16z.com/companies/lunchclub/",
-   "website": "https://lighter.xyz/",
-   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_0011E00001ibamlQAA-20261023202446.svg",
-   "focus_areas": [
-    "Consumer",
-    "Seed",
-    "Frontier"
-   ],
-   "first_funded": "2026-10-23 00:00:00",
-   "also": [
-    "a16z:lighter"
-   ]
   },
   {
    "slug": "a16z:hopin",
@@ -13135,25 +13156,6 @@
     "Frontier"
    ],
    "first_funded": "2023-10-04 00:00:00"
-  },
-  {
-   "slug": "a16z:braintrust-data",
-   "name": "Braintrust",
-   "tier": "a16z",
-   "on_network": false,
-   "location": null,
-   "blurb": null,
-   "url": "https://a16z.com/companies/braintrust-data/",
-   "website": "https://www.braintrust.dev/",
-   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/04/logo_0018b00002YcK2wAAF-20260406210450.svg",
-   "focus_areas": [
-    "Infra"
-   ],
-   "first_funded": "2024-02-27 00:00:00",
-   "also": [
-    "braintrust-data",
-    "a16z:braintrust"
-   ]
   },
   {
    "slug": "a16z:branch-international",
@@ -15657,6 +15659,26 @@
     "Frontier"
    ],
    "first_funded": "2023-10-24 00:00:00"
+  },
+  {
+   "slug": "a16z:lunchclub",
+   "name": "Lighter",
+   "tier": "a16z",
+   "on_network": false,
+   "location": null,
+   "blurb": "Lighter is a decentralized exchange for crypto trading that uses zero-knowledge proofs to verify order matching and liquidations on Ethereum.",
+   "url": "https://a16z.com/companies/lunchclub/",
+   "website": "https://lighter.xyz/",
+   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/10/logo_0011E00001ibamlQAA-20261023202446.svg",
+   "focus_areas": [
+    "Consumer",
+    "Seed",
+    "Frontier"
+   ],
+   "first_funded": "2026-10-23 00:00:00",
+   "also": [
+    "a16z:lighter"
+   ]
   },
   {
    "slug": "a16z:lightfield",
