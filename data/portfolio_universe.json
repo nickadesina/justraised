@@ -1,12 +1,12 @@
 {
- "fetched_at": "2026-11-23T21:55:25Z",
+ "fetched_at": "2026-11-24T20:30:54Z",
  "source_fetched_at": {
-  "portfolio": "2026-11-23T21:55:25Z",
-  "speedrun": "2026-11-23T21:55:25Z",
-  "investments": "2026-11-23T21:55:25Z"
+  "portfolio": "2026-11-24T20:30:54Z",
+  "speedrun": "2026-11-24T20:30:54Z",
+  "investments": "2026-11-24T20:30:54Z"
  },
- "on_network": 341,
- "off_network": 1075,
+ "on_network": 340,
+ "off_network": 1076,
  "companies": [
   {
    "slug": "abridge",
@@ -14,7 +14,7 @@
    "url": "https://speedrun-talent-network.com/companies/abridge",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 29,
+   "open_roles": 30,
    "location": "San Francisco, California",
    "industries": [
     "Bio Health"
@@ -35,8 +35,8 @@
    "cities": [
     "NYC Office",
     "SF Office",
-    "Tier 1",
-    "United States"
+    "Texas",
+    "Tier 1"
    ],
    "investors": [
     "Andreessen Horowitz",
@@ -133,7 +133,7 @@
    "url": "https://speedrun-talent-network.com/companies/addi",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 34,
+   "open_roles": 33,
    "location": "Bogotá, Colombia",
    "industries": [
     "Fintecha16z"
@@ -258,7 +258,7 @@
    "url": "https://speedrun-talent-network.com/companies/airgarage",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 22,
+   "open_roles": 23,
    "location": "Philadelphia, Pennsylvania",
    "industries": [
     "Consumer"
@@ -519,7 +519,7 @@
    "url": "https://speedrun-talent-network.com/companies/ambient",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 26,
+   "open_roles": 25,
    "location": "Redwood City, California",
    "industries": [
     "American Dynamism",
@@ -546,8 +546,7 @@
     "Los Angeles",
     "New York",
     "Redwood City",
-    "Texas",
-    "Virginia"
+    "Texas"
    ],
    "investors": [
     "Andreessen Horowitz",
@@ -568,7 +567,7 @@
    "url": "https://speedrun-talent-network.com/companies/amca",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 52,
+   "open_roles": 51,
    "location": "El Segundo, CA",
    "industries": [
     "American Dynamism",
@@ -608,7 +607,7 @@
    "url": "https://speedrun-talent-network.com/companies/anchorage",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 20,
+   "open_roles": 19,
    "location": "San Francisco, California",
    "industries": [
     "Crypto/Web3"
@@ -640,7 +639,7 @@
    "url": "https://speedrun-talent-network.com/companies/anduril-industries",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 2633,
+   "open_roles": 2607,
    "location": "Costa Mesa, California",
    "industries": [
     "American Dynamism",
@@ -841,7 +840,7 @@
    "url": "https://speedrun-talent-network.com/companies/applied-intuition",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 333,
+   "open_roles": 335,
    "location": "Sunnyvale, California",
    "industries": [
     "American Dynamism",
@@ -869,10 +868,10 @@
     "Fort Walton Beach",
     "Freeport",
     "Gothenburg",
-    "KSA - RYD G",
     "London",
     "Munich",
     "Poway",
+    "Riyadh",
     "San Diego",
     "Seoul",
     "Stockholm",
@@ -935,7 +934,7 @@
    "url": "https://speedrun-talent-network.com/companies/arc-boat-company",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 42,
+   "open_roles": 44,
    "location": "Los Angeles, California",
    "industries": [
     "Consumer"
@@ -1068,7 +1067,7 @@
    "url": "https://speedrun-talent-network.com/companies/astranis",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 168,
+   "open_roles": 164,
    "location": "San Francisco, California",
    "industries": [
     "American Dynamism",
@@ -1103,7 +1102,7 @@
    "url": "https://speedrun-talent-network.com/companies/astro-mechanica",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 42,
+   "open_roles": 41,
    "location": "San Francisco, California",
    "industries": [
     "American Dynamism"
@@ -1267,7 +1266,7 @@
    "url": "https://speedrun-talent-network.com/companies/base-power-company",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 178,
+   "open_roles": 183,
    "location": "Austin, Texas",
    "industries": [
     "Industrials",
@@ -1685,47 +1684,6 @@
    "website": "https://bounce.com/"
   },
   {
-   "slug": "braintrust-data",
-   "name": "Braintrust",
-   "url": "https://speedrun-talent-network.com/companies/braintrust-data",
-   "tier": "a16z",
-   "cohort": null,
-   "open_roles": 32,
-   "location": "San Francisco, California",
-   "industries": [
-    "AI"
-   ],
-   "blurb": "AI observability platform for teams shipping agents: trace production traffic, run evals, and catch regressions before they reach users.",
-   "logo": "https://www.braintrust.dev/icon180.png?v=2",
-   "stage": "growth",
-   "remote_policy": "onsite-leaning",
-   "functions": [
-    "design",
-    "engineering",
-    "marketing",
-    "operations",
-    "sales"
-   ],
-   "cities": [
-    "Austin",
-    "Chicago",
-    "Denver",
-    "London",
-    "New York",
-    "San Francisco"
-   ],
-   "investors": [
-    "Andreessen Horowitz",
-    "Greylock Partners"
-   ],
-   "on_network": true,
-   "also": [
-    "a16z:braintrust-data",
-    "a16z:braintrust"
-   ],
-   "website": "https://www.braintrust.dev/"
-  },
-  {
    "slug": "brief",
    "name": "Brief",
    "url": "https://speedrun-talent-network.com/companies/brief",
@@ -1830,7 +1788,7 @@
    "url": "https://speedrun-talent-network.com/companies/cape",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 22,
+   "open_roles": 23,
    "location": "New York, New York",
    "industries": [
     "Security",
@@ -1873,7 +1831,7 @@
    "url": "https://speedrun-talent-network.com/companies/carta",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 80,
+   "open_roles": 81,
    "location": "San Francisco, California",
    "industries": [
     "Fintecha16z"
@@ -2104,7 +2062,7 @@
    "url": "https://speedrun-talent-network.com/companies/clair-health",
    "tier": "speedrun",
    "cohort": "SR006",
-   "open_roles": 7,
+   "open_roles": 8,
    "location": "Mountain View, California",
    "industries": [
     "Hardware",
@@ -2119,7 +2077,8 @@
     "marketing",
     "operations",
     "other",
-    "product"
+    "product",
+    "research"
    ],
    "cities": [
     "Menlo Park",
@@ -2194,8 +2153,7 @@
     "United Kingdom",
     "United States",
     "United States - Boston Office",
-    "United States - Chicago Office",
-    "United States - San Diego Office"
+    "United States - Chicago Office"
    ],
    "investors": [
     "Andreessen Horowitz",
@@ -2313,7 +2271,7 @@
    "url": "https://speedrun-talent-network.com/companies/clutch",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 14,
+   "open_roles": 15,
    "location": "San Francisco, California",
    "industries": [
     "Fintecha16z"
@@ -2348,7 +2306,7 @@
    "url": "https://speedrun-talent-network.com/companies/cognition-technologies",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 108,
+   "open_roles": 110,
    "location": "San Francisco, CA",
    "industries": [
     "AI",
@@ -2558,7 +2516,7 @@
    "url": "https://speedrun-talent-network.com/companies/cowboy-space-corporation",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 61,
+   "open_roles": 62,
    "location": "San Carlos, California",
    "industries": [
     "American Dynamism"
@@ -2595,7 +2553,7 @@
    "url": "https://speedrun-talent-network.com/companies/cresta",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 84,
+   "open_roles": 82,
    "location": "Sunnyvale, California",
    "industries": [
     "Enterprise"
@@ -2624,6 +2582,7 @@
     "Cluj",
     "Iasi",
     "India",
+    "Japan",
     "New York",
     "San Francisco",
     "Spain",
@@ -2646,7 +2605,7 @@
    "url": "https://speedrun-talent-network.com/companies/crux",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 24,
+   "open_roles": 23,
    "location": null,
    "industries": [
     "Fintecha16z"
@@ -2681,7 +2640,7 @@
    "url": "https://speedrun-talent-network.com/companies/cursor",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 89,
+   "open_roles": 87,
    "location": "San Francisco, CA",
    "industries": [
     "AI",
@@ -2726,7 +2685,7 @@
    "url": "https://speedrun-talent-network.com/companies/cx2",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 5,
+   "open_roles": 6,
    "location": "El Segundo, California",
    "industries": [
     "AI",
@@ -2738,7 +2697,8 @@
    "remote_policy": "onsite-leaning",
    "functions": [
     "engineering",
-    "operations"
+    "operations",
+    "sales"
    ],
    "cities": [
     "El Segundo"
@@ -2809,7 +2769,7 @@
    "url": "https://speedrun-talent-network.com/companies/decagon",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 109,
+   "open_roles": 113,
    "location": "San Francisco, California",
    "industries": [
     "AI",
@@ -2830,9 +2790,9 @@
     "sales"
    ],
    "cities": [
-    "Amsterdam",
     "Austin",
     "Australia",
+    "Boston",
     "Brazil",
     "Dallas",
     "Germany",
@@ -2963,7 +2923,7 @@
    "url": "https://speedrun-talent-network.com/companies/doppel",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 23,
+   "open_roles": 22,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -3153,7 +3113,7 @@
    "url": "https://speedrun-talent-network.com/companies/elevenlabs",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 123,
+   "open_roles": 118,
    "location": "New York, New York",
    "industries": [
     "Consumer"
@@ -3215,7 +3175,7 @@
    "url": "https://speedrun-talent-network.com/companies/eliseai",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 105,
+   "open_roles": 106,
    "location": "New York, New York",
    "industries": [
     "AI",
@@ -3362,7 +3322,7 @@
    "url": "https://speedrun-talent-network.com/companies/envoy",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 23,
+   "open_roles": 22,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -3376,7 +3336,6 @@
     "engineering",
     "marketing",
     "operations",
-    "other",
     "product",
     "sales"
    ],
@@ -3432,7 +3391,7 @@
    "url": "https://speedrun-talent-network.com/companies/eve",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 18,
+   "open_roles": 17,
    "location": "San Mateo, California",
    "industries": [
     "AI",
@@ -3469,7 +3428,7 @@
    "url": "https://speedrun-talent-network.com/companies/everlaw",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 37,
+   "open_roles": 38,
    "location": "Oakland, California",
    "industries": [
     "Enterprise"
@@ -3553,7 +3512,7 @@
    "url": "https://speedrun-talent-network.com/companies/exowatt",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 17,
+   "open_roles": 19,
    "location": "Miami, FL",
    "industries": [
     "American Dynamism"
@@ -3564,7 +3523,8 @@
    "remote_policy": "onsite-leaning",
    "functions": [
     "engineering",
-    "operations"
+    "operations",
+    "other"
    ],
    "cities": [
     "Austin",
@@ -3657,7 +3617,7 @@
    "url": "https://speedrun-talent-network.com/companies/figma",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 147,
+   "open_roles": 145,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -3727,7 +3687,7 @@
    "url": "https://speedrun-talent-network.com/companies/fleek",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 7,
+   "open_roles": 8,
    "location": "London",
    "industries": [
     "Consumer"
@@ -3758,7 +3718,7 @@
    "url": "https://speedrun-talent-network.com/companies/flexport",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 211,
+   "open_roles": 207,
    "location": "San Francisco, California",
    "industries": [
     "American Dynamism",
@@ -3881,7 +3841,7 @@
    "url": "https://speedrun-talent-network.com/companies/flock-safety",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 17,
+   "open_roles": 16,
    "location": "Atlanta, GA",
    "industries": [
     "American Dynamism",
@@ -3904,7 +3864,6 @@
     "Cleveland",
     "Farmington",
     "Indianapolis",
-    "Jacksonville",
     "Kansas City",
     "San Jose",
     "Seattle",
@@ -3967,7 +3926,7 @@
    "url": "https://speedrun-talent-network.com/companies/flow",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 15,
+   "open_roles": 14,
    "location": null,
    "industries": [
     "Consumer"
@@ -4032,7 +3991,7 @@
    "url": "https://speedrun-talent-network.com/companies/formation-bio",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 23,
+   "open_roles": 22,
    "location": "New York, NY",
    "industries": [
     "Bio Health"
@@ -4136,7 +4095,7 @@
    "url": "https://speedrun-talent-network.com/companies/gamma",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 20,
+   "open_roles": 19,
    "location": "San Francisco, California",
    "industries": [
     "AI"
@@ -4149,8 +4108,7 @@
     "design",
     "engineering",
     "marketing",
-    "operations",
-    "product"
+    "operations"
    ],
    "cities": [
     "New York",
@@ -4470,7 +4428,7 @@
    "url": "https://speedrun-talent-network.com/companies/hadrian",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 178,
+   "open_roles": 180,
    "location": "Los Angeles, California",
    "industries": [
     "American Dynamism",
@@ -4570,7 +4528,7 @@
    "url": "https://speedrun-talent-network.com/companies/harvey",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 393,
+   "open_roles": 397,
    "location": "San Francisco, California",
    "industries": [
     "AI"
@@ -4599,7 +4557,6 @@
     "London",
     "Madrid",
     "Mexico",
-    "Milan",
     "Munich",
     "New York",
     "Paris",
@@ -4633,7 +4590,7 @@
    "url": "https://speedrun-talent-network.com/companies/headway",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 94,
+   "open_roles": 91,
    "location": "New York City Area",
    "industries": [
     "Bio Health"
@@ -4743,7 +4700,7 @@
    "url": "https://speedrun-talent-network.com/companies/hercules",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 32,
+   "open_roles": 29,
    "location": "San Francisco, California",
    "industries": [
     "AI"
@@ -4900,7 +4857,7 @@
    "url": "https://speedrun-talent-network.com/companies/honor",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 17,
+   "open_roles": 16,
    "location": "San Francisco, CA",
    "industries": [
     "Healthcare",
@@ -5040,7 +4997,7 @@
    "url": "https://speedrun-talent-network.com/companies/illumio",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 74,
+   "open_roles": 85,
    "location": "Sunnyvale, California",
    "industries": [
     "Enterprise"
@@ -5065,6 +5022,7 @@
     "France",
     "Germany",
     "HQ - Sunnyvale Office",
+    "Italy",
     "London",
     "Melbourne",
     "Mexico",
@@ -5074,6 +5032,7 @@
     "Singapore",
     "Sunnyvale",
     "Sweden",
+    "Sydney",
     "Taiwan",
     "Tokyo",
     "US WEST",
@@ -5462,7 +5421,7 @@
    "url": "https://speedrun-talent-network.com/companies/jeeves",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 79,
+   "open_roles": 85,
    "location": "Mexico City",
    "industries": [
     "Enterprise",
@@ -5554,7 +5513,7 @@
    "url": "https://speedrun-talent-network.com/companies/kaizen-labs",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 23,
+   "open_roles": 22,
    "location": "New York, New York",
    "industries": [
     "American Dynamism"
@@ -5594,7 +5553,7 @@
    "url": "https://speedrun-talent-network.com/companies/kalshi",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 41,
+   "open_roles": 40,
    "location": "New York, New York",
    "industries": [
     "Fintech"
@@ -5759,7 +5718,7 @@
    "url": "https://speedrun-talent-network.com/companies/knownwell",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 10,
+   "open_roles": 8,
    "location": "Boston, Massachusetts",
    "industries": [
     "Bio Health"
@@ -5871,7 +5830,7 @@
    "url": "https://speedrun-talent-network.com/companies/komodo-health",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 20,
+   "open_roles": 19,
    "location": "San Francisco, California",
    "industries": [
     "Bio Health",
@@ -5883,7 +5842,6 @@
    "remote_policy": "hybrid-friendly",
    "functions": [
     "engineering",
-    "operations",
     "other",
     "product",
     "sales"
@@ -6201,7 +6159,7 @@
    "url": "https://speedrun-talent-network.com/companies/lio",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 30,
+   "open_roles": 29,
    "location": "Munich, Germany",
    "industries": [
     "AI"
@@ -6336,7 +6294,7 @@
    "url": "https://speedrun-talent-network.com/companies/lyft",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 145,
+   "open_roles": 144,
    "location": "San Francisco, CA",
    "industries": [
     "Consumer"
@@ -6360,7 +6318,6 @@
     "Houston",
     "Longueuil",
     "Mexico City",
-    "Milwaukee",
     "Montreal",
     "Nashville",
     "New York",
@@ -6435,7 +6392,7 @@
    "url": "https://speedrun-talent-network.com/companies/mariana-minerals",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 101,
+   "open_roles": 99,
    "location": "Moab, Utah",
    "industries": [
     "Industrials",
@@ -6658,7 +6615,7 @@
    "url": "https://speedrun-talent-network.com/companies/mercury-technologies",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 70,
+   "open_roles": 68,
    "location": "San Francisco, CA",
    "industries": [
     "Fintech"
@@ -6827,7 +6784,7 @@
    "url": "https://speedrun-talent-network.com/companies/mind-robotics",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 35,
+   "open_roles": 36,
    "location": "Palo Alto, California",
    "industries": [
     "AI"
@@ -6839,7 +6796,6 @@
    "functions": [
     "design",
     "engineering",
-    "marketing",
     "operations",
     "other",
     "research"
@@ -6902,7 +6858,7 @@
    "url": "https://speedrun-talent-network.com/companies/mirage",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 16,
+   "open_roles": 15,
    "location": "New York, New York",
    "industries": [
     "AI",
@@ -6945,7 +6901,7 @@
    "url": "https://speedrun-talent-network.com/companies/mirelo-ai",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 8,
+   "open_roles": 7,
    "location": "Berlin, Germany",
    "industries": [
     "AI"
@@ -6959,7 +6915,6 @@
     "engineering",
     "marketing",
     "operations",
-    "product",
     "research"
    ],
    "cities": [
@@ -7015,7 +6970,7 @@
    "url": "https://speedrun-talent-network.com/companies/mixpanel",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 40,
+   "open_roles": 38,
    "location": "San Francisco, California",
    "industries": [
     "Enterprise"
@@ -7090,7 +7045,7 @@
    "url": "https://speedrun-talent-network.com/companies/moment",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 11,
+   "open_roles": 12,
    "location": "New York, New York",
    "industries": [
     "Fintecha16z"
@@ -7513,7 +7468,7 @@
    "url": "https://speedrun-talent-network.com/companies/nomic",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 2,
+   "open_roles": 1,
    "location": "Switzerland",
    "industries": [
     "Crypto/Web3"
@@ -7523,7 +7478,6 @@
    "stage": "growth",
    "remote_policy": "remote-first",
    "functions": [
-    "engineering",
     "product"
    ],
    "cities": [
@@ -7638,7 +7592,7 @@
    "url": "https://speedrun-talent-network.com/companies/omada-health",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 23,
+   "open_roles": 25,
    "location": "San Francisco, CA",
    "industries": [
     "Bio Health"
@@ -7821,6 +7775,43 @@
     "CapitalG"
    ],
    "on_network": true
+  },
+  {
+   "slug": "opensea",
+   "name": "OpenSea",
+   "url": "https://speedrun-talent-network.com/companies/opensea",
+   "tier": "a16z",
+   "cohort": null,
+   "open_roles": 2,
+   "location": "Miami/Fort Lauderdale Area",
+   "industries": [
+    "Crypto/Web3"
+   ],
+   "blurb": "At OpenSea, you'll be challenged to exceed your own expectations alongside a nimble, talent-dense crew shaping the future of digital economies for millions.",
+   "logo": "https://opensea.io/icons/rebrand/icon-192x192.png",
+   "stage": "growth",
+   "remote_policy": null,
+   "functions": [
+    "engineering",
+    "marketing"
+   ],
+   "cities": [
+    "New York",
+    "US or  EU"
+   ],
+   "investors": [
+    "Andreessen Horowitz",
+    "gumi Cryptos",
+    "NEA",
+    "Paradigm xyz",
+    "Sequoia Capital",
+    "TCG"
+   ],
+   "on_network": true,
+   "also": [
+    "a16z:opensea"
+   ],
+   "website": "https://opensea.io"
   },
   {
    "slug": "orchestra",
@@ -8062,7 +8053,7 @@
    "url": "https://speedrun-talent-network.com/companies/payrails",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 5,
+   "open_roles": 7,
    "location": "Berlin, Germany",
    "industries": [
     "Fintecha16z"
@@ -8073,7 +8064,8 @@
    "remote_policy": "onsite-leaning",
    "functions": [
     "engineering",
-    "marketing"
+    "marketing",
+    "operations"
    ],
    "cities": [
     "Berlin",
@@ -8133,7 +8125,7 @@
    "url": "https://speedrun-talent-network.com/companies/periodic-labs",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 30,
+   "open_roles": 29,
    "location": "Menlo Park, California",
    "industries": [
     "AI"
@@ -8168,7 +8160,7 @@
    "url": "https://speedrun-talent-network.com/companies/phantom",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 17,
+   "open_roles": 16,
    "location": "New York, New York",
    "industries": [
     "Crypto/Web3"
@@ -8181,7 +8173,6 @@
     "design",
     "engineering",
     "marketing",
-    "operations",
     "product",
     "research",
     "sales"
@@ -8341,7 +8332,7 @@
    "url": "https://speedrun-talent-network.com/companies/plaid",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 146,
+   "open_roles": 145,
    "location": "San Francisco, California",
    "industries": [
     "Fintecha16z"
@@ -8655,7 +8646,7 @@
    "url": "https://speedrun-talent-network.com/companies/prosper-ai",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 14,
+   "open_roles": 16,
    "location": "New York, New York",
    "industries": [
     "AI"
@@ -8690,7 +8681,7 @@
    "url": "https://speedrun-talent-network.com/companies/protege",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 21,
+   "open_roles": 24,
    "location": "New York, New York",
    "industries": [
     "AI",
@@ -8796,7 +8787,7 @@
    "url": "https://speedrun-talent-network.com/companies/radiant",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 118,
+   "open_roles": 120,
    "location": "El Segundo, California",
    "industries": [
     "Industrials",
@@ -9106,7 +9097,7 @@
    "url": "https://speedrun-talent-network.com/companies/roblox",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 259,
+   "open_roles": 254,
    "location": "San Mateo, CA",
    "industries": [
     "Games",
@@ -9258,7 +9249,7 @@
    "url": "https://speedrun-talent-network.com/companies/sardine",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 40,
+   "open_roles": 41,
    "location": "Austin, Texas",
    "industries": [
     "Fintecha16z"
@@ -9310,7 +9301,7 @@
    "url": "https://speedrun-talent-network.com/companies/saronic-technologies",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 295,
+   "open_roles": 304,
    "location": "Austin, Texas",
    "industries": [
     "AI",
@@ -9485,7 +9476,7 @@
    "url": "https://speedrun-talent-network.com/companies/sesame",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 17,
+   "open_roles": 18,
    "location": "San Francisco, California",
    "industries": [
     "Consumer"
@@ -9561,7 +9552,7 @@
    "url": "https://speedrun-talent-network.com/companies/shield-ai",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 676,
+   "open_roles": 681,
    "location": "San Diego, California",
    "industries": [
     "American Dynamism",
@@ -9685,7 +9676,7 @@
    "url": "https://speedrun-talent-network.com/companies/skydio",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 185,
+   "open_roles": 182,
    "location": "San Mateo, California",
    "industries": [
     "AI",
@@ -9739,7 +9730,7 @@
    "url": "https://speedrun-talent-network.com/companies/sleeper",
    "tier": "a16z",
    "cohort": "GF1",
-   "open_roles": 7,
+   "open_roles": 6,
    "location": "San Francisco, California",
    "industries": [
     "Gaming",
@@ -10184,7 +10175,7 @@
    "url": "https://speedrun-talent-network.com/companies/spoton",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 76,
+   "open_roles": 73,
    "location": "Chicago, Illinois",
    "industries": [
     "Enterprise"
@@ -10215,7 +10206,6 @@
     "Clearwater",
     "Dallas",
     "Decatur",
-    "Durham",
     "Dyker Heights",
     "East St Louis",
     "Elmhurst",
@@ -10238,7 +10228,6 @@
     "Northfield",
     "O'ahu",
     "Oahu West",
-    "Ogden",
     "Oklahoma City",
     "Orlando",
     "Oxnard",
@@ -10248,7 +10237,6 @@
     "Phoenix",
     "Pittsburgh",
     "Quincy",
-    "Redwood City",
     "Richmond",
     "San Francisco",
     "San Jose",
@@ -10258,11 +10246,11 @@
     "South Bend",
     "South Milwaukee",
     "Spring Valley",
+    "Springfield",
     "Stateside",
     "Stockton",
     "Syracuse",
     "Tallahassee",
-    "Tampa",
     "Tinley Park",
     "Torrence",
     "Yakima"
@@ -10319,7 +10307,7 @@
    "url": "https://speedrun-talent-network.com/companies/sprinter-health",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 65,
+   "open_roles": 64,
    "location": "San Francisco, California",
    "industries": [
     "Bio Health"
@@ -10354,7 +10342,6 @@
     "Jackson",
     "Jersey City",
     "Lexington",
-    "Los Angeles",
     "Louisville",
     "Lynchburg",
     "Menlo Park",
@@ -10472,10 +10459,10 @@
     "Bangalore",
     "Boston",
     "Charlotte",
-    "Germany",
     "India",
     "London",
     "San Francisco",
+    "Sao Paulo",
     "Singapore",
     "United States",
     "Warsaw",
@@ -10520,7 +10507,7 @@
    "url": "https://speedrun-talent-network.com/companies/stuut",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 24,
+   "open_roles": 23,
    "location": "San Francisco, California",
    "industries": [
     "AI",
@@ -10535,7 +10522,6 @@
     "engineering",
     "marketing",
     "other",
-    "product",
     "sales"
    ],
    "cities": [
@@ -10745,7 +10731,7 @@
    "url": "https://speedrun-talent-network.com/companies/talkiatry",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 188,
+   "open_roles": 185,
    "location": "New York, New York",
    "industries": [
     "Bio Health",
@@ -10887,7 +10873,7 @@
    "url": "https://speedrun-talent-network.com/companies/tanium",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 65,
+   "open_roles": 66,
    "location": "Kirkland, Washington",
    "industries": [
     "Enterprise"
@@ -10966,7 +10952,7 @@
    "url": "https://speedrun-talent-network.com/companies/temporal-technologies",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 92,
+   "open_roles": 90,
    "location": "Bellevue, Washington",
    "industries": [
     "Enterprise",
@@ -11120,7 +11106,7 @@
    "url": "https://speedrun-talent-network.com/companies/thatch",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 28,
+   "open_roles": 27,
    "location": "San Francisco, CA",
    "industries": [
     "Healthcare",
@@ -11371,38 +11357,12 @@
    "website": "https://truemed.com"
   },
   {
-   "slug": "truffle-security",
-   "name": "Truffle Security",
-   "url": "https://speedrun-talent-network.com/companies/truffle-security",
-   "tier": "a16z",
-   "cohort": null,
-   "open_roles": 1,
-   "location": "San Francisco Bay Area",
-   "industries": [
-    "Enterprise"
-   ],
-   "blurb": "Our team of career security experts are dedicated to building robust and intelligent software that helps you protect your information.",
-   "logo": "https://www.google.com/s2/favicons?domain=trufflesecurity.com&sz=128",
-   "stage": "series-a",
-   "remote_policy": "remote-first",
-   "functions": [
-    "sales"
-   ],
-   "cities": [],
-   "investors": [],
-   "on_network": true,
-   "also": [
-    "a16z:truffle-security"
-   ],
-   "website": "https://trufflesecurity.com/"
-  },
-  {
    "slug": "turquoise-health",
    "name": "Turquoise Health",
    "url": "https://speedrun-talent-network.com/companies/turquoise-health",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 8,
+   "open_roles": 5,
    "location": "San Diego, CA",
    "industries": [
     "Bio Health"
@@ -11414,8 +11374,6 @@
    "functions": [
     "design",
     "engineering",
-    "operations",
-    "other",
     "product",
     "sales"
    ],
@@ -11511,7 +11469,7 @@
    "url": "https://speedrun-talent-network.com/companies/ultima-genomics",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 20,
+   "open_roles": 18,
    "location": "Fremont, California",
    "industries": [
     "AI",
@@ -11530,7 +11488,6 @@
    "cities": [
     "Abu Dhabi",
     "Fremont",
-    "Phoenix",
     "United States"
    ],
    "investors": [],
@@ -11546,7 +11503,7 @@
    "url": "https://speedrun-talent-network.com/companies/unconventional-ai",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 28,
+   "open_roles": 27,
    "location": "Mountain View, CA",
    "industries": [
     "AI",
@@ -11580,7 +11537,7 @@
    "url": "https://speedrun-talent-network.com/companies/uniswap",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 9,
+   "open_roles": 8,
    "location": "New York, New York",
    "industries": [
     "Crypto/Web3"
@@ -11592,8 +11549,7 @@
    "functions": [
     "engineering",
     "marketing",
-    "operations",
-    "sales"
+    "operations"
    ],
    "cities": [
     "New York"
@@ -11619,7 +11575,7 @@
    "url": "https://speedrun-talent-network.com/companies/unitedmasters",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 29,
+   "open_roles": 30,
    "location": "San Francisco, California",
    "industries": [
     "Consumer"
@@ -11754,7 +11710,7 @@
    "url": "https://speedrun-talent-network.com/companies/vals-ai",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 6,
+   "open_roles": 5,
    "location": "San Francisco, CA",
    "industries": [
     "AI",
@@ -11767,12 +11723,10 @@
    "functions": [
     "engineering",
     "marketing",
-    "other",
     "research"
    ],
    "cities": [
-    "San Francisco",
-    "United States"
+    "San Francisco"
    ],
    "investors": [],
    "on_network": true,
@@ -11922,7 +11876,7 @@
    "url": "https://speedrun-talent-network.com/companies/viggle",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 5,
+   "open_roles": 6,
    "location": "Toronto, Canada",
    "industries": [
     "AI",
@@ -11989,7 +11943,7 @@
    "url": "https://speedrun-talent-network.com/companies/volta",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 46,
+   "open_roles": 47,
    "location": "Palo Alto, California",
    "industries": [
     "AI"
@@ -12012,6 +11966,7 @@
     "Europe",
     "Helsinki",
     "London",
+    "Netherlands",
     "New York",
     "Norway - Hybrid",
     "Palo Alto",
@@ -12322,7 +12277,7 @@
    "url": "https://speedrun-talent-network.com/companies/zipline",
    "tier": "a16z",
    "cohort": null,
-   "open_roles": 316,
+   "open_roles": 317,
    "location": "South San Francisco, CA",
    "industries": [
     "American Dynamism",
@@ -12350,6 +12305,7 @@
     "Austin",
     "Boston",
     "Dallas-Fort Worth",
+    "EMEA; United Arab Emirates; United Kingdom",
     "Esparto",
     "Half Moon Bay",
     "Houston",
@@ -13157,6 +13113,25 @@
     "Frontier"
    ],
    "first_funded": "2023-10-04 00:00:00"
+  },
+  {
+   "slug": "a16z:braintrust-data",
+   "name": "Braintrust",
+   "tier": "a16z",
+   "on_network": false,
+   "location": null,
+   "blurb": null,
+   "url": "https://a16z.com/companies/braintrust-data/",
+   "website": "https://www.braintrust.dev/",
+   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/04/logo_0018b00002YcK2wAAF-20260406210450.svg",
+   "focus_areas": [
+    "Infra"
+   ],
+   "first_funded": "2024-02-27 00:00:00",
+   "also": [
+    "braintrust-data",
+    "a16z:braintrust"
+   ]
   },
   {
    "slug": "a16z:branch-international",
@@ -16654,22 +16629,6 @@
    "first_funded": "2026-10-22 00:00:00"
   },
   {
-   "slug": "a16z:opensea",
-   "name": "OpenSea",
-   "tier": "a16z",
-   "on_network": false,
-   "location": null,
-   "blurb": "By providing the link between the consumer layer and the infrastructure layer of the digital goods economy, OpenSea provides a one-stop shop for discovering, buying, and selling any non-fungible digital assets.",
-   "url": "https://a16z.com/companies/opensea/",
-   "website": "https://opensea.io",
-   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2023/09/logo_0011E00001j8u3M-20230418013705.svg",
-   "focus_areas": [
-    "Growth",
-    "Frontier"
-   ],
-   "first_funded": "2021-03-17 00:00:00"
-  },
-  {
    "slug": "a16z:optimism",
    "name": "Optimism",
    "tier": "a16z",
@@ -18622,6 +18581,26 @@
    "first_funded": "2023-06-02 00:00:00",
    "also": [
     "a16z:truefi"
+   ]
+  },
+  {
+   "slug": "a16z:truffle-security",
+   "name": "Truffle Security",
+   "tier": "a16z",
+   "on_network": false,
+   "location": null,
+   "blurb": "Truffle Security is a cybersecurity company that offers network management software solutions for private keys and credentials. The company's software scans the system environment for secrets like private keys and credentials, tracks and manages code within the intuitive management interface as well as authenticates with secure workflows toavoid username and password breaches, helping clients to p",
+   "url": "https://a16z.com/companies/truffle-security/",
+   "website": "https://trufflesecurity.com/",
+   "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2025/11/logo_0011E00001pJK60QAG-20251105173115.svg",
+   "focus_areas": [
+    "Enterprise",
+    "Seed",
+    "Infra"
+   ],
+   "first_funded": "2021-03-25 00:00:00",
+   "also": [
+    "truffle-security"
    ]
   },
   {

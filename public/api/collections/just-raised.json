@@ -6,7 +6,7 @@
   "group": "signals",
   "url": "https://nickadesina.github.io/justraised",
   "companies": 7,
-  "roles": 616,
+  "roles": 617,
   "portfolio_members": 7,
   "members": [
    {
@@ -129,7 +129,7 @@
     "url": "https://speedrun-talent-network.com/companies/stuut",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 24,
+    "open_roles": 23,
     "location": "San Francisco, California",
     "blurb": "Agentic AI for accounts receivable: runs collections outreach, payment matching, and dispute resolution across the order-to-cash cycle. Partnered with Fiserv on enterprise receivables.",
     "stage": "seed",
@@ -143,7 +143,6 @@
      "engineering",
      "marketing",
      "other",
-     "product",
      "sales"
     ],
     "cities": [
@@ -162,7 +161,7 @@
     "url": "https://speedrun-talent-network.com/companies/mariana-minerals",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 101,
+    "open_roles": 99,
     "location": "Moab, Utah",
     "blurb": "Software-first minerals company that develops and operates its own copper, lithium and nickel projects, supplying the metals energy, AI and defense depend on.",
     "stage": "series-a",
@@ -193,7 +192,7 @@
     "url": "https://speedrun-talent-network.com/companies/harvey",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 393,
+    "open_roles": 397,
     "location": "San Francisco, California",
     "blurb": "AI agents that execute legal work end-to-end: contract analysis, due diligence, compliance, and litigation, for law firms and corporate legal teams.",
     "stage": "growth",
@@ -226,7 +225,6 @@
      "London",
      "Madrid",
      "Mexico",
-     "Milan",
      "Munich",
      "New York",
      "Paris",

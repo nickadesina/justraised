@@ -1,6 +1,6 @@
 {
  "portfolio": {
-  "fetched_at": "2026-11-23T21:55:25Z",
+  "fetched_at": "2026-11-24T20:30:54Z",
   "companies": [
    {
     "slug": "a16z:boltz",
@@ -10642,7 +10642,7 @@
   ]
  },
  "speedrun": {
-  "fetched_at": "2026-11-23T21:55:25Z",
+  "fetched_at": "2026-11-24T20:30:54Z",
   "companies": [
    {
     "slug": "speedrun:abliteration",
@@ -11595,7 +11595,7 @@
   ]
  },
  "investments": {
-  "fetched_at": "2026-11-23T21:55:25Z",
+  "fetched_at": "2026-11-24T20:30:54Z",
   "companies": [
    {
     "slug": "a16z:0x",
