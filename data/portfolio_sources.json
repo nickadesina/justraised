@@ -1,6 +1,6 @@
 {
  "portfolio": {
-  "fetched_at": "2026-11-24T20:30:54Z",
+  "fetched_at": "2026-11-25T19:48:19Z",
   "companies": [
    {
     "slug": "a16z:boltz",
@@ -1039,6 +1039,21 @@
      "Seed"
     ],
     "first_funded": "2021-05-06 00:00:00"
+   },
+   {
+    "slug": "a16z:ethos",
+    "name": "Begun",
+    "tier": "a16z",
+    "on_network": false,
+    "location": null,
+    "blurb": null,
+    "url": "https://a16z.com/companies/ethos/",
+    "website": "https://app.begun.com/",
+    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/05/logo_001Up00000EQBUQIA5-20260505150417.svg",
+    "focus_areas": [
+     "Consumer"
+    ],
+    "first_funded": "2026-05-06 00:00:00"
    },
    {
     "slug": "a16z:believer",
@@ -3003,21 +3018,6 @@
      "Frontier"
     ],
     "first_funded": "2024-03-21 00:00:00"
-   },
-   {
-    "slug": "a16z:ethos",
-    "name": "Ethos",
-    "tier": "a16z",
-    "on_network": false,
-    "location": null,
-    "blurb": "Ethos is an AI-driven platform that matches individuals with opportunities. It uses AI to scan hundreds of millions of profiles and match clients with the most relevant experts for insight-driven calls.",
-    "url": "https://a16z.com/companies/ethos/",
-    "website": "https://agent.askethos.com/",
-    "logo": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2026/05/logo_001Up00000EQBUQIA5-20260505150417.svg",
-    "focus_areas": [
-     "Consumer"
-    ],
-    "first_funded": "2026-05-06 00:00:00"
    },
    {
     "slug": "a16z:eve-legal",
@@ -10642,7 +10642,7 @@
   ]
  },
  "speedrun": {
-  "fetched_at": "2026-11-24T20:30:54Z",
+  "fetched_at": "2026-11-25T19:48:19Z",
   "companies": [
    {
     "slug": "speedrun:abliteration",
@@ -11595,7 +11595,7 @@
   ]
  },
  "investments": {
-  "fetched_at": "2026-11-24T20:30:54Z",
+  "fetched_at": "2026-11-25T19:48:19Z",
   "companies": [
    {
     "slug": "a16z:0x",
