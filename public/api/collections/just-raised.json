@@ -6,7 +6,7 @@
   "group": "signals",
   "url": "https://nickadesina.github.io/justraised",
   "companies": 7,
-  "roles": 609,
+  "roles": 610,
   "portfolio_members": 7,
   "members": [
    {
@@ -71,7 +71,7 @@
     "url": "https://speedrun-talent-network.com/companies/fal",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 52,
+    "open_roles": 51,
     "location": "San Francisco, California",
     "blurb": "One API for image and video generation models, plus GPUs to deploy and fine-tune your own. Canva, Shopify and Quora build on it.",
     "stage": "series-a",
@@ -193,7 +193,7 @@
     "url": "https://speedrun-talent-network.com/companies/harvey",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 388,
+    "open_roles": 390,
     "location": "San Francisco, California",
     "blurb": "AI agents that execute legal work end-to-end: contract analysis, due diligence, compliance, and litigation, for law firms and corporate legal teams.",
     "stage": "growth",
