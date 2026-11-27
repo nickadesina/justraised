@@ -45,7 +45,7 @@
     "url": "https://speedrun-talent-network.com/companies/armadin",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 24,
+    "open_roles": 25,
     "location": "Palo Alto, CA",
     "blurb": "Offensive security run by AI agents: specialized agents probe a company's systems and test whether weaknesses chain into real attack paths. Founded by Mandiant founder Kevin Mandia.",
     "stage": "series-a",
@@ -60,6 +60,7 @@
     ],
     "cities": [
      "Palo Alto",
+     "United Kingdom",
      "Washington"
     ],
     "logo": "https://pbs.twimg.com/profile_images/2031294777694760962/jmspnYnW_400x400.png"
@@ -193,7 +194,7 @@
     "url": "https://speedrun-talent-network.com/companies/harvey",
     "tier": "a16z",
     "cohort": null,
-    "open_roles": 390,
+    "open_roles": 389,
     "location": "San Francisco, California",
     "blurb": "AI agents that execute legal work end-to-end: contract analysis, due diligence, compliance, and litigation, for law firms and corporate legal teams.",
     "stage": "growth",
